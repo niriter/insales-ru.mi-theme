@@ -222,328 +222,73 @@
     <div class="rr-widget cartRelated rr-active">
       <header class="widgettitle">Новинки</header>
       <ul class="items">
-        <li class="item">
-          <div class="block">
-            <div class="rr-header">
-              <div class="rr-labels">
-                <div class="rr-discount">-9%</div>
-              </div>
-              <div class="rr-icons">
-                <a class="product_features_wishlist " product_id="9649" tabindex="-1"></a>
-                <span class="product_features_compare " product_id="9649"></span>
-              </div>
-            </div>
-            <a class="item-info" href="/planshet-mi-pad-4-plus-lte-4-128gb-chernyj" tabindex="-1">
-              <div class="item-image">
-                <img src="//cdn.retailrocket.net/api/1.0/partner/57d574e265bf1940b4626285/item/9649/picture/?format=png&amp;scale=both" onerror="retailrocket.widget.hideProduct(this)">
-              </div>
-              <div class="item-title">Планшет Mi Pad 4 Plus LTE 4/128GB (черный/black)</div>
-            </a>
-            <div class="rating">
-              <div class="rating_left">
-                <a class="rating_stars" href="/planshet-mi-pad-4-plus-lte-4-128gb-chernyj/reviews" tabindex="-1">
-                  <div class="rating_full stars_0"></div>
-                </a>
-              </div>
-              <div class="rating_right">
-                <a class="rating_reviews" href="/planshet-mi-pad-4-plus-lte-4-128gb-chernyj/reviews" tabindex="-1">0</a>
-              </div>
-            </div>
-            <div class="item-price-and-buy">
-              <div class="item-block-price">
-                <div class="item-old-price">
-                  <span class="item-old-price-value">26 990</span>
-                  <span class="item-price-currency"></span>
+        {% assign products_sale = 0 %}
+        {% for product in collections.all.products %}
+          {%if product.properties.label.characteristics[0].name == "Новинка" %}
+            {%assign products_sale = products_sale | plus: 1%}
+            {% if products_sale <= 15 %}
+              <li class="item">
+                <div class="block">
+                  <div class="rr-header">
+                    <div class="rr-labels">
+                      {%if product.old_price%}
+                        <div class="rr-discount">
+                          -{{ product.old_price | minus: product.price | divided_by: product.old_price | times: 100 | round: 0}}%
+                        </div>
+                      {%endif%}
+                    </div>
+                    <div class="rr-icons">
+                      <a class="product_features_wishlist" product_id="9649" tabindex="-1"></a>
+                      <span class="product_features_compare " product_id="9649"></span>
+                    </div>
+                  </div>
+                  <a class="item-info" href="{{product.url}}" tabindex="-1">
+                    <div class="item-image">
+                      <img src="{{product.first_image.original_url}}">
+                    </div>
+                    <div class="item-title">{{product.title}}</div>
+                  </a>
+                  <div class="rating">
+                    <div class="rating_left">
+                      <a class="rating_stars" href="{{product.url}}" tabindex="-1">
+                        {%if product.rating %}
+                          <div class="rating_full stars_{{ product.rating }}"></div>
+                        {%else%}
+                          <div class="rating_full stars_0"></div>
+                        {%endif%}
+                      </a>
+                    </div>
+                    <div class="rating_right">
+                      <a class="rating_reviews" href="{{product.url}}" tabindex="-1">{{product.reviews | size}}</a>
+                    </div>
+                  </div>
+                  <div class="item-price-and-buy">
+                    <div class="item-block-price">
+                      {%if product.old_price%}
+                        <div class="item-old-price">
+                          <span class="item-old-price-value">{{product.old_price | round: 0}}</span>
+                          <span class="item-price-currency"></span>
+                        </div>
+                      {%endif%}
+                      <div class="item-price">
+                        <span class="item-price-value">{{product.price | money}}</span>
+                      </div>
+                    </div>
+                    <div class="item-actions">
+                      <a class="item-actions-buy add_to_cart_9649" tabindex="-1">
+                        <div class="add_to_cart_help">Товар в корзине</div>
+                      </a>
+                    </div>
+                  </div>
                 </div>
-                <div class="item-price">
-                  <span class="item-price-value">24 490</span>
-                  <span class="item-price-currency"></span>
-                </div>
-              </div>
-              <div class="item-actions">
-                <a class="item-actions-buy add_to_cart_9649 " onclick="addToCart('9649');rrApi.recomAddToCart(9649, { suggester: '595a5d465a6588d6144888d6', methodName: 'saleByPopular' });return retailrocket._widgetAddToBasket('9649', '');" tabindex="-1">
-                  <div class="add_to_cart_help">Товар в корзине</div>
-                </a>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li class="item">
-          <div class="block">
-            <div class="rr-header">
-              <div class="rr-labels">
-                <div class="rr-discount">-9%</div>
-              </div>
-              <div class="rr-icons">
-                <a class="product_features_wishlist " product_id="9649" tabindex="-1"></a>
-                <span class="product_features_compare " product_id="9649"></span>
-              </div>
-            </div>
-            <a class="item-info" href="/planshet-mi-pad-4-plus-lte-4-128gb-chernyj" tabindex="-1">
-              <div class="item-image">
-                <img src="//cdn.retailrocket.net/api/1.0/partner/57d574e265bf1940b4626285/item/9649/picture/?format=png&amp;scale=both" onerror="retailrocket.widget.hideProduct(this)">
-              </div>
-              <div class="item-title">Планшет Mi Pad 4 Plus LTE 4/128GB (черный/black)</div>
-            </a>
-            <div class="rating">
-              <div class="rating_left">
-                <a class="rating_stars" href="/planshet-mi-pad-4-plus-lte-4-128gb-chernyj/reviews" tabindex="-1">
-                  <div class="rating_full stars_0"></div>
-                </a>
-              </div>
-              <div class="rating_right">
-                <a class="rating_reviews" href="/planshet-mi-pad-4-plus-lte-4-128gb-chernyj/reviews" tabindex="-1">0</a>
-              </div>
-            </div>
-            <div class="item-price-and-buy">
-              <div class="item-block-price">
-                <div class="item-old-price">
-                  <span class="item-old-price-value">26 990</span>
-                  <span class="item-price-currency"></span>
-                </div>
-                <div class="item-price">
-                  <span class="item-price-value">24 490</span>
-                  <span class="item-price-currency"></span>
-                </div>
-              </div>
-              <div class="item-actions">
-                <a class="item-actions-buy add_to_cart_9649 " onclick="addToCart('9649');rrApi.recomAddToCart(9649, { suggester: '595a5d465a6588d6144888d6', methodName: 'saleByPopular' });return retailrocket._widgetAddToBasket('9649', '');" tabindex="-1">
-                  <div class="add_to_cart_help">Товар в корзине</div>
-                </a>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li class="item">
-          <div class="block">
-            <div class="rr-header">
-              <div class="rr-labels">
-                <div class="rr-discount">-9%</div>
-              </div>
-              <div class="rr-icons">
-                <a class="product_features_wishlist " product_id="9649" tabindex="-1"></a>
-                <span class="product_features_compare " product_id="9649"></span>
-              </div>
-            </div>
-            <a class="item-info" href="/planshet-mi-pad-4-plus-lte-4-128gb-chernyj" tabindex="-1">
-              <div class="item-image">
-                <img src="//cdn.retailrocket.net/api/1.0/partner/57d574e265bf1940b4626285/item/9649/picture/?format=png&amp;scale=both" onerror="retailrocket.widget.hideProduct(this)">
-              </div>
-              <div class="item-title">Планшет Mi Pad 4 Plus LTE 4/128GB (черный/black)</div>
-            </a>
-            <div class="rating">
-              <div class="rating_left">
-                <a class="rating_stars" href="/planshet-mi-pad-4-plus-lte-4-128gb-chernyj/reviews" tabindex="-1">
-                  <div class="rating_full stars_0"></div>
-                </a>
-              </div>
-              <div class="rating_right">
-                <a class="rating_reviews" href="/planshet-mi-pad-4-plus-lte-4-128gb-chernyj/reviews" tabindex="-1">0</a>
-              </div>
-            </div>
-            <div class="item-price-and-buy">
-              <div class="item-block-price">
-                <div class="item-old-price">
-                  <span class="item-old-price-value">26 990</span>
-                  <span class="item-price-currency"></span>
-                </div>
-                <div class="item-price">
-                  <span class="item-price-value">24 490</span>
-                  <span class="item-price-currency"></span>
-                </div>
-              </div>
-              <div class="item-actions">
-                <a class="item-actions-buy add_to_cart_9649 " onclick="addToCart('9649');rrApi.recomAddToCart(9649, { suggester: '595a5d465a6588d6144888d6', methodName: 'saleByPopular' });return retailrocket._widgetAddToBasket('9649', '');" tabindex="-1">
-                  <div class="add_to_cart_help">Товар в корзине</div>
-                </a>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li class="item">
-          <div class="block">
-            <div class="rr-header">
-              <div class="rr-labels">
-                <div class="rr-discount">-9%</div>
-              </div>
-              <div class="rr-icons">
-                <a class="product_features_wishlist " product_id="9649" tabindex="-1"></a>
-                <span class="product_features_compare " product_id="9649"></span>
-              </div>
-            </div>
-            <a class="item-info" href="/planshet-mi-pad-4-plus-lte-4-128gb-chernyj" tabindex="-1">
-              <div class="item-image">
-                <img src="//cdn.retailrocket.net/api/1.0/partner/57d574e265bf1940b4626285/item/9649/picture/?format=png&amp;scale=both" onerror="retailrocket.widget.hideProduct(this)">
-              </div>
-              <div class="item-title">Планшет Mi Pad 4 Plus LTE 4/128GB (черный/black)</div>
-            </a>
-            <div class="rating">
-              <div class="rating_left">
-                <a class="rating_stars" href="/planshet-mi-pad-4-plus-lte-4-128gb-chernyj/reviews" tabindex="-1">
-                  <div class="rating_full stars_0"></div>
-                </a>
-              </div>
-              <div class="rating_right">
-                <a class="rating_reviews" href="/planshet-mi-pad-4-plus-lte-4-128gb-chernyj/reviews" tabindex="-1">0</a>
-              </div>
-            </div>
-            <div class="item-price-and-buy">
-              <div class="item-block-price">
-                <div class="item-old-price">
-                  <span class="item-old-price-value">26 990</span>
-                  <span class="item-price-currency"></span>
-                </div>
-                <div class="item-price">
-                  <span class="item-price-value">24 490</span>
-                  <span class="item-price-currency"></span>
-                </div>
-              </div>
-              <div class="item-actions">
-                <a class="item-actions-buy add_to_cart_9649 " onclick="addToCart('9649');rrApi.recomAddToCart(9649, { suggester: '595a5d465a6588d6144888d6', methodName: 'saleByPopular' });return retailrocket._widgetAddToBasket('9649', '');" tabindex="-1">
-                  <div class="add_to_cart_help">Товар в корзине</div>
-                </a>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li class="item">
-          <div class="block">
-            <div class="rr-header">
-              <div class="rr-labels">
-                <div class="rr-discount">-9%</div>
-              </div>
-              <div class="rr-icons">
-                <a class="product_features_wishlist " product_id="9649" tabindex="-1"></a>
-                <span class="product_features_compare " product_id="9649"></span>
-              </div>
-            </div>
-            <a class="item-info" href="/planshet-mi-pad-4-plus-lte-4-128gb-chernyj" tabindex="-1">
-              <div class="item-image">
-                <img src="//cdn.retailrocket.net/api/1.0/partner/57d574e265bf1940b4626285/item/9649/picture/?format=png&amp;scale=both" onerror="retailrocket.widget.hideProduct(this)">
-              </div>
-              <div class="item-title">Планшет Mi Pad 4 Plus LTE 4/128GB (черный/black)</div>
-            </a>
-            <div class="rating">
-              <div class="rating_left">
-                <a class="rating_stars" href="/planshet-mi-pad-4-plus-lte-4-128gb-chernyj/reviews" tabindex="-1">
-                  <div class="rating_full stars_0"></div>
-                </a>
-              </div>
-              <div class="rating_right">
-                <a class="rating_reviews" href="/planshet-mi-pad-4-plus-lte-4-128gb-chernyj/reviews" tabindex="-1">0</a>
-              </div>
-            </div>
-            <div class="item-price-and-buy">
-              <div class="item-block-price">
-                <div class="item-old-price">
-                  <span class="item-old-price-value">26 990</span>
-                  <span class="item-price-currency"></span>
-                </div>
-                <div class="item-price">
-                  <span class="item-price-value">24 490</span>
-                  <span class="item-price-currency"></span>
-                </div>
-              </div>
-              <div class="item-actions">
-                <a class="item-actions-buy add_to_cart_9649 " onclick="addToCart('9649');rrApi.recomAddToCart(9649, { suggester: '595a5d465a6588d6144888d6', methodName: 'saleByPopular' });return retailrocket._widgetAddToBasket('9649', '');" tabindex="-1">
-                  <div class="add_to_cart_help">Товар в корзине</div>
-                </a>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li class="item">
-          <div class="block">
-            <div class="rr-header">
-              <div class="rr-labels">
-                <div class="rr-discount">-9%</div>
-              </div>
-              <div class="rr-icons">
-                <a class="product_features_wishlist " product_id="9649" tabindex="-1"></a>
-                <span class="product_features_compare " product_id="9649"></span>
-              </div>
-            </div>
-            <a class="item-info" href="/planshet-mi-pad-4-plus-lte-4-128gb-chernyj" tabindex="-1">
-              <div class="item-image">
-                <img src="//cdn.retailrocket.net/api/1.0/partner/57d574e265bf1940b4626285/item/9649/picture/?format=png&amp;scale=both" onerror="retailrocket.widget.hideProduct(this)">
-              </div>
-              <div class="item-title">Планшет Mi Pad 4 Plus LTE 4/128GB (черный/black)</div>
-            </a>
-            <div class="rating">
-              <div class="rating_left">
-                <a class="rating_stars" href="/planshet-mi-pad-4-plus-lte-4-128gb-chernyj/reviews" tabindex="-1">
-                  <div class="rating_full stars_0"></div>
-                </a>
-              </div>
-              <div class="rating_right">
-                <a class="rating_reviews" href="/planshet-mi-pad-4-plus-lte-4-128gb-chernyj/reviews" tabindex="-1">0</a>
-              </div>
-            </div>
-            <div class="item-price-and-buy">
-              <div class="item-block-price">
-                <div class="item-old-price">
-                  <span class="item-old-price-value">26 990</span>
-                  <span class="item-price-currency"></span>
-                </div>
-                <div class="item-price">
-                  <span class="item-price-value">24 490</span>
-                  <span class="item-price-currency"></span>
-                </div>
-              </div>
-              <div class="item-actions">
-                <a class="item-actions-buy add_to_cart_9649 " onclick="addToCart('9649');rrApi.recomAddToCart(9649, { suggester: '595a5d465a6588d6144888d6', methodName: 'saleByPopular' });return retailrocket._widgetAddToBasket('9649', '');" tabindex="-1">
-                  <div class="add_to_cart_help">Товар в корзине</div>
-                </a>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li class="item">
-          <div class="block">
-            <div class="rr-header">
-              <div class="rr-labels">
-                <div class="rr-discount">-9%</div>
-              </div>
-              <div class="rr-icons">
-                <a class="product_features_wishlist " product_id="9649" tabindex="-1"></a>
-                <span class="product_features_compare " product_id="9649"></span>
-              </div>
-            </div>
-            <a class="item-info" href="/planshet-mi-pad-4-plus-lte-4-128gb-chernyj" tabindex="-1">
-              <div class="item-image">
-                <img src="//cdn.retailrocket.net/api/1.0/partner/57d574e265bf1940b4626285/item/9649/picture/?format=png&amp;scale=both" onerror="retailrocket.widget.hideProduct(this)">
-              </div>
-              <div class="item-title">Планшет Mi Pad 4 Plus LTE 4/128GB (черный/black)</div>
-            </a>
-            <div class="rating">
-              <div class="rating_left">
-                <a class="rating_stars" href="/planshet-mi-pad-4-plus-lte-4-128gb-chernyj/reviews" tabindex="-1">
-                  <div class="rating_full stars_0"></div>
-                </a>
-              </div>
-              <div class="rating_right">
-                <a class="rating_reviews" href="/planshet-mi-pad-4-plus-lte-4-128gb-chernyj/reviews" tabindex="-1">0</a>
-              </div>
-            </div>
-            <div class="item-price-and-buy">
-              <div class="item-block-price">
-                <div class="item-old-price">
-                  <span class="item-old-price-value">26 990</span>
-                  <span class="item-price-currency"></span>
-                </div>
-                <div class="item-price">
-                  <span class="item-price-value">24 490</span>
-                  <span class="item-price-currency"></span>
-                </div>
-              </div>
-              <div class="item-actions">
-                <a class="item-actions-buy add_to_cart_9649 " onclick="addToCart('9649');rrApi.recomAddToCart(9649, { suggester: '595a5d465a6588d6144888d6', methodName: 'saleByPopular' });return retailrocket._widgetAddToBasket('9649', '');" tabindex="-1">
-                  <div class="add_to_cart_help">Товар в корзине</div>
-                </a>
-              </div>
-            </div>
-          </div>
-        </li>
+              </li>
+            {%else%}
+              {%break%}
+            {%endif%}
+          {%else%}
+            {%continue%}
+          {%endif%}
+        {%endfor%}
       </ul>
     </div>
   </div>
