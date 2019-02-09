@@ -1,22 +1,11 @@
 <div class="container" style="position:static;">
   <div id="notification"></div>
-  <script type="text/javascript">
-    (function() {
-      var s = document.createElement('script');
-      var x = document.getElementsByTagName('script')[0];
-      s.type = 'text/javascript';
-      s.async = true;
-      s.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'eu-sonar.sociomantic.com/js/2010-07-01/adpan/ru-mi-ru';
-      x.parentNode.insertBefore(s, x);
-    })();
-  </script>
   <div class="main_slider_main_container">
     <div class="slideshow_main_page">
       <div id="slideshow0" class="owl-carousel owl-carousel-main-slider">
-        <a class="slide_id0" data-promo="{&quot;id&quot;:&quot;PROMO_3_12_900&quot;,&quot;name&quot;:&quot;mi_mix_3&quot;,&quot;creative&quot;:&quot;Module Slideshow&quot;}" href="/smartphones/xiaomi-mi-mix-3/" onclick="ee_promo.click(this); return !ga.loaded;"><img src="https://ru-mi.com/image/cache/data/sliderbezanimacii/mix3/main_banner_mix3-987x410.jpg" alt="mi_mix_3" /></a>
-        <a class="slide_id1" data-promo="{&quot;id&quot;:&quot;PROMO_3_12_901&quot;,&quot;name&quot;:&quot;Power Banks&quot;,&quot;creative&quot;:&quot;Module Slideshow&quot;}" href="/zaryadnyie-ustroystva/power-bank-vneshnie-akkumulyatoryi/" onclick="ee_promo.click(this); return !ga.loaded;"><img src="https://ru-mi.com/image/cache/data/sliderbezanimacii/powerbanks/powerbandks-987x410.jpg" alt="Power Banks" /></a>
-        <a class="slide_id2" data-promo="{&quot;id&quot;:&quot;PROMO_3_12_902&quot;,&quot;name&quot;:&quot;Thermos&quot;,&quot;creative&quot;:&quot;Module Slideshow&quot;}" href="/device/zdorove/termosyi-i-termokrujki/" onclick="ee_promo.click(this); return !ga.loaded;"><img src="https://ru-mi.com/image/cache/data/sliderbezanimacii/ther/mi_thermos_banner-987x410.jpg" alt="Thermos" /></a>
-        <a class="slide_id3" data-promo="{&quot;id&quot;:&quot;PROMO_3_12_903&quot;,&quot;name&quot;:&quot;esam18&quot;,&quot;creative&quot;:&quot;Module Slideshow&quot;}" href="/shops/" onclick="ee_promo.click(this); return !ga.loaded;"><img src="https://ru-mi.com/image/cache/data/sliderbezanimacii/humanizebanners/banner_4_new_size-987x410.jpg" alt="esam18" /></a>
+        {% for block in block_lists.promo-slider.blocks %}
+          <a class="slide_id{{forloop.index0}}" href="{{block.url}}"><img src="{{block.image}}" alt="{{block.title}}" /></a>
+        {% endfor %}
       </div>
     </div>
     <script type="text/javascript">
@@ -30,8 +19,7 @@
         navigation: true,
         pagination: true,
         stopOnHover: true,
-        lazyLoad: true,
-        afterMove: callback
+        lazyLoad: true
       });
       $('.owl-carousel-adaptive').owlCarousel({
         singleItem: true,
@@ -42,45 +30,47 @@
         navigation: true,
         pagination: true,
         stopOnHover: true,
-        lazyLoad: true,
-        afterMove: callback
+        lazyLoad: true
       });
-
-
-      function callback(event) {}
-
       -->
     </script>
     <div class="homepage_banner">
       <div class="product-of-day">
-        <div class="product_of_day">
-          <span class="economy_text">Экономия</span>
-          <span class="economy_price">500 <span class="rouble"> руб.</span></span>
-        </div>
-        <div class="day_title">Товар дня</div>
-        <div class="image">
-          <a href="/besprovodnye-naushniki-xiaomi-mi-airdots-belyj"><img src="https://ru-mi.com/image/cache/data/Tovari/Naushnikiikolonki/bluetooth/airdots_youth_edition/airdots_belyj-200x200.jpg" alt="Беспроводные наушники Xiaomi Mi AirDots Youth Edition (белый) (TWSEJ02LM)" /></a>
-        </div>
-        <div class="category_name">Наушники и колонки</div>
-        <div class="name"><a href="/besprovodnye-naushniki-xiaomi-mi-airdots-belyj">Беспроводные наушники Xiaomi Mi AirDots Youth Edition (белый) (TWSEJ02LM)</a></div>
-        <div class="description"></div>
-        <div class="rating">
-          <div class="rating_left">
-            <a class="rating_stars" href="/besprovodnye-naushniki-xiaomi-mi-airdots-belyj/reviews">
-              <div class="rating_full" style="width: 100%"></div>
-            </a>
-          </div>
-          <div class="rating_right">
-            <a class="rating_reviews" href="/besprovodnye-naushniki-xiaomi-mi-airdots-belyj/reviews">6</a>
-          </div>
-        </div>
-        <div class="product_bottom">
-          <div class="price">
-            <span class="price-old">5990</span> <span class="price-new">5 490 <span class="rouble"> руб.</span></span>
-          </div>
-          <div class="cart"><a onmousedown="try { rrApi.addToBasket(10814) } catch(e) {}" onclick="addToCart('10814');" class="button add_to_cart_10814 "><span></span><div class="add_to_cart_help">Товар в корзине</div></a></div>
-          <div class="cl_b"></div>
-        </div>
+        {% for product in collections.all.products %}
+          {%if product.properties.label.characteristics[0].name == "Товар Дня"%}
+            <div class="product_of_day">
+              <span class="economy_text">Экономия</span>
+              <span class="economy_price">{{product.old_price | minus: product.price | round: 0}} <span class="rouble"> руб.</span></span>
+            </div>
+            <div class="day_title">Товар дня</div>
+            <div class="image">
+              <a href="{{product.url}}"><img src="{{product.first_image.original_url}}" alt="{{product.title}}" /></a>
+            </div>
+            <div class="category_name">
+              {{product.collections[0].title}}
+            </div>
+            <div class="name"><a href="{{product.url}}">{{product.title}}</a></div>
+            <div class="description"></div>
+            <div class="rating">
+              <div class="rating_left">
+                <a class="rating_stars" href="{{product.url}}">
+                  <div class="rating_full" style="width: 100%"></div>
+                </a>
+              </div>
+              <div class="rating_right">
+                <a class="rating_reviews" href="{{product.url}}">{{product.reviews | size}}</a>
+              </div>
+            </div>
+            <div class="product_bottom">
+              <div class="price">
+                {%if product.old_price%}<span class="price-old">{{product.old_price | round: 0}}</span>{%endif%} <span class="price-new">{{product.price | money}}</span>
+              </div>
+              <div class="cart"><a class="button"><span></span><div class="add_to_cart_help">Товар в корзине</div></a></div>
+              <div class="cl_b"></div>
+            </div>
+            {%break%}
+          {%endif%}
+        {%endfor%}
       </div>
     </div>
   </div>
