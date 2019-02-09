@@ -612,8 +612,6 @@ $(document).ready(function() {
 	/* Ajax Cart */
 	$('#cart > .heading a').live('mouseenter', function() {
 		$('#cart').addClass('active');
-
-		$('#cart').load('index.php?route=module/cart #cart > *');
 	});
 
 	$('#cart').live('mouseleave', function() {
