@@ -457,37 +457,20 @@
       });
     });
   </script>
-  <div class="welcome">
-    <div class="welcome_left">
-      <div class="welcome_text">
-        <h1 style="color: rgb(255, 108, 48); font-family: Roboto, Arial, Helvetica, sans-serif; margin-top: 0px; margin-bottom: 20px; font-size: 25px;">Фирменный интернет-магазин официальной техники и аксессуаров&nbsp;Xiaomi в Москве</h1>
+  {%if block_lists.seo-welcome.blocks[0]%}
+    <div class="welcome">
+      <div class="welcome_left">
+        <div class="welcome_text">
+          <h1 style="color: rgb(255, 108, 48); font-family: Roboto, Arial, Helvetica, sans-serif; margin-top: 0px; margin-bottom: 20px; font-size: 25px;">{{block_lists.seo-welcome.blocks[0].title}}</h1>
 
-        <div style="color: rgb(108, 112, 129); font-family: Roboto, Arial, Helvetica, sans-serif; font-size: 15px;">
-          <p><span style="font-size:14px;">Китайский производитель приобрёл известность в России благодаря сочетанию в своей продукции: лаконичного дизайн, качественного материала и многофункциональности. В начале 2015 года было реализовано около 35 миллионов моделей смартфонов по всему миру, и компания приобрела мировую известность. Научно-исследовательский штаб ведёт свои разработки в сфере технологий и следует простому кредо - высокие технологии для всех!</span></p>
-
-          <p><span style="font-size:14px;">На официальном сайте магазина Xiaomi представленны оригинальные товары. Каждая модель - продукт тщательной разработки и обладает множеством достоинств; Смартфоны, планшеты, камеры и телевизоры имеют интуитивно понятный интерфейс и систему управления. Все новинки представлены в каталоге сайта!</span></p>
-
-          <p><span style="font-size:14px;">Фирменный магазин ru-mi.com реализует официальную продукцию от Xiaomi, среди которой вы найдете девайсы суббрендов: Mijia, ZMi, XiaoYi, 1MORE, YI и другие. Мы заслужили свою репутацию высоким качеством оказываемых услуг!</span></p>
-
-          <h2><span style="font-size:18px;">Интернет-магазин, заслуживающий внимания!</span></h2>
-
-          <p><span style="font-size:14px;">На страницах сайта «Румиком» вы найдёте последние новинки и популярную продукцию компании:</span></p>
-
-          <ul>
-            <li><span style="font-size:14px;">Если вы находитесь в Москве или области, протестировать понравившийся гаджет можно лично в нашем шоу-руме.</span></li>
-            <li><span style="font-size:14px;">Огромный ассортимент любых&nbsp;товаров Xiaomi</span></li>
-            <li><span style="font-size: 14px;">Отличные варианты гарантия.</span></li>
-            <li><span style="font-size:14px;">Доставка по Москве выполняется курьерской службой, по России – надёжными транспортными компаниями.</span></li>
-            <li><span style="font-size:14px;">Доступен самовывоз.</span></li>
-            <li><span style="font-size:14px;">Постоянным покупателям скидки и бонусы.</span></li>
-          </ul>
-
-          <p><span style="font-size:14px;">Товары, представленные на сайте, имеют сертификаты качества и являются оригинальной продукцией Mi. Мы работаем с собственным складом в Москве, на котором доступны все позиции представленные на сайте; наш call центр готов оказать всесторонную поддержку нашим постоянным и будущим клиентам, рассказав всю необходимую информацию о товарах!</span></p>
+          <div style="color: rgb(108, 112, 129); font-family: Roboto, Arial, Helvetica, sans-serif; font-size: 15px;">
+            {{block_lists.seo-welcome.blocks[0].content}}
+          </div>
+          <div class="welcome_show_all"><span>показать полностью</span></div>
         </div>
-        <div class="welcome_show_all"><span>показать полностью</span></div>
       </div>
     </div>
-  </div>
+  {%endif%}
   <script type="text/javascript">
     $(document).ready(function() {
       var show_welcome_bottom = 1;
