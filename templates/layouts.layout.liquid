@@ -259,46 +259,41 @@
         </div>
       </div>
       <div class="footer_column footer_column_2">
-        <div class="footer_column_header">Покупателям</div>
-        <ul>
-          <li><a href="/dostavka">Доставка</a></li>
-          <li><a href="/oplata">Оплата</a></li>
-          <li><a href="/specials/">Акции</a></li>
-          <li><a href="/mibonus">Ми-бонусы</a></li>
-          <li><a href="/guaranty">Гарантия</a></li>
-          <li><a href="/publicoferta">Оферта</a></li>
-        </ul>
+        {%if linklists.footer-menu-1%}
+          <div class="footer_column_header">{{linklists.footer-menu-1.title}}</div>
+          <ul>
+            {% for link in linklists.footer-menu-1.links %}
+              <li><a href="{{link.url}}">{{link.title}}</a></li>
+            {% endfor %}
+          </ul>
+        {%endif%}
       </div>
       <div class="footer_column footer_column_3">
-        <div class="footer_column_header">Каталог</div>
-        <ul>
-          <li><a href="/smartphones/">Смартфоны Xiaomi</a></li>
-          <li><a href="/device/">Гаджеты и устройства</a></li>
-          <li><a href="/transport/">Электронный транспорт</a></li>
-          <li><a href="/naushniki-i-kolonki/">Наушники и колонки</a></li>
-          <li><a href="/accessories/">Аксессуары</a></li>
-          <li><a href="/brands/">Бренды</a></li>
-        </ul>
+        {%if linklists.footer-menu-2%}
+          <div class="footer_column_header">{{linklists.footer-menu-2.title}}</div>
+          <ul>
+            {% for link in linklists.footer-menu-2.links %}
+              <li><a href="{{link.url}}">{{link.title}}</a></li>
+            {% endfor %}
+          </ul>
+        {%endif%}
       </div>
       <div class="footer_column footer_column_4">
-        <div class="footer_column_header">О компании</div>
-        <ul>
-          <li><a href="/contact/">Контакты</a></li>
-          <li><a href="/contact/">Магазины «Румиком»</a></li>
-          <li><a href="/about">Ценности «Румиком»</a></li>
-          <li><a href="/testimonial/">Отзывы о магазине</a></li>
-          <li><a href="/blog/">Новости Xiaomi</a></li>
-          <li>
-            <noindex><a href="http://service-xiaomi.com/" target="_blank" rel="nofollow">Сервисный центр Xiaomi</a></noindex>
-          </li>
-        </ul>
+        {%if linklists.footer-menu-3%}
+          <div class="footer_column_header">{{linklists.footer-menu-3.title}}</div>
+          <ul>
+            {% for link in linklists.footer-menu-3.links %}
+              <li><a href="{{link.url}}">{{link.title}}</a></li>
+            {% endfor %}
+          </ul>
+        {%endif%}
       </div>
       <div class="yandex_market_bottom_adaptive">
         <div class="yandex_market_bottom_adaptive_line"></div>
-        <span class="external_link yandex_market_bottom" data_link="https://market.yandex.ru/shop/273957/reviews?sort_by=date">
-			<img alt="Способы оплаты" src="https://ru-mi.com/catalog/view/theme/default/image/5star_bottom.png" />
-				<div>Нам доверяют</div>
-			</span>
+  			<a class="external_link yandex_market_bottom" href="https://market.yandex.ru/shop/273957/reviews?sort_by=date" target="_blank">
+  			<img alt="Способы оплаты" src="https://ru-mi.com/catalog/view/theme/default/image/5star_bottom.png">
+  				<div>Нам доверяют</div>
+  			</a>
       </div>
       <div class="footer_bottom">
         <script type="application/ld+json">
