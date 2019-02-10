@@ -110,6 +110,13 @@
                "label":"{{ messages.s_logotype_image }}",
                "value":null,
                "help":""
+            },
+            {
+               "name":"logotype-footer.jpg",
+               "type":"file",
+               "label":"Логотип в футере: ",
+               "value":null,
+               "help":""
             }
          ]
       },

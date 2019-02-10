@@ -247,8 +247,14 @@
     <div class="container">
       <div class="footer_column footer_column_1">
         <div id="footer_logo">
-          <img class="footer_normal_logo" src="https://ru-mi.com/image/data/logo_footer.png" title="«Румиком» — фирменный магазин Xiaomi" alt="«Румиком» — фирменный магазин Xiaomi" />
-          <img class="footer_adaptive_logo" src="https://ru-mi.com/image/data/logo_firm.png" title="«Румиком» — фирменный магазин Xiaomi" alt="«Румиком» — фирменный магазин Xiaomi" />
+          {% assign path = "logotype-footer.jpg" | asset_url_if_exists %}
+          {% if path %}
+            <img class="footer_normal_logo" src="{{path}}" title="{{account.title}}" alt="{{account.title}}" style="max-width: 200px; max-height: 50px;" />
+            <img class="footer_adaptive_logo" src="{{path}}" title="{{account.title}}" alt="{{account.title}}" style="max-width: 200px; max-height: 50px;" />
+          {%else%}
+            <img class="footer_normal_logo" src="{{'logotype.jpg' | asset_url}}" title="{{account.title}}" alt="{{account.title}}" style="max-width: 200px; max-height: 50px;" />
+            <img class="footer_adaptive_logo" src="{{'logotype.jpg' | asset_url}}" title="{{account.title}}" alt="{{account.title}}" style="max-width: 200px; max-height: 50px;" />
+          {%endif%}
           <!--<div class="footer_payment"><a href="/index.php?route=information/information&amp;information_id=8"><img alt="Способы оплаты" src="image/data/payment_paykeeper.png"></a></div>-->
         </div>
       </div>
