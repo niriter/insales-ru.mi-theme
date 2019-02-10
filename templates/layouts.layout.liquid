@@ -307,11 +307,21 @@
           <br /> Все права защищены. </div>
         <div class="footer_bottom_social">
           <div class="contact_block_social" style="padding: 0;">
-            <a href="https://www.instagram.com/rumicomrussia/" class="contact_in" target="_blank"></a>
-            <a href="https://vk.com/rumicomrussia" class="contact_vk" target="_blank"></a>
-            <a href="https://www.youtube.com/channel/UCvK29FNCSg46Eik86viJtjQ" class="contact_yt" target="_blank"></a>
-            <a href="https://t.me/joinchat/AAAAAEQXBI2_KCqGAIEV-Q" class="contact_tg" target="_blank"></a>
-            <a href="https://ok.ru/group/52288056197276" class="contact_ok" target="_blank"></a>
+            {% if blocks.instagram %}
+              <a href="{{blocks.instagram.link}}" class="contact_in" target="_blank"></a>
+            {% endif %}
+            {% if blocks.vkontakte %}
+              <a href="{{blocks.vkontakte.link}}" class="contact_vk" target="_blank"></a>
+            {% endif %}
+            {% if blocks.youtube %}
+              <a href="{{blocks.youtube.link}}" class="contact_yt" target="_blank"></a>
+            {% endif %}
+            {% if blocks.telegram %}
+              <a href="{{blocks.telegram.link}}" class="contact_tg" target="_blank"></a>
+            {% endif %}
+            {% if blocks.odnoklassniki %}
+              <a href="{{blocks.telegram.link}}" class="contact_ok" target="_blank"></a>
+            {% endif %}
           </div>
         </div>
         <div class="footer_bottom_text">
