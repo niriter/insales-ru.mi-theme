@@ -388,45 +388,24 @@
     });
   </script>
 {%endif%}
-<div class="map_header">Наши магазины</div>
-</div>
-<div class="grey_map">
-  <div class="bg_map"></div>
-  <div class="container">
-    <div class="map_block_1">
-      <div class="map_block_left">
-        <a href="/shops/" class="map_block_metro">Савеловская</a>
-        <div class="map_block_name">ТК «Савеловский» (Компьютерный центр)</div>
-        <div class="map_block_address">Москва, ул. Сущевский Вал, д.5 стр. 1
-          <br />пав. F075 (1 этаж)</div>
-      </div>
-    </div>
-    <div class="map_block_2">
-      <div class="map_block_left">
-        <a href="/shops/" class="map_block_metro">Багратионовская</a>
-        <div class="map_block_name">Гипермолл «Горбушкин двор»</div>
-        <div class="map_block_address">Москва, Багратионовский пр., д.7 к.3
-          <br />пав. H2-006A (2 этаж)</div>
-      </div>
-    </div>
-    <div class="map_block_20">
-      <div class="map_block_left">
-        <a href="/shops/" class="map_block_metro">Пражская</a>
-        <div class="map_block_name">ТК «Электронный рай»</div>
-        <div class="map_block_address">Москва, Кировоградская ул., д.15
-          <br />пав. 2П-50 (1 этаж)</div>
-      </div>
-    </div>
-    <div class="map_block_30">
-      <div class="map_block_left">
-        <a href="/shops/" class="map_block_town">Мытищи</a>
-        <div class="map_block_name">ТЦ «Июнь»</div>
-        <div class="map_block_address">Мытищи, ул. Мира, д.51
-          <br />секция 3КК-17 (1 этаж)</div>
-      </div>
+{%if block_lists.shops%}
+  <div class="map_header">Наши магазины</div>
+  <div class="grey_map">
+    <div class="bg_map"></div>
+    <div class="container">
+      {%for block in block_lists.shops.blocks%}
+        <div class="map_block_{%if forloop.index == 3 or forloop.index == 4%}{{forloop.index0}}0{%else%}{{forloop.index}}{%endif%}" style="background: url({{block.image}});">
+          <div class="map_block_left">
+            <a href="/shops/" class="map_block_town">{{block.title}}</a>
+            <div class="map_block_address">
+              {{block.content}}
+            </div>
+          </div>
+        </div>
+      {%endfor%}
     </div>
   </div>
-</div>
+{%endif%}
 <div class="container">
   <div class="box">
     <div class="box-heading"><a href="/blog/">Новости</a>
