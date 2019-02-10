@@ -407,151 +407,38 @@
   </div>
 {%endif%}
 <div class="container">
-  <div class="box">
-    <div class="box-heading"><a href="/blog/">Новости</a>
-      <div class="box-arrows">
-        <div class="box-arrow-left"></div>
-        <div class="box-arrow-right"></div>
+  {%if blog%}
+    <div class="box">
+      <div class="box-heading"><a href="{{blog.url}}">Новости</a>
+        <div class="box-arrows">
+          <div class="box-arrow-left"></div>
+          <div class="box-arrow-right"></div>
+        </div>
+        <div class="box-right-link">
+          <a href="{{blog.url}}">Все новости</a>
+        </div>
       </div>
-      <div class="box-right-link">
-        <a href="/blog/">Все новости</a>
+      <div class="box-content">
+        <ul class="blog_list">
+          {%for article in blog.articles%}
+            <li class="blog_item">
+              <div class="blog_item_image">
+                <a href="{{article.url}}">
+                  <img src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" class="lazyload" alt="{{article.title}}" data-src="{{ article.image.large_url }}"/>
+                </a>
+              </div>
+              <div class="blog_item_item_description">
+                <div class="blog_item_item_description_bg"></div>
+                <a href="{{article.url}}">{{article.title}}</a>
+                <div class="blog_item_description">
+                  {{article.preview | truncate: 280}} </div>
+              </div>
+            </li>
+          {%endfor%}
+        </ul>
       </div>
     </div>
-    <div class="box-content">
-      <ul class="blog_list">
-        <li class="blog_item">
-          <div class="blog_item_image">
-            <a href="/blog/news/xiaomi-poluchila-patent-na-dvazhdy-dyryavye-smartfony.html"><img src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" class="lazyload" alt="Xiaomi получила патент на дважды дырявые смартфоны" data-src="https://ru-mi.com/image/cache/blog_downloads/2019/02/xiaomi-double-hole-display-logo-256x193.jpg"
-              /></a>
-          </div>
-          <div class="blog_item_item_description">
-            <div class="blog_item_item_description_bg"></div>
-            <a href="/blog/news/xiaomi-poluchila-patent-na-dvazhdy-dyryavye-smartfony.html">Xiaomi получила патент на дважды дырявые смартфоны</a>
-            <div class="blog_item_description">
-              Вообще-то на рынке уже есть смартфоны, особенностью которых является наличие “дырки” в дисплее, где размещена селфи-камера. Это новая альтернатива дисплеям с вырезами, и ею уже пользуются Samsung и Huawei. Xiaomi собирается переплюнуть всех, и поможет
-              ей в этом новый патент. Косвенным п </div>
-          </div>
-        </li>
-        <li class="blog_item">
-          <div class="blog_item_image">
-            <a href="/blog/news/direktor-xiaomi-podtverdil-nalichie-trojnoj-kamery-v-mi-9.html"><img src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" class="lazyload" alt="Директор Xiaomi подтвердил наличие тройной камеры в Mi 9" data-src="https://ru-mi.com/image/cache/blog_downloads/2019/02/mi-9-triple-camera-logo-256x193.jpg"
-              /></a>
-          </div>
-          <div class="blog_item_item_description">
-            <div class="blog_item_item_description_bg"></div>
-            <a href="/blog/news/direktor-xiaomi-podtverdil-nalichie-trojnoj-kamery-v-mi-9.html">Директор Xiaomi подтвердил наличие тройной камеры в Mi 9</a>
-            <div class="blog_item_description">
-              Xiaomi любит дразнить своих фанатов тизерами новых продуктов. Ранее компания уже публиковала фотографию со смартфона с тремя камерами, о чем говорил фирменный водяной знак. А буквально пару дней назад в руках исполнительного директора компании было обнаружено
-              устройство, предположительно являющеес </div>
-          </div>
-        </li>
-        <li class="blog_item">
-          <div class="blog_item_image">
-            <a href="/blog/news/v-2019-godu-xiaomi-vypustit-eshche-odin-igrovoj-smartfon.html"><img src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" class="lazyload" alt="В 2019 году Xiaomi выпустит еще один игровой смартфон" data-src="https://ru-mi.com/image/cache/blog_downloads/2019/02/blackshark-logo-256x193.jpg"
-              /></a>
-          </div>
-          <div class="blog_item_item_description">
-            <div class="blog_item_item_description_bg"></div>
-            <a href="/blog/news/v-2019-godu-xiaomi-vypustit-eshche-odin-igrovoj-smartfon.html">В 2019 году Xiaomi выпустит еще один игровой смартфон</a>
-            <div class="blog_item_description">
-              Китайский техногигант отлично чувствует себя на рынке, выпуская флагманы, бюджетники, отличные среднебюджетные и даже игровые смартфоны . Именно о линейки последних и о ее обновлении пойдет речь в данной статье. На данный момент в ассортименте Xiaomi
-              имеется два игровых смартфона: клас </div>
-          </div>
-        </li>
-        <li class="blog_item">
-          <div class="blog_item_image">
-            <a href="/blog/news/pervyj-gorelyj-vtoroj-zolotoj-xiaomi-poka-chetvertyj.html"><img src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" class="lazyload" alt="Первый - горелый, второй - золотой, Xiaomi - пока четвертый" data-src="https://ru-mi.com/image/cache/blog_downloads/2019/02/china-economic-logo-256x193.jpg"
-              /></a>
-          </div>
-          <div class="blog_item_item_description">
-            <div class="blog_item_item_description_bg"></div>
-            <a href="/blog/news/pervyj-gorelyj-vtoroj-zolotoj-xiaomi-poka-chetvertyj.html">Первый - горелый, второй - золотой, Xiaomi - пока четвертый</a>
-            <div class="blog_item_description">
-              Популярное исследовательское агентство IDC опубликовало отчет за четвертый квартал 2018 года, в котором включило общие продажи за весь календарный 2018 год. Мировые продажи смартфонов падают, однако некоторых производителей это совсем не заботит. Разберемся
-              в отчете IDC вместе. За четвер </div>
-          </div>
-        </li>
-        <li class="blog_item">
-          <div class="blog_item_image">
-            <a href="/blog/news/ty-sushi-sushi-sushi-vmeste-s-fenom-xiaomi.html"><img src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" class="lazyload" alt="Ты суши́, суши́, суши́. Вместе с феном Xiaomi" data-src="https://ru-mi.com/image/cache/blog_downloads/2019/02/soc-anios-logo-256x193.jpg"
-              /></a>
-          </div>
-          <div class="blog_item_item_description">
-            <div class="blog_item_item_description_bg"></div>
-            <a href="/blog/news/ty-sushi-sushi-sushi-vmeste-s-fenom-xiaomi.html">Ты суши́, суши́, суши́. Вместе с феном Xiaomi</a>
-            <div class="blog_item_description">
-              Да-да, все знают, что Xiaomi выпускает гаджеты почти во всех сферах и все равно многие из наших читателей впервые узнают о том, что одно из подразделений компании занимается разработкой фенов. Об одном из наиболее удачных таких мы расскажем в данном материале!
-              Название Soocare Anions сра </div>
-          </div>
-        </li>
-        <li class="blog_item">
-          <div class="blog_item_image">
-            <a href="/blog/news/podrobnosti-o-gryadushchih-fabletah-mi-max-4-i-i-ne-tolko.html"><img src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" class="lazyload" alt="Подробности о грядущих фаблетах Mi Max 4 и.. и не только" data-src="https://ru-mi.com/image/cache/blog_downloads/2019/02/mi-max-4-logo-256x193.jpg"
-              /></a>
-          </div>
-          <div class="blog_item_item_description">
-            <div class="blog_item_item_description_bg"></div>
-            <a href="/blog/news/podrobnosti-o-gryadushchih-fabletah-mi-max-4-i-i-ne-tolko.html">Подробности о грядущих фаблетах Mi Max 4 и.. и не только</a>
-            <div class="blog_item_description">
-              Огромные смартфоны из линейки Xiaomi Mi Max обычно выпускаются компанией во втором квартале каждого года. Впрочем, это никак не мешает уже сейчас начать получать о новинках некоторые подробности. Например, новинки будет целых две. В китайской социальной
-              сети Weibo были слиты подробности </div>
-          </div>
-        </li>
-        <li class="blog_item">
-          <div class="blog_item_image">
-            <a href="/blog/news/xiaomi-rabotaet-nad-smartfonom-s-pentakameroj.html"><img src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" class="lazyload" alt="Xiaomi работает над смартфоном с пентакамерой" data-src="https://ru-mi.com/image/cache/blog_downloads/2019/01/mi-penta-logo-256x193.jpg"
-              /></a>
-          </div>
-          <div class="blog_item_item_description">
-            <div class="blog_item_item_description_bg"></div>
-            <a href="/blog/news/xiaomi-rabotaet-nad-smartfonom-s-pentakameroj.html">Xiaomi работает над смартфоном с пентакамерой</a>
-            <div class="blog_item_description">
-              Тенденция к росту количества камер кажется смешной и нелепой, однако мы уже сейчас можем встретить смартфоны с 4 модулями основной камеры. К слову, грядущая Nokia 9 должна получить пентамодуль камеры (с 5 датчиками). Ничего удивительного, что над похожим
-              смартфоном работает и Xiaomi. Из </div>
-          </div>
-        </li>
-        <li class="blog_item">
-          <div class="blog_item_image">
-            <a href="/blog/news/ocherednoj-opros-xiaomi-pogovorim-o-dizajne.html"><img src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" class="lazyload" alt="Очередной опрос Xiaomi: поговорим о дизайне" data-src="https://ru-mi.com/image/cache/blog_downloads/2019/01/new-design-redmi-logo-256x193.jpg"
-              /></a>
-          </div>
-          <div class="blog_item_item_description">
-            <div class="blog_item_item_description_bg"></div>
-            <a href="/blog/news/ocherednoj-opros-xiaomi-pogovorim-o-dizajne.html">Очередной опрос Xiaomi: поговорим о дизайне</a>
-            <div class="blog_item_description">
-              Вчера вечером президент Redmi Лу Вайбинг стал инициатором нового опроса, в котором предложил пользователям выбрать лучший дизайн дисплея для новых смартфонов бренда. Что из этого вышло - читайте в нашем материале! Среди нескольких вариантов наибольшее
-              внимание было отдано дизайну с полно </div>
-          </div>
-        </li>
-        <li class="blog_item">
-          <div class="blog_item_image">
-            <a href="/blog/news/samyj-deshevyj-smartfon-ot-xiaomi-oficialno-predstavlen.html"><img src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" class="lazyload" alt="Самый дешевый смартфон от Xiaomi официально представлен!" data-src="https://ru-mi.com/image/cache/blog_downloads/2019/01/redmi-go-logo-new-256x193.jpg"
-              /></a>
-          </div>
-          <div class="blog_item_item_description">
-            <div class="blog_item_item_description_bg"></div>
-            <a href="/blog/news/samyj-deshevyj-smartfon-ot-xiaomi-oficialno-predstavlen.html">Самый дешевый смартфон от Xiaomi официально представлен!</a>
-            <div class="blog_item_description">
-              Первый смартфон от Xiaomi на базе операционной системы Android Go выпущен официально. Из коробки смартфон работает на Android 8.1 Oreo (Go версия), а для покупки доступен черный и голубой цвета. Встречайте - Redmi Go! Гаджет оснащен скромным по меркам
-              современных фаблетов дисплеем с диаг </div>
-          </div>
-        </li>
-        <li class="blog_item">
-          <div class="blog_item_image">
-            <a href="/blog/news/v-novom-smartfone-ot-redmi-budet-ustanovlena-ogromnaya-batareya.html"><img src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" class="lazyload" alt="В новом смартфоне от Redmi будет установлена огромная батарея" data-src="https://ru-mi.com/image/cache/blog_downloads/2019/01/redmi-new-battery-logo-256x193.jpg"
-              /></a>
-          </div>
-          <div class="blog_item_item_description">
-            <div class="blog_item_item_description_bg"></div>
-            <a href="/blog/news/v-novom-smartfone-ot-redmi-budet-ustanovlena-ogromnaya-batareya.html">В новом смартфоне от Redmi будет установлена огромная батарея</a>
-            <div class="blog_item_description">
-              В социальной сети Weibo не останавливаются опросы фанатов компании ее руководством о различных аспектах, которые бы пользователи хотели увидеть или изменить в продуктах Xiaomi. По всей видимости, компания пытается прислушаться к своей аудитории, тем самым
-              получив больше симпатий от преданных фанат </div>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </div>
+  {%endif%}
   <script type="text/javascript">
     $(document).ready(function() {
       $('.blog_list').owlCarousel({
