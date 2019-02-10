@@ -67,6 +67,27 @@
         ]
      }
    ],
+   "Яндекс маркет блок":[
+     {
+        "group_name":"Яндекс маркет блок",
+        "items":[
+           {
+              "name":"yandex_market_title",
+              "placeholder":"Спасибо нашим покупателям за доверие!",
+              "value":"Спасибо нашим покупателям за доверие!",
+              "label":"Хедер: ",
+              "type":"text"
+           },
+           {
+              "name":"yandex_market_text",
+              "placeholder":"Смотрите еще больше отзывов по тегу #спасибоРумиком",
+              "value":"Смотрите еще больше отзывов по тегу #спасибоРумиком",
+              "label":"Текст: ",
+              "type":"text"
+           }
+        ]
+     }
+   ],
    "{{ messages.s_heading_logotype }}":[
       {
          "group_name":"{{ messages.s_heading_logotype }}",

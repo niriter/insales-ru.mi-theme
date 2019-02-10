@@ -343,62 +343,51 @@
 
 
 </div>
-<div class="welcome_yandex_newsletter">
-  <span class="external_link welcome_yandex_market" data_link="https://market.yandex.ru/shop/273957/reviews?sort_by=date">
-  <div>Рейтинг 5 из 5,<br />убедитесь сами</div>
-</span>
-  <div class="welcome_newsletter">
-    <div class="instagram_header">Спасибо нашим покупателям за доверие!</div>
-    <div class="instagram_underheader">Смотрите еще больше отзывов по тегу #спасибоРумиком</div>
-    <div id="instafeed-gallery-feed" class="owl-carousel-instagram owl-theme gallery row no-gutter"></div>
+{%if block_lists.yandex-market%}
+  <div class="welcome_yandex_newsletter">
+    <span class="external_link welcome_yandex_market">
+    <div>Рейтинг 5 из 5,<br />убедитесь сами</div>
+  </span>
+    <div class="welcome_newsletter">
+      <div class="instagram_header">{{settings.yandex_market_title}}</div>
+      <div class="instagram_underheader">{{settings.yandex_market_text}}</div>
+      <div id="instafeed-gallery-feed" class="owl-carousel-instagram owl-theme gallery row no-gutter">
+        {%for block in block_lists.yandex-market.blocks%}
+          <a class="instagram_link instagram_link{{forloop.index}}">
+            <div class="img-featured-container-main">
+              <div class="img-featured-container">
+                <div class="img-backdrop"></div>
+                <div class="description-container">
+                  <p class="caption">{{block.title}}</p>
+                </div>
+                <img src="{{block.image}}" large_image="{{block.image}}" class="img-responsive">
+              </div>
+            </div>
+          </a>
+        {%endfor%}
+
+      </div>
+    </div>
   </div>
-</div>
-<style type="text/css">
-  .img-featured-container img {
-    width: 100%;
-  }
-</style>
-<script type="text/javascript">
-  jQuery(function($) {
-    var galleryFeed = new Instafeed({
-      get: "user",
-      userId: '7195434731',
-      accessToken: "7195434731.d384d1b.6a81c3deeca242dda02482cf82215f9d",
-      resolution: "low_resolution",
-      useHttp: "true",
-      limit: 10,
-      template: '<a href="{{image}}" class="instagram_link">' +
-        '<div class="img-featured-container-main">' +
-        '<div class="img-featured-container">' +
-        '<div class="img-backdrop"></div>' +
-        '<div class="description-container">' +
-        '<p class="caption">{{caption}}</p>' +
-        '<span class="likes">{{likes}}</span>' +
-        '<span class="comments">{{comments}}</span>' +
-        '</div>' +
-        '<img src="{{image}}" large_image="{{model.images.standard_resolution.url}}" class="img-responsive">' +
-        '<span class="link" style="display: none;">{{model.link}}</span>' +
-        '<div style="display: none;" class="userinfo"><img src="{{model.user.profile_picture}}" /> <span>{{model.user.username}}</span></div>' +
-        '</div>' +
-        '</div>' +
-        '</a>',
-      target: "instafeed-gallery-feed",
-      after: function() {
+  <style type="text/css">
+    .instagram_popup_right_text_underdescription, .instagram_open_window {
+      display: none;
+    }
+    .img-featured-container img {
+      width: 100%;
+    }
+  </style>
+  <script type="text/javascript">
+    var owl_insta = $(".owl-carousel-instagram");
 
-        var owl_insta = $(".owl-carousel-instagram");
-
-        // init owl
-        $(document).ready(function() {
-          owl_insta.owlCarousel({
-            navigation: true
-          });
-        });
-      }
+    // init owl
+    $(document).ready(function() {
+      owl_insta.owlCarousel({
+        navigation: true
+      });
     });
-
-    galleryFeed.run();
-  });
-</script>
+  </script>
+{%endif%}
 <div class="map_header">Наши магазины</div>
 </div>
 <div class="grey_map">
