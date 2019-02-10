@@ -32,6 +32,9 @@
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css" />
   <link rel="manifest" href="/manifest.json">
   <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async></script>
+  <script src="{{ 'plugins.js' | asset_url }}"></script>
+  <script src="{{ 'theme.js' | asset_url }}"></script>
+
 </head>
 
 <body>
@@ -112,13 +115,12 @@
         </div>
         <a class="header_wishlist non_active" href="/wishlist/"><span></span></a>
         <a class="header_compare non_active" href="/compare-products/"><span></span></a>
-        <div id="cart">
-          <div class="heading">
-            <a title="Корзина покупок"><span id="cart-total"><span class="cart_counter non_active">0 </span>Ваша корзина пуста</span></a>
-          </div>
-          <div class="content">
-            <div class="empty">В корзине пусто!</div>
-          </div>
+        <div id="cart" class=""><div class="heading">
+          <a title="Корзина покупок"><span id="cart-total"><span class="cart_counter bage bage-cart js-bage-cart"></span><span class="js-cart-text" style="font-weight:normal;">Ваша корзина пуста</span></span></a>
+        </div>
+        <div class="content js-popup-cart-products">
+
+         </div>
         </div>
       </div>
     </div>
@@ -418,6 +420,270 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
     <div class="mango-callback" data-settings='{"type":"", "id": "MTAwMDgxMDY=","autoDial" : "0", "lang" : "ru-ru", "host":"widgets.mango-office.ru/", "errorMessage": "В данный момент наблюдаются технические проблемы и совершение звонка невозможно"}'>
     </div>
+
+
+
+<script type="text/template" hidden data-template-id="popup-empty">
+	<div class="empty">В корзине пусто!</div>
+</script>
+<script type="text/template" hidden="" data-template-id="popup-cart">
+  <div class="mini-cart-info">
+    <table>
+      <tbody>
+      	<% _.forEach(obj.order_lines, function(item){ %>
+          <tr data-product-id="<%= item.product.id %>" data-item-id="<%= item.id %>">
+            <td class="image">
+              <a href="<%= item.product.url %>">
+                <img src="<%= item.first_image.small_url %>" alt="<%= item.title %>" title="<%= item.title %>">
+              </a>
+            </td>
+            <td class="name">
+              <a href="<%= item.product.url %>"><%= item.title %></a>
+              <div></div>
+            </td>
+            <td class="quantity">&times; <%= item.quantity %></td>
+            <td class="total"><%= Shop.money.format(item.sale_price) %></td>
+            <td class="remove" data-item-delete="<%= item.id %>">
+              <img src="https://ru-mi.com/catalog/view/theme/default/image/remove-small.png" alt="Удалить" title="Удалить">
+            </td>
+          </tr>
+      	<% }); %>
+        </tbody>
+      </table>
+    </div>
+    <div class="mini-cart-bottom">
+      <div class="mini-cart-total">
+        <b>Итого:</b><span class="js-cart-order-total_price"></span>	<div class="mini-cart-shipping">(Без учета стоимости доставки)</div>
+      </div>
+      <div class="checkout"><a href="cart_items"><span>Оформление заказа</span></a></div>
+     </div>
+</script>
+
+
+<script type="text/template" hidden data-template-id="popup-compares">
+	<% _.forEach(obj.products, function(item){ %>
+		<div class="dropdown_product" data-product-id="<%= item.id %>">
+			<div class="row no-gutters">
+				<div class="col-2">
+					<a href="<%= item.url %>" class="dropdown_product-thumb dropdown_product-thumb--1x1 dropdown_product-thumb--contain">
+						<span class="dropdown_product-thumb-item" style="background-image: url(<%= item.first_image.thumb_url %>);"></span>
+					</a>
+				</div>
+				<div class="col">
+					<div class="dropdown_product-title">
+						<a href="<%= item.url %>"><%= item.title %></a>
+					</div>
+					<div class="dropdown_product-prices">
+						<%= Shop.money.format(item.variants[0].price) %>
+					</div>
+				</div>
+				<div class="col-auto">
+					<button type="button" class="button button--empty button--icon button--remove" data-compare-delete="<%= item.id %>"><span class="far fa-trash fa-lg"></span></button>
+				</div>
+			</div>
+		</div>
+	<% }); %>
+</script>
+<script type="text/template" hidden data-template-id="popup-favorites">
+	<% _.forEach(obj.products, function(item){ %>
+		<div class="dropdown_product" data-product-id="<%= item.id %>">
+			<div class="row no-gutters">
+				<div class="col-2">
+					<a href="<%= item.url %>" class="dropdown_product-thumb dropdown_product-thumb--1x1 dropdown_product-thumb--contain">
+						<span class="dropdown_product-thumb-item" style="background-image: url(<%= item.first_image.thumb_url %>);"></span>
+					</a>
+				</div>
+				<div class="col">
+					<div class="dropdown_product-title">
+						<a href="<%= item.url %>"><%= item.title %></a>
+					</div>
+					<div class="dropdown_product-prices">
+						<%= Shop.money.format(item.variants[0].price) %>
+					</div>
+				</div>
+				<div class="col-auto">
+					<button type="button" class="button button--empty button--icon button--remove" data-favorites-remove="<%= item.id %>"><span class="far fa-trash fa-lg"></span></button>
+				</div>
+			</div>
+		</div>
+	<% }); %>
+</script>
+<script type="text/template" hidden data-template-id="product-card">
+	<% _.forEach(obj.products, function(item){ %>
+		<div class="col-6 col-sm-6 col-md-4 col-lg-3">
+			<div class="product_card product_card--shadow">
+				<form action="/cart_items" method="post" data-product-id="<%= item.id %>">
+					<input type="hidden" name="variant_id" value="<%= item.variants[0].id %>">
+					<input type="hidden" name="quantity" value="1">
+					<a href="<%= item.url %>" class="product_card-thumb product_card-thumb--1x1 product_card-thumb--contain">
+						<span class="product_card-thumb-item" style="background-image: url(<%= item.first_image.large_url %>);"></span>
+					</a>
+					<div class="product_card-title">
+						<a href="<%= item.url %>"><%= item.title %></a>
+					</div>
+					<div class="product_card-prices">
+						<span class="product_card-price"><%= Shop.money.format(item.price) %></span>
+					</div>
+					<div class="product_card-add">
+						<div class="row no-gutters">
+							<div class="col">
+								<% if (item.available) { %>
+									<% if (item.variants.length > 1) { %>
+										<a href="<%= item.url %>" class="button button--icon button--small button--empty button--empty--inverse"><span class="far fa-shopping-cart fa-lg"></span><span>Выбрать</span></a>
+									<% } else{ %>
+										<button type="submit" class="button button--icon button--small button--empty button--empty--inverse" data-item-add><span class="far fa-shopping-cart fa-lg"></span><span>В корзину</span></button>
+									<% } %>
+								<% } else{ %>
+									<button type="button" class="button button--empty button--small button--disabled"><span>Распродано</span></button>
+								<% } %>
+							</div>
+
+								<div class="col col-auto">
+									<button type="button" class="button button--empty button--small button--icon button--compares" data-compare-add="<%= item.id %>"><span class="far fa-align-right fa-lg" data-fa-transform="rotate-90"></span></button><button type="button" class="button button--empty button--small button--icon button--favorites" data-favorites-trigger="<%= item.id %>"><span class="far fa-heart fa-lg"></span></button>
+								</div>
+
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	<% }); %>
+</script>
+<script type="text/template" hidden data-template-id="product-card-recently">
+	<% _.forEach(obj, function(item){ %>
+		<div class="products-slider-item">
+			<div class="product_card product_card--shadow">
+				<form action="/cart_items" method="post" data-product-id="<%= item.id %>">
+					<input type="hidden" name="variant_id" value="<%= item.variants[0].id %>">
+					<input type="hidden" name="quantity" value="1">
+					<a href="<%= item.url %>" class="product_card-thumb product_card-thumb--1x1 product_card-thumb--contain">
+						<span class="product_card-thumb-item" style="background-image: url(<%= item.first_image.large_url %>);"></span>
+					</a>
+					<div class="product_card-title">
+						<a href="<%= item.url %>"><%= item.title %></a>
+					</div>
+					<div class="product_card-prices">
+						<span class="product_card-price"><%= Shop.money.format(item.variants[0].price) %></span>
+					</div>
+					<div class="product_card-add">
+						<div class="row no-gutters">
+							<div class="col">
+								<% if (item.available) { %>
+									<% if (item.variants.length > 1) { %>
+										<a href="<%= item.url %>" class="button button--icon button--small button--empty button--empty--inverse"><span class="far fa-shopping-cart fa-lg"></span><span>Выбрать</span></a>
+									<% } else{ %>
+										<button type="submit" class="button button--icon button--small button--empty button--empty--inverse" data-item-add><span class="far fa-shopping-cart fa-lg"></span><span>В корзину</span></button>
+									<% } %>
+								<% } else{ %>
+									<button type="button" class="button button--empty button--small button--disabled"><span>Распродано</span></button>
+								<% } %>
+							</div>
+
+								<div class="col col-auto">
+									<button type="button" class="button button--empty button--small button--icon button--compares" data-compare-add="<%= item.id %>"><span class="far fa-align-right fa-lg" data-fa-transform="rotate-90"></span></button><button type="button" class="button button--empty button--small button--icon button--favorites" data-favorites-trigger="<%= item.id %>"><span class="far fa-heart fa-lg"></span></button>
+								</div>
+
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	<% }); %>
+</script>
+<script type="text/template" hidden data-template-id="message-cart">
+	<div class="message-cart-product">
+		<div class="row">
+			<div class="col-12 col-sm-6">
+				<div class="message-cart-product-image product_card">
+					<span class="product_card-thumb product_card-thumb--1x1 product_card-thumb--contain">
+						<span class="product_card-thumb-item" style="background-image: url(<%= obj.item.first_image.large_url %>);"></span>
+					</span>
+				</div>
+			</div>
+			<div class="col-12 col-sm-6">
+				<div class="message-cart-product-title"><%= obj.item.title %></div>
+				<div class="message-cart-product-quantity"><%= obj.item_quantity %> &times; <%= Shop.money.format(obj.item.sale_price) %></div>
+				<div class="message-cart-total">В вашей корзине<br><span><%= obj.data.items_count %> <%= declOfNum(obj.data.items_count) %></span> на сумму <span><%= Shop.money.format(obj.data.items_price) %></span></div>
+				<div class="message-cart-buttons">
+					<a href="/cart_items" class="button button--primary button--block button--large">Открыть корзину</a>
+					<a href="/new_order" class="button button--secondary button--block button--large">Оформить заказ</a>
+					<button class="button button--empty button--info" data-fancybox-close><span>Продолжить покупки</span></button>
+				</div>
+			</div>
+		</div>
+	</div>
+</script>
+<script type="text/template" data-template-id="option-select">
+	<div class="<%= classes.option %> is-select">
+		<div class="<%= classes.label %>"><%= title %>: <span class="option-label-value"><% _.forEach(values, function (value){ %><% if (option.selected == value.position) { %><%= value.title %><% } %><% }) %></span></div>
+		<select class="<%= classes.values %> is-select" data-option-bind="<%= option.id %>">
+			<% _.forEach(values, function (value){ %>
+				<option <%= value.controls %> <%= value.state %>>
+					<%= value.title %>
+				</option>
+			<% }) %>
+		</select>
+	</div>
+</script>
+<script type="text/template" data-template-id="option-span">
+	<div class="<%= classes.option %> is-span">
+		<div class="<%= classes.label %>"><%= title %>: <span class="option-label-value"><% _.forEach(values, function (value){ %><% if (option.selected == value.position) { %><%= value.title %><% } %><% }) %></span></div>
+		<div class="<%= classes.values %> is-span">
+			<% _.forEach(values, function (value){ %>
+				<button class="<%= value.classes.all %> is-span" <%= value.controls %> <%= value.state %>>
+					<%= value.title %>
+				</button>
+			<% }) %>
+		</div>
+	</div>
+</script>
+<script type="text/template" data-template-id="option-radio">
+	<div class="<%= classes.option %> is-radio">
+		<div class="<%= classes.label %>"><%= title %>: <span class="option-label-value"><% _.forEach(values, function (value){ %><% if (option.selected == value.position) { %><%= value.title %><% } %><% }) %></span></div>
+		<div class="<%= classes.values %> is-radio">
+			<% _.forEach(values, function (value){ %>
+				<label class="<%= value.classes.all %> is-radio">
+					<input class="<%= value.classes.state %>" type="radio" name="<%= handle %>" <%= value.controls %> <%= value.state %>>
+					<span><%= value.title %></span>
+				</label>
+			<% }) %>
+		</div>
+	</div>
+</script>
+<script type="text/template" data-template-id="option-color">
+	<div class="<%= classes.option %> is-image">
+		<div class="<%= classes.label %>"><%= title %>: <span class="option-label-value"><% _.forEach(values, function (value){ %><% if (option.selected == value.position) { %><%= value.title %><% } %><% }) %></span></div>
+		<div class="<%= classes.values %> is-image">
+			<% _.forEach(values, function (value){ %>
+				<button class="<%= value.classes.all %> is-image" <%= value.controls %> <%= value.state %>>
+					<% if (fileUrl[value.name]){ %>
+						<span style="background-image: url(<%= fileUrl[value.name] %>);"></span>
+					<% }else{ %>
+						<span class="is-empty"><span class="fas fa-question"></span></span>
+					<% } %>
+				</button>
+			<% }) %>
+		</div>
+	</div>
+</script>
+<script type="text/template" data-template-id="option-image">
+	<div class="<%= classes.option %> is-image">
+		<div class="<%= classes.label %>"><%= title %>: <span class="option-label-value"><% _.forEach(values, function (value){ %><% if (option.selected == value.position) { %><%= value.title %><% } %><% }) %></span></div>
+		<div class="<%= classes.values %> is-image">
+			<% _.forEach(values, function (value){ %>
+				<button class="<%= value.classes.all %> is-image" <%= value.controls %> <%= value.state %>>
+
+						<% if (fileUrl[value.name]){ %>
+							<span style="background-image: url(<%= fileUrl[value.name] %>);"></span>
+						<% }else{ %>
+							<span class="is-empty"><span class="fas fa-question"></span></span>
+						<% } %>
+
+				</button>
+			<% }) %>
+		</div>
+	</div>
+</script>
 </body>
 
 </html>
