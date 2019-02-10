@@ -1,4 +1,527 @@
+<div class="container" style="position:static;">
+  <div id="notification"></div>
+  <div class="main_slider_main_container">
+    <div class="slideshow_main_page">
+      <div id="slideshow0" class="owl-carousel owl-carousel-main-slider">
+        {% for block in block_lists.promo-slider.blocks %}
+          <a class="slide_id{{forloop.index0}}" href="{{block.url}}"><img src="{{block.image}}" alt="{{block.title}}" /></a>
+        {% endfor %}
+      </div>
+    </div>
+    <script type="text/javascript">
+      <!--
+      $('.owl-carousel').owlCarousel({
+        singleItem: true,
+        autoPlay: 3000,
+        autoHeight: true,
+        responsive: true,
+        autoHeight: true,
+        navigation: true,
+        pagination: true,
+        stopOnHover: true,
+        lazyLoad: true
+      });
+      $('.owl-carousel-adaptive').owlCarousel({
+        singleItem: true,
+        autoPlay: 3000,
+        autoHeight: true,
+        responsive: true,
+        autoHeight: true,
+        navigation: true,
+        pagination: true,
+        stopOnHover: true,
+        lazyLoad: true
+      });
+      -->
+    </script>
+    <div class="homepage_banner">
+      <div class="product-of-day">
+        {%assign product_day_count = 0%}
+        {% for product in collections.all.products %}
+          {%if product.properties.label.characteristics[0].name == "Товар Дня" and product_day_count < 1 %}
+            {%assign product_day_count = 1%}
+            <div class="product_of_day">
+              <span class="economy_text">Экономия</span>
+              <span class="economy_price">{{product.old_price | minus: product.price | round: 0}} <span class="rouble"> руб.</span></span>
+            </div>
+            <div class="day_title">Товар дня</div>
+            <div class="image">
+              <a href="{{product.url}}"><img src="{{product.first_image.original_url}}" alt="{{product.title}}" /></a>
+            </div>
+            <div class="category_name">
+              {{product.collections.last.title}}
+            </div>
+            <div class="name"><a href="{{product.url}}">{{product.title}}</a></div>
+            <div class="description"></div>
+            <div class="rating">
+              <div class="rating_left">
+                <a class="rating_stars" href="{{product.url}}">
+                  <div class="rating_full" style="width: 100%"></div>
+                </a>
+              </div>
+              <div class="rating_right">
+                <a class="rating_reviews" href="{{product.url}}">{{product.reviews | size}}</a>
+              </div>
+            </div>
+            <div class="product_bottom">
+              <div class="price">
+                {%if product.old_price%}<span class="price-old">{{product.old_price | round: 0}}</span>{%endif%} <span class="price-new">{{product.price | money}}</span>
+              </div>
+              <div class="cart"><a class="button"><span></span><div class="add_to_cart_help">Товар в корзине</div></a></div>
+              <div class="cl_b"></div>
+            </div>
+            {%break%}
+          {%endif%}
+        {%endfor%}
+      </div>
+    </div>
+  </div>
+  <div class="tovars">
+    <div class="rr-widget cartRelated rr-active">
+      <header class="widgettitle">Акции</header>
+      <ul class="items">
+        {% assign products_sale = 0 %}
+        {% for product in collections.all.products %}
+          {%if product.old_price and product.old_price > product.price %}
+            {%assign products_sale = products_sale | plus: 1%}
+            {% if products_sale <= 15 %}
+              <li class="item">
+                <div class="block">
+                  <div class="rr-header">
+                    <div class="rr-labels">
+                      <div class="rr-discount">
+                        -{{ product.old_price | minus: product.price | divided_by: product.old_price | times: 100 | round: 0}}%
+                      </div>
+                    </div>
+                    <div class="rr-icons">
+                      <a class="product_features_wishlist" product_id="9649" tabindex="-1"></a>
+                      <span class="product_features_compare " product_id="9649"></span>
+                    </div>
+                  </div>
+                  <a class="item-info" href="{{product.url}}" tabindex="-1">
+                    <div class="item-image">
+                      <img src="{{product.first_image.original_url}}">
+                    </div>
+                    <div class="item-title">{{product.title}}</div>
+                  </a>
+                  <div class="rating">
+                    <div class="rating_left">
+                      <a class="rating_stars" href="{{product.url}}" tabindex="-1">
+                        {%if product.rating %}
+                          <div class="rating_full stars_{{ product.rating }}"></div>
+                        {%else%}
+                          <div class="rating_full stars_0"></div>
+                        {%endif%}
+                      </a>
+                    </div>
+                    <div class="rating_right">
+                      <a class="rating_reviews" href="{{product.url}}" tabindex="-1">{{product.reviews | size}}</a>
+                    </div>
+                  </div>
+                  <div class="item-price-and-buy">
+                    <div class="item-block-price">
+                      <div class="item-old-price">
+                        <span class="item-old-price-value">{{product.old_price | round: 0}}</span>
+                        <span class="item-price-currency"></span>
+                      </div>
+                      <div class="item-price">
+                        <span class="item-price-value">{{product.price | money}}</span>
+                      </div>
+                    </div>
+                    <div class="item-actions">
+                      <a class="item-actions-buy add_to_cart_9649" tabindex="-1">
+                        <div class="add_to_cart_help">Товар в корзине</div>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            {%else%}
+              {%break%}
+            {%endif%}
+          {%else%}
+            {%continue%}
+          {%endif%}
+        {%endfor%}
+      </ul>
+    </div>
 
-{% for widgetDrop in widget_lists.common_index-list.widgets %}
-        {% widget widgetDrop %}
-  {% endfor %}
+    <div class="rr-widget cartRelated rr-active">
+      <header class="widgettitle">Хиты продаж</header>
+      <ul class="items">
+        {% assign products_sale = 0 %}
+        {% for product in collections.all.products %}
+          {%if product.properties.label.characteristics[0].name == "Хит продаж" %}
+            {%assign products_sale = products_sale | plus: 1%}
+            {% if products_sale <= 15 %}
+              <li class="item">
+                <div class="block">
+                  <div class="rr-header">
+                    <div class="rr-labels">
+                      {%if product.old_price%}
+                        <div class="rr-discount">
+                          -{{ product.old_price | minus: product.price | divided_by: product.old_price | times: 100 | round: 0}}%
+                        </div>
+                      {%endif%}
+                    </div>
+                    <div class="rr-icons">
+                      <a class="product_features_wishlist" product_id="9649" tabindex="-1"></a>
+                      <span class="product_features_compare " product_id="9649"></span>
+                    </div>
+                  </div>
+                  <a class="item-info" href="{{product.url}}" tabindex="-1">
+                    <div class="item-image">
+                      <img src="{{product.first_image.original_url}}">
+                    </div>
+                    <div class="item-title">{{product.title}}</div>
+                  </a>
+                  <div class="rating">
+                    <div class="rating_left">
+                      <a class="rating_stars" href="{{product.url}}" tabindex="-1">
+                        {%if product.rating %}
+                          <div class="rating_full stars_{{ product.rating }}"></div>
+                        {%else%}
+                          <div class="rating_full stars_0"></div>
+                        {%endif%}
+                      </a>
+                    </div>
+                    <div class="rating_right">
+                      <a class="rating_reviews" href="{{product.url}}" tabindex="-1">{{product.reviews | size}}</a>
+                    </div>
+                  </div>
+                  <div class="item-price-and-buy">
+                    <div class="item-block-price">
+                      {%if product.old_price%}
+                        <div class="item-old-price">
+                          <span class="item-old-price-value">{{product.old_price | round: 0}}</span>
+                          <span class="item-price-currency"></span>
+                        </div>
+                      {%endif%}
+                      <div class="item-price">
+                        <span class="item-price-value">{{product.price | money}}</span>
+                      </div>
+                    </div>
+                    <div class="item-actions">
+                      <a class="item-actions-buy add_to_cart_9649" tabindex="-1">
+                        <div class="add_to_cart_help">Товар в корзине</div>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            {%else%}
+              {%break%}
+            {%endif%}
+          {%else%}
+            {%continue%}
+          {%endif%}
+        {%endfor%}
+      </ul>
+    </div>
+
+    <div class="rr-widget cartRelated rr-active">
+      <header class="widgettitle">Новинки</header>
+      <ul class="items">
+        {% assign products_sale = 0 %}
+        {% for product in collections.all.products %}
+          {%if product.properties.label.characteristics[0].name == "Новинка" %}
+            {%assign products_sale = products_sale | plus: 1%}
+            {% if products_sale <= 15 %}
+              <li class="item">
+                <div class="block">
+                  <div class="rr-header">
+                    <div class="rr-labels">
+                      {%if product.old_price%}
+                        <div class="rr-discount">
+                          -{{ product.old_price | minus: product.price | divided_by: product.old_price | times: 100 | round: 0}}%
+                        </div>
+                      {%endif%}
+                    </div>
+                    <div class="rr-icons">
+                      <a class="product_features_wishlist" product_id="9649" tabindex="-1"></a>
+                      <span class="product_features_compare " product_id="9649"></span>
+                    </div>
+                  </div>
+                  <a class="item-info" href="{{product.url}}" tabindex="-1">
+                    <div class="item-image">
+                      <img src="{{product.first_image.original_url}}">
+                    </div>
+                    <div class="item-title">{{product.title}}</div>
+                  </a>
+                  <div class="rating">
+                    <div class="rating_left">
+                      <a class="rating_stars" href="{{product.url}}" tabindex="-1">
+                        {%if product.rating %}
+                          <div class="rating_full stars_{{ product.rating }}"></div>
+                        {%else%}
+                          <div class="rating_full stars_0"></div>
+                        {%endif%}
+                      </a>
+                    </div>
+                    <div class="rating_right">
+                      <a class="rating_reviews" href="{{product.url}}" tabindex="-1">{{product.reviews | size}}</a>
+                    </div>
+                  </div>
+                  <div class="item-price-and-buy">
+                    <div class="item-block-price">
+                      {%if product.old_price%}
+                        <div class="item-old-price">
+                          <span class="item-old-price-value">{{product.old_price | round: 0}}</span>
+                          <span class="item-price-currency"></span>
+                        </div>
+                      {%endif%}
+                      <div class="item-price">
+                        <span class="item-price-value">{{product.price | money}}</span>
+                      </div>
+                    </div>
+                    <div class="item-actions">
+                      <a class="item-actions-buy add_to_cart_9649" tabindex="-1">
+                        <div class="add_to_cart_help">Товар в корзине</div>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            {%else%}
+              {%break%}
+            {%endif%}
+          {%else%}
+            {%continue%}
+          {%endif%}
+        {%endfor%}
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    $('.items').slick({
+      adaptiveHeight: true,
+      dots: false,
+      arrows: true,
+      TouchMove: false,
+      draggable: true,
+      infinite: true,
+      autoplay: false,
+      variableWidth: true,
+      speed: 300,
+      slidesToShow: 5,
+      slidesToScroll: 1,
+      swipeToSlide: true,
+      nextArrow: '<a href="javascript:void(0);" class="slick-next"></a>',
+      prevArrow: '<a href="javascript:void(0);" class="slick-prev"></a>',
+      responsive: [{
+        breakpoint: 1300,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 4,
+        }
+      }, {
+        breakpoint: 990,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+        }
+      }, {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          arrows: false,
+          centerMode: true
+        }
+      }, {
+        breakpoint: 400,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          arrows: false,
+          centerMode: true
+        }
+      }, ]
+    });
+  </script>
+
+
+</div>
+{%if block_lists.yandex-market%}
+  <div class="welcome_yandex_newsletter">
+    <span class="external_link welcome_yandex_market">
+    <div>Рейтинг 5 из 5,<br />убедитесь сами</div>
+  </span>
+    <div class="welcome_newsletter">
+      <div class="instagram_header">{{settings.yandex_market_title}}</div>
+      <div class="instagram_underheader">{{settings.yandex_market_text}}</div>
+      <div id="instafeed-gallery-feed" class="owl-carousel-instagram owl-theme gallery row no-gutter">
+        {%for block in block_lists.yandex-market.blocks%}
+          <a class="instagram_link instagram_link{{forloop.index}}">
+            <div class="img-featured-container-main">
+              <div class="img-featured-container">
+                <div class="img-backdrop"></div>
+                <div class="description-container">
+                  <p class="caption">{{block.title}}</p>
+                </div>
+                <img src="{{block.image}}" large_image="{{block.image}}" class="img-responsive">
+              </div>
+            </div>
+          </a>
+        {%endfor%}
+
+      </div>
+    </div>
+  </div>
+  <style type="text/css">
+    .instagram_popup_right_text_underdescription, .instagram_open_window {
+      display: none;
+    }
+    .img-featured-container img {
+      width: 100%;
+    }
+  </style>
+  <script type="text/javascript">
+    var owl_insta = $(".owl-carousel-instagram");
+
+    // init owl
+    $(document).ready(function() {
+      owl_insta.owlCarousel({
+        navigation: true
+      });
+    });
+  </script>
+{%endif%}
+{%if block_lists.shops%}
+  <div class="map_header">Наши магазины</div>
+  <div class="grey_map">
+    <div class="bg_map"></div>
+    <div class="container">
+      {%for block in block_lists.shops.blocks%}
+        <div class="map_block_{%if forloop.index == 3 or forloop.index == 4%}{{forloop.index0}}0{%else%}{{forloop.index}}{%endif%}" style="background: url({{block.image}});">
+          <div class="map_block_left">
+            <a href="/shops/" class="map_block_town">{{block.title}}</a>
+            <div class="map_block_address">
+              {{block.content}}
+            </div>
+          </div>
+        </div>
+      {%endfor%}
+    </div>
+  </div>
+{%endif%}
+<div class="container">
+  {%if blog%}
+    <div class="box">
+      <div class="box-heading"><a href="{{blog.url}}">Новости</a>
+        <div class="box-arrows">
+          <div class="box-arrow-left"></div>
+          <div class="box-arrow-right"></div>
+        </div>
+        <div class="box-right-link">
+          <a href="{{blog.url}}">Все новости</a>
+        </div>
+      </div>
+      <div class="box-content">
+        <ul class="blog_list">
+          {%for article in blog.articles%}
+            <li class="blog_item">
+              <div class="blog_item_image">
+                <a href="{{article.url}}">
+                  <img src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" class="lazyload" alt="{{article.title}}" data-src="{{ article.image.large_url }}"/>
+                </a>
+              </div>
+              <div class="blog_item_item_description">
+                <div class="blog_item_item_description_bg"></div>
+                <a href="{{article.url}}">{{article.title}}</a>
+                <div class="blog_item_description">
+                  {{article.preview | truncate: 280}} </div>
+              </div>
+            </li>
+          {%endfor%}
+        </ul>
+      </div>
+    </div>
+  {%endif%}
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('.blog_list').owlCarousel({
+        items: 5, //10 изображений на 1000px
+        itemsDesktopSmall: [1343, 4], // 3 изображения между 900px и 601px
+        itemsMobile: [820, 1],
+        navigation: false,
+        pagination: false
+      });
+      var owl = $(".blog_list").data('owlCarousel');
+      $('.box-arrow-left').live('click', function() {
+        owl.prev();
+      });
+      $('.box-arrow-right').live('click', function() {
+        owl.next();
+      });
+    });
+  </script>
+  <div class="welcome">
+    <div class="welcome_left">
+      <div class="welcome_text">
+        <h1 style="color: rgb(255, 108, 48); font-family: Roboto, Arial, Helvetica, sans-serif; margin-top: 0px; margin-bottom: 20px; font-size: 25px;">Фирменный интернет-магазин официальной техники и аксессуаров&nbsp;Xiaomi в Москве</h1>
+
+        <div style="color: rgb(108, 112, 129); font-family: Roboto, Arial, Helvetica, sans-serif; font-size: 15px;">
+          <p><span style="font-size:14px;">Китайский производитель приобрёл известность в России благодаря сочетанию в своей продукции: лаконичного дизайн, качественного материала и многофункциональности. В начале 2015 года было реализовано около 35 миллионов моделей смартфонов по всему миру, и компания приобрела мировую известность. Научно-исследовательский штаб ведёт свои разработки в сфере технологий и следует простому кредо - высокие технологии для всех!</span></p>
+
+          <p><span style="font-size:14px;">На официальном сайте магазина Xiaomi представленны оригинальные товары. Каждая модель - продукт тщательной разработки и обладает множеством достоинств; Смартфоны, планшеты, камеры и телевизоры имеют интуитивно понятный интерфейс и систему управления. Все новинки представлены в каталоге сайта!</span></p>
+
+          <p><span style="font-size:14px;">Фирменный магазин ru-mi.com реализует официальную продукцию от Xiaomi, среди которой вы найдете девайсы суббрендов: Mijia, ZMi, XiaoYi, 1MORE, YI и другие. Мы заслужили свою репутацию высоким качеством оказываемых услуг!</span></p>
+
+          <h2><span style="font-size:18px;">Интернет-магазин, заслуживающий внимания!</span></h2>
+
+          <p><span style="font-size:14px;">На страницах сайта «Румиком» вы найдёте последние новинки и популярную продукцию компании:</span></p>
+
+          <ul>
+            <li><span style="font-size:14px;">Если вы находитесь в Москве или области, протестировать понравившийся гаджет можно лично в нашем шоу-руме.</span></li>
+            <li><span style="font-size:14px;">Огромный ассортимент любых&nbsp;товаров Xiaomi</span></li>
+            <li><span style="font-size: 14px;">Отличные варианты гарантия.</span></li>
+            <li><span style="font-size:14px;">Доставка по Москве выполняется курьерской службой, по России – надёжными транспортными компаниями.</span></li>
+            <li><span style="font-size:14px;">Доступен самовывоз.</span></li>
+            <li><span style="font-size:14px;">Постоянным покупателям скидки и бонусы.</span></li>
+          </ul>
+
+          <p><span style="font-size:14px;">Товары, представленные на сайте, имеют сертификаты качества и являются оригинальной продукцией Mi. Мы работаем с собственным складом в Москве, на котором доступны все позиции представленные на сайте; наш call центр готов оказать всесторонную поддержку нашим постоянным и будущим клиентам, рассказав всю необходимую информацию о товарах!</span></p>
+        </div>
+        <div class="welcome_show_all"><span>показать полностью</span></div>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      var show_welcome_bottom = 1;
+      var show_welcome_arrow = 0;
+      var welcome_show_all_height = $('.welcome_text').height();
+      $('.welcome_text').height('190px');
+      $('.welcome_show_all span').live('click', function() {
+        if (show_welcome_bottom == 1) {
+          show_welcome_bottom = 0;
+          if (show_welcome_arrow == 0) {
+            $(".welcome .welcome_text").animate({
+              "padding-bottom": "80px",
+              "height": welcome_show_all_height
+            }, 200, function() {
+              show_welcome_bottom = 1;
+            });
+            $('.welcome_show_all span').text('скрыть');
+            $('.welcome_show_all span').addClass('welcome_show_all_active');
+            show_welcome_arrow = 1;
+          } else {
+            $(".welcome .welcome_text").animate({
+              "padding-bottom": "50px",
+              "height": "190px"
+            }, 200, function() {
+              show_welcome_bottom = 1;
+            });
+            show_welcome_arrow = 0;
+            $('.welcome_show_all span').text('показать полностью');
+            $('.welcome_show_all span').removeClass('welcome_show_all_active');
+          }
+        }
+      });
+    });
+  </script>
+  <div class="cl_b"></div>
+  <div data-retailrocket-markup-block="588afa8765bf1917843073e5"></div>
+</div>

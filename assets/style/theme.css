@@ -1,24 +1,22 @@
-.oh {
-  content:"teeeest";
-}
-@font-face {
-  font-family: 'icomoon';
-  src:  url('iconmoon/icomoon.eot?zhhtku2');
-  src:  url('iconmoon/icomoon.eot?zhhtku2#iefix') format('embedded-opentype'),
-    url('iconmoon/icomoon.ttf?zhhtku2') format('truetype'),
-    url('iconmoon/icomoon.woff?zhhtku2') format('woff'),
-    url('iconmoon/icomoon.svg?zhhtku2#icomoon') format('svg');
-  font-weight: normal;
-  font-style: normal;}
 @font-face {
   font-family: 'advantages';
-  src:  url('iconmoon/advantages.eot?32gy0q');
-  src:  url('iconmoon/advantages.eot?32gy0q#iefix') format('embedded-opentype'),
-    url('iconmoon/advantages.ttf?32gy0q') format('truetype'),
-    url('iconmoon/advantages.woff?32gy0q') format('woff'),
-    url('iconmoon/advantages.svg?32gy0q#advantages') format('svg');
+  src:  url('advantages.eot?32gy0q');
+  src:  url('advantages.eot?32gy0q#iefix') format('embedded-opentype'),
+    url('advantages.ttf?32gy0q') format('truetype'),
+    url('advantages.woff?32gy0q') format('woff'),
+    url('advantages.svg?32gy0q#advantages') format('svg');
   font-weight: normal;
   font-style: normal;
+}
+@font-face {
+	font-family: 'icomoon';
+	src:url('icomoon.eot?8pq1w');
+	src:url('icomoon.eot?#iefix8pq1w') format('embedded-opentype'),
+		url('icomoon.woff?8pq1w') format('woff'),
+		url('icomoon.ttf?8pq1w') format('truetype'),
+		url('icomoon.svg?8pq1w#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
 }
 
 [class*="e90"]:before,[class*="e91"]:before {
@@ -9296,7 +9294,7 @@ h3.newyear_h3 {
 }
 .rouble:before {
 	display: inline-block;
-	content: "â‚½";
+	content: "₽";
 }
 .team_banners {
 	text-align: center;

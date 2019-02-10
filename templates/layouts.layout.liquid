@@ -1,2726 +1,453 @@
-
 <!DOCTYPE html>
 <html dir="ltr" lang="ru">
+
 <head>
-    {% include "system_head" %}
-<meta name="viewport" content="initial-scale=1.0,width=device-width" />
-<meta charset="UTF-8" />
-  
-  
-  
-  
-  
-  
-<link rel="stylesheet" type="text/css" href="{{ 'theme.css' | asset_url }}" />
-<link rel="stylesheet" type="text/css" href="{{ 'adaptive.css' | asset_url }}" />
-  
-  
-  
-  
-<script type="text/javascript" src="/catalog/view/javascript/jquery/jquery-1.7.1.min.js"></script>
-<script type="text/javascript" src="/catalog/view/javascript/jquery/ui/jquery-ui-1.8.16.custom.min.js"></script>
-<script type="text/javascript" src="/catalog/view/javascript/jquery.cookie.js"></script>
-<script type="text/javascript" src="/catalog/view/javascript/jquery.suggestions.min.js"></script>
-<script type="text/javascript" src="/catalog/view/javascript/jquery.ui.touch-punch.min.js"></script>
-<script type="text/javascript" src="/catalog/view/javascript/dadata.js"></script>
-<script type="text/javascript" src="/catalog/view/javascript/jquery.maskedinput.min.js"></script>
-<script type="text/javascript" src="/catalog/view/javascript/stopsovetnik.js"></script>
-<script type="text/javascript" src="/catalog/view/javascript/jquery.lazyload.min.js?v=2"></script>
-<link rel="stylesheet" type="text/css" href="/catalog/view/javascript/jquery/ui/themes/ui-lightness/jquery-ui-1.8.16.custom.css" />
-<script type="text/javascript" src="/catalog/view/javascript/common.js?v=2"></script>
-<script type="text/javascript" src="/catalog/view/javascript/jquery/owl.carousel-min.js"></script>
-<script src="/catalog/view/javascript/ee_tracking.js" type="text/javascript"></script>
-<script src="/catalog/view/javascript/instafeed.min.js" type="text/javascript"></script>
-<script type="text/javascript" src="https://vk.com/js/api/openapi.js?142"></script>
-<script type="text/javascript" src="/catalog/view/javascript/livesearch.js"></script>
-<link rel="stylesheet" type="text/css" href="/catalog/view/theme/default/stylesheet/livesearch.css" />
-<script type="text/javascript" src="/catalog/view/javascript/is.mobile.js"></script>
-<link rel="stylesheet" type="text/css" href="/catalog/view/theme/default/stylesheet/suggestions.css" />
-<link rel="stylesheet" type="text/css" href="/catalog/view/theme/default/stylesheet/owl.carousel.css" />
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-62220793-1', 'auto');
-  ga('require', 'GTM-MWZC4MM');
-  ga('set', 'userId', 'USER_ID');
-  ga('send', 'pageview');
-</script>
-
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-WB8KJWS');</script>
-<!-- End Google Tag Manager -->
-
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WB8KJWS"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) --><script>ga('require', 'ec');</script>
-<script type="text/javascript">
-	var rrPartnerId = "57d574e265bf1940b4626285";
-   var rrApi = {};
-   var rrApiOnReady = rrApiOnReady || [];
-   rrApi.addToBasket = rrApi.order = rrApi.categoryView = rrApi.view =
-	   rrApi.recomMouseDown = rrApi.recomAddToCart = function() {};
-   (function(d) {
-	   var ref = d.getElementsByTagName('script')[0];
-	   var apiJs, apiJsId = 'rrApi-jssdk';
-	   if (d.getElementById(apiJsId)) return;
-	   apiJs = d.createElement('script');
-	   apiJs.id = apiJsId;
-	   apiJs.async = true;
-	   apiJs.src = "//cdn.retailrocket.ru/content/javascript/tracking.js";
-	   ref.parentNode.insertBefore(apiJs, ref);
-   }(document));
-</script>
-<link rel="manifest" href="/manifest.json">
-<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async></script>
-<script>
-	var OneSignal = window.OneSignal || [];
-	OneSignal.push(["init", {
-	  appId: "3be67014-d0d2-4bce-a3fa-0590b6b6382c",
-	  autoRegister: true,
-	  notifyButton: {
-		enable: false
-	  }
-	}]);
-</script>
-<script type="text/javascript">
-	var data_cookie = '';
-								document.cookie = "fp_cookie=" + data_cookie + ";" + "path=/";
-	document.cookie = "rr_cookie_wishlist=";
-	document.cookie = "rr_cookie_compare=";
-	document.cookie = "rr_cookie_cart=";
-</script>
-<script type="text/javascript">!function(){var t=document.createElement("script");t.type="text/javascript",t.async=!0,t.src="https://vk.com/js/api/openapi.js?158",t.onload=function(){VK.Retargeting.Init("VK-RTRG-267522-37kxK"),VK.Retargeting.Hit()},document.head.appendChild(t)}();</script><noscript><img src="https://vk.com/rtrg?p=VK-RTRG-267522-37kxK" style="position:fixed; left:-999px;" alt=""/></noscript>
+  {% include "system_head" %}
+  <meta name="viewport" content="initial-scale=1.0,width=device-width" />
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" type="text/css" href="{{ 'custom.css' | asset_url }}" />
+  <link rel="stylesheet" type="text/css" href="https://ru-mi.com/catalog/view/theme/default/stylesheet/stylesheet.css?v=36" />
+  <link rel="stylesheet" type="text/css" href="{{ 'adaptive.css' | asset_url }}" />
+  <link rel="stylesheet" type="text/css" href="{{ 'fonts.css' | asset_url }}" />
+  <script type="text/javascript" src="{{ 'jquery-1.7.1.min.js' | asset_url }}"></script>
+  <script type="text/javascript" src="{{ 'jquery-ui-1.8.16.custom.min.js' | asset_url }}"></script>
+  <script type="text/javascript" src="{{ 'jquery.cookie.js' | asset_url }}"></script>
+  <script type="text/javascript" src="{{ 'jquery.suggestions.min.js' | asset_url }}"></script>
+  <script type="text/javascript" src="{{ 'jquery.ui.touch-punch.min.js' | asset_url }}"></script>
+  <script type="text/javascript" src="{{ 'dadata.js' | asset_url }}"></script>
+  <script type="text/javascript" src="{{ 'jquery.maskedinput.min.js' | asset_url }}"></script>
+  <script type="text/javascript" src="{{ 'stopsovetnik.js' | asset_url }}"></script>
+  <script type="text/javascript" src="{{ 'jquery.lazyload.min.js' | asset_url }}"></script>
+  <link rel="stylesheet" type="text/css" href="{{ 'jquery-ui-1.8.16.custom.css' | asset_url }}" />
+  <script type="text/javascript" src="{{ 'common.js' | asset_url }}"></script>
+  <script type="text/javascript" src="{{ 'owl.carousel-min.js' | asset_url }}"></script>
+  <script src="{{ 'ee_tracking.js' | asset_url }}" type="text/javascript"></script>
+  <script src="{{ 'instafeed.min.js' | asset_url }}" type="text/javascript"></script>
+  <script type="text/javascript" src="{{ 'livesearch.js' | asset_url }}"></script>
+  <link rel="stylesheet" type="text/css" href="{{ 'livesearch.css' | asset_url }}" />
+  <script type="text/javascript" src="{{ 'is.mobile.js' | asset_url }}"></script>
+  <link rel="stylesheet" type="text/css" href="{{ 'suggestions.css' | asset_url }}" />
+  <link rel="stylesheet" type="text/css" href="{{ 'owl.carousel.css' | asset_url }}" />
+  <script type="text/javascript" src="http://rrstatic.retailrocket.net/slick.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css" />
+  <link rel="manifest" href="/manifest.json">
+  <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async></script>
 </head>
+
 <body>
-<div style="display: none;">a</div>
-<script type="text/javascript">
-	$('.shashlindos').live('click', function() {
-		$.ajax({
-			url: 'index.php?route=product/product/setbannersession',
-			type: 'post',
-			success: function(html) {
-				$('.shashlindos_close').css('display','none');
-			}
-		});
-		return false;
-	});
-</script>
-<script type="text/javascript">
-/*var digiScript = document.createElement('script');
-digiScript.src = '//cdn.diginetica.net/248/client.js?ts=' + Date.now();
-digiScript.defer = true;
-digiScript.async = true;
-document.body.appendChild(digiScript);*/
-</script>
-<div id="go_top"></div>
-<div id="fotorama_main"></div>
-<div class="background_adaptive_filter"></div>
-	<script type="text/javascript">
-		$('#cart .heading').live('click', function() {
-			location.href = 'https://ru-mi.com/checkout/';
-		});
-	</script>
-<div class="town_grey_bg"></div>
-<div class="town_popup">
-	<div class="town_popup_header">Выбор города
-		<div class="town_popup_close"></div>
-	</div>
-	<div class="town_popup_enter">
-		<input type="text" id="main_city" placeholder="Поиск города" />
-		<div class="town_popup_enter_search"></div>
-		<div class="town_popup_enter_close"></div>
-	</div>
-	<div class="town_popup_list">
-		<ul>
-											<li>
-				<ul>
-				<li class="first_char">В</li>
-														<li><a href="https://vladivostok.ru-mi.com/" >Владивосток</a></li>
-																			<li><a href="https://volgograd.ru-mi.com/" >Волгоград</a></li>
-																			<li><a href="https://voronezh.ru-mi.com/" >Воронеж</a></li>
-													</ul>
-				</li>
-												<li>
-				<ul>
-				<li class="first_char">Е</li>
-														<li><a href="https://ekaterinburg.ru-mi.com/" >Екатеринбург</a></li>
-													</ul>
-				</li>
-												<li>
-				<ul>
-				<li class="first_char">И</li>
-														<li><a href="https://izhevsk.ru-mi.com/" >Ижевск</a></li>
-													</ul>
-				</li>
-												<li>
-				<ul>
-				<li class="first_char">К</li>
-														<li><a href="https://kazan.ru-mi.com/" >Казань</a></li>
-																			<li><a href="https://kiev.ru-mi.com/" >Киев</a></li>
-																			<li><a href="https://kirov.ru-mi.com/" >Киров</a></li>
-																			<li><a href="https://krasnodar.ru-mi.com/" >Краснодар</a></li>
-																			<li><a href="https://krasnoyarsk.ru-mi.com/" >Красноярск</a></li>
-													</ul>
-				</li>
-												</ul><ul>
-								<li>
-				<ul>
-				<li class="first_char">М</li>
-														<li><a href="https://minsk.ru-mi.com/" >Минск</a></li>
-																			<li><a href="https://ru-mi.com/" class="special_town_a">Москва</a></li>
-													</ul>
-				</li>
-												<li>
-				<ul>
-				<li class="first_char">Н</li>
-														<li><a href="https://nizhniy-novgorod.ru-mi.com/" >Нижний Новгород</a></li>
-																			<li><a href="https://novosibirsk.ru-mi.com/" >Новосибирск</a></li>
-													</ul>
-				</li>
-												<li>
-				<ul>
-				<li class="first_char">О</li>
-														<li><a href="https://omsk.ru-mi.com/" >Омск</a></li>
-													</ul>
-				</li>
-												<li>
-				<ul>
-				<li class="first_char">П</li>
-														<li><a href="https://perm.ru-mi.com/" >Пермь</a></li>
-													</ul>
-				</li>
-												<li>
-				<ul>
-				<li class="first_char">Р</li>
-														<li><a href="https://rostov-na-donu.ru-mi.com/" >Ростов-на-Дону</a></li>
-																			<li><a href="https://ryazan.ru-mi.com/" >Рязань</a></li>
-													</ul>
-				</li>
-												</ul><ul>
-								<li>
-				<ul>
-				<li class="first_char">С</li>
-														<li><a href="https://sankt-peterburg.ru-mi.com/" class="special_town_a">Санкт-Петербург</a></li>
-																			<li><a href="https://saratov.ru-mi.com/" >Саратов</a></li>
-													</ul>
-				</li>
-												<li>
-				<ul>
-				<li class="first_char">Т</li>
-														<li><a href="https://tula.ru-mi.com/" >Тула</a></li>
-																			<li><a href="https://tyumen.ru-mi.com/" >Тюмень</a></li>
-													</ul>
-				</li>
-												<li>
-				<ul>
-				<li class="first_char">У</li>
-														<li><a href="https://ufa.ru-mi.com/" >Уфа</a></li>
-													</ul>
-				</li>
-												<li>
-				<ul>
-				<li class="first_char">Ч</li>
-														<li><a href="https://chelyabinsk.ru-mi.com/" >Челябинск</a></li>
-													</ul>
-				</li>
-												<li>
-				<ul>
-				<li class="first_char">Я</li>
-														<li><a href="https://yaroslavl.ru-mi.com/" >Ярославль</a></li>
-													</ul>
-				</li>
-						</ul>
-	</div>
-	<div class="town_popup_list town_popup_list_mobile">
-		<ul>
-											<li>
-				<ul>
-				<li class="first_char">В</li>
-														<li><a href="https://vladivostok.ru-mi.com/" >Владивосток</a></li>
-																			<li><a href="https://volgograd.ru-mi.com/" >Волгоград</a></li>
-																			<li><a href="https://voronezh.ru-mi.com/" >Воронеж</a></li>
-													</ul>
-				</li>
-												<li>
-				<ul>
-				<li class="first_char">Е</li>
-														<li><a href="https://ekaterinburg.ru-mi.com/" >Екатеринбург</a></li>
-													</ul>
-				</li>
-												<li>
-				<ul>
-				<li class="first_char">И</li>
-														<li><a href="https://izhevsk.ru-mi.com/" >Ижевск</a></li>
-													</ul>
-				</li>
-												<li>
-				<ul>
-				<li class="first_char">К</li>
-														<li><a href="https://kazan.ru-mi.com/" >Казань</a></li>
-																			<li><a href="https://kiev.ru-mi.com/" >Киев</a></li>
-																			<li><a href="https://kirov.ru-mi.com/" >Киров</a></li>
-																			<li><a href="https://krasnodar.ru-mi.com/" >Краснодар</a></li>
-																			<li><a href="https://krasnoyarsk.ru-mi.com/" >Красноярск</a></li>
-													</ul>
-				</li>
-												<li>
-				<ul>
-				<li class="first_char">М</li>
-														<li><a href="https://minsk.ru-mi.com/" >Минск</a></li>
-																			<li><a href="https://ru-mi.com/" class="special_town_a">Москва</a></li>
-													</ul>
-				</li>
-												</ul><ul>
-								<li>
-				<ul>
-				<li class="first_char">Н</li>
-														<li><a href="https://nizhniy-novgorod.ru-mi.com/" >Нижний Новгород</a></li>
-																			<li><a href="https://novosibirsk.ru-mi.com/" >Новосибирск</a></li>
-													</ul>
-				</li>
-												<li>
-				<ul>
-				<li class="first_char">О</li>
-														<li><a href="https://omsk.ru-mi.com/" >Омск</a></li>
-													</ul>
-				</li>
-												<li>
-				<ul>
-				<li class="first_char">П</li>
-														<li><a href="https://perm.ru-mi.com/" >Пермь</a></li>
-													</ul>
-				</li>
-												<li>
-				<ul>
-				<li class="first_char">Р</li>
-														<li><a href="https://rostov-na-donu.ru-mi.com/" >Ростов-на-Дону</a></li>
-																			<li><a href="https://ryazan.ru-mi.com/" >Рязань</a></li>
-													</ul>
-				</li>
-												<li>
-				<ul>
-				<li class="first_char">С</li>
-														<li><a href="https://sankt-peterburg.ru-mi.com/" class="special_town_a">Санкт-Петербург</a></li>
-																			<li><a href="https://saratov.ru-mi.com/" >Саратов</a></li>
-													</ul>
-				</li>
-												<li>
-				<ul>
-				<li class="first_char">Т</li>
-														<li><a href="https://tula.ru-mi.com/" >Тула</a></li>
-																			<li><a href="https://tyumen.ru-mi.com/" >Тюмень</a></li>
-													</ul>
-				</li>
-												<li>
-				<ul>
-				<li class="first_char">У</li>
-														<li><a href="https://ufa.ru-mi.com/" >Уфа</a></li>
-													</ul>
-				</li>
-												<li>
-				<ul>
-				<li class="first_char">Ч</li>
-														<li><a href="https://chelyabinsk.ru-mi.com/" >Челябинск</a></li>
-													</ul>
-				</li>
-												</ul><ul>
-								<li>
-				<ul>
-				<li class="first_char">Я</li>
-														<li><a href="https://yaroslavl.ru-mi.com/" >Ярославль</a></li>
-													</ul>
-				</li>
-						</ul>
-	</div>
-	<div class="town_popup_list_bottom">
-		Не нашли свой город? У нас есть доставка по <a href="https://ru-mi.com/dostavka">России</a>, <a href="https://ukraina.ru-mi.com/" class="set_country" country_name="Украина">Украине</a>, <a href="https://belarus.ru-mi.com/" class="set_country" country_name="Беларусь">Беларуси</a>.
-	</div>
-</div>
-<script type="text/javascript"><!--
-var status = '1';
-
-var dadataUrl = 'https://dadata.ru/api/v2';
-
-function initFields() {
-	if (status == '1') {
-		FullAddressSuggestions.init({
-			address: $('#main_city'),
-			url: dadataUrl,
-			dadata_citytype: 0,
-			bounds: "city-settlement",
-			token: "104b1c57fa8aff36e7110f34ad5e444009d10ba8",
-			tips: "10",
-			correction: "1",
-			additional: "1"
-		});
-	}
-}
-
-$(document).ready(function() {
-	initFields();
-});
-//--></script>
-<div class="grey_bg"></div>
-<div id="header"  >
-		<div class="container">
-		<div class="header_top_adaptive_menu">
-			<span>Меню</span>
-		</div>
-		<div class="header_top_adaptive_menu_inner">
-			<div class="header_top_adaptive_menu_closed">
-				<span>Меню</span>
-				<div class="header_top_adaptive_menu_go_close"></div>
-			</div>
-			<div class="header_top_adaptive_menu_inner_links">
-								<div class="as_a"><a class="header_login_enter" href="https://ru-mi.com/login/">Войти</a><a class="header_login_register" href="https://ru-mi.com/simpleregister/">Регистрация</a></div>
-								<a class="town_go_find">Город: <span>Москва</span></a>
-								<a href="https://ru-mi.com/shops/">Магазины</a>
-								<a href="https://ru-mi.com/contact/">Контакты</a>
-				<a href="https://ru-mi.com/infopage/">Доставка и оплата</a>
-				<a href="https://ru-mi.com/dostavka">Гарантия</a>
-				<a href="https://ru-mi.com/specials/">Скидки</a>
-				<a href="https://ru-mi.com/about">О компании</a>
-			</div>
-		</div>
-	</div>
-	<div class="header_top_adaptive">
-	</div>
-	<div id="header_top">
-		<div class="container">
-			<div class="town_selector">
-				Ваш город: <span class="town_moscow town_go_find">Москва</span>
-			</div>
-			<div id="welcome">
-								<a class="header_login_enter" href="https://ru-mi.com/login/">Войти</a><a class="header_login_register" href="https://ru-mi.com/simpleregister/">Регистрация</a>							</div>
-		</div>
-	</div>
-		<div id="header_middle">
-		<div class="container">
-							<div id="logo">
-											<img src="https://ru-mi.com/image/data/logo_firm.png" title="«Румиком» — фирменный магазин Xiaomi" alt="«Румиком» — фирменный магазин Xiaomi" />
-									</div>
-															<a class="rumi_shops_link" href="https://ru-mi.com/shops/"><span>Магазины</span></a>
-						<div id="search">
-				<div class="button-search"></div>
-				<div class="search-close"></div>
-				<input type="text" name="search" placeholder="Поиск по товарам, например Xiaomi" value="" />
-			</div>
-			<div id="search_adaptive_icon"></div>
-						<div id="header_phones">
-				<a href="tel:84951202325"><span class="phone_top">+7 (495) <span>120 23 25</span></span></a>
-				<div class="everyday_text">с 9 до 21 (Москва)<span class="callback_button"><span>Обратный звонок</span></span></div>
-			</div>
-		</div>
-	</div>
-		<div class="search_adaptive_line">
-		<div class="container">
-			<div id="search_adaptive">
-				<div class="button-search2"></div>
-				<div class="search-close2"></div>
-				<input type="text" name="search2" placeholder="Поиск по товарам, например Xiaomi" value="" />
-			</div>
-		</div>
-	</div>
-			<div id="header_menu">
-		<div class="container">
-			<div id="menu_categories">
-				<div id="menu_categories_selector"><span>Каталог товаров</span></div>
-								<div id="menu" style='display: none;'>
-				  <ul>
-															<li>
-					<a href="https://ru-mi.com/smartphones/" id="category_id59" class="e901 main_menu"><span>Смартфоны</span></a>
-																														<div class="children" style='width:600px'>
-																<ul class="children-list">
-																																<li>
-									<a class="link level2_can_opened main_menu_sub" href="https://ru-mi.com/smartphones/xiaomi-mi-8/">
-										<span class="text">
-											Xiaomi Mi 8											<div class="icon_hit">Хит</div>																																</span>
-									</a>
-																		<div class="subchildren">
-										<ul>
-																					<li ><a href="https://ru-mi.com/smartphones/xiaomi-mi-8/mi-8-explorer-edition/"><span>Mi 8 Explorer Edition</span></a></li>
-																					<li ><a href="https://ru-mi.com/smartphones/xiaomi-mi-8/mi-8-youth/"><span>Mi 8 Lite</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/smartphones/xiaomi-mi-8/mi-8-screen-fingerprint/"><span>Mi 8 Pro</span></a></li>
-																																										<li class="show_also_menu"><a href="https://ru-mi.com/smartphones/xiaomi-mi-8/"><span>Посмотреть всё</span></a></li>
-																				</ul>
-									</div>
-
-								</li>
-																								<li>
-									<a class="link main_menu_sub" href="https://ru-mi.com/smartphones/smartfon-mi-8-se/">
-										<span class="text">
-											Xiaomi Mi 8 SE																						<div class="icon_new">New!</div>																					</span>
-									</a>
-
-								</li>
-																								<li>
-									<a class="link main_menu_sub" href="https://ru-mi.com/smartphones/xiaomi-mi6/">
-										<span class="text">
-											Xiaomi Mi6																																											</span>
-									</a>
-
-								</li>
-																								<li>
-									<a class="link level2_can_opened main_menu_sub" href="https://ru-mi.com/smartphones/xiaomi-mi-a2/">
-										<span class="text">
-											Xiaomi Mi A2																																											</span>
-									</a>
-																		<div class="subchildren">
-										<ul>
-																					<li ><a href="https://ru-mi.com/smartphones/xiaomi-mi-a2/xiaomi-mi-a2-lite/"><span>Xiaomi Mi A2 Lite</span></a></li>
-																														</ul>
-									</div>
-
-								</li>
-																								<li>
-									<a class="link main_menu_sub" href="https://ru-mi.com/smartphones/pocophone-f1/">
-										<span class="text">
-											Xiaomi Pocophone F1											<div class="icon_hit">Хит</div>																																</span>
-									</a>
-
-								</li>
-																								<li>
-									<a class="link level2_can_opened main_menu_sub" href="https://ru-mi.com/smartphones/xiaomi-mi-mix-2/">
-										<span class="text">
-											Xiaomi Mi MIX 2																																											</span>
-									</a>
-																		<div class="subchildren">
-										<ul>
-																					<li ><a href="https://ru-mi.com/smartphones/xiaomi-mi-mix-2/xiaomi-mi-mix-2s/"><span>Xiaomi Mi MIX 2S</span></a></li>
-																														</ul>
-									</div>
-
-								</li>
-																								<li>
-									<a class="link main_menu_sub" href="https://ru-mi.com/smartphones/xiaomi-mi-mix-3/">
-										<span class="text">
-											Xiaomi Mi MIX 3																						<div class="icon_new">New!</div>																					</span>
-									</a>
-
-								</li>
-																								<li>
-									<a class="link main_menu_sub" href="https://ru-mi.com/smartphones/xiaomi-redmi-note-7/">
-										<span class="text">
-											Xiaomi Redmi Note 7																																	<div class="icon_skor">Скоро</div>										</span>
-									</a>
-
-								</li>
-																								<li>
-									<a class="link level2_can_opened main_menu_sub" href="https://ru-mi.com/smartphones/redmi-note-6-6a-6pro/">
-										<span class="text">
-											Xiaomi Redmi Note 6																						<div class="icon_new">New!</div>																					</span>
-									</a>
-																		<div class="subchildren">
-										<ul>
-																					<li ><a href="https://ru-mi.com/smartphones/redmi-note-6-6a-6pro/xiaomi-redmi-note-6-pro/"><span>Xiaomi Redmi Note 6 Pro</span></a></li>
-																					<li ><a href="https://ru-mi.com/smartphones/redmi-note-6-6a-6pro/xiaomi-redmi-note-6a/"><span>Xiaomi Redmi Note 6A</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/smartphones/redmi-note-6-6a-6pro/xiaomi-redmi-note-6/"><span>Xiaomi Redmi Note 6</span></a></li>
-																																										<li class="show_also_menu"><a href="https://ru-mi.com/smartphones/redmi-note-6-6a-6pro/"><span>Посмотреть всё</span></a></li>
-																				</ul>
-									</div>
-
-								</li>
-																								<li>
-									<a class="link level2_can_opened main_menu_sub" href="https://ru-mi.com/smartphones/smartphone-xiaomi-redmi-note-5/">
-										<span class="text">
-											Xiaomi Redmi Note 5																																											</span>
-									</a>
-																		<div class="subchildren">
-										<ul>
-																					<li ><a href="https://ru-mi.com/smartphones/smartphone-xiaomi-redmi-note-5/xiaomi-redmi-note-5a-prime/"><span>Xiaomi Redmi Note 5A Prime</span></a></li>
-																					<li ><a href="https://ru-mi.com/smartphones/smartphone-xiaomi-redmi-note-5/xiaomi-redmi-note-5a/"><span>Xiaomi Redmi Note 5A</span></a></li>
-																														</ul>
-									</div>
-
-								</li>
-																																								</ul>
-								<ul class="children-list">
-																<li>
-									<a class="link level2_can_opened main_menu_sub" href="https://ru-mi.com/smartphones/xiaomiredminotechetyre/">
-										<span class="text">
-											Xiaomi Redmi Note 4 / 4X																																											</span>
-									</a>
-																		<div class="subchildren">
-										<ul>
-																					<li ><a href="https://ru-mi.com/smartphones/xiaomiredminotechetyre/xiaomi-redmi-note-4/"><span>Xiaomi Redmi Note 4</span></a></li>
-																					<li ><a href="https://ru-mi.com/smartphones/xiaomiredminotechetyre/xiaomi-redmi-note-4x/"><span>Xiaomi Redmi Note 4X</span></a></li>
-																														</ul>
-									</div>
-
-								</li>
-																								<li>
-									<a class="link main_menu_sub" href="https://ru-mi.com/smartphones/xiaomi-mi-max-3/">
-										<span class="text">
-											Xiaomi Mi Max 3																																											</span>
-									</a>
-
-								</li>
-																								<li>
-									<a class="link main_menu_sub" href="https://ru-mi.com/smartphones/xiaomi-redmi-s2/">
-										<span class="text">
-											Xiaomi Redmi S2																																											</span>
-									</a>
-
-								</li>
-																								<li>
-									<a class="link level2_can_opened main_menu_sub" href="https://ru-mi.com/smartphones/xiaomi-redmi-6/">
-										<span class="text">
-											Xiaomi Redmi 6																																											</span>
-									</a>
-																		<div class="subchildren">
-										<ul>
-																					<li ><a href="https://ru-mi.com/smartphones/xiaomi-redmi-6/xiaomi-redmi-6-pro/"><span>Xiaomi Redmi 6 Pro</span></a></li>
-																					<li ><a href="https://ru-mi.com/smartphones/xiaomi-redmi-6/xiaomi-redmi-6a/"><span>Xiaomi Redmi 6A</span></a></li>
-																														</ul>
-									</div>
-
-								</li>
-																								<li>
-									<a class="link level2_can_opened main_menu_sub" href="https://ru-mi.com/smartphones/xiaomi-redmi-5-5a/">
-										<span class="text">
-											Xiaomi Redmi 5																																											</span>
-									</a>
-																		<div class="subchildren">
-										<ul>
-																					<li ><a href="https://ru-mi.com/smartphones/xiaomi-redmi-5-5a/xiaomi-redmi-5/"><span>Xiaomi Redmi 5</span></a></li>
-																					<li ><a href="https://ru-mi.com/smartphones/xiaomi-redmi-5-5a/xiaomi-redmi-5-plus/"><span>Xiaomi Redmi 5 Plus</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/smartphones/xiaomi-redmi-5-5a/xiaomi-redmi-5a/"><span>Xiaomi Redmi 5A</span></a></li>
-																																										<li class="show_also_menu"><a href="https://ru-mi.com/smartphones/xiaomi-redmi-5-5a/"><span>Посмотреть всё</span></a></li>
-																				</ul>
-									</div>
-
-								</li>
-																								<li>
-									<a class="link main_menu_sub" href="https://ru-mi.com/smartphones/xiaomi-mi-play/">
-										<span class="text">
-											Xiaomi Mi Play																																											</span>
-									</a>
-
-								</li>
-																								<li>
-									<a class="link main_menu_sub" href="https://ru-mi.com/smartphones/xiaomi-redmi-go/">
-										<span class="text">
-											Xiaomi Redmi Go																																											</span>
-									</a>
-
-								</li>
-																								<li>
-									<a class="link main_menu_sub" href="https://ru-mi.com/smartphones/xiaomi-black-shark/">
-										<span class="text">
-											Xiaomi Black Shark																																											</span>
-									</a>
-
-								</li>
-																								<li>
-									<a class="link level2_can_opened main_menu_sub" href="https://ru-mi.com/smartphones/knopochnye-telefony/">
-										<span class="text">
-											Кнопочные телефоны																																											</span>
-									</a>
-																		<div class="subchildren">
-										<ul>
-																					<li ><a href="https://ru-mi.com/smartphones/knopochnye-telefony/smartfonyi-qin-1s/"><span>Смартфоны QIN 1S</span></a></li>
-																					<li ><a href="https://ru-mi.com/smartphones/knopochnye-telefony/smartfonyi-zmi/"><span>Смартфоны ZMI</span></a></li>
-																														</ul>
-									</div>
-
-								</li>
-
-								</ul>
-														</div>
-											</li>
-															<li>
-					<a href="https://ru-mi.com/tablet/" id="category_id60" class="e902 main_menu"><span>Ноутбуки и планшеты</span></a>
-																														<div class="children" style='width:300px'>
-																<ul class="children-list">
-																																<li>
-									<a class="link level2_can_opened main_menu_sub" href="https://ru-mi.com/tablet/noutbuki-xiaomi/">
-										<span class="text">
-											Ноутбуки Xiaomi																																											</span>
-									</a>
-																		<div class="subchildren">
-										<ul>
-																					<li ><a href="https://ru-mi.com/tablet/noutbuki-xiaomi/xiaomi-mi-gaming-laptop/"><span>Xiaomi Mi Gaming Laptop</span></a></li>
-																					<li ><a href="https://ru-mi.com/tablet/noutbuki-xiaomi/xiaomi-mi-notebook/"><span>Xiaomi Mi Notebook</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/tablet/noutbuki-xiaomi/minotebookpro/"><span>Xiaomi Mi Notebook Pro</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/tablet/noutbuki-xiaomi/minotebook/"><span>Mi Notebook Air</span></a></li>
-																																										<li class="show_also_menu"><a href="https://ru-mi.com/tablet/noutbuki-xiaomi/"><span>Посмотреть всё</span></a></li>
-																				</ul>
-									</div>
-
-								</li>
-																								<li>
-									<a class="link level2_can_opened main_menu_sub" href="https://ru-mi.com/tablet/planshetyi-xiaomi/">
-										<span class="text">
-											Планшеты Xiaomi																																											</span>
-									</a>
-																		<div class="subchildren">
-										<ul>
-																					<li ><a href="https://ru-mi.com/tablet/planshetyi-xiaomi/mi-pad-4/"><span>Mi Pad 4</span></a></li>
-																					<li ><a href="https://ru-mi.com/tablet/planshetyi-xiaomi/mi-pad-4-plus/"><span>Mi Pad 4 Plus</span></a></li>
-																														</ul>
-									</div>
-
-								</li>
-																								<li>
-									<a class="link main_menu_sub" href="https://ru-mi.com/tablet/klaviaturyi-i-myishki-xiaomi/">
-										<span class="text">
-											Клавиатуры и мышки Xiaomi																																											</span>
-									</a>
-
-								</li>
-
-								</ul>
-																														</div>
-											</li>
-															<li>
-					<a href="https://ru-mi.com/device/" id="category_id61" class="e903 main_menu"><span>Гаджеты</span></a>
-																														<div class="children" style='width:600px'>
-																<ul class="children-list">
-																																<li>
-									<a class="link level2_can_opened main_menu_sub" href="https://ru-mi.com/device/brasleti/">
-										<span class="text">
-											Фитнес браслеты																																											</span>
-									</a>
-																		<div class="subchildren">
-										<ul>
-																					<li ><a href="https://ru-mi.com/device/brasleti/xiaomi-mi-band-3/"><span>Xiaomi Mi Band 3</span></a></li>
-																					<li ><a href="https://ru-mi.com/device/brasleti/fitnes-braslet-xiaomi-mi-band-2-category/"><span>Xiaomi Mi Band 2</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/device/brasleti/xiaomi-band-plus/"><span>Xiaomi Black Plus</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/device/brasleti/fitnes-braslet-xiaomi-mi-band-category/"><span>Xiaomi Mi Band 1/1S</span></a></li>
-																																										<li class="show_also_menu"><a href="https://ru-mi.com/device/brasleti/"><span>Посмотреть всё</span></a></li>
-																				</ul>
-									</div>
-
-								</li>
-																								<li>
-									<a class="link level2_can_opened main_menu_sub" href="https://ru-mi.com/device/zdorove/">
-										<span class="text">
-											Спорт и здоровье																																											</span>
-									</a>
-																		<div class="subchildren">
-										<ul>
-																					<li ><a href="https://ru-mi.com/device/zdorove/umnyie-vesyi-xiaomi/"><span>Умные весы </span></a></li>
-																					<li ><a href="https://ru-mi.com/device/zdorove/termometryi/"><span>Термометры</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/device/zdorove/tonometryi-xiaomi/"><span>Тонометры </span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/device/zdorove/ratsii-xiaomi/"><span>Рации </span></a></li>
-																																										<li class="show_also_menu"><a href="https://ru-mi.com/device/zdorove/"><span>Посмотреть всё</span></a></li>
-																				</ul>
-									</div>
-
-								</li>
-																								<li>
-									<a class="link level2_can_opened main_menu_sub" href="https://ru-mi.com/device/umnyiy-dom/">
-										<span class="text">
-											«Умный дом»											<div class="icon_hit">Хит</div>																																</span>
-									</a>
-																		<div class="subchildren">
-										<ul>
-																					<li ><a href="https://ru-mi.com/device/umnyiy-dom/sistema-umnyiy-dom/"><span>Система умный дом</span></a></li>
-																					<li ><a href="https://ru-mi.com/device/umnyiy-dom/byitovaya-tehnika-xiaomi/"><span>Бытовая техника </span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/device/umnyiy-dom/umnyiy-svet/"><span>Умный свет</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/device/umnyiy-dom/nagrevatel-vody/"><span>Нагреватели воды</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/device/umnyiy-dom/ochistitel-vodyi-xiaomi/"><span>Очистители воды </span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/device/umnyiy-dom/uvlajnitel-vozduha-xiaomi/"><span>Увлажнители воздуха </span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/device/umnyiy-dom/obogrevatel-vozdukha-xiaomi/"><span>Обогреватели воздуха</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/device/umnyiy-dom/ochistitel-vozduha-xiaomi/"><span>Очистители воздуха </span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/device/umnyiy-dom/testeryi/"><span>Тестеры</span></a></li>
-																																										<li class="show_also_menu"><a href="https://ru-mi.com/device/umnyiy-dom/"><span>Посмотреть всё</span></a></li>
-																				</ul>
-									</div>
-
-								</li>
-																								<li>
-									<a class="link level2_can_opened main_menu_sub" href="https://ru-mi.com/device/umnyie-chasyi/">
-										<span class="text">
-											Браслеты и часы																																											</span>
-									</a>
-																		<div class="subchildren">
-										<ul>
-																					<li ><a href="https://ru-mi.com/device/umnyie-chasyi/brasletyi-dlya-sporta/"><span>Браслеты для спорта</span></a></li>
-																					<li ><a href="https://ru-mi.com/device/umnyie-chasyi/chasy-ciga-design/"><span>Часы CIGA</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/device/umnyie-chasyi/chasy-mijia/"><span>Часы Mijia</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/device/umnyie-chasyi/amazfit-bip/"><span>Amazfit Bip</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/device/umnyie-chasyi/huami-smart-watch/"><span>Amazfit Pace</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/device/umnyie-chasyi/detskie-chasyi/"><span>Детские часы</span></a></li>
-																																										<li class="show_also_menu"><a href="https://ru-mi.com/device/umnyie-chasyi/"><span>Посмотреть всё</span></a></li>
-																				</ul>
-									</div>
-
-								</li>
-																								<li>
-									<a class="link level2_can_opened main_menu_sub" href="https://ru-mi.com/device/routeryi/">
-										<span class="text">
-											Роутеры																																											</span>
-									</a>
-																		<div class="subchildren">
-										<ul>
-																					<li ><a href="https://ru-mi.com/device/routeryi/xiaomi-mi-wi-fi-4/"><span>Xiaomi Mi Wi-Fi 4</span></a></li>
-																					<li ><a href="https://ru-mi.com/device/routeryi/xiaomi-mi-wi-fi-3/"><span>Xiaomi Mi Wi-FI 3</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/device/routeryi/xiaomi-mi-wi-fi-nano/"><span>Xiaomi Mi Wi-FI Mini / Nano</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/device/routeryi/xiaomi-mi-wi-fi-usb/"><span>Xiaomi Mi Wi-FI USB</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/device/routeryi/usiliteli-signala-wi-fi/"><span>Усилители сигнала</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/device/routeryi/marshrutizatoryi/"><span>Маршрутизаторы</span></a></li>
-																																										<li class="show_also_menu"><a href="https://ru-mi.com/device/routeryi/"><span>Посмотреть всё</span></a></li>
-																				</ul>
-									</div>
-
-								</li>
-																								<li>
-									<a class="link level2_can_opened main_menu_sub" href="https://ru-mi.com/device/svet/">
-										<span class="text">
-											Свет																																											</span>
-									</a>
-																		<div class="subchildren">
-										<ul>
-																					<li ><a href="https://ru-mi.com/device/svet/lampochki-1/"><span>Лампочки</span></a></li>
-																					<li ><a href="https://ru-mi.com/device/svet/lampyi/"><span>Лампы</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/device/svet/nochniki/"><span>Ночники</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/device/svet/portativnyie-svetilniki/"><span>Портативные светильники</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/device/svet/potolochnyie-svetilniki-1/"><span>Потолочные светильники</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/device/svet/svetodiodnye-lenty/"><span>Светодиодные ленты</span></a></li>
-																																										<li class="show_also_menu"><a href="https://ru-mi.com/device/svet/"><span>Посмотреть всё</span></a></li>
-																				</ul>
-									</div>
-
-								</li>
-																																								</ul>
-								<ul class="children-list">
-																<li>
-									<a class="link level2_can_opened main_menu_sub" href="https://ru-mi.com/device/gadjetyi-dlya-avtomobiley/">
-										<span class="text">
-											Гаджеты для автомобилей																																											</span>
-									</a>
-																		<div class="subchildren">
-										<ul>
-																					<li ><a href="https://ru-mi.com/device/gadjetyi-dlya-avtomobiley/avtovizitka/"><span>Автовизитки</span></a></li>
-																					<li ><a href="https://ru-mi.com/device/gadjetyi-dlya-avtomobiley/osvezhitel-vozduha-v-avtomobil/"><span>Освежители воздуха</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/device/gadjetyi-dlya-avtomobiley/avtomobilnyiy-ochistitel-vozduha/"><span>Очистители воздуха</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/device/gadjetyi-dlya-avtomobiley/avtomobilnyie-zaryadnyie-ustroystva/"><span>Зарядные устройства</span></a></li>
-																																										<li class="show_also_menu"><a href="https://ru-mi.com/device/gadjetyi-dlya-avtomobiley/"><span>Посмотреть всё</span></a></li>
-																				</ul>
-									</div>
-
-								</li>
-																								<li>
-									<a class="link level2_can_opened main_menu_sub" href="https://ru-mi.com/device/camera/">
-										<span class="text">
-											Фото и видео																																											</span>
-									</a>
-																		<div class="subchildren">
-										<ul>
-																					<li ><a href="https://ru-mi.com/device/camera/ip-kameryi/"><span>IP-камеры</span></a></li>
-																					<li ><a href="https://ru-mi.com/device/camera/xiaomi-yi-action-camera/"><span>Экшн камеры</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/device/camera/videoregistratory-xiaomi-car-yi-wifi-dvr/"><span>Видеорегистраторы </span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/device/camera/fotoapparatyi/"><span>Фотоаппараты</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/device/camera/kvadrocoptery/"><span>Квадрокоптеры</span></a></li>
-																																										<li class="show_also_menu"><a href="https://ru-mi.com/device/camera/"><span>Посмотреть всё</span></a></li>
-																				</ul>
-									</div>
-
-								</li>
-																								<li>
-									<a class="link level2_can_opened main_menu_sub" href="https://ru-mi.com/device/muzyikalnyie-instrumentyi/">
-										<span class="text">
-											Музыкальные инструменты																																											</span>
-									</a>
-																		<div class="subchildren">
-										<ul>
-																					<li ><a href="https://ru-mi.com/device/muzyikalnyie-instrumentyi/mikrofonyi/"><span>Микрофоны</span></a></li>
-																														</ul>
-									</div>
-
-								</li>
-																								<li>
-									<a class="link level2_can_opened main_menu_sub" href="https://ru-mi.com/device/drugoe-1/">
-										<span class="text">
-											Другое 																																											</span>
-									</a>
-																		<div class="subchildren">
-										<ul>
-																					<li ><a href="https://ru-mi.com/device/drugoe-1/hranilischa-dannyh/"><span>Хранение данных</span></a></li>
-																														</ul>
-									</div>
-
-								</li>
-																								<li>
-									<a class="link level2_can_opened main_menu_sub" href="https://ru-mi.com/device/tv-pristavki/">
-										<span class="text">
-											Телевизоры																																											</span>
-									</a>
-																		<div class="subchildren">
-										<ul>
-																					<li ><a href="https://ru-mi.com/device/tv-pristavki/televizoryi/"><span>Телевизоры</span></a></li>
-																					<li ><a href="https://ru-mi.com/device/tv-pristavki/tv-pristavki-xiaomi/"><span>TV приставки</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/device/tv-pristavki/proektoryi/"><span>Проекторы</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/device/tv-pristavki/akustika-dlya-tv/"><span>Акустика для ТВ</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/device/tv-pristavki/category-aksessuaryi-dlya-televizorov/"><span>Аксессуары для телевизоров</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/device/tv-pristavki/ochki-virtualnoy-realnosti/"><span>Очки виртуальной реальности</span></a></li>
-																																										<li class="show_also_menu"><a href="https://ru-mi.com/device/tv-pristavki/"><span>Посмотреть всё</span></a></li>
-																				</ul>
-									</div>
-
-								</li>
-
-								</ul>
-														</div>
-											</li>
-															<li>
-					<a href="https://ru-mi.com/naushniki-i-kolonki/" id="category_id147" class="e904 main_menu"><span>Наушники и колонки</span></a>
-																														<div class="children" style='width:300px'>
-																<ul class="children-list">
-																																<li>
-									<a class="link main_menu_sub" href="https://ru-mi.com/naushniki-i-kolonki/nakladnyie-naushniki/">
-										<span class="text">
-											Накладные наушники																																											</span>
-									</a>
-
-								</li>
-																								<li>
-									<a class="link level2_can_opened main_menu_sub" href="https://ru-mi.com/naushniki-i-kolonki/naushniki-vkladyishi/">
-										<span class="text">
-											Наушники вкладыши 																																											</span>
-									</a>
-																		<div class="subchildren">
-										<ul>
-																					<li ><a href="https://ru-mi.com/naushniki-i-kolonki/naushniki-vkladyishi/xiaomi-hybrid/"><span>Xiaomi Hybrid</span></a></li>
-																					<li ><a href="https://ru-mi.com/naushniki-i-kolonki/naushniki-vkladyishi/seriya-naushnikov-xiaomi-piston/"><span>Серия наушников Xiaomi Piston</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/naushniki-i-kolonki/naushniki-vkladyishi/1more/"><span>1More</span></a></li>
-																																										<li class="show_also_menu"><a href="https://ru-mi.com/naushniki-i-kolonki/naushniki-vkladyishi/"><span>Посмотреть всё</span></a></li>
-																				</ul>
-									</div>
-
-								</li>
-																								<li>
-									<a class="link level2_can_opened main_menu_sub" href="https://ru-mi.com/naushniki-i-kolonki/garnituryi/">
-										<span class="text">
-											Гарнитуры																																											</span>
-									</a>
-																		<div class="subchildren">
-										<ul>
-																					<li ><a href="https://ru-mi.com/naushniki-i-kolonki/garnituryi/xiaomi-mi-bluetooth-headset/"><span>Xiaomi Mi Bluetooth Headset</span></a></li>
-																					<li ><a href="https://ru-mi.com/naushniki-i-kolonki/garnituryi/bluetooth-garnitura-qcy/"><span>Bluetooth-гарнитура QCY</span></a></li>
-																														</ul>
-									</div>
-
-								</li>
-																								<li>
-									<a class="link level2_can_opened main_menu_sub" href="https://ru-mi.com/naushniki-i-kolonki/kolonki/">
-										<span class="text">
-											Колонки																																											</span>
-									</a>
-																		<div class="subchildren">
-										<ul>
-																					<li ><a href="https://ru-mi.com/naushniki-i-kolonki/kolonki/bluetooth-kolonki/"><span>Bluetooth колонки</span></a></li>
-																					<li ><a href="https://ru-mi.com/naushniki-i-kolonki/kolonki/radio-kolonki/"><span>Радио колонки</span></a></li>
-																														</ul>
-									</div>
-
-								</li>
-																								<li>
-									<a class="link level2_can_opened main_menu_sub" href="https://ru-mi.com/naushniki-i-kolonki/bluetooth-naushniki/">
-										<span class="text">
-											Bluetooth наушники 																																											</span>
-									</a>
-																		<div class="subchildren">
-										<ul>
-																					<li ><a href="https://ru-mi.com/naushniki-i-kolonki/bluetooth-naushniki/xiaomi-airdots/"><span>Xiaomi AirDots</span></a></li>
-																					<li ><a href="https://ru-mi.com/naushniki-i-kolonki/bluetooth-naushniki/ibfree/"><span>1More</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/naushniki-i-kolonki/bluetooth-naushniki/xiaomi-mi-sport/"><span>Xiaomi Mi Sport</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/naushniki-i-kolonki/bluetooth-naushniki/xiaomi-codoon/"><span>Xiaomi Codoon</span></a></li>
-																																										<li class="show_also_menu"><a href="https://ru-mi.com/naushniki-i-kolonki/bluetooth-naushniki/"><span>Посмотреть всё</span></a></li>
-																				</ul>
-									</div>
-
-								</li>
-																								<li>
-									<a class="link main_menu_sub" href="https://ru-mi.com/naushniki-i-kolonki/type-c-naushniki/">
-										<span class="text">
-											Type-C наушники																																											</span>
-									</a>
-
-								</li>
-
-								</ul>
-																														</div>
-											</li>
-															<li>
-					<a href="https://ru-mi.com/zaryadnyie-ustroystva/" id="category_id148" class="e905 main_menu"><span>Зарядные устройства</span></a>
-																														<div class="children" style='width:300px'>
-																<ul class="children-list">
-																																<li>
-									<a class="link main_menu_sub" href="https://ru-mi.com/zaryadnyie-ustroystva/besprovodnyie-zaryadnyie-ustroystva/">
-										<span class="text">
-											Беспроводные зарядные устройства																																											</span>
-									</a>
-
-								</li>
-																								<li>
-									<a class="link level2_can_opened main_menu_sub" href="https://ru-mi.com/zaryadnyie-ustroystva/power-bank-vneshnie-akkumulyatoryi/">
-										<span class="text">
-											Внешние аккумуляторы 																																											</span>
-									</a>
-																		<div class="subchildren">
-										<ul>
-																					<li ><a href="https://ru-mi.com/zaryadnyie-ustroystva/power-bank-vneshnie-akkumulyatoryi/xiaomi-power-bank-2/"><span>Xiaomi Power Bank 2</span></a></li>
-																					<li ><a href="https://ru-mi.com/zaryadnyie-ustroystva/power-bank-vneshnie-akkumulyatoryi/xiaomi-power-bank/"><span>Xiaomi Power Bank</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/zaryadnyie-ustroystva/power-bank-vneshnie-akkumulyatoryi/zmi-power-bank/"><span>ZMI Power Bank</span></a></li>
-																																										<li class="show_also_menu"><a href="https://ru-mi.com/zaryadnyie-ustroystva/power-bank-vneshnie-akkumulyatoryi/"><span>Посмотреть всё</span></a></li>
-																				</ul>
-									</div>
-
-								</li>
-																								<li>
-									<a class="link level2_can_opened main_menu_sub" href="https://ru-mi.com/zaryadnyie-ustroystva/provoda-i-zaryadki/">
-										<span class="text">
-											Провода и зарядки																																											</span>
-									</a>
-																		<div class="subchildren">
-										<ul>
-																					<li ><a href="https://ru-mi.com/zaryadnyie-ustroystva/provoda-i-zaryadki/adapteryi/"><span>Адаптеры</span></a></li>
-																					<li ><a href="https://ru-mi.com/zaryadnyie-ustroystva/provoda-i-zaryadki/provoda-usb-microusb/"><span>USB - Micro USB</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/zaryadnyie-ustroystva/provoda-i-zaryadki/provoda-usb-typec/"><span>USB - Type-C</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/zaryadnyie-ustroystva/provoda-i-zaryadki/provoda-usb-lightning/"><span>USB - Lightning</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/zaryadnyie-ustroystva/provoda-i-zaryadki/universalnye-kabeli-3-v-1/"><span>Кабели трансформеры</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/zaryadnyie-ustroystva/provoda-i-zaryadki/kabeli-typec-to-35mm/"><span>Type-C - 3.5 мм</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/zaryadnyie-ustroystva/provoda-i-zaryadki/kabeli-aux-35mm/"><span>AUX 3.5 мм</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/zaryadnyie-ustroystva/provoda-i-zaryadki/otg-kabeli-i-perehodniki/"><span>OTG-кабели</span></a></li>
-																																										<li class="show_also_menu"><a href="https://ru-mi.com/zaryadnyie-ustroystva/provoda-i-zaryadki/"><span>Посмотреть всё</span></a></li>
-																				</ul>
-									</div>
-
-								</li>
-																								<li>
-									<a class="link main_menu_sub" href="https://ru-mi.com/zaryadnyie-ustroystva/akkumulyatornyie-batareyki/">
-										<span class="text">
-											Батарейки																																											</span>
-									</a>
-
-								</li>
-																								<li>
-									<a class="link level2_can_opened main_menu_sub" href="https://ru-mi.com/zaryadnyie-ustroystva/setevyie-ustroystva/">
-										<span class="text">
-											Сетевые устройства																																											</span>
-									</a>
-																		<div class="subchildren">
-										<ul>
-																					<li ><a href="https://ru-mi.com/zaryadnyie-ustroystva/setevyie-ustroystva/udliniteli/"><span>Удлинители</span></a></li>
-																					<li ><a href="https://ru-mi.com/zaryadnyie-ustroystva/setevyie-ustroystva/rozetki/"><span>Розетки</span></a></li>
-																														</ul>
-									</div>
-
-								</li>
-																								<li>
-									<a class="link main_menu_sub" href="https://ru-mi.com/zaryadnyie-ustroystva/dlya-avtomobilya/">
-										<span class="text">
-											Для автомобиля																																											</span>
-									</a>
-
-								</li>
-
-								</ul>
-																														</div>
-											</li>
-															<li>
-					<a href="https://ru-mi.com/accessories/" id="category_id62" class="e906 main_menu"><span>Аксессуары</span></a>
-																														<div class="children" style='width:600px'>
-																<ul class="children-list">
-																																<li>
-									<a class="link level2_can_opened main_menu_sub" href="https://ru-mi.com/accessories/dlya-smartfonov/">
-										<span class="text">
-											Для смартфонов 																																											</span>
-									</a>
-																		<div class="subchildren">
-										<ul>
-																					<li ><a href="https://ru-mi.com/accessories/dlya-smartfonov/aksessuaryi-dlya-mi-play/"><span>для Mi Play</span></a></li>
-																					<li ><a href="https://ru-mi.com/accessories/dlya-smartfonov/aksessuaryi-dlya-poco-f1/"><span>для POCOPHONE F1</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/accessories/dlya-smartfonov/dlya-xiaomi-black-shark/"><span>для Xiaomi Black Shark</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/accessories/dlya-smartfonov/aksessuaryi-dlya-black-shark-2-helo/"><span>для Xiaomi Black Shark 2 Helo</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/accessories/dlya-smartfonov/dlya-xiaomi-mi-6x/"><span>для Xiaomi Mi 6X</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/accessories/dlya-smartfonov/dlya-xiaomi-mi8/"><span>для Xiaomi Mi 8</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/accessories/dlya-smartfonov/dlya-xiaomi-mi8-lite/"><span>для Xiaomi Mi 8 Lite</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/accessories/dlya-smartfonov/dlya-xiaomi-mi8-pro/"><span>для Xiaomi Mi 8 Pro</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/accessories/dlya-smartfonov/dlya-xiaomi-mi-a1/"><span>для Xiaomi Mi A1</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/accessories/dlya-smartfonov/dlya-xiaomi-mi-a2/"><span>для Xiaomi Mi A2</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/accessories/dlya-smartfonov/dlya-xiaomi-mi-a2-lite/"><span>для Xiaomi Mi A2 Lite</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/accessories/dlya-smartfonov/dlya-xiaomi-mi-max-3/"><span>для Xiaomi Mi Max 3</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/accessories/dlya-smartfonov/dlya-xiaomi-mi-mix-2/"><span>для Xiaomi Mi Mix 2</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/accessories/dlya-smartfonov/dlya-xiaomi-mi-mix-2s/"><span>для Xiaomi Mi Mix 2S</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/accessories/dlya-smartfonov/dlya-xiaomi-mi-mix-3/"><span>для Xiaomi Mi Mix 3</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/accessories/dlya-smartfonov/dlya-xiaomi-mi-note-3/"><span>для Xiaomi Mi Note 3</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/accessories/dlya-smartfonov/dlya-xiaomi-mi8-se/"><span>для Xiaomi Mi8 SE</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/accessories/dlya-smartfonov/dlya-xiaomi-redmi-4x/"><span>для Xiaomi Redmi 4X</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/accessories/dlya-smartfonov/dlya-xiaomi-redmi-5/"><span>для Xiaomi Redmi 5</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/accessories/dlya-smartfonov/dlya-xiaomi-redmi-5-plus/"><span>для Xiaomi Redmi 5 Plus</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/accessories/dlya-smartfonov/dlya-xiaomi-redmi-5a/"><span>Для Xiaomi Redmi 5A</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/accessories/dlya-smartfonov/dlya-xiaomi-redmi-6/"><span>для Xiaomi Redmi 6</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/accessories/dlya-smartfonov/dlya-xiaomi-redmi-6-pro/"><span>для Xiaomi Redmi 6 Pro</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/accessories/dlya-smartfonov/dlya-xiaomi-redmi-6a/"><span>для Xiaomi Redmi 6A</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/accessories/dlya-smartfonov/dlya-xiaomi-redmi-note-5-pro/"><span>для Xiaomi Redmi Note 5</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/accessories/dlya-smartfonov/dlya-xiaomi-redmi-note-5-pr/"><span>для Xiaomi Redmi Note 5 Pro</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/accessories/dlya-smartfonov/dlya-xiaomi-redmi-note-5a-prime/"><span>для Xiaomi Redmi Note 5A Prime</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/accessories/dlya-smartfonov/dlya-xiaomi-redmi-note-6/"><span>для Xiaomi Redmi Note 6</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/accessories/dlya-smartfonov/dlya-xiaomi-redmi-note-6-pro/"><span>для Xiaomi Redmi Note 6 Pro</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/accessories/dlya-smartfonov/dlya-xiaomi-redmi-s2/"><span>для Xiaomi Redmi S2</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/accessories/dlya-smartfonov/dlya-xiaomi-mi6/"><span>для Xiaomi Mi 6</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/accessories/dlya-smartfonov/dlya-xiaomi-mi-max-2/"><span>для Xiaomi Mi Max 2</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/accessories/dlya-smartfonov/dlya-xiaomi-redmi-4a/"><span>Для Xiaomi Redmi 4A</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/accessories/dlya-smartfonov/dlya-xiaomi-redmi-note-4x/"><span>для Xiaomi Redmi Note 4X</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/accessories/dlya-smartfonov/dlya-xiaomi-redmi-note-5a/"><span>для Xiaomi Redmi Note 5A</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/accessories/dlya-smartfonov/dlia-mi-piat-s/"><span>для Xiaomi Mi5S</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/accessories/dlya-smartfonov/dlia-mi-piat-s-plus/"><span>для Xiaomi Mi5S Plus</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/accessories/dlya-smartfonov/dlya-xiaomi-max/"><span>для Xiaomi Mi Max</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/accessories/dlya-smartfonov/dlya-xiaomi-mi-note-2/"><span>для Xiaomi Mi Note 2</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/accessories/dlya-smartfonov/dlya-xiaomi-mi-5x/"><span>для Xiaomi Mi 5X</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/accessories/dlya-smartfonov/dlya-xiaomi-mi5/"><span>для Xiaomi Mi5</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/accessories/dlya-smartfonov/dlya-xiaomi-mi5c/"><span>для Xiaomi Mi5c</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/accessories/dlya-smartfonov/dlia-redmi-note-chetyre/"><span>для Xiaomi Redmi Note 4</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/accessories/dlya-smartfonov/dlya-xiaomi-mix/"><span>для Xiaomi Mi MIX</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/accessories/dlya-smartfonov/dlya-xiaomi-redmi-3/"><span>для Xiaomi Redmi 3/Pro/S</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/accessories/dlya-smartfonov/dlya-xiaomi-redmi-note-3/"><span>для Xiaomi Redmi Note 3/Pro</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/accessories/dlya-smartfonov/dlya-xiaomi-redmi-4-redmi-4-pro/"><span>Для Xiaomi Redmi 4 Pro</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/accessories/dlya-smartfonov/aksessuaryi-dlya-xiaomi-redmi-4/"><span>для Xiaomi Redmi 4</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/accessories/dlya-smartfonov/dlya-xiaomi-redmi-pro/"><span>для Xiaomi Redmi Pro</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/accessories/dlya-smartfonov/dlya-xiaomi-mi4c/"><span>для Xiaomi Mi4c</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/accessories/dlya-smartfonov/accessorizemi4/"><span>для Xiaomi Mi4</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/accessories/dlya-smartfonov/dlya-xiaomi-mi4i-1/"><span>для Xiaomi Mi4i</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/accessories/dlya-smartfonov/dlya-xiaomi-mi4s/"><span>для Xiaomi Mi4s</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/accessories/dlya-smartfonov/accessorizemi3/"><span>для Xiaomi Mi3</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/accessories/dlya-smartfonov/dlya-xiaomi-mi-note/"><span>для Xiaomi Mi Note</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/accessories/dlya-smartfonov/accessorizemi2/"><span>для Xiaomi Mi2</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/accessories/dlya-smartfonov/dlya-xiaomi-redmi-note-2/"><span>для Xiaomi Redmi Note 2</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/accessories/dlya-smartfonov/accessorizeredminote/"><span>для Xiaomi Redmi Note</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/accessories/dlya-smartfonov/accessorizerice2/"><span>для Xiaomi Redmi 2</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/accessories/dlya-smartfonov/accessorizeredmi1s/"><span>для Xiaomi Red Rise 1s</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/accessories/dlya-smartfonov/chechli-i-zashita-dlia-smartfonov-xiaomi/"><span>Чехлы и защита</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/accessories/dlya-smartfonov/plenki-i-stekla-dlia-smartfonov/"><span>Пленки и стекла</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/accessories/dlya-smartfonov/zadnie-kryshki-dlia-smartfonov/"><span>Задние крышки</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/accessories/dlya-smartfonov/nakleiki-dlia-smartfonov/"><span>Наклейки</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/accessories/dlya-smartfonov/derjateli/"><span>Держатели и крепления</span></a></li>
-																																										<li class="show_also_menu"><a href="https://ru-mi.com/accessories/dlya-smartfonov/"><span>Посмотреть всё</span></a></li>
-																				</ul>
-									</div>
-
-								</li>
-																								<li>
-									<a class="link level2_can_opened main_menu_sub" href="https://ru-mi.com/accessories/powerbank/">
-										<span class="text">
-											Для Xiaomi Power Bank																																											</span>
-									</a>
-																		<div class="subchildren">
-										<ul>
-																					<li ><a href="https://ru-mi.com/accessories/powerbank/dlya-xiaomi-power-bank-2-10000/"><span>для Power Bank 2 10000</span></a></li>
-																					<li ><a href="https://ru-mi.com/accessories/powerbank/dlya-xiaomi-power-bank-2c-20000/"><span>для Power Bank 2C 20000</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/accessories/powerbank/dlya-xiaomi-power-bank-2i-10000/"><span>для Power Bank 2i 10000</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/accessories/powerbank/dlya-xiaomi-power-bank-2-20000/"><span>для Power Bank 2 20000</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/accessories/powerbank/dlya-xiaomi-power-bank-5000/"><span>для Power Bank 5000</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/accessories/powerbank/dlya-xiaomi-power-bank-10000/"><span>для Power Bank 10000</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/accessories/powerbank/dlya-xiaomi-power-bank-2-10400/"><span>для Power Bank 10400</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/accessories/powerbank/dlya-xiaomi-power-bank-16000/"><span>для Power Bank 16000</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/accessories/powerbank/dlya-xiaomi-power-bank-20000/"><span>для Power Bank 20000</span></a></li>
-																																										<li class="show_also_menu"><a href="https://ru-mi.com/accessories/powerbank/"><span>Посмотреть всё</span></a></li>
-																				</ul>
-									</div>
-
-								</li>
-																								<li>
-									<a class="link level2_can_opened main_menu_sub" href="https://ru-mi.com/accessories/dlya-planshetov/">
-										<span class="text">
-											Для планшетов 																																											</span>
-									</a>
-																		<div class="subchildren">
-										<ul>
-																					<li ><a href="https://ru-mi.com/accessories/dlya-planshetov/dlya-xiaomi-mi-pad-3/"><span>Для Xiaomi Mi Pad 3</span></a></li>
-																					<li ><a href="https://ru-mi.com/accessories/dlya-planshetov/dlya-xiaomi-mi-pad/"><span>для Xiaomi Mi Pad</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/accessories/dlya-planshetov/dlya-xiaomi-mi-pad-2/"><span>для Xiaomi Mi Pad 2 </span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/accessories/dlya-planshetov/plenkiistekladliaplanshetovxiaomi/"><span>Пленки и стекла</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/accessories/dlya-planshetov/chehliizazhita/"><span>Чехлы и защита</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/accessories/dlya-planshetov/derzhateli-i-krepleniya-dlya-planshetov-xiaomi/"><span>Держатели и крепления</span></a></li>
-																																										<li class="show_also_menu"><a href="https://ru-mi.com/accessories/dlya-planshetov/"><span>Посмотреть всё</span></a></li>
-																				</ul>
-									</div>
-
-								</li>
-																								<li>
-									<a class="link level2_can_opened main_menu_sub" href="https://ru-mi.com/accessories/dlya-noutbukov/">
-										<span class="text">
-											Для ноутбуков																																											</span>
-									</a>
-																		<div class="subchildren">
-										<ul>
-																					<li ><a href="https://ru-mi.com/accessories/dlya-noutbukov/klaviaturyi/"><span>Клавиатуры</span></a></li>
-																					<li ><a href="https://ru-mi.com/accessories/dlya-noutbukov/kovriki-dlya-myishi/"><span>Коврики для мыши</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/accessories/dlya-noutbukov/kompyuternyie-myishi/"><span>Компьютерные мыши</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/accessories/dlya-noutbukov/provoda-i-zaryadki-1/"><span>Провода и зарядки</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/accessories/dlya-noutbukov/chehlyi-i-sumki/"><span>Чехлы и сумки</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/accessories/dlya-noutbukov/podstavki-dlya-noutbukov/"><span>Подставки для ноутбуков</span></a></li>
-																																										<li class="show_also_menu"><a href="https://ru-mi.com/accessories/dlya-noutbukov/"><span>Посмотреть всё</span></a></li>
-																				</ul>
-									</div>
-
-								</li>
-																								<li>
-									<a class="link main_menu_sub" href="https://ru-mi.com/accessories/dlya-ochistitelya-vodyi/">
-										<span class="text">
-											Для очистителя воды																																											</span>
-									</a>
-
-								</li>
-																								<li>
-									<a class="link main_menu_sub" href="https://ru-mi.com/accessories/dlya-ochistitelya-vozduha/">
-										<span class="text">
-											Для очистителя воздуха																																											</span>
-									</a>
-
-								</li>
-																								<li>
-									<a class="link level2_can_opened main_menu_sub" href="https://ru-mi.com/accessories/dlya-yi-action-camera/">
-										<span class="text">
-											Для экшн-камер																																											</span>
-									</a>
-																		<div class="subchildren">
-										<ul>
-																					<li ><a href="https://ru-mi.com/accessories/dlya-yi-action-camera/akvaboksyi-1/"><span>Аквабоксы</span></a></li>
-																					<li ><a href="https://ru-mi.com/accessories/dlya-yi-action-camera/krepleniya-1/"><span>Крепления</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/accessories/dlya-yi-action-camera/monopodyi/"><span>Моноподы</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/accessories/dlya-yi-action-camera/pultyi-i-provoda/"><span>Пульты и провода</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/accessories/dlya-yi-action-camera/chehlyi-i-zaschita-dlya-action-camer/"><span>Чехлы и защита</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/accessories/dlya-yi-action-camera/pamyati-kartu/"><span>Карты Памяти</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/accessories/dlya-yi-action-camera/dlya-mijia-action-camera/"><span>Для экшн-камер Mijia</span></a></li>
-																																										<li class="show_also_menu"><a href="https://ru-mi.com/accessories/dlya-yi-action-camera/"><span>Посмотреть всё</span></a></li>
-																				</ul>
-									</div>
-
-								</li>
-																																								</ul>
-								<ul class="children-list">
-																<li>
-									<a class="link level2_can_opened main_menu_sub" href="https://ru-mi.com/accessories/accessoriesmiband/">
-										<span class="text">
-											Для фитнес-браслетов																																											</span>
-									</a>
-																		<div class="subchildren">
-										<ul>
-																					<li ><a href="https://ru-mi.com/accessories/accessoriesmiband/dlya-xiaomi-mi-band-3/"><span>для Xiaomi Mi Band 3</span></a></li>
-																					<li ><a href="https://ru-mi.com/accessories/accessoriesmiband/dlya-amazfit-bip/"><span>для Amazfit Bip</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/accessories/accessoriesmiband/dlya-xiaomi-mi-band-2/"><span>для Xiaomi Mi Band 2</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/accessories/accessoriesmiband/dlya-xiaomi-mi-band-pulse-1s/"><span>для Xiaomi Mi Band/ Pulse 1S</span></a></li>
-																																										<li class="show_also_menu"><a href="https://ru-mi.com/accessories/accessoriesmiband/"><span>Посмотреть всё</span></a></li>
-																				</ul>
-									</div>
-
-								</li>
-																								<li>
-									<a class="link level2_can_opened main_menu_sub" href="https://ru-mi.com/accessories/dlya-vashego-avtomobilya/">
-										<span class="text">
-											Для автомобиля																																											</span>
-									</a>
-																		<div class="subchildren">
-										<ul>
-																					<li ><a href="https://ru-mi.com/accessories/dlya-vashego-avtomobilya/avtomobilnyie-derjateli-smartfonov/"><span>Автомобильные держатели смартфонов</span></a></li>
-																					<li ><a href="https://ru-mi.com/accessories/dlya-vashego-avtomobilya/avtomobilnyie-zaryadki/"><span>Автомобильные зарядки</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/accessories/dlya-vashego-avtomobilya/velosipednyie-derjateli-smartfonov/"><span>Велосипедные держатели смартфонов</span></a></li>
-																																										<li class="show_also_menu"><a href="https://ru-mi.com/accessories/dlya-vashego-avtomobilya/"><span>Посмотреть всё</span></a></li>
-																				</ul>
-									</div>
-
-								</li>
-																								<li>
-									<a class="link level2_can_opened main_menu_sub" href="https://ru-mi.com/accessories/dlya-pyilesosa/">
-										<span class="text">
-											Для пылесоса																																											</span>
-									</a>
-																		<div class="subchildren">
-										<ul>
-																					<li ><a href="https://ru-mi.com/accessories/dlya-pyilesosa/naklejki-dlya-pylesosa/"><span>Наклейки</span></a></li>
-																														</ul>
-									</div>
-
-								</li>
-																								<li>
-									<a class="link level2_can_opened main_menu_sub" href="https://ru-mi.com/accessories/dlya-ninebot/">
-										<span class="text">
-											Для электротранспорта 																																											</span>
-									</a>
-																		<div class="subchildren">
-										<ul>
-																					<li ><a href="https://ru-mi.com/accessories/dlya-ninebot/aksessuaryi-dlya-xiaomi-ninebot-es/"><span>Аксессуары для Xiaomi Ninebot ES</span></a></li>
-																					<li ><a href="https://ru-mi.com/accessories/dlya-ninebot/dlya-ninebot-e/"><span>Для Ninebot E+</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/accessories/dlya-ninebot/dlya-ninebot-mini-pro/"><span>Для Ninebot Mini Pro</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/accessories/dlya-ninebot/dlya-ninebot-one/"><span>Для Ninebot One</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/accessories/dlya-ninebot/dlya-xiaomi-mijia-qicycle-folding-electric-bike/"><span>Для Xiaomi MiJia QiCycle Folding Electric Bike</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/accessories/dlya-ninebot/dlya-xiaomi-mijia-smart-electric-scooter/"><span>Для Xiaomi MiJia Smart Electric Scooter</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/accessories/dlya-ninebot/dlya-xiaomi-ninebot-mini/"><span>Для Xiaomi Ninebot Mini</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/accessories/dlya-ninebot/dlya-xiaomi-ninebot-mini-plus/"><span>Для Xiaomi Ninebot Mini Plus</span></a></li>
-																																										<li class="show_also_menu"><a href="https://ru-mi.com/accessories/dlya-ninebot/"><span>Посмотреть всё</span></a></li>
-																				</ul>
-									</div>
-
-								</li>
-																								<li>
-									<a class="link main_menu_sub" href="https://ru-mi.com/accessories/dlya-kvadrokopterov/">
-										<span class="text">
-											Для квадрокоптеров																																											</span>
-									</a>
-
-								</li>
-																								<li>
-									<a class="link main_menu_sub" href="https://ru-mi.com/accessories/kartyi-pamyati/">
-										<span class="text">
-											Карты памяти																																											</span>
-									</a>
-
-								</li>
-																								<li>
-									<a class="link main_menu_sub" href="https://ru-mi.com/accessories/aksessuaryi-dlya-televizorov/">
-										<span class="text">
-											Для телевизоров																																											</span>
-									</a>
-
-								</li>
-
-								</ul>
-														</div>
-											</li>
-															<li>
-					<a href="https://ru-mi.com/odezdda-i-simvolika/" id="category_id133" class="e907 main_menu"><span>Образ жизни</span></a>
-																														<div class="children" style='width:600px'>
-																<ul class="children-list">
-																																<li>
-									<a class="link level2_can_opened main_menu_sub" href="https://ru-mi.com/odezdda-i-simvolika/ryukzaki-i-chemodanyi/">
-										<span class="text">
-											Рюкзаки и чемоданы																																											</span>
-									</a>
-																		<div class="subchildren">
-										<ul>
-																					<li ><a href="https://ru-mi.com/odezdda-i-simvolika/ryukzaki-i-chemodanyi/ryukzaki/"><span>Рюкзаки</span></a></li>
-																					<li ><a href="https://ru-mi.com/odezdda-i-simvolika/ryukzaki-i-chemodanyi/sumki/"><span>Сумки</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/odezdda-i-simvolika/ryukzaki-i-chemodanyi/chemodanyi/"><span>Чемоданы</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/odezdda-i-simvolika/ryukzaki-i-chemodanyi/koshelki-i-vizitnitsyi/"><span>Кошельки и визитницы</span></a></li>
-																																										<li class="show_also_menu"><a href="https://ru-mi.com/odezdda-i-simvolika/ryukzaki-i-chemodanyi/"><span>Посмотреть всё</span></a></li>
-																				</ul>
-									</div>
-
-								</li>
-																								<li>
-									<a class="link level2_can_opened main_menu_sub" href="https://ru-mi.com/odezdda-i-simvolika/tovaryi-dlya-doma/">
-										<span class="text">
-											Товары для дома																																											</span>
-									</a>
-																		<div class="subchildren">
-										<ul>
-																					<li ><a href="https://ru-mi.com/odezdda-i-simvolika/tovaryi-dlya-doma/krasota-i-zdorovie/"><span>Товары для красоты и здоровья</span></a></li>
-																					<li ><a href="https://ru-mi.com/odezdda-i-simvolika/tovaryi-dlya-doma/tekstil-i-dekor-dlya-doma/"><span>Текстиль и декор</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/odezdda-i-simvolika/tovaryi-dlya-doma/tovary-xiaomi-dlya-kuhni/"><span>Для кухни</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/odezdda-i-simvolika/tovaryi-dlya-doma/kanctovary-xiaomi/"><span>Канцтовары</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/odezdda-i-simvolika/tovaryi-dlya-doma/instrumenty-dlya-doma/"><span>Инструменты</span></a></li>
-																																										<li class="show_also_menu"><a href="https://ru-mi.com/odezdda-i-simvolika/tovaryi-dlya-doma/"><span>Посмотреть всё</span></a></li>
-																				</ul>
-									</div>
-
-								</li>
-																								<li>
-									<a class="link level2_can_opened main_menu_sub" href="https://ru-mi.com/odezdda-i-simvolika/sportivnyie-tovaryi/">
-										<span class="text">
-											Товары для спорта и отдыха																																											</span>
-									</a>
-																		<div class="subchildren">
-										<ul>
-																					<li ><a href="https://ru-mi.com/odezdda-i-simvolika/sportivnyie-tovaryi/butyilki-xiaomi-mi-bottle/"><span>Бутылки для воды</span></a></li>
-																					<li ><a href="https://ru-mi.com/odezdda-i-simvolika/sportivnyie-tovaryi/termosyi-i-termokrujki/"><span>Термосы и термокружки</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/odezdda-i-simvolika/sportivnyie-tovaryi/tovary-dlya-yogi/"><span>Товары для йоги</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/odezdda-i-simvolika/sportivnyie-tovaryi/shlemy-i-zaschita/"><span>Шлемы и защита</span></a></li>
-																																										<li class="show_also_menu"><a href="https://ru-mi.com/odezdda-i-simvolika/sportivnyie-tovaryi/"><span>Посмотреть всё</span></a></li>
-																				</ul>
-									</div>
-
-								</li>
-																								<li>
-									<a class="link level2_can_opened main_menu_sub" href="https://ru-mi.com/odezdda-i-simvolika/ochki/">
-										<span class="text">
-											Очки																																											</span>
-									</a>
-																		<div class="subchildren">
-										<ul>
-																					<li ><a href="https://ru-mi.com/odezdda-i-simvolika/ochki/kompyuternyie-ochki/"><span>Компьютерные очки</span></a></li>
-																					<li ><a href="https://ru-mi.com/odezdda-i-simvolika/ochki/solntsezaschitnyie-ochki/"><span>Солнцезащитные очки</span></a></li>
-																														</ul>
-									</div>
-
-								</li>
-																								<li>
-									<a class="link level2_can_opened main_menu_sub" href="https://ru-mi.com/odezdda-i-simvolika/odejda-i-aksessuaryi/">
-										<span class="text">
-											Одежда																																											</span>
-									</a>
-																		<div class="subchildren">
-										<ul>
-																					<li ><a href="https://ru-mi.com/odezdda-i-simvolika/odejda-i-aksessuaryi/dojdeviki/"><span>Дождевики</span></a></li>
-																					<li ><a href="https://ru-mi.com/odezdda-i-simvolika/odejda-i-aksessuaryi/vetrovki/"><span>Ветровки</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/odezdda-i-simvolika/odejda-i-aksessuaryi/kurtki/"><span>Куртки</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/odezdda-i-simvolika/odejda-i-aksessuaryi/noski/"><span>Носки</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/odezdda-i-simvolika/odejda-i-aksessuaryi/perchatki/"><span>Перчатки</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/odezdda-i-simvolika/odejda-i-aksessuaryi/trusyi/"><span>Трусы</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/odezdda-i-simvolika/odejda-i-aksessuaryi/remni/"><span>Ремни</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/odezdda-i-simvolika/odejda-i-aksessuaryi/futbolki/"><span>Футболки</span></a></li>
-																																										<li class="show_also_menu"><a href="https://ru-mi.com/odezdda-i-simvolika/odejda-i-aksessuaryi/"><span>Посмотреть всё</span></a></li>
-																				</ul>
-									</div>
-
-								</li>
-																								<li>
-									<a class="link level2_can_opened main_menu_sub" href="https://ru-mi.com/odezdda-i-simvolika/obuv/">
-										<span class="text">
-											Обувь																																											</span>
-									</a>
-																		<div class="subchildren">
-										<ul>
-																					<li ><a href="https://ru-mi.com/odezdda-i-simvolika/obuv/botinki/"><span>Ботинки</span></a></li>
-																					<li ><a href="https://ru-mi.com/odezdda-i-simvolika/obuv/detskaya-obuv/"><span>Детская обувь</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/odezdda-i-simvolika/obuv/jenskaya-obuv/"><span>Женская обувь</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/odezdda-i-simvolika/obuv/mujskaya-obuv/"><span>Мужская обувь</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/odezdda-i-simvolika/obuv/stelki-dlya-obuvi/"><span>Стельки для обуви</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/odezdda-i-simvolika/obuv/tapochki/"><span>Тапочки</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/odezdda-i-simvolika/obuv/shlepantsyi/"><span>Шлепанцы</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/odezdda-i-simvolika/obuv/umnyie-krossovki/"><span>Умные кроссовки</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/odezdda-i-simvolika/obuv/kedyi/"><span>Кеды</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/odezdda-i-simvolika/obuv/krossovki/"><span>Кроссовки</span></a></li>
-																																										<li class="show_also_menu"><a href="https://ru-mi.com/odezdda-i-simvolika/obuv/"><span>Посмотреть всё</span></a></li>
-																				</ul>
-									</div>
-
-								</li>
-																																								</ul>
-								<ul class="children-list">
-																<li>
-									<a class="link main_menu_sub" href="https://ru-mi.com/odezdda-i-simvolika/zontyi/">
-										<span class="text">
-											Зонты																																											</span>
-									</a>
-
-								</li>
-																								<li>
-									<a class="link main_menu_sub" href="https://ru-mi.com/odezdda-i-simvolika/rascheski/">
-										<span class="text">
-											Расчески 																																											</span>
-									</a>
-
-								</li>
-																								<li>
-									<a class="link level2_can_opened main_menu_sub" href="https://ru-mi.com/odezdda-i-simvolika/dlya-detey/">
-										<span class="text">
-											Товары для детей																																											</span>
-									</a>
-																		<div class="subchildren">
-										<ul>
-																					<li ><a href="https://ru-mi.com/odezdda-i-simvolika/dlya-detey/igrushki-1/"><span>Игрушки</span></a></li>
-																					<li ><a href="https://ru-mi.com/odezdda-i-simvolika/dlya-detey/kolyaski/"><span>Коляски</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/odezdda-i-simvolika/dlya-detey/obuv-dlya-detey/"><span>Обувь для детей</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/odezdda-i-simvolika/dlya-detey/odejda-dlya-detey/"><span>Одежда для детей</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/odezdda-i-simvolika/dlya-detey/tovaryi-dlya-novorojdyonnyih/"><span>Товары для новорождённых</span></a></li>
-																																										<li class="show_also_menu"><a href="https://ru-mi.com/odezdda-i-simvolika/dlya-detey/"><span>Посмотреть всё</span></a></li>
-																				</ul>
-									</div>
-
-								</li>
-
-								</ul>
-														</div>
-											</li>
-															<li>
-					<a href="https://ru-mi.com/category-transport/" id="category_id633" class="e90b main_menu"><span>Транспорт</span></a>
-																														<div class="children" style='width:300px'>
-																<ul class="children-list">
-																																<li>
-									<a class="link level2_can_opened main_menu_sub" href="https://ru-mi.com/category-transport/elektrosamokatyi/">
-										<span class="text">
-											Электросамокаты																																											</span>
-									</a>
-																		<div class="subchildren">
-										<ul>
-																					<li ><a href="https://ru-mi.com/category-transport/elektrosamokatyi/ninebot-kickscooter-by-segway/"><span>Ninebot Kickscooter</span></a></li>
-																														</ul>
-									</div>
-
-								</li>
-																								<li>
-									<a class="link level2_can_opened main_menu_sub" href="https://ru-mi.com/category-transport/giroskuteryi/">
-										<span class="text">
-											Гироскутеры																																											</span>
-									</a>
-																		<div class="subchildren">
-										<ul>
-																					<li ><a href="https://ru-mi.com/category-transport/giroskuteryi/ninebot-e/"><span>Ninebot E+</span></a></li>
-																					<li ><a href="https://ru-mi.com/category-transport/giroskuteryi/ninebot-mini/"><span>Ninebot mini</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/category-transport/giroskuteryi/ninebot-mini-pro/"><span>Ninebot mini Pro</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/category-transport/giroskuteryi/ninebot-mini-plus/"><span>Ninebot Mini Plus</span></a></li>
-																																										<li class="show_also_menu"><a href="https://ru-mi.com/category-transport/giroskuteryi/"><span>Посмотреть всё</span></a></li>
-																				</ul>
-									</div>
-
-								</li>
-																								<li>
-									<a class="link level2_can_opened main_menu_sub" href="https://ru-mi.com/category-transport/elektrovelosipedyi/">
-										<span class="text">
-											Электровелосипеды																																											</span>
-									</a>
-																		<div class="subchildren">
-										<ul>
-																					<li ><a href="https://ru-mi.com/category-transport/elektrovelosipedyi/xiaomi-qicycle/"><span>Xiaomi QiCycle</span></a></li>
-																					<li ><a href="https://ru-mi.com/category-transport/elektrovelosipedyi/xiaomi-yunbike/"><span>Xiaomi YunBike</span></a></li>
-																														</ul>
-									</div>
-
-								</li>
-																								<li>
-									<a class="link main_menu_sub" href="https://ru-mi.com/category-transport/velosipedyi/">
-										<span class="text">
-											Велосипеды																																											</span>
-									</a>
-
-								</li>
-																								<li>
-									<a class="link main_menu_sub" href="https://ru-mi.com/category-transport/monokolesa/">
-										<span class="text">
-											Моноколеса																																											</span>
-									</a>
-
-								</li>
-
-								</ul>
-																														</div>
-											</li>
-															<li>
-					<a href="https://ru-mi.com/device/umnyiy-dom/byitovaya-tehnika-xiaomi/pyilesosyi-xiaomi/robotyi-pyilesosyi/" id="category_id954" class="non_opened e900 main_menu"><span>Роботы-пылесосы </span></a>
-											</li>
-															<li>
-					<a href="https://ru-mi.com/device/umnyiy-dom/" id="category_id158" class="e911 main_menu"><span>«Умный дом»</span></a>
-																														<div class="children" style='width:600px'>
-																<ul class="children-list">
-																																<li>
-									<a class="link level2_can_opened main_menu_sub" href="https://ru-mi.com/device/umnyiy-dom/sistema-umnyiy-dom/">
-										<span class="text">
-											Система умный дом																																											</span>
-									</a>
-																		<div class="subchildren">
-										<ul>
-																					<li ><a href="https://ru-mi.com/device/umnyiy-dom/sistema-umnyiy-dom/komplektyi-umnogo-doma/"><span>Комплекты умного дома</span></a></li>
-																					<li ><a href="https://ru-mi.com/device/umnyiy-dom/sistema-umnyiy-dom/kontrolleryi-upravleniya/"><span>Контроллеры управления </span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/device/umnyiy-dom/sistema-umnyiy-dom/datchiki-xiaomi/"><span>Датчики </span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/device/umnyiy-dom/sistema-umnyiy-dom/vyiklyuchateli/"><span>Выключатели</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/device/umnyiy-dom/sistema-umnyiy-dom/xiaomi-door-lock/"><span>Умные дверные замки</span></a></li>
-																																										<li class="show_also_menu"><a href="https://ru-mi.com/device/umnyiy-dom/sistema-umnyiy-dom/"><span>Посмотреть всё</span></a></li>
-																				</ul>
-									</div>
-
-								</li>
-																								<li>
-									<a class="link level2_can_opened main_menu_sub" href="https://ru-mi.com/device/umnyiy-dom/byitovaya-tehnika-xiaomi/">
-										<span class="text">
-											Бытовая техника 																																											</span>
-									</a>
-																		<div class="subchildren">
-										<ul>
-																					<li ><a href="https://ru-mi.com/device/umnyiy-dom/byitovaya-tehnika-xiaomi/pyilesosyi-xiaomi/"><span>Пылесосы и швабры Xiaomi</span></a></li>
-																					<li ><a href="https://ru-mi.com/device/umnyiy-dom/byitovaya-tehnika-xiaomi/blenderyi-i-sokovyijimalki/"><span>Блендеры и соковыжималки</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/device/umnyiy-dom/byitovaya-tehnika-xiaomi/ventilyatoryi/"><span>Вентиляторы</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/device/umnyiy-dom/byitovaya-tehnika-xiaomi/vyipryamiteli-i-fenyi-dlya-volos/"><span>Выпрямители и фены для волос</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/device/umnyiy-dom/byitovaya-tehnika-xiaomi/zubnyie-schyotki/"><span>Зубные щётки</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/device/umnyiy-dom/byitovaya-tehnika-xiaomi/multivarki-i-risovarki/"><span>Мультиварки и рисоварки</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/device/umnyiy-dom/byitovaya-tehnika-xiaomi/elektrobritvyi/"><span>Электробритвы</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/device/umnyiy-dom/byitovaya-tehnika-xiaomi/chayniki-xiaomi/"><span>Чайники и кофемашины Xiaomi</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/device/umnyiy-dom/byitovaya-tehnika-xiaomi/holodilniki-xiaomi/"><span>Холодильники и стиральные машины Xiaomi</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/device/umnyiy-dom/byitovaya-tehnika-xiaomi/gazovyie-plityi-viomi/"><span>Печи и плиты Xiaomi</span></a></li>
-																																										<li class="show_also_menu"><a href="https://ru-mi.com/device/umnyiy-dom/byitovaya-tehnika-xiaomi/"><span>Посмотреть всё</span></a></li>
-																				</ul>
-									</div>
-
-								</li>
-																								<li>
-									<a class="link level2_can_opened main_menu_sub" href="https://ru-mi.com/device/umnyiy-dom/umnyiy-svet/">
-										<span class="text">
-											Умный свет																																											</span>
-									</a>
-																		<div class="subchildren">
-										<ul>
-																					<li ><a href="https://ru-mi.com/device/umnyiy-dom/umnyiy-svet/potolochnyie-svetilniki/"><span>Потолочные светильники</span></a></li>
-																					<li ><a href="https://ru-mi.com/device/umnyiy-dom/umnyiy-svet/nastolnyie-lampyi/"><span>Настольные лампы</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/device/umnyiy-dom/umnyiy-svet/lampochki/"><span>Лампочки</span></a></li>
-																																										<li class="show_also_menu"><a href="https://ru-mi.com/device/umnyiy-dom/umnyiy-svet/"><span>Посмотреть всё</span></a></li>
-																				</ul>
-									</div>
-
-								</li>
-																								<li>
-									<a class="link main_menu_sub" href="https://ru-mi.com/device/umnyiy-dom/nagrevatel-vody/">
-										<span class="text">
-											Нагреватели воды																																											</span>
-									</a>
-
-								</li>
-																								<li>
-									<a class="link level2_can_opened main_menu_sub" href="https://ru-mi.com/device/umnyiy-dom/ochistitel-vodyi-xiaomi/">
-										<span class="text">
-											Очистители воды 																																											</span>
-									</a>
-																		<div class="subchildren">
-										<ul>
-																					<li ><a href="https://ru-mi.com/device/umnyiy-dom/ochistitel-vodyi-xiaomi/filtryi-dlya-vodyi-viomi/"><span>Фильтры-кувшины</span></a></li>
-																					<li ><a href="https://ru-mi.com/device/umnyiy-dom/ochistitel-vodyi-xiaomi/filtryi-dlya-ochistitelya-vodyi/"><span>Сменные картриджи для очистителя воды</span></a></li>
-																														</ul>
-									</div>
-
-								</li>
-																								<li>
-									<a class="link main_menu_sub" href="https://ru-mi.com/device/umnyiy-dom/uvlajnitel-vozduha-xiaomi/">
-										<span class="text">
-											Увлажнители воздуха 																																											</span>
-									</a>
-
-								</li>
-																								<li>
-									<a class="link main_menu_sub" href="https://ru-mi.com/device/umnyiy-dom/obogrevatel-vozdukha-xiaomi/">
-										<span class="text">
-											Обогреватели воздуха																																											</span>
-									</a>
-
-								</li>
-																								<li>
-									<a class="link level2_can_opened main_menu_sub" href="https://ru-mi.com/device/umnyiy-dom/ochistitel-vozduha-xiaomi/">
-										<span class="text">
-											Очистители воздуха 																																											</span>
-									</a>
-																		<div class="subchildren">
-										<ul>
-																					<li ><a href="https://ru-mi.com/device/umnyiy-dom/ochistitel-vozduha-xiaomi/napolnye-ochistiteli-vozduha/"><span>Напольные</span></a></li>
-																					<li ><a href="https://ru-mi.com/device/umnyiy-dom/ochistitel-vozduha-xiaomi/nastennye-ochistiteli-vozduha/"><span>Настенные</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/device/umnyiy-dom/ochistitel-vozduha-xiaomi/filtry-dlya-ochistitelej-vozduha/"><span>Сменные фильтры</span></a></li>
-																																										<li class="show_also_menu"><a href="https://ru-mi.com/device/umnyiy-dom/ochistitel-vozduha-xiaomi/"><span>Посмотреть всё</span></a></li>
-																				</ul>
-									</div>
-
-								</li>
-																																								</ul>
-								<ul class="children-list">
-																<li>
-									<a class="link level2_can_opened main_menu_sub" href="https://ru-mi.com/device/umnyiy-dom/testeryi/">
-										<span class="text">
-											Тестеры																																											</span>
-									</a>
-																		<div class="subchildren">
-										<ul>
-																					<li ><a href="https://ru-mi.com/device/umnyiy-dom/testeryi/dlya-vodyi/"><span>Для воды</span></a></li>
-																					<li ><a href="https://ru-mi.com/device/umnyiy-dom/testeryi/dlya-vozduha/"><span>Для воздуха</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/device/umnyiy-dom/testeryi/dlya-pochvyi/"><span>Для почвы </span></a></li>
-																																										<li class="show_also_menu"><a href="https://ru-mi.com/device/umnyiy-dom/testeryi/"><span>Посмотреть всё</span></a></li>
-																				</ul>
-									</div>
-
-								</li>
-
-								</ul>
-														</div>
-											</li>
-															<li>
-					<a href="https://ru-mi.com/device/umnyie-chasyi/" id="category_id540" class="e912 main_menu"><span>Браслеты и часы</span></a>
-																														<div class="children" style='width:300px'>
-																<ul class="children-list">
-																																<li>
-									<a class="link level2_can_opened main_menu_sub" href="https://ru-mi.com/device/umnyie-chasyi/brasletyi-dlya-sporta/">
-										<span class="text">
-											Браслеты для спорта																																											</span>
-									</a>
-																		<div class="subchildren">
-										<ul>
-																					<li ><a href="https://ru-mi.com/device/umnyie-chasyi/brasletyi-dlya-sporta/fitnes-trekeryi-amazfit/"><span>Xiaomi Amazfit</span></a></li>
-																					<li ><a href="https://ru-mi.com/device/umnyie-chasyi/brasletyi-dlya-sporta/weloop-hey-3s/"><span>Weloop Hey 3s</span></a></li>
-																														</ul>
-									</div>
-
-								</li>
-																								<li>
-									<a class="link main_menu_sub" href="https://ru-mi.com/device/umnyie-chasyi/chasy-ciga-design/">
-										<span class="text">
-											Часы CIGA																																											</span>
-									</a>
-
-								</li>
-																								<li>
-									<a class="link main_menu_sub" href="https://ru-mi.com/device/umnyie-chasyi/chasy-mijia/">
-										<span class="text">
-											Часы Mijia																																											</span>
-									</a>
-
-								</li>
-																								<li>
-									<a class="link main_menu_sub" href="https://ru-mi.com/device/umnyie-chasyi/detskie-chasyi/">
-										<span class="text">
-											Детские часы																																											</span>
-									</a>
-
-								</li>
-
-								</ul>
-																														</div>
-											</li>
-															<li>
-					<a href="https://ru-mi.com/device/camera/" id="category_id135" class="e909 main_menu"><span>Фото и видео</span></a>
-																														<div class="children" style='width:300px'>
-																<ul class="children-list">
-																																<li>
-									<a class="link level2_can_opened main_menu_sub" href="https://ru-mi.com/device/camera/ip-kameryi/">
-										<span class="text">
-											IP-камеры																																											</span>
-									</a>
-																		<div class="subchildren">
-										<ul>
-																					<li ><a href="https://ru-mi.com/device/camera/ip-kameryi/kamera-mijia/"><span>IP-камера MiJia</span></a></li>
-																					<li ><a href="https://ru-mi.com/device/camera/ip-kameryi/ip-kameryi-yi/"><span>IP-камеры Yi</span></a></li>
-																														</ul>
-									</div>
-
-								</li>
-																								<li>
-									<a class="link level2_can_opened main_menu_sub" href="https://ru-mi.com/device/camera/xiaomi-yi-action-camera/">
-										<span class="text">
-											Экшн камеры																																											</span>
-									</a>
-																		<div class="subchildren">
-										<ul>
-																					<li ><a href="https://ru-mi.com/device/camera/xiaomi-yi-action-camera/ekshn-kameryi-mijia-1/"><span>Mijia 4K</span></a></li>
-																					<li ><a href="https://ru-mi.com/device/camera/xiaomi-yi-action-camera/yi-4k-plus/"><span>Yi 4K Plus</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/device/camera/xiaomi-yi-action-camera/xiaomi-action-camera-yi-basic/"><span>Yi Action Camera</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/device/camera/xiaomi-yi-action-camera/yi-lite-action/"><span>Yi Lite Action Camera</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/device/camera/xiaomi-yi-action-camera/yi-action-camera-4k/"><span>Yi 4K Action Camera </span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/device/camera/xiaomi-yi-action-camera/panoramnyie-kameryi/"><span>Панорамные камеры</span></a></li>
-																																										<li class="show_also_menu"><a href="https://ru-mi.com/device/camera/xiaomi-yi-action-camera/"><span>Посмотреть всё</span></a></li>
-																				</ul>
-									</div>
-
-								</li>
-																								<li>
-									<a class="link level2_can_opened main_menu_sub" href="https://ru-mi.com/device/camera/videoregistratory-xiaomi-car-yi-wifi-dvr/">
-										<span class="text">
-											Видеорегистраторы 																																											</span>
-									</a>
-																		<div class="subchildren">
-										<ul>
-																					<li ><a href="https://ru-mi.com/device/camera/videoregistratory-xiaomi-car-yi-wifi-dvr/xiaomi-yi/"><span>Xiaomi Yi </span></a></li>
-																					<li ><a href="https://ru-mi.com/device/camera/videoregistratory-xiaomi-car-yi-wifi-dvr/xiaomi-mijia/"><span>Xiaomi MiJia</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/device/camera/videoregistratory-xiaomi-car-yi-wifi-dvr/zerkalo-videoregistrator/"><span>Зеркало видеорегистратор</span></a></li>
-																																										<li class="show_also_menu"><a href="https://ru-mi.com/device/camera/videoregistratory-xiaomi-car-yi-wifi-dvr/"><span>Посмотреть всё</span></a></li>
-																				</ul>
-									</div>
-
-								</li>
-																								<li>
-									<a class="link main_menu_sub" href="https://ru-mi.com/device/camera/fotoapparatyi/">
-										<span class="text">
-											Фотоаппараты																																											</span>
-									</a>
-
-								</li>
-																								<li>
-									<a class="link level2_can_opened main_menu_sub" href="https://ru-mi.com/device/camera/kvadrocoptery/">
-										<span class="text">
-											Квадрокоптеры																																											</span>
-									</a>
-																		<div class="subchildren">
-										<ul>
-																					<li ><a href="https://ru-mi.com/device/camera/kvadrocoptery/mi-drone/"><span>Mi Drone</span></a></li>
-																					<li ><a href="https://ru-mi.com/device/camera/kvadrocoptery/yi-erida/"><span>Yi Erida</span></a></li>
-																														</ul>
-									</div>
-
-								</li>
-
-								</ul>
-																														</div>
-											</li>
-															<li>
-					<a href="https://ru-mi.com/device/tv-pristavki/" id="category_id167" class="e90a main_menu"><span>Телевизоры</span></a>
-																														<div class="children" style='width:300px'>
-																<ul class="children-list">
-																																<li>
-									<a class="link level2_can_opened main_menu_sub" href="https://ru-mi.com/device/tv-pristavki/televizoryi/">
-										<span class="text">
-											Телевизоры																																											</span>
-									</a>
-																		<div class="subchildren">
-										<ul>
-																					<li ><a href="https://ru-mi.com/device/tv-pristavki/televizoryi/xiaomi-mi-tv-4h/"><span>Xiaomi Mi TV 4Х</span></a></li>
-																					<li ><a href="https://ru-mi.com/device/tv-pristavki/televizoryi/xiaomi-mi-tv4/"><span>Xiaomi Mi TV 4</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/device/tv-pristavki/televizoryi/xiaomi-mi-tv4a/"><span>Xiaomi Mi TV 4A</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/device/tv-pristavki/televizoryi/xiaomi-mi-tv-4c/"><span>Xiaomi Mi TV 4C</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/device/tv-pristavki/televizoryi/xiaomi-mi-tv3/"><span>Xiaomi Mi TV 3</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/device/tv-pristavki/televizoryi/xiaomi-mi-tv-3s-3s-surface/"><span>Xiaomi Mi TV 3S/ 3S Surface</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/device/tv-pristavki/televizoryi/xiaomi-mi-tv4s/"><span>Xiaomi Mi TV 4S</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/device/tv-pristavki/televizoryi/xiaomi-mi-tv-2/"><span>Xiaomi Mi TV 2</span></a></li>
-																																										<li class="show_also_menu"><a href="https://ru-mi.com/device/tv-pristavki/televizoryi/"><span>Посмотреть всё</span></a></li>
-																				</ul>
-									</div>
-
-								</li>
-																								<li>
-									<a class="link level2_can_opened main_menu_sub" href="https://ru-mi.com/device/tv-pristavki/tv-pristavki-xiaomi/">
-										<span class="text">
-											TV приставки																																											</span>
-									</a>
-																		<div class="subchildren">
-										<ul>
-																					<li ><a href="https://ru-mi.com/device/tv-pristavki/tv-pristavki-xiaomi/xiaomi-mi-tv-4/"><span>Xiaomi Mi TV Box 4</span></a></li>
-																					<li ><a href="https://ru-mi.com/device/tv-pristavki/tv-pristavki-xiaomi/mi-box-mini/"><span>Xiaomi Mi TV Box Mini</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/device/tv-pristavki/tv-pristavki-xiaomi/xiaomi-mi-box-3/"><span>Xiaomi Mi TV Box 3</span></a></li>
-																																										<li class="show_also_menu"><a href="https://ru-mi.com/device/tv-pristavki/tv-pristavki-xiaomi/"><span>Посмотреть всё</span></a></li>
-																				</ul>
-									</div>
-
-								</li>
-																								<li>
-									<a class="link level2_can_opened main_menu_sub" href="https://ru-mi.com/device/tv-pristavki/proektoryi/">
-										<span class="text">
-											Проекторы																																											</span>
-									</a>
-																		<div class="subchildren">
-										<ul>
-																					<li ><a href="https://ru-mi.com/device/tv-pristavki/proektoryi/xiaomi-xgimi/"><span>Xiaomi XGIMI</span></a></li>
-																					<li ><a href="https://ru-mi.com/device/tv-pristavki/proektoryi/ekranyi-dlya-proektorov/"><span>Экраны для проекторов</span></a></li>
-																					<li class="subcounter_menu"><a href="https://ru-mi.com/device/tv-pristavki/proektoryi/lazernyiy-proektor/"><span>Лазерные проекторы</span></a></li>
-																																										<li class="show_also_menu"><a href="https://ru-mi.com/device/tv-pristavki/proektoryi/"><span>Посмотреть всё</span></a></li>
-																				</ul>
-									</div>
-
-								</li>
-																								<li>
-									<a class="link main_menu_sub" href="https://ru-mi.com/device/tv-pristavki/akustika-dlya-tv/">
-										<span class="text">
-											Акустика для ТВ																																											</span>
-									</a>
-
-								</li>
-																								<li>
-									<a class="link level2_can_opened main_menu_sub" href="https://ru-mi.com/device/tv-pristavki/category-aksessuaryi-dlya-televizorov/">
-										<span class="text">
-											Аксессуары для телевизоров																																											</span>
-									</a>
-																		<div class="subchildren">
-										<ul>
-																					<li ><a href="https://ru-mi.com/device/tv-pristavki/category-aksessuaryi-dlya-televizorov/3d-ochki/"><span>3D очки</span></a></li>
-																					<li ><a href="https://ru-mi.com/device/tv-pristavki/category-aksessuaryi-dlya-televizorov/pultyi-du/"><span>Пульты ДУ</span></a></li>
-																														</ul>
-									</div>
-
-								</li>
-																								<li>
-									<a class="link main_menu_sub" href="https://ru-mi.com/device/tv-pristavki/ochki-virtualnoy-realnosti/">
-										<span class="text">
-											Очки виртуальной реальности																																											</span>
-									</a>
-
-								</li>
-
-								</ul>
-																														</div>
-											</li>
-															<li>
-					<a href="https://ru-mi.com/odezdda-i-simvolika/dlya-detey/" id="category_id730" class="e913 main_menu"><span>Товары для детей</span></a>
-																														<div class="children" style='width:300px'>
-																<ul class="children-list">
-																																<li>
-									<a class="link level2_can_opened main_menu_sub" href="https://ru-mi.com/odezdda-i-simvolika/dlya-detey/igrushki-1/">
-										<span class="text">
-											Игрушки																																											</span>
-									</a>
-																		<div class="subchildren">
-										<ul>
-																					<li ><a href="https://ru-mi.com/odezdda-i-simvolika/dlya-detey/igrushki-1/myagkie-igrushki/"><span>Мягкие игрушки</span></a></li>
-																					<li ><a href="https://ru-mi.com/odezdda-i-simvolika/dlya-detey/igrushki-1/igrushki/"><span>Конструкторы</span></a></li>
-																														</ul>
-									</div>
-
-								</li>
-																								<li>
-									<a class="link main_menu_sub" href="https://ru-mi.com/odezdda-i-simvolika/dlya-detey/kolyaski/">
-										<span class="text">
-											Коляски																																											</span>
-									</a>
-
-								</li>
-																								<li>
-									<a class="link main_menu_sub" href="https://ru-mi.com/odezdda-i-simvolika/dlya-detey/obuv-dlya-detey/">
-										<span class="text">
-											Обувь для детей																																											</span>
-									</a>
-
-								</li>
-																								<li>
-									<a class="link main_menu_sub" href="https://ru-mi.com/odezdda-i-simvolika/dlya-detey/odejda-dlya-detey/">
-										<span class="text">
-											Одежда для детей																																											</span>
-									</a>
-
-								</li>
-																								<li>
-									<a class="link main_menu_sub" href="https://ru-mi.com/odezdda-i-simvolika/dlya-detey/tovaryi-dlya-novorojdyonnyih/">
-										<span class="text">
-											Товары для новорождённых																																											</span>
-									</a>
-
-								</li>
-
-								</ul>
-																														</div>
-											</li>
-										<li><a href="https://ru-mi.com/specials/" class="e915 non_opened"><span>Скидки</span></a></li>
-				  </ul>
-				</div>
-							</div>
-			<div id="header_middle_menu">
-				<a href="https://ru-mi.com/specials/">Скидки</a>
-				<a href="https://ru-mi.com/infopage/">Доставка, оплата</a>
-				<a href="https://ru-mi.com/guaranty">Гарантия</a>
-				<a href="https://ru-mi.com/mibonus">Ми-бонусы</a>
-				<a href="https://ru-mi.com/contact/">Контакты</a>
-			</div>
-			<a class="header_wishlist non_active" href="https://ru-mi.com/wishlist/"><span></span></a>
-			<a class="header_compare non_active" href="https://ru-mi.com/compare-products/"><span></span></a>
-			<div id="cart">
-    <div class="heading">
-    <a title="Корзина покупок"><span id="cart-total"><span class="cart_counter non_active">0 </span>Ваша корзина пуста</span></a>
-  </div>
-	  <div class="content">
-        <div class="empty">В корзине пусто!</div>
+  <div id="go_top"></div>
+  <div id="fotorama_main"></div>
+  <div class="background_adaptive_filter"></div>
+  <div class="grey_bg"></div>
+  <div id="header">
+    <div class="container">
+      <div class="header_top_adaptive_menu">
+        <span>Меню</span>
       </div>
-</div>		</div>
-	</div>
-		</div>
-
-<div class="container" style="position:static;">
-<div id="notification"></div>
-<script type="text/javascript">
-    (function(){
-        var s   = document.createElement('script');
-        var x   = document.getElementsByTagName('script')[0];
-        s.type  = 'text/javascript';
-        s.async = true;
-        s.src   = ('https:'==document.location.protocol?'https://':'http://')
-                + 'eu-sonar.sociomantic.com/js/2010-07-01/adpan/ru-mi-ru';
-        x.parentNode.insertBefore( s, x );
-    })();
-</script>
-<div class="main_slider_main_container">
-<div class="slideshow_main_page">
-  <div id="slideshow0" class="owl-carousel owl-carousel-main-slider">
-            <a class="slide_id0" data-promo="{&quot;id&quot;:&quot;PROMO_3_12_900&quot;,&quot;name&quot;:&quot;mi_mix_3&quot;,&quot;creative&quot;:&quot;Module Slideshow&quot;}" href="/smartphones/xiaomi-mi-mix-3/" onclick="ee_promo.click(this); return !ga.loaded;"><img src="https://ru-mi.com/image/cache/data/sliderbezanimacii/mix3/main_banner_mix3-987x410.jpg" alt="mi_mix_3" /></a>
-                <a class="slide_id1" data-promo="{&quot;id&quot;:&quot;PROMO_3_12_901&quot;,&quot;name&quot;:&quot;Power Banks&quot;,&quot;creative&quot;:&quot;Module Slideshow&quot;}" href="/zaryadnyie-ustroystva/power-bank-vneshnie-akkumulyatoryi/" onclick="ee_promo.click(this); return !ga.loaded;"><img src="https://ru-mi.com/image/cache/data/sliderbezanimacii/powerbanks/powerbandks-987x410.jpg" alt="Power Banks" /></a>
-                <a class="slide_id2" data-promo="{&quot;id&quot;:&quot;PROMO_3_12_902&quot;,&quot;name&quot;:&quot;Thermos&quot;,&quot;creative&quot;:&quot;Module Slideshow&quot;}" href="/device/zdorove/termosyi-i-termokrujki/" onclick="ee_promo.click(this); return !ga.loaded;"><img src="https://ru-mi.com/image/cache/data/sliderbezanimacii/ther/mi_thermos_banner-987x410.jpg" alt="Thermos" /></a>
-                <a class="slide_id3" data-promo="{&quot;id&quot;:&quot;PROMO_3_12_903&quot;,&quot;name&quot;:&quot;esam18&quot;,&quot;creative&quot;:&quot;Module Slideshow&quot;}" href="/shops/" onclick="ee_promo.click(this); return !ga.loaded;"><img src="https://ru-mi.com/image/cache/data/sliderbezanimacii/humanizebanners/banner_4_new_size-987x410.jpg" alt="esam18" /></a>
+      <div class="header_top_adaptive_menu_inner">
+        <div class="header_top_adaptive_menu_closed">
+          <span>Меню</span>
+          <div class="header_top_adaptive_menu_go_close"></div>
+        </div>
+        <div class="header_top_adaptive_menu_inner_links">
+          <a href="/shops/">Магазины</a>
+          <a href="/contact/">Контакты</a>
+          <a href="/infopage/">Доставка и оплата</a>
+          <a href="/dostavka">Гарантия</a>
+          <a href="/specials/">Скидки</a>
+          <a href="/about">О компании</a>
+        </div>
+      </div>
+    </div>
+    <div class="header_top_adaptive">
+    </div>
+    <div id="header_middle">
+      <div class="container">
+        <div id="logo">
+          <a href="/">
+            <img src="{{'logotype.jpg' | asset_url}}" title="{{account.title}}" alt="{{account.title}}" style="max-width: 200px; max-height: 50px;" />
+          </a>
+        </div>
+        <a class="rumi_shops_link" href="/shops/"><span>Магазины</span></a>
+        <form action="{{ search_url }}" method="get" id="search">
+          <button class="button-search" style="border: 0px solid transparent;"></button>
+          <div class="search-close"></div>
+          <input type="search" name="q" placeholder="Поиск по товарам, например Xiaomi" value="{{ search.query }}" />
+        </form>
+        <div id="search_adaptive_icon"></div>
+        <div id="header_phones">
+          <a href="tel:{{settings.telephone_number | remove: " " | remove: "(" | remove: ")" }}"><span class="phone_top">{{settings.telephone_number}}</span></a>
+          <div class="everyday_text">{{settings.time}}<span class="callback_button"><span>Обратный звонок</span></span>
           </div>
-</div>
-<!--
-/*Measuring a Promotion Impressions*/
--->
-<script type="text/javascript"><!--
-  ga('ec:addPromo', {
-	'id': 'PROMO_3_12_903',
-	'name': 'esam18',
-	'creative': 'Module Slideshow'
-  });
-  ga('send', 'event', 'promo', 'impression', {'nonInteraction': true});
-  $('.slide_id0').addClass('be_create');
-  --></script>
-<!--
-/*Measuring a Promotion Impressions*/
--->
-<script type="text/javascript"><!--
-	   $('.owl-carousel').owlCarousel({
-		  singleItem: true,
-		  autoPlay: 3000,
-		  autoHeight: true,
-		  responsive: true,
-		  autoHeight: true,
-		  navigation: true,
-		  pagination: true,
-		  stopOnHover: true,
-		  lazyLoad:true,
-		  afterMove: callback
-		  });
-	   $('.owl-carousel-adaptive').owlCarousel({
-		  singleItem: true,
-		  autoPlay: 3000,
-		  autoHeight: true,
-		  responsive: true,
-		  autoHeight: true,
-		  navigation: true,
-		  pagination: true,
-		  stopOnHover: true,
-		  lazyLoad:true,
-		  afterMove: callback
-		  });
-
-
-	function callback(event) {
-		var item = $(".owl-carousel-main-slider .owl-pagination .active").index();
-		if (!$('.slide_id'+item).hasClass('be_create')) {
-		$('.slide_id'+item).addClass('be_create');
-		var promo = $('.slide_id'+item).data('promo');
-		  ga('ec:addPromo', {
-			'id': promo.id,
-			'name': promo.name,
-			'creative': promo.creative
-		  });
-		  ga('send', 'event', 'promo', 'impression', {'nonInteraction': true});
-		}
-	}
-
---></script><div class="homepage_banner">
-	<div class="product-of-day">
-				<div class="product_of_day">
-			<span class="economy_text">Экономия</span>
-			<span class="economy_price">500 <span class="rouble"> руб.</span></span>
-		</div>
-				<div class="day_title">Товар дня</div>
-				<div class="image"><a href="https://ru-mi.com/besprovodnye-naushniki-xiaomi-mi-airdots-belyj"><img src="https://ru-mi.com/image/cache/data/Tovari/Naushnikiikolonki/bluetooth/airdots_youth_edition/airdots_belyj-200x200.jpg" alt="Беспроводные наушники Xiaomi Mi AirDots Youth Edition (белый) (TWSEJ02LM)" /></a></div>
-				<div class="category_name">Наушники и колонки</div>
-		<div class="name"><a href="https://ru-mi.com/besprovodnye-naushniki-xiaomi-mi-airdots-belyj">Беспроводные наушники Xiaomi Mi AirDots Youth Edition (белый) (TWSEJ02LM)</a></div>
-		<div class="description"></div>
-		<div class="rating">
-			<div class="rating_left">
-				<a class="rating_stars" href="https://ru-mi.com/besprovodnye-naushniki-xiaomi-mi-airdots-belyj/reviews">
-										<div class="rating_full" style="width: 100%"></div>
-									</a>
-			</div>
-			<div class="rating_right">
-				<a class="rating_reviews" href="https://ru-mi.com/besprovodnye-naushniki-xiaomi-mi-airdots-belyj/reviews">6</a>
-			</div>
-		</div>
-		<div class="product_bottom">
-						<div class="price">
-									<span class="price-old">5990</span> <span class="price-new">5 490 <span class="rouble"> руб.</span></span>
-							</div>
-									<div class="cart"><a onmousedown="try { rrApi.addToBasket(10814) } catch(e) {}" onclick="addToCart('10814');" class="button add_to_cart_10814 "><span></span><div class="add_to_cart_help">Товар в корзине</div></a></div>
-						<div class="cl_b"></div>
-		</div>
-	</div>
-</div>
-</div>
-<div data-retailrocket-markup-block="595a5d465a6588d6144888d6" ></div>
-<div class="welcome_yandex_newsletter">
-	<span class="external_link welcome_yandex_market" data_link="https://market.yandex.ru/shop/273957/reviews?sort_by=date">
-		<div>Рейтинг 5 из 5,<br />убедитесь сами</div>
-	</span>
-	<div class="welcome_newsletter">
-		<div class="instagram_header">Спасибо нашим покупателям за доверие!</div>
-		<div class="instagram_underheader">Смотрите еще больше отзывов по тегу #спасибоРумиком</div>
-		<div id="instafeed-gallery-feed" class="owl-carousel-instagram owl-theme gallery row no-gutter"></div>
-	</div>
-</div>
-<style type="text/css">
-	.img-featured-container img {
-		width: 100%;
-	}
-</style>
-<script type="text/javascript">
-	jQuery(function($) {
-    var galleryFeed = new Instafeed({
-	  get: "user",
-	  userId: '7195434731',
-	  accessToken: "7195434731.d384d1b.6a81c3deeca242dda02482cf82215f9d",
-	  resolution: "low_resolution",
-	  useHttp: "true",
-	  limit: 10,
-	  template:
-		 '<a href="{{image}}" class="instagram_link">'+
-		  '<div class="img-featured-container-main">'+
-		  '<div class="img-featured-container">'+
-			'<div class="img-backdrop"></div>'+
-			'<div class="description-container">'+
-			   '<p class="caption">{{caption}}</p>'+
-			  '<span class="likes">{{likes}}</span>'+
-			  '<span class="comments">{{comments}}</span>'+
-			'</div>'+
-			'<img src="{{image}}" large_image="{{model.images.standard_resolution.url}}" class="img-responsive">'+
-			'<span class="link" style="display: none;">{{model.link}}</span>'+
-			'<div style="display: none;" class="userinfo"><img src="{{model.user.profile_picture}}" /> <span>{{model.user.username}}</span></div>'+
-		  '</div>'+
-		  '</div>'+
-		 '</a>',
-	  target: "instafeed-gallery-feed",
-	  after: function() {
-
-		var owl_insta = $(".owl-carousel-instagram");
-
-		// init owl
-		$(document).ready(function(){
-		  owl_insta.owlCarousel({navigation: true});
-		});
-	  }
-	});
-
-	galleryFeed.run();
-	});
-</script><div class="map_header">Наши магазины</div>
-</div>
-<div class="grey_map">
-	<div class="bg_map"></div>
-	<div class="container">
-		<div class="map_block_1">
-			<div class="map_block_left">
-				<a href="https://ru-mi.com/shops/" class="map_block_metro">Савеловская</a>
-				<div class="map_block_name">ТК «Савеловский» (Компьютерный центр)</div>
-				<div class="map_block_address">Москва, ул. Сущевский Вал, д.5 стр. 1<br />пав. F075 (1 этаж)</div>
-			</div>
-		</div>
-		<div class="map_block_2">
-			<div class="map_block_left">
-				<a href="https://ru-mi.com/shops/" class="map_block_metro">Багратионовская</a>
-				<div class="map_block_name">Гипермолл «Горбушкин двор»</div>
-				<div class="map_block_address">Москва, Багратионовский пр., д.7 к.3<br />пав. H2-006A (2 этаж)</div>
-			</div>
-		</div>
-		<div class="map_block_20">
-			<div class="map_block_left">
-				<a href="https://ru-mi.com/shops/" class="map_block_metro">Пражская</a>
-				<div class="map_block_name">ТК «Электронный рай»</div>
-				<div class="map_block_address">Москва, Кировоградская ул., д.15<br />пав. 2П-50 (1 этаж)</div>
-			</div>
-		</div>
-		<div class="map_block_30">
-			<div class="map_block_left">
-				<a href="https://ru-mi.com/shops/" class="map_block_town">Мытищи</a>
-				<div class="map_block_name">ТЦ «Июнь»</div>
-				<div class="map_block_address">Мытищи, ул. Мира, д.51<br />секция 3КК-17 (1 этаж)</div>
-			</div>
-		</div>
-	</div>
-</div>
-<div class="container">
-<div class="box">
-  <div class="box-heading"><a href="https://ru-mi.com/blog/">Новости</a>
-	  <div class="box-arrows">
-		<div class="box-arrow-left"></div>
-		<div class="box-arrow-right"></div>
-	  </div>
-	  <div class="box-right-link">
-		<a href="https://ru-mi.com/blog/">Все новости</a>
-	  </div>
+        </div>
+      </div>
+    </div>
+    <div class="search_adaptive_line">
+      <div class="container">
+        <div id="search_adaptive">
+          <button class="button-search2" style="border: 0px solid transparent;"></button>
+          <div class="search-close2"></div>
+          <input type="text" name="search2" placeholder="Поиск по товарам, например Xiaomi" value="" />
+        </div>
+      </div>
+    </div>
+    <div id="header_menu">
+      <div class="container">
+        <div id="menu_categories">
+          <div id="menu_categories_selector"><span>Каталог товаров</span></div>
+          <div id="menu" style='display: none;'>
+            <ul>
+              {% for collection in collections %}
+                <li>
+                  <a href="{{ collection.url }}" id="collection_id{{collection.id}}" class="{{collection.seo_description | strip_html}} main_menu non_opened">{{ collection.title }}</a>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+        <div id="header_middle_menu">
+          {% for link in linklists.main-menu.links %}
+            <a href="{{ link.url }}">{{ link.title }}</a>
+          {% endfor %}
+        </div>
+        <a class="header_wishlist non_active" href="/wishlist/"><span></span></a>
+        <a class="header_compare non_active" href="/compare-products/"><span></span></a>
+        <div id="cart">
+          <div class="heading">
+            <a title="Корзина покупок"><span id="cart-total"><span class="cart_counter non_active">0 </span>Ваша корзина пуста</span></a>
+          </div>
+          <div class="content">
+            <div class="empty">В корзине пусто!</div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="box-content">
-    <ul class="blog_list">
-            <li class="blog_item">
-		  <div class="blog_item_image"><a href="https://ru-mi.com/blog/news/xiaomi-poluchila-patent-na-dvazhdy-dyryavye-smartfony.html"><img src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" class="lazyload" alt="Xiaomi получила патент на дважды дырявые смартфоны" data-src="https://ru-mi.com/image/cache/blog_downloads/2019/02/xiaomi-double-hole-display-logo-256x193.jpg" /></a></div>
-		  <div class="blog_item_item_description">
-			<div class="blog_item_item_description_bg"></div>
-			<a href="https://ru-mi.com/blog/news/xiaomi-poluchila-patent-na-dvazhdy-dyryavye-smartfony.html">Xiaomi получила патент на дважды дырявые смартфоны</a>
-			<div class="blog_item_description">
-				  Вообще-то на рынке уже есть смартфоны, особенностью которых является наличие “дырки” в дисплее, где размещена селфи-камера. Это новая альтернатива дисплеям с вырезами, и ею уже пользуются Samsung и Huawei. Xiaomi собирается переплюнуть всех, и поможет ей в этом новый патент.
 
-  Косвенным п			</div>
-		  </div>
-	  </li>
-            <li class="blog_item">
-		  <div class="blog_item_image"><a href="https://ru-mi.com/blog/news/direktor-xiaomi-podtverdil-nalichie-trojnoj-kamery-v-mi-9.html"><img src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" class="lazyload" alt="Директор Xiaomi подтвердил наличие тройной камеры в Mi 9" data-src="https://ru-mi.com/image/cache/blog_downloads/2019/02/mi-9-triple-camera-logo-256x193.jpg" /></a></div>
-		  <div class="blog_item_item_description">
-			<div class="blog_item_item_description_bg"></div>
-			<a href="https://ru-mi.com/blog/news/direktor-xiaomi-podtverdil-nalichie-trojnoj-kamery-v-mi-9.html">Директор Xiaomi подтвердил наличие тройной камеры в Mi 9</a>
-			<div class="blog_item_description">
-				  Xiaomi любит дразнить своих фанатов тизерами новых продуктов. Ранее компания уже публиковала фотографию со смартфона с тремя камерами, о чем говорил фирменный водяной знак. А буквально пару дней назад в руках исполнительного директора компании было обнаружено устройство, предположительно являющеес			</div>
-		  </div>
-	  </li>
-            <li class="blog_item">
-		  <div class="blog_item_image"><a href="https://ru-mi.com/blog/news/v-2019-godu-xiaomi-vypustit-eshche-odin-igrovoj-smartfon.html"><img src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" class="lazyload" alt="В 2019 году Xiaomi выпустит еще один игровой смартфон" data-src="https://ru-mi.com/image/cache/blog_downloads/2019/02/blackshark-logo-256x193.jpg" /></a></div>
-		  <div class="blog_item_item_description">
-			<div class="blog_item_item_description_bg"></div>
-			<a href="https://ru-mi.com/blog/news/v-2019-godu-xiaomi-vypustit-eshche-odin-igrovoj-smartfon.html">В 2019 году Xiaomi выпустит еще один игровой смартфон</a>
-			<div class="blog_item_description">
-				  Китайский техногигант отлично чувствует себя на рынке, выпуская флагманы, бюджетники, отличные среднебюджетные и даже  игровые смартфоны . Именно о линейки последних и о ее обновлении пойдет речь в данной статье.
+{{ content_for_layout }}
 
-  На данный момент в ассортименте Xiaomi имеется два игровых смартфона: клас			</div>
-		  </div>
-	  </li>
-            <li class="blog_item">
-		  <div class="blog_item_image"><a href="https://ru-mi.com/blog/news/pervyj-gorelyj-vtoroj-zolotoj-xiaomi-poka-chetvertyj.html"><img src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" class="lazyload" alt="Первый - горелый, второй - золотой, Xiaomi - пока четвертый" data-src="https://ru-mi.com/image/cache/blog_downloads/2019/02/china-economic-logo-256x193.jpg" /></a></div>
-		  <div class="blog_item_item_description">
-			<div class="blog_item_item_description_bg"></div>
-			<a href="https://ru-mi.com/blog/news/pervyj-gorelyj-vtoroj-zolotoj-xiaomi-poka-chetvertyj.html">Первый - горелый, второй - золотой, Xiaomi - пока четвертый</a>
-			<div class="blog_item_description">
-				  Популярное исследовательское агентство IDC опубликовало отчет за четвертый квартал 2018 года, в котором включило общие продажи за весь календарный 2018 год. Мировые продажи смартфонов падают, однако некоторых производителей это совсем не заботит. Разберемся в отчете IDC вместе.
-
-  За четвер			</div>
-		  </div>
-	  </li>
-            <li class="blog_item">
-		  <div class="blog_item_image"><a href="https://ru-mi.com/blog/news/ty-sushi-sushi-sushi-vmeste-s-fenom-xiaomi.html"><img src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" class="lazyload" alt="Ты суши́, суши́, суши́. Вместе с феном Xiaomi" data-src="https://ru-mi.com/image/cache/blog_downloads/2019/02/soc-anios-logo-256x193.jpg" /></a></div>
-		  <div class="blog_item_item_description">
-			<div class="blog_item_item_description_bg"></div>
-			<a href="https://ru-mi.com/blog/news/ty-sushi-sushi-sushi-vmeste-s-fenom-xiaomi.html">Ты суши́, суши́, суши́. Вместе с феном Xiaomi</a>
-			<div class="blog_item_description">
-				  Да-да, все знают, что Xiaomi выпускает гаджеты почти во всех сферах и все равно многие из наших читателей впервые узнают о том, что одно из подразделений компании занимается разработкой фенов. Об одном из наиболее удачных таких мы расскажем в данном материале!
-
-  Название Soocare Anions сра			</div>
-		  </div>
-	  </li>
-            <li class="blog_item">
-		  <div class="blog_item_image"><a href="https://ru-mi.com/blog/news/podrobnosti-o-gryadushchih-fabletah-mi-max-4-i-i-ne-tolko.html"><img src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" class="lazyload" alt="Подробности о грядущих фаблетах Mi Max 4 и.. и не только" data-src="https://ru-mi.com/image/cache/blog_downloads/2019/02/mi-max-4-logo-256x193.jpg" /></a></div>
-		  <div class="blog_item_item_description">
-			<div class="blog_item_item_description_bg"></div>
-			<a href="https://ru-mi.com/blog/news/podrobnosti-o-gryadushchih-fabletah-mi-max-4-i-i-ne-tolko.html">Подробности о грядущих фаблетах Mi Max 4 и.. и не только</a>
-			<div class="blog_item_description">
-				  Огромные смартфоны из линейки Xiaomi Mi Max обычно выпускаются компанией во втором квартале каждого года. Впрочем, это никак не мешает уже сейчас начать получать о новинках некоторые подробности. Например, новинки будет целых две.
-
-  В китайской социальной сети Weibo были слиты подробности			</div>
-		  </div>
-	  </li>
-            <li class="blog_item">
-		  <div class="blog_item_image"><a href="https://ru-mi.com/blog/news/xiaomi-rabotaet-nad-smartfonom-s-pentakameroj.html"><img src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" class="lazyload" alt="Xiaomi работает над смартфоном с пентакамерой" data-src="https://ru-mi.com/image/cache/blog_downloads/2019/01/mi-penta-logo-256x193.jpg" /></a></div>
-		  <div class="blog_item_item_description">
-			<div class="blog_item_item_description_bg"></div>
-			<a href="https://ru-mi.com/blog/news/xiaomi-rabotaet-nad-smartfonom-s-pentakameroj.html">Xiaomi работает над смартфоном с пентакамерой</a>
-			<div class="blog_item_description">
-				  Тенденция к росту количества камер кажется смешной и нелепой, однако мы уже сейчас можем встретить смартфоны с 4 модулями основной камеры. К слову, грядущая Nokia 9 должна получить пентамодуль камеры (с 5 датчиками). Ничего удивительного, что над похожим смартфоном работает и Xiaomi.
-
-  Из			</div>
-		  </div>
-	  </li>
-            <li class="blog_item">
-		  <div class="blog_item_image"><a href="https://ru-mi.com/blog/news/ocherednoj-opros-xiaomi-pogovorim-o-dizajne.html"><img src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" class="lazyload" alt="Очередной опрос Xiaomi: поговорим о дизайне" data-src="https://ru-mi.com/image/cache/blog_downloads/2019/01/new-design-redmi-logo-256x193.jpg" /></a></div>
-		  <div class="blog_item_item_description">
-			<div class="blog_item_item_description_bg"></div>
-			<a href="https://ru-mi.com/blog/news/ocherednoj-opros-xiaomi-pogovorim-o-dizajne.html">Очередной опрос Xiaomi: поговорим о дизайне</a>
-			<div class="blog_item_description">
-				  Вчера вечером президент Redmi Лу Вайбинг стал инициатором нового опроса, в котором предложил пользователям выбрать лучший дизайн дисплея для новых смартфонов бренда. Что из этого вышло - читайте в нашем материале!
-
-  Среди нескольких вариантов наибольшее внимание было отдано дизайну с полно			</div>
-		  </div>
-	  </li>
-            <li class="blog_item">
-		  <div class="blog_item_image"><a href="https://ru-mi.com/blog/news/samyj-deshevyj-smartfon-ot-xiaomi-oficialno-predstavlen.html"><img src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" class="lazyload" alt="Самый дешевый смартфон от Xiaomi официально представлен!" data-src="https://ru-mi.com/image/cache/blog_downloads/2019/01/redmi-go-logo-new-256x193.jpg" /></a></div>
-		  <div class="blog_item_item_description">
-			<div class="blog_item_item_description_bg"></div>
-			<a href="https://ru-mi.com/blog/news/samyj-deshevyj-smartfon-ot-xiaomi-oficialno-predstavlen.html">Самый дешевый смартфон от Xiaomi официально представлен!</a>
-			<div class="blog_item_description">
-				  Первый смартфон от Xiaomi на базе операционной системы Android Go выпущен официально. Из коробки смартфон работает на Android 8.1 Oreo (Go версия), а для покупки доступен черный и голубой цвета. Встречайте - Redmi Go!
-
-  Гаджет оснащен скромным по меркам современных фаблетов дисплеем с диаг			</div>
-		  </div>
-	  </li>
-            <li class="blog_item">
-		  <div class="blog_item_image"><a href="https://ru-mi.com/blog/news/v-novom-smartfone-ot-redmi-budet-ustanovlena-ogromnaya-batareya.html"><img src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" class="lazyload" alt="В новом смартфоне от Redmi будет установлена огромная батарея" data-src="https://ru-mi.com/image/cache/blog_downloads/2019/01/redmi-new-battery-logo-256x193.jpg" /></a></div>
-		  <div class="blog_item_item_description">
-			<div class="blog_item_item_description_bg"></div>
-			<a href="https://ru-mi.com/blog/news/v-novom-smartfone-ot-redmi-budet-ustanovlena-ogromnaya-batareya.html">В новом смартфоне от Redmi будет установлена огромная батарея</a>
-			<div class="blog_item_description">
-				  В социальной сети Weibo не останавливаются опросы фанатов компании ее руководством о различных аспектах, которые бы пользователи хотели увидеть или изменить в продуктах Xiaomi. По всей видимости, компания пытается прислушаться к своей аудитории, тем самым получив больше симпатий от преданных фанат			</div>
-		  </div>
-	  </li>
-          </ul>
+  <div class="advantages_bottom_rumi">
+    <div class="container">
+      <div class="advantages_bottom_container_rumi">
+        <a class="advantages_bottom_element_rumi advantage_1_rumi" href="https://market.yandex.ru/shop/273957/reviews?sort_by=date" target="_blank">
+          <div class="advantages_bottom_element_rumi_header">Супер
+            <br />репутация</div>
+          <div class="advantages_bottom_element_rumi_text">Более 6 000 положительных
+            <br />отзывов на Яндекс.Маркете</div>
+          <div class="advantages_bottom_element_rumi_image"></div>
+        </a>
+        <a class="advantages_bottom_element_rumi advantage_2_rumi" href="/dostavka">
+          <div class="advantages_bottom_element_rumi_header">Удобная
+            <br />доставка</div>
+          <div class="advantages_bottom_element_rumi_text">Более 3 500 пунктов
+            <br />самовывоза по всей России</div>
+          <div class="advantages_bottom_element_rumi_image"></div>
+        </a>
+        <a class="advantages_bottom_element_rumi advantage_3_rumi" href="/mibonus">
+          <div class="advantages_bottom_element_rumi_header">Экономия
+            <br />с MI-бонусами</div>
+          <div class="advantages_bottom_element_rumi_text">Оплата от 10 до 100% заказа
+            <br />специальными Mi-бонусами</div>
+          <div class="advantages_bottom_element_rumi_image"></div>
+        </a>
+        <a class="advantages_bottom_element_rumi advantage_4_rumi" href="https://vk.com/rumicomrussia" target="_blank">
+          <div class="advantages_bottom_element_rumi_header">Много
+            <br />фанатов</div>
+          <div class="advantages_bottom_element_rumi_text">Живые обсуждения
+            <br />в наших группах</div>
+          <div class="advantages_bottom_element_rumi_image"></div>
+        </a>
+        <a class="advantages_bottom_element_rumi advantage_5_rumi" href="/guaranty">
+          <div class="advantages_bottom_element_rumi_header">Надёжный
+            <br />сервисный центр</div>
+          <div class="advantages_bottom_element_rumi_text">Собственный гарантийный
+            <br />центр, если что-то сломается</div>
+          <div class="advantages_bottom_element_rumi_image"></div>
+        </a>
+      </div>
+    </div>
   </div>
-</div>
-<script type="text/javascript">
-	$(document).ready(function() {
-	   $('.blog_list').owlCarousel({
-		  items : 5, //10 изображений на 1000px
-		  itemsDesktopSmall : [1343,4], // 3 изображения между 900px и 601px
-		  itemsMobile : [820,1],
-		  navigation: false,
-		  pagination: false
-	  });
-	  var owl = $(".blog_list").data('owlCarousel');
-	  $('.box-arrow-left').live('click', function() {
-		owl.prev();
-	  });
-	  $('.box-arrow-right').live('click', function() {
-		owl.next();
-	  });
-	});
-</script><div class="box">
-  <div class="box-heading">Видеообзоры
-	  <div class="box-right-link">
-		<a href="https://www.youtube.com/channel/UCvK29FNCSg46Eik86viJtjQ" target="_blank">Все видеообзоры</a>
-	  </div>
+  <div class="advantages_bottom_rumi_adaptive">
+    <div class="container">
+      <div class="advantages_bottom_container_rumi">
+        <a class="advantages_bottom_element_rumi advantage_1_rumi" href="https://market.yandex.ru/shop/273957/reviews?sort_by=date" target="_blank">
+          <div class="advantages_bottom_element_rumi_header">Супер
+            <br />репутация</div>
+          <div class="advantages_bottom_element_rumi_text">Более 6 000 положительных
+            <br />отзывов на Яндекс.Маркете</div>
+          <div class="advantages_bottom_element_rumi_image"></div>
+        </a>
+        <a class="advantages_bottom_element_rumi advantage_2_rumi" href="/dostavka">
+          <div class="advantages_bottom_element_rumi_header">Удобная
+            <br />доставка</div>
+          <div class="advantages_bottom_element_rumi_text">Более 3 500 пунктов
+            <br />самовывоза по всей России</div>
+          <div class="advantages_bottom_element_rumi_image"></div>
+        </a>
+        <a class="advantages_bottom_element_rumi advantage_3_rumi" href="/mibonus">
+          <div class="advantages_bottom_element_rumi_header">Экономия
+            <br />с MI-бонусами</div>
+          <div class="advantages_bottom_element_rumi_text">Оплата от 10 до 100% заказа
+            <br />специальными Mi-бонусами</div>
+          <div class="advantages_bottom_element_rumi_image"></div>
+        </a>
+        <a class="advantages_bottom_element_rumi advantage_4_rumi" href="https://vk.com/rumicomrussia" target="_blank">
+          <div class="advantages_bottom_element_rumi_header">Много
+            <br />фанатов</div>
+          <div class="advantages_bottom_element_rumi_text">Живые обсуждения
+            <br />в наших группах</div>
+          <div class="advantages_bottom_element_rumi_image"></div>
+        </a>
+        <a class="advantages_bottom_element_rumi advantage_5_rumi" href="/guaranty">
+          <div class="advantages_bottom_element_rumi_header">Надёжный
+            <br />сервисный центр</div>
+          <div class="advantages_bottom_element_rumi_text">Собственный гарантийный
+            <br />центр, если что-то сломается</div>
+          <div class="advantages_bottom_element_rumi_image"></div>
+        </a>
+      </div>
+    </div>
   </div>
-  <div class="box-content">
-    <ul class="blog_list">
-            <li class="blog_item video_item">
-		  <div class="blog_item_image">
-				<a href="https://www.youtube.com/embed/UJWNnRv9sL8?rel=0&wmode=transparent" class="videolink">
-					<img class="lazyload" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="https://ru-mi.com/image/cache/video_downloads/UJWNnRv9sL8-256x192.jpg" title="Обзор фена Xiaomi Soocare Anions" alt="Обзор фена Xiaomi Soocare Anions" />
-					<span class="play"></span>
-				</a>
-		  </div>
-		  <div class="blog_item_item_description">
-			<div class="blog_item_item_description_bg"></div>
-			<a href="https://www.youtube.com/embed/UJWNnRv9sL8?rel=0&wmode=transparent" class="videolink">Обзор фена Xiaomi Soocare Anions</a>
-			<div class="blog_item_description">
-				  Классный фен от XIaomi с эффектом ионизации. С ним ваши волосы станут «гладкими и шелковистыми»! Шутка. Хотя есть доля правды. Чтобы узнать подробнее, смотрите обзор.
-			</div>
-		  </div>
-	  </li>
-            <li class="blog_item video_item">
-		  <div class="blog_item_image">
-				<a href="https://www.youtube.com/embed/A8yuZTAsNm4?rel=0&wmode=transparent" class="videolink">
-					<img class="lazyload" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="https://ru-mi.com/image/cache/video_downloads/A8yuZTAsNm4-256x192.jpg" title="Обзор-разбор увлажнителя воздуха Xiaomi Air Humidifier 2" alt="Обзор-разбор увлажнителя воздуха Xiaomi Air Humidifier 2" />
-					<span class="play"></span>
-				</a>
-		  </div>
-		  <div class="blog_item_item_description">
-			<div class="blog_item_item_description_bg"></div>
-			<a href="https://www.youtube.com/embed/A8yuZTAsNm4?rel=0&wmode=transparent" class="videolink">Обзор-разбор увлажнителя воздуха Xiaomi Air Humidifier 2</a>
-			<div class="blog_item_description">
-				  Увлажнитель воздуха — это полезная штука дома. А если он ещё и моет воздух, то — вдвойне! Именно такой новый гаджет от Xiaomi. Он обрабатывает воздух в небольшой квартире, делая его приятнее и чище. При этом не требует специальных фильтров.
-			</div>
-		  </div>
-	  </li>
-            <li class="blog_item video_item">
-		  <div class="blog_item_image">
-				<a href="https://www.youtube.com/embed/_Eyc9uNCe2A?rel=0&wmode=transparent" class="videolink">
-					<img class="lazyload" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="https://ru-mi.com/image/cache/video_downloads/_Eyc9uNCe2A-256x192.jpg" title="Детальный обзор Xiaomi Mi Max 3" alt="Детальный обзор Xiaomi Mi Max 3" />
-					<span class="play"></span>
-				</a>
-		  </div>
-		  <div class="blog_item_item_description">
-			<div class="blog_item_item_description_bg"></div>
-			<a href="https://www.youtube.com/embed/_Eyc9uNCe2A?rel=0&wmode=transparent" class="videolink">Детальный обзор Xiaomi Mi Max 3</a>
-			<div class="blog_item_description">
-				 Mi Max 3 — это один из лидеров среди смартфонов Xiaomi по размеру дисплея. Целых 6,9 дюйма! При этом есть мозный аккумулятор. В результате получается отличный аппарат для просмотра видео, серфинга и работы.&nbsp;
-			</div>
-		  </div>
-	  </li>
-            <li class="blog_item video_item">
-		  <div class="blog_item_image">
-				<a href="https://www.youtube.com/embed/0YJvkr_tZgQ?rel=0&wmode=transparent" class="videolink">
-					<img class="lazyload" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="https://ru-mi.com/image/cache/video_downloads/0YJvkr_tZgQ-256x192.jpg" title="360° камеры Xiaomi — ТОП 3" alt="360° камеры Xiaomi — ТОП 3" />
-					<span class="play"></span>
-				</a>
-		  </div>
-		  <div class="blog_item_item_description">
-			<div class="blog_item_item_description_bg"></div>
-			<a href="https://www.youtube.com/embed/0YJvkr_tZgQ?rel=0&wmode=transparent" class="videolink">360° камеры Xiaomi — ТОП 3</a>
-			<div class="blog_item_description">
-				 IP-камера с обзором на 360° от Xiaomi — это полезный в хозяйстве гаджет. Его можно поставить в хорошее место и без дополнительного оборудования видеть всё, что происходит вокруг, когда вас нет рядом. Достаточно камеры, интернета и смартфона.
-			</div>
-		  </div>
-	  </li>
-            <li class="blog_item video_item">
-		  <div class="blog_item_image">
-				<a href="https://www.youtube.com/embed/oQWp6QfCIek?rel=0&wmode=transparent" class="videolink">
-					<img class="lazyload" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="https://ru-mi.com/image/cache/video_downloads/oQWp6QfCIek-256x192.jpg" title="Топ 3 IP-камер Xiaomi" alt="Топ 3 IP-камер Xiaomi" />
-					<span class="play"></span>
-				</a>
-		  </div>
-		  <div class="blog_item_item_description">
-			<div class="blog_item_item_description_bg"></div>
-			<a href="https://www.youtube.com/embed/oQWp6QfCIek?rel=0&wmode=transparent" class="videolink">Топ 3 IP-камер Xiaomi</a>
-			<div class="blog_item_description">
-				  IP-камеры — это полезный товар. С их помощью можно посмотреть, что происходит дома, в офисе или на даче. При этом не нужно сложно оборудование. Достаточно: камеры, доступа в интернет и приложения на своём смартфоне. Какую камеру Xiaomi стоит выбрать, смотрите в этом обзоре.
-			</div>
-		  </div>
-	  </li>
-          </ul>
+  <script type="text/javascript">
+    <!--
+    $(document).ready(function() {
+      $('.advantages_bottom_rumi_adaptive .advantages_bottom_container_rumi').owlCarousel({
+        singleItem: true,
+        autoHeight: true,
+        responsive: true,
+        autoHeight: true,
+        navigation: false,
+        pagination: true,
+      });
+    });
+    -->
+  </script>
+
+  <div class="instagram_bg"></div>
+  <div class="instagram_popup">
+    <div class="instagram_popup_close"></div>
+    <div class="instagram_popup_left">
+      <img src="" />
+    </div>
+    <div class="instagram_popup_right">
+      <div class="instagram_popup_right_text">
+        <div class="instagram_popup_right_text_user"></div>
+        <div class="instagram_popup_right_text_description"></div>
+        <div class="instagram_popup_right_text_underdescription">
+          <span class="instagram_popup_right_text_likes"></span>
+          <span class="instagram_popup_right_text_comments"></span>
+        </div>
+        <a href="#" class="instagram_open_window" target="_blank">Открыть в Instagram</a>
+      </div>
+    </div>
   </div>
-</div>
-<div class="welcome">
-	<div class="welcome_left">
-		<div class="welcome_text">
-			<h1 style="color: rgb(255, 108, 48); font-family: Roboto, Arial, Helvetica, sans-serif; margin-top: 0px; margin-bottom: 20px; font-size: 25px;">Фирменный интернет-магазин официальной техники и аксессуаров&nbsp;Xiaomi в Москве</h1>
+  <script type="text/javascript">
+    $('.instagram_link').live('click', function() {
+      var image = $(this).find('.img-responsive').attr('large_image');
+      var caption = $(this).find('.caption').html();
+      var userpic = $(this).find('.userinfo').html();
+      var likes = $(this).find('.likes').text();
+      var comments = $(this).find('.comments').text();
+      var link = $(this).find('.link').html();
+      $('.instagram_popup_left img').attr('src', image);
+      $('.instagram_popup_right_text_user').html(userpic);
+      $('.instagram_popup_right_text_description').html(caption);
+      $('.instagram_popup_right_text_likes').html(likes);
+      $('.instagram_popup_right_text_comments').html(comments);
+      $('.instagram_open_window').attr('href', link);
 
-<div style="color: rgb(108, 112, 129); font-family: Roboto, Arial, Helvetica, sans-serif; font-size: 15px;">
-<p><span style="font-size:14px;">Китайский производитель приобрёл известность в России благодаря сочетанию в своей продукции: лаконичного дизайн, качественного материала и многофункциональности. В начале 2015 года было реализовано около 35 миллионов моделей смартфонов по всему миру, и компания приобрела мировую известность. Научно-исследовательский штаб ведёт свои разработки в сфере технологий и следует простому кредо - высокие технологии для всех!</span></p>
-
-<p><span style="font-size:14px;">На официальном сайте магазина Xiaomi представленны оригинальные товары. Каждая модель - продукт тщательной разработки и обладает множеством достоинств; Смартфоны, планшеты, камеры и телевизоры имеют интуитивно понятный интерфейс и систему управления. Все новинки представлены в каталоге сайта!</span></p>
-
-<p><span style="font-size:14px;">Фирменный магазин ru-mi.com реализует официальную продукцию от Xiaomi, среди которой вы найдете девайсы суббрендов: Mijia, ZMi, XiaoYi, 1MORE, YI и другие. Мы заслужили свою репутацию высоким качеством оказываемых услуг!</span></p>
-
-<h2><span style="font-size:18px;">Интернет-магазин, заслуживающий внимания!</span></h2>
-
-<p><span style="font-size:14px;">На страницах сайта «Румиком» вы найдёте последние новинки и популярную продукцию компании:</span></p>
-
-<ul>
-	<li><span style="font-size:14px;">Если вы находитесь в Москве или области, протестировать понравившийся гаджет можно лично в нашем шоу-руме.</span></li>
-	<li><span style="font-size:14px;">Огромный ассортимент любых&nbsp;товаров Xiaomi</span></li>
-	<li><span style="font-size: 14px;">Отличные варианты гарантия.</span></li>
-	<li><span style="font-size:14px;">Доставка по Москве выполняется курьерской службой, по России – надёжными транспортными компаниями.</span></li>
-	<li><span style="font-size:14px;">Доступен самовывоз.</span></li>
-	<li><span style="font-size:14px;">Постоянным покупателям скидки и бонусы.</span></li>
-</ul>
-
-<p><span style="font-size:14px;">Товары, представленные на сайте, имеют сертификаты качества и являются оригинальной продукцией Mi. Мы работаем с собственным складом в Москве, на котором доступны все позиции представленные на сайте; наш call центр готов оказать всесторонную поддержку нашим постоянным и будущим клиентам, рассказав всю необходимую информацию о товарах!</span></p>
-</div>
-			<div class="welcome_show_all"><span>показать полностью</span></div>
-		</div>
-	</div>
-	</div>
-<script type="text/javascript">
-	$(document).ready(function() {
-		var show_welcome_bottom = 1;
-		var show_welcome_arrow = 0;
-		var welcome_show_all_height = $('.welcome_text').height();
-		$('.welcome_text').height('190px');
-		$('.welcome_show_all span').live('click', function() {
-			if (show_welcome_bottom==1)
-			{
-				show_welcome_bottom = 0;
-				if (show_welcome_arrow==0)
-				{
-					$(".welcome .welcome_text").animate({"padding-bottom": "80px", "height":welcome_show_all_height}, 200, function() {
-						show_welcome_bottom=1;
-					});
-					$('.welcome_show_all span').text('скрыть');
-					$('.welcome_show_all span').addClass('welcome_show_all_active');
-					show_welcome_arrow = 1;
-				}
-				else
-				{
-					$(".welcome .welcome_text").animate({"padding-bottom": "50px", "height":"190px"}, 200, function() {
-						show_welcome_bottom=1;
-					});
-					show_welcome_arrow = 0;
-					$('.welcome_show_all span').text('показать полностью');
-					$('.welcome_show_all span').removeClass('welcome_show_all_active');
-				}
-			}
-		});
-	});
-</script><div class="cl_b"></div>
-<div data-retailrocket-markup-block="588afa8765bf1917843073e5" ></div>
-</div>
-<div class="advantages_bottom_rumi">
-	<div class="container">
-		<div class="advantages_bottom_container_rumi">
-			<a class="advantages_bottom_element_rumi advantage_1_rumi" href="https://market.yandex.ru/shop/273957/reviews?sort_by=date" target="_blank">
-				<div class="advantages_bottom_element_rumi_header">Супер<br />репутация</div>
-				<div class="advantages_bottom_element_rumi_text">Более 6 000 положительных<br />отзывов на Яндекс.Маркете</div>
-				<div class="advantages_bottom_element_rumi_image"></div>
-			</a>
-			<a class="advantages_bottom_element_rumi advantage_2_rumi" href="https://ru-mi.com/dostavka">
-				<div class="advantages_bottom_element_rumi_header">Удобная<br />доставка</div>
-				<div class="advantages_bottom_element_rumi_text">Более 3 500 пунктов<br />самовывоза по всей России</div>
-				<div class="advantages_bottom_element_rumi_image"></div>
-			</a>
-			<a class="advantages_bottom_element_rumi advantage_3_rumi" href="https://ru-mi.com/mibonus">
-				<div class="advantages_bottom_element_rumi_header">Экономия<br />с MI-бонусами</div>
-				<div class="advantages_bottom_element_rumi_text">Оплата от 10 до 100% заказа<br />специальными Mi-бонусами</div>
-				<div class="advantages_bottom_element_rumi_image"></div>
-			</a>
-			<a class="advantages_bottom_element_rumi advantage_4_rumi" href="https://vk.com/rumicomrussia" target="_blank">
-				<div class="advantages_bottom_element_rumi_header">Много<br />фанатов</div>
-				<div class="advantages_bottom_element_rumi_text">Живые обсуждения<br />в наших группах</div>
-				<div class="advantages_bottom_element_rumi_image"></div>
-			</a>
-			<a class="advantages_bottom_element_rumi advantage_5_rumi" href="https://ru-mi.com/guaranty">
-				<div class="advantages_bottom_element_rumi_header">Надёжный<br />сервисный центр</div>
-				<div class="advantages_bottom_element_rumi_text">Собственный гарантийный<br />центр, если что-то сломается</div>
-				<div class="advantages_bottom_element_rumi_image"></div>
-			</a>
-		</div>
-	</div>
-</div>
-<div class="advantages_bottom_rumi_adaptive">
-	<div class="container">
-		<div class="advantages_bottom_container_rumi">
-			<a class="advantages_bottom_element_rumi advantage_1_rumi" href="https://market.yandex.ru/shop/273957/reviews?sort_by=date" target="_blank">
-				<div class="advantages_bottom_element_rumi_header">Супер<br />репутация</div>
-				<div class="advantages_bottom_element_rumi_text">Более 6 000 положительных<br />отзывов на Яндекс.Маркете</div>
-				<div class="advantages_bottom_element_rumi_image"></div>
-			</a>
-			<a class="advantages_bottom_element_rumi advantage_2_rumi" href="https://ru-mi.com/dostavka">
-				<div class="advantages_bottom_element_rumi_header">Удобная<br />доставка</div>
-				<div class="advantages_bottom_element_rumi_text">Более 3 500 пунктов<br />самовывоза по всей России</div>
-				<div class="advantages_bottom_element_rumi_image"></div>
-			</a>
-			<a class="advantages_bottom_element_rumi advantage_3_rumi" href="https://ru-mi.com/mibonus">
-				<div class="advantages_bottom_element_rumi_header">Экономия<br />с MI-бонусами</div>
-				<div class="advantages_bottom_element_rumi_text">Оплата от 10 до 100% заказа<br />специальными Mi-бонусами</div>
-				<div class="advantages_bottom_element_rumi_image"></div>
-			</a>
-			<a class="advantages_bottom_element_rumi advantage_4_rumi" href="https://vk.com/rumicomrussia" target="_blank">
-				<div class="advantages_bottom_element_rumi_header">Много<br />фанатов</div>
-				<div class="advantages_bottom_element_rumi_text">Живые обсуждения<br />в наших группах</div>
-				<div class="advantages_bottom_element_rumi_image"></div>
-			</a>
-			<a class="advantages_bottom_element_rumi advantage_5_rumi" href="https://ru-mi.com/guaranty">
-				<div class="advantages_bottom_element_rumi_header">Надёжный<br />сервисный центр</div>
-				<div class="advantages_bottom_element_rumi_text">Собственный гарантийный<br />центр, если что-то сломается</div>
-				<div class="advantages_bottom_element_rumi_image"></div>
-			</a>
-		</div>
-	</div>
-</div>
-<script type="text/javascript"><!--
-$(document).ready(function() {
-	   $('.advantages_bottom_rumi_adaptive .advantages_bottom_container_rumi').owlCarousel({
-		  singleItem: true,
-		  autoHeight: true,
-		  responsive: true,
-		  autoHeight: true,
-		  navigation: false,
-		  pagination: true,
-	  });
-	});
---></script>
-
-<div class="instagram_bg"></div>
-<div class="instagram_popup">
-	<div class="instagram_popup_close"></div>
-	<div class="instagram_popup_left">
-		<img src="" />
-	</div>
-	<div class="instagram_popup_right">
-		<div class="instagram_popup_right_text">
-			<div class="instagram_popup_right_text_user"></div>
-			<div class="instagram_popup_right_text_description"></div>
-			<div class="instagram_popup_right_text_underdescription">
-				<span class="instagram_popup_right_text_likes"></span>
-				<span class="instagram_popup_right_text_comments"></span>
-			</div>
-			<a href="#" class="instagram_open_window" target="_blank">Открыть в Instagram</a>
-		</div>
-	</div>
-</div>
-<script type="text/javascript">
-	$('.instagram_link').live('click', function() {
-		var image = $(this).find('.img-responsive').attr('large_image');
-		var caption = $(this).find('.caption').html();
-		var userpic = $(this).find('.userinfo').html();
-		var likes = $(this).find('.likes').text();
-		var comments = $(this).find('.comments').text();
-		var link = $(this).find('.link').html();
-		$('.instagram_popup_left img').attr('src',image);
-		$('.instagram_popup_right_text_user').html(userpic);
-		$('.instagram_popup_right_text_description').html(caption);
-		$('.instagram_popup_right_text_likes').html(likes);
-		$('.instagram_popup_right_text_comments').html(comments);
-		$('.instagram_open_window').attr('href',link);
-
-		$('.instagram_bg').css('display','block');
-		$('.instagram_popup').css('display','block');
-		return false;
-	});
-</script>
-<noindex>
-<div class="mail_bottom">
-	<div class="mail_bottom_bg"></div>
-	<div class="mail_bottom_content">
-		<div class="container">
-			<div class="mail_footer_logo"></div>
-			<div class="mail_footer_text">
-				<span class="mail_footer_text_main">Будь в курсе последних предложений</span>
-				<span class="mail_footer_text_sub">Подпишись и получай информацию об акциях и скидках</span>
-			</div>
-			<div class="mail_footer_inputspace">
-				<input type="text" id="mail_footer_button" placeholder="Введите ваш e-mail" onblur="var regex = /^([a-zA-Z0-9_.+-])+@(([a-zA-Z0-9-])+.)+([a-zA-Z0-9]{2,4})+$/;if(regex.test(this.value)) { try {rrApi.setEmail(this.value, {send_code: false});}catch(e){}}" />
-			</div>
-			<div class="mail_footer_button"><span>Подписаться</span></div>
-		</div>
-	</div>
-	<div class="mail_bottom_bg"></div>
-</div>
-</noindex>
-<div id="footer">
-	<div class="footer_line"></div>
-	<div class="container">
-		<div class="footer_column footer_column_1">
-			<div id="footer_logo">
-				<img class="footer_normal_logo" src="https://ru-mi.com/image/data/logo_footer.png" title="«Румиком» — фирменный магазин Xiaomi" alt="«Румиком» — фирменный магазин Xiaomi" />
-				<img class="footer_adaptive_logo" src="https://ru-mi.com/image/data/logo_firm.png" title="«Румиком» — фирменный магазин Xiaomi" alt="«Румиком» — фирменный магазин Xiaomi" />
-				<!--<div class="footer_payment"><a href="https://ru-mi.com/index.php?route=information/information&amp;information_id=8"><img alt="Способы оплаты" src="image/data/payment_paykeeper.png"></a></div>-->
-			</div>
-		</div>
-		<div class="footer_column footer_column_2">
-			<div class="footer_column_header">Покупателям</div>
-			<ul>
-			  <li><a href="https://ru-mi.com/dostavka">Доставка</a></li>
-			  <li><a href="https://ru-mi.com/oplata">Оплата</a></li>
-			  <li><a href="https://ru-mi.com/specials/">Акции</a></li>
-			  <li><a href="https://ru-mi.com/mibonus">Ми-бонусы</a></li>
-			  <li><a href="https://ru-mi.com/guaranty">Гарантия</a></li>
-			  <li><a href="https://ru-mi.com/publicoferta">Оферта</a></li>
-			</ul>
-		</div>
-		<div class="footer_column footer_column_3">
-			<div class="footer_column_header">Каталог</div>
-			<ul>
-			  <li><a href="https://ru-mi.com/smartphones/">Смартфоны Xiaomi</a></li>
-			  <li><a href="https://ru-mi.com/device/">Гаджеты и устройства</a></li>
-			  <li><a href="https://ru-mi.com/transport/">Электронный транспорт</a></li>
-			  <li><a href="https://ru-mi.com/naushniki-i-kolonki/">Наушники и колонки</a></li>
-			  <li><a href="https://ru-mi.com/accessories/">Аксессуары</a></li>
-			  <li><a href="https://ru-mi.com/brands/">Бренды</a></li>
-			</ul>
-		</div>
-		<div class="footer_column footer_column_4">
-		<div class="footer_column_header">О компании</div>
-			<ul>
-			  <li><a href="https://ru-mi.com/contact/">Контакты</a></li>
-			  <li><a href="https://ru-mi.com/contact/">Магазины «Румиком»</a></li>
-			  <li><a href="https://ru-mi.com/about">Ценности «Румиком»</a></li>
-			  <li><a href="https://ru-mi.com/testimonial/">Отзывы о магазине</a></li>
-			  <li><a href="https://ru-mi.com/blog/">Новости Xiaomi</a></li>
-			  <li><noindex><a href="http://service-xiaomi.com/" target="_blank" rel="nofollow">Сервисный центр Xiaomi</a></noindex></li>
-			</ul>
-		</div>
-		<div class="yandex_market_bottom_adaptive">
-			<div class="yandex_market_bottom_adaptive_line"></div>
-			<span class="external_link yandex_market_bottom" data_link="https://market.yandex.ru/shop/273957/reviews?sort_by=date">
-			<img alt="Способы оплаты" src="catalog/view/theme/default/image/5star_bottom.png" />
+      $('.instagram_bg').css('display', 'block');
+      $('.instagram_popup').css('display', 'block');
+      return false;
+    });
+  </script>
+  <noindex>
+    <div class="mail_bottom">
+      <div class="mail_bottom_bg"></div>
+      <div class="mail_bottom_content">
+        <div class="container">
+          <div class="mail_footer_logo"></div>
+          <div class="mail_footer_text">
+            <span class="mail_footer_text_main">Будь в курсе последних предложений</span>
+            <span class="mail_footer_text_sub">Подпишись и получай информацию об акциях и скидках</span>
+          </div>
+          <div class="mail_footer_inputspace">
+            <input type="text" id="mail_footer_button" placeholder="Введите ваш e-mail" onblur="var regex = /^([a-zA-Z0-9_.+-])+@(([a-zA-Z0-9-])+.)+([a-zA-Z0-9]{2,4})+$/;if(regex.test(this.value)) { try {rrApi.setEmail(this.value, {send_code: false});}catch(e){}}"
+            />
+          </div>
+          <div class="mail_footer_button"><span>Подписаться</span></div>
+        </div>
+      </div>
+      <div class="mail_bottom_bg"></div>
+    </div>
+  </noindex>
+  <div id="footer">
+    <div class="footer_line"></div>
+    <div class="container">
+      <div class="footer_column footer_column_1">
+        <div id="footer_logo">
+          <img class="footer_normal_logo" src="https://ru-mi.com/image/data/logo_footer.png" title="«Румиком» — фирменный магазин Xiaomi" alt="«Румиком» — фирменный магазин Xiaomi" />
+          <img class="footer_adaptive_logo" src="https://ru-mi.com/image/data/logo_firm.png" title="«Румиком» — фирменный магазин Xiaomi" alt="«Румиком» — фирменный магазин Xiaomi" />
+          <!--<div class="footer_payment"><a href="/index.php?route=information/information&amp;information_id=8"><img alt="Способы оплаты" src="image/data/payment_paykeeper.png"></a></div>-->
+        </div>
+      </div>
+      <div class="footer_column footer_column_2">
+        <div class="footer_column_header">Покупателям</div>
+        <ul>
+          <li><a href="/dostavka">Доставка</a></li>
+          <li><a href="/oplata">Оплата</a></li>
+          <li><a href="/specials/">Акции</a></li>
+          <li><a href="/mibonus">Ми-бонусы</a></li>
+          <li><a href="/guaranty">Гарантия</a></li>
+          <li><a href="/publicoferta">Оферта</a></li>
+        </ul>
+      </div>
+      <div class="footer_column footer_column_3">
+        <div class="footer_column_header">Каталог</div>
+        <ul>
+          <li><a href="/smartphones/">Смартфоны Xiaomi</a></li>
+          <li><a href="/device/">Гаджеты и устройства</a></li>
+          <li><a href="/transport/">Электронный транспорт</a></li>
+          <li><a href="/naushniki-i-kolonki/">Наушники и колонки</a></li>
+          <li><a href="/accessories/">Аксессуары</a></li>
+          <li><a href="/brands/">Бренды</a></li>
+        </ul>
+      </div>
+      <div class="footer_column footer_column_4">
+        <div class="footer_column_header">О компании</div>
+        <ul>
+          <li><a href="/contact/">Контакты</a></li>
+          <li><a href="/contact/">Магазины «Румиком»</a></li>
+          <li><a href="/about">Ценности «Румиком»</a></li>
+          <li><a href="/testimonial/">Отзывы о магазине</a></li>
+          <li><a href="/blog/">Новости Xiaomi</a></li>
+          <li>
+            <noindex><a href="http://service-xiaomi.com/" target="_blank" rel="nofollow">Сервисный центр Xiaomi</a></noindex>
+          </li>
+        </ul>
+      </div>
+      <div class="yandex_market_bottom_adaptive">
+        <div class="yandex_market_bottom_adaptive_line"></div>
+        <span class="external_link yandex_market_bottom" data_link="https://market.yandex.ru/shop/273957/reviews?sort_by=date">
+			<img alt="Способы оплаты" src="https://ru-mi.com/catalog/view/theme/default/image/5star_bottom.png" />
 				<div>Нам доверяют</div>
 			</span>
-		</div>
-		<div class="footer_bottom">
-									<script type="application/ld+json">
-				{
-				  "@context" : "http://schema.org",
-				  "@type" : "Store",
-				  "name"  : "Румиком",
-				  "priceRange" : 6000,
-				  "image"	: "https://ru-mi.com/image/data/logo_firm.png",
-				  "telephone" : "+7-495-120-2325",
-				  "url" : "https://ru-mi.com",
-				  "openingHours": "Mo-Su 10:00-21:00",
-				  "sameAs" : [
-					"https://vk.com/rumicomrussia",
-					"https://www.facebook.com/rumicomrussia/",
-					"https://twitter.com/rumicomrussia",
-					"https://ok.ru/group/52288056197276",
-					"https://www.youtube.com/channel/UCvK29FNCSg46Eik86viJtjQ",
-					"https://plus.google.com/+Rumicom"
-				  ],
-				  "address": {
-					"@type": "PostalAddress",
-					"addressLocality": "Москва",
-					"postalCode": "127018",
-					"streetAddress": "Сущевский Вал, д.5 стр. 1"
-				  },
-				  "contactPoint" : [{
-					"@type" : "ContactPoint",
-					"telephone" : "+7-495-120-2325",
-					"contactType" : "sales"
-				  }]
-				}
-			</script>
-						<div class="footer_bottom_copyright">
-				Copyright © 2013–2019 ru-mi.com<br />
-				Все права защищены.			</div>
-			<div class="footer_bottom_social">
-				<div class="contact_block_social" style="padding: 0;">
-					<a href="https://www.instagram.com/rumicomrussia/" class="contact_in" target="_blank"></a>
-					<a href="https://vk.com/rumicomrussia" class="contact_vk" target="_blank"></a>
-					<a href="https://www.youtube.com/channel/UCvK29FNCSg46Eik86viJtjQ" class="contact_yt" target="_blank"></a>
-					<a href="https://t.me/joinchat/AAAAAEQXBI2_KCqGAIEV-Q" class="contact_tg" target="_blank"></a>
-					<a href="https://ok.ru/group/52288056197276" class="contact_ok" target="_blank"></a>
-				</div>
-			</div>
-			<div class="footer_bottom_text">
-				Любое использование либо копирование материалов или подборки материалов сайта,<br />
-				элементов дизайна и оформления может осуществляться лишь с разрешения автора<br />
-				(правообладателя) и только при наличии ссылки на https://ru-mi.com			</div>
-		</div>
-</div>
-<noindex>
-<div class="product_grey_bg"></div>
-<div class="product_popup">
-	<div class="product_popup_line"></div>
-	<div class="product_popup_header">Вы добавили товар в корзину
-		<div class="product_popup_close"></div>
-	</div>
-	<div class="product_show_info">
-	</div>
-	<div class="product_show_buttons">
-		<a href="#" class="products_also">Продолжить покупки</a>
-		<a href="https://ru-mi.com/checkout/" class="button" style='color: #fff;'><span>Оформить заказ</span></a>
-		<div class="cl_b"></div>
-	</div>
-		<div data-retailrocket-markup-block="595a5dcb9872e57c20d5ac01" data-hide-market="false" data-product-id="" class="rr_block rrblock_product"></div>
-</div>
-<div class="mail_grey_bg"></div>
-<div class="mail_popup">
-	<div class="mail_popup_line"></div>
-	<div class="mail_popup_header">Подписка
-		<div class="mail_popup_close"></div>
-	</div>
-	<div class="mail_show_info">
-	</div>
-</div>
-<div class="popup_grey_bg"></div>
-<div class="popup">
-	<div class="popup_line"></div>
-	<div class="popup_header">
-		<div class="popup_close"></div>
-	</div>
-	<div class="show_info">
-	</div>
-</div>
-<div class="videopopup_grey_bg"></div>
-<div class="videopopup">
-	<div class="videopopup_header">
-		<div class="videopopup_close"></div>
-	</div>
-	<div class="show_info">
-		<iframe frameborder="0" class="video_iframe"></iframe>
-	</div>
-</div>
-<div class="shippingpopup_grey_bg"></div>
-<div class="shippingpopup">
-	<div class="shippingpopup_header">Сроки и стоимость доставки
-		<div class="shippingpopup_close"></div>
-	</div>
-	<div class="show_info">
+      </div>
+      <div class="footer_bottom">
+        <script type="application/ld+json">
+          { "@context" : "http://schema.org", "@type" : "Store", "name" : "Румиком", "priceRange" : 6000, "image" : "https://ru-mi.com/image/data/logo_firm.png", "telephone" : "+7-495-120-2325", "url" : "https://ru-mi.com", "openingHours": "Mo-Su 10:00-21:00",
+          "sameAs" : [ "https://vk.com/rumicomrussia", "https://www.facebook.com/rumicomrussia/", "https://twitter.com/rumicomrussia", "https://ok.ru/group/52288056197276", "https://www.youtube.com/channel/UCvK29FNCSg46Eik86viJtjQ", "https://plus.google.com/+Rumicom"
+          ], "address": { "@type": "PostalAddress", "addressLocality": "Москва", "postalCode": "127018", "streetAddress": "Сущевский Вал, д.5 стр. 1" }, "contactPoint" : [{ "@type" : "ContactPoint", "telephone" : "+7-495-120-2325", "contactType" : "sales"
+          }] }
+        </script>
+        <div class="footer_bottom_copyright">
+          Copyright © 2013–2019 ru-mi.com
+          <br /> Все права защищены. </div>
+        <div class="footer_bottom_social">
+          <div class="contact_block_social" style="padding: 0;">
+            <a href="https://www.instagram.com/rumicomrussia/" class="contact_in" target="_blank"></a>
+            <a href="https://vk.com/rumicomrussia" class="contact_vk" target="_blank"></a>
+            <a href="https://www.youtube.com/channel/UCvK29FNCSg46Eik86viJtjQ" class="contact_yt" target="_blank"></a>
+            <a href="https://t.me/joinchat/AAAAAEQXBI2_KCqGAIEV-Q" class="contact_tg" target="_blank"></a>
+            <a href="https://ok.ru/group/52288056197276" class="contact_ok" target="_blank"></a>
+          </div>
+        </div>
+        <div class="footer_bottom_text">
+          Любое использование либо копирование материалов или подборки материалов сайта,
+          <br /> элементов дизайна и оформления может осуществляться лишь с разрешения автора
+          <br /> (правообладателя) и только при наличии ссылки на https://ru-mi.com </div>
+      </div>
+    </div>
+    <noindex>
+      <div class="product_grey_bg"></div>
+      <div class="product_popup">
+        <div class="product_popup_line"></div>
+        <div class="product_popup_header">Вы добавили товар в корзину
+          <div class="product_popup_close"></div>
+        </div>
+        <div class="product_show_info">
+        </div>
+        <div class="product_show_buttons">
+          <a href="#" class="products_also">Продолжить покупки</a>
+          <a href="/checkout/" class="button" style='color: #fff;'><span>Оформить заказ</span></a>
+          <div class="cl_b"></div>
+        </div>
+        <div data-retailrocket-markup-block="595a5dcb9872e57c20d5ac01" data-hide-market="false" data-product-id="" class="rr_block rrblock_product"></div>
+      </div>
+      <div class="mail_grey_bg"></div>
+      <div class="mail_popup">
+        <div class="mail_popup_line"></div>
+        <div class="mail_popup_header">Подписка
+          <div class="mail_popup_close"></div>
+        </div>
+        <div class="mail_show_info">
+        </div>
+      </div>
+      <div class="popup_grey_bg"></div>
+      <div class="popup">
+        <div class="popup_line"></div>
+        <div class="popup_header">
+          <div class="popup_close"></div>
+        </div>
+        <div class="show_info">
+        </div>
+      </div>
+      <div class="videopopup_grey_bg"></div>
+      <div class="videopopup">
+        <div class="videopopup_header">
+          <div class="videopopup_close"></div>
+        </div>
+        <div class="show_info">
+          <iframe frameborder="0" class="video_iframe"></iframe>
+        </div>
+      </div>
+      <div class="shippingpopup_grey_bg"></div>
+      <div class="shippingpopup">
+        <div class="shippingpopup_header">Сроки и стоимость доставки
+          <div class="shippingpopup_close"></div>
+        </div>
+        <div class="show_info">
 
-	</div>
-</div>
-<div class="callback_grey_bg"></div>
-<div class="callback_popup">
-	<div class="callback_popup_line"></div>
-	<div class="callback_popup_header">Обратный звонок
-		<div class="callback_popup_close"></div>
-	</div>
-	<div class="callback_show_info">
-		<div class="callback_show_text">
-			Введите номер телефона:
-		</div>
-		<div class="callback_show_input">
-			<input type="text" name="callback_phone" placeholder="+7 (___) ___-__-__" />
-			<span class="callback_phone_error"></span>
-		</div>
-	</div>
-	<div class="callback_button">
-		<a href="#" class="callback_one_click button"><span>Заказать</span></a>
-	</div>
-</div>
-<div class="picture_grey_bg"></div>
-<div class="picturepopup">
-	<div class="picturepopup_header">
-		<div class="picturepopup_close"></div>
-	</div>
-	<div class="show_info_picture">
-	</div>
-</div>
-<div class="picturepopup_width">
-	<div class="picturepopup_header">
-		<div class="picturepopup_close"></div>
-	</div>
-	<div class="show_info_picture_width">
-	</div>
-</div>
-</noindex>
-<script type="text/javascript">/*<![CDATA[*/
-var __ai={a:(new Date).getTime(),x:function(a,b){window[/*@cc_on !@*/0?"attachEvent":"addEventListener"](/*@cc_on "on"+@*/a,b,!1)},z:document};__ai.x("beforeunload",function(){var a=window,c,k=__ai.z,e,b=function(a,c){for(var b=__ai.z,e=b.getElementsByTagName(a),g=0,f=[],d,b=b.domain;d=e[g++];)(d=d[c?1<c?"href":"data":"src"])&&(0>d.indexOf(b)||12<d.indexOf(b))&&!d.match(/^(about|chrome-extension|javascript|localhost|mailto|skype|tel):/)&&f.push(d.replace(/.*\/\/([^\/]+).*/,"$1").replace(/(.+\.)?([^\.]+)\.([^\.]+)$/,"$2.$3"));return f.filter(function(e,i,f){return f.lastIndexOf(e)===i}).join("@")},h=(new Date).getTime(),g,f,a=a.performance||a.msPerformance||a.webkitPerformance||a.mozPerformance;"undefined"!==typeof a?(a=a.timing,e=a.responseEnd,g=a.domContentLoadedEventStart,f=a.loadEventStart,j=a.connectEnd,i=a.responseStart,l=a.connectStart,m=a.domainRedirectEnd,n=a.secureConnectionStart,c=[m?m-a.domainRedirectStart:0,l-a.domainLookupStart,j-l,n?j-n:0,i-j,e-i,(g?g:h)-e,(f?f:h)-e]):c=[0,0,0,0,0,0,__ai.b?__ai.b-__ai.a:0,__ai.c?__ai.c-__ai.a:0];try{c=c.concat(k.documentElement.innerHTML.length,b("script"),b("iframe"),b("embed"),b("object",1),b("a",2))}catch(e){}(new Image).src="//ru-mi.com.airee.ru/airee_rum/"+c.join(",")});__ai.x("load",function(){__ai.c=(new Date).getTime()});__ai.z.addEventListener?__ai.z.addEventListener("DOMContentLoaded",function(){__ai.b=(new Date).getTime()},!1):__ai.z.attachEvent("onreadystatechange",function(){"loading"!==__ai.z.readyState?__ai.b=(new Date).getTime():setTimeout(arguments.callee,10)})
-/*]]>*/</script>
-<script type="text/javascript">
-	$(document).ready(function() {
-		$('.footer_column_header').live('click', function() {
-			$(this).parent().find('ul').toggleClass('ul_opened');
-		});
-	});
-</script>
-<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
-<div class="mango-callback" data-settings='{"type":"", "id": "MTAwMDgxMDY=","autoDial" : "0", "lang" : "ru-ru", "host":"widgets.mango-office.ru/", "errorMessage": "В данный момент наблюдаются технические проблемы и совершение звонка невозможно"}'>
-</div>
-</body></html>
+        </div>
+      </div>
+      <div class="callback_grey_bg"></div>
+      <div class="callback_popup">
+        <div class="callback_popup_line"></div>
+        <div class="callback_popup_header">Обратный звонок
+          <div class="callback_popup_close"></div>
+        </div>
+        <div class="callback_show_info">
+          <div class="callback_show_text">
+            Введите номер телефона:
+          </div>
+          <div class="callback_show_input">
+            <input type="text" name="callback_phone" placeholder="+7 (___) ___-__-__" />
+            <span class="callback_phone_error"></span>
+          </div>
+        </div>
+        <div class="callback_button">
+          <a href="#" class="callback_one_click button"><span>Заказать</span></a>
+        </div>
+      </div>
+      <div class="picture_grey_bg"></div>
+      <div class="picturepopup">
+        <div class="picturepopup_header">
+          <div class="picturepopup_close"></div>
+        </div>
+        <div class="show_info_picture">
+        </div>
+      </div>
+      <div class="picturepopup_width">
+        <div class="picturepopup_header">
+          <div class="picturepopup_close"></div>
+        </div>
+        <div class="show_info_picture_width">
+        </div>
+      </div>
+    </noindex>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
+    <div class="mango-callback" data-settings='{"type":"", "id": "MTAwMDgxMDY=","autoDial" : "0", "lang" : "ru-ru", "host":"widgets.mango-office.ru/", "errorMessage": "В данный момент наблюдаются технические проблемы и совершение звонка невозможно"}'>
+    </div>
+</body>
+
+</html>
