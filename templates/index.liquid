@@ -101,8 +101,8 @@
                       </div>
                     </div>
                     <div class="rr-icons">
-                      <a class="product_features_wishlist" product_id="9649" tabindex="-1"></a>
-                      <span class="product_features_compare " product_id="9649"></span>
+                      <a class="product_features_wishlist" data-favorites-trigger="{{ product.id }}" tabindex="-1"></a>
+                      <span class="product_features_compare " data-compare-add="{{ product.id }}"></span>
                     </div>
                   </div>
                   <a class="item-info" href="{{product.url}}" tabindex="-1">
@@ -397,14 +397,10 @@
     }
   </style>
   <script type="text/javascript">
-    var owl_insta = $(".owl-carousel-instagram");
-
     // init owl
-    $(document).ready(function() {
-      owl_insta.owlCarousel({
+      $("#instafeed-gallery-feed").owlCarousel({
         navigation: true
       });
-    });
   </script>
 {%endif%}
 {%if block_lists.shops%}

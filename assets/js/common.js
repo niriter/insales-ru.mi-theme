@@ -660,103 +660,16 @@ function addToCart(product_id, quantity) {
 	$('.add_to_cart_'+product_id).attr('onclick','location.href="/checkout/"');
 	$('.add_to_cart_'+product_id).find('.add_to_cart_help').fadeIn(300);
 
-	$.ajax({
-		url: 'index.php?route=checkout/cart/add',
-		type: 'post',
-		data: 'product_id=' + product_id + '&quantity=' + quantity,
-		dataType: 'json',
-		success: function(json) {
-			$('.success, .warning, .attention, .information, .error').remove();
 
-			if (json['redirect']) {
-				location = json['redirect'];
-			}
-
-			if (json['success']) {
-				if (typeof $.cookie('ab_added') === 'undefined')
-				{
-					$.cookie('ab_added','1', { expires: 60 , path: '/', domain: 'ru-mi.com'});
-					$.ajax({
-						url: 'index.php?route=module/ab/setadded',
-						success: function(html) {}
-					});
-				}
-				else
-				{
-					var ab_added = parseInt($.cookie('ab_added'));
-					ab_added = ab_added + 1;
-					$.cookie('ab_added',ab_added, { expires: 60 , path: '/', domain: 'ru-mi.com'});
-					$.ajax({
-						url: 'index.php?route=module/ab/setadded',
-						success: function(html) {}
-					});
-				}
-				if (typeof $.cookie('ab_add_to_cart') === 'undefined')
-				{
-					$.cookie('ab_add_to_cart','1', { expires: 60 , path: '/', domain: 'ru-mi.com'});
-					$.ajax({
-						url: 'index.php?route=module/ab/setaddtocart',
-						success: function(html) {}
-					});
-				}
-				var ab_add_to_cart = $.cookie('ab_add_to_cart');
-				yaCounter26740743.reachGoal('add_to_cart_yandex');
-				$('#cart-total').html(json['total']);
-				$('#header #cart .heading').addClass('heading_active');
-				$('.product_popup .product_show_info').html(json['success']);
-				$('.product_grey_bg').css('display','block');
-				$('.product_popup').css('display','block');
-				$('.rr_block').attr('data-product-id',json['products']);
-				$('.rrblock_product').removeAttr('initialized');
-				retailrocket.markup.render();
-				/*fbq('track', 'AddToCart', {
-					value: json['price'],
-					currency: 'RUB',
-					content_ids: [product_id],
-					content_type: 'product',
-				});*/
-			}
-		}
-	});
 }
 function addToWishList(product_id) {
 	var this_var = $(this);
 
 	if (this_var.hasClass('active')) {
-		$.ajax({
-			url: 'index.php?route=account/wishlist/remove',
-			type: 'post',
-			data: 'product_id=' + product_id,
-			dataType: 'json',
-			success: function(json) {
-				$('.header_wishlist span').html(json['total']);
-				$('.success, .warning, .attention, .information').remove();
-				this_var.removeClass('active');
-			}
-		});
+
 	}
 	else
 	{
-		$.ajax({
-			url: 'index.php?route=account/wishlist/add',
-			type: 'post',
-			data: 'product_id=' + product_id,
-			dataType: 'json',
-			success: function(json) {
-				$('.success, .warning, .attention, .information').remove();
-
-				if (json['success']) {
-					if (json['added']==1) {
-						this_var.addClass('active');
-					}
-					$('.header_wishlist span').html(json['total']);
-					$('.popup .popup_header').html('Р—Р°РєР»Р°РґРєРё<div class="popup_close"></div>');
-					$('.popup .show_info').html(json['success']);
-					$('.popup_grey_bg').css('display','block');
-					$('.popup').css('display','block');
-				}
-			}
-		});
 	}
 }
 
@@ -764,46 +677,11 @@ function addToCompare(product_id) {
 	var this_var = $(this);
 
 	if (this_var.hasClass('active')) {
-		$.ajax({
-			url: 'index.php?route=product/compare/remove',
-			type: 'post',
-			data: 'product_id=' + product_id,
-			dataType: 'json',
-			success: function(json) {
-				$('.header_compare span').html(json['total']);
-				if (json['total']=='0')
-					$('.header_compare').addClass('non_active');
-				else
-					$('.header_compare').removeClass('non_active');
-				$('.success, .warning, .attention, .information').remove();
-				this_var.removeClass('active');
-			}
-		});
+
 	}
 	else
 	{
-		$.ajax({
-			url: 'index.php?route=product/compare/add',
-			type: 'post',
-			data: 'product_id=' + product_id,
-			dataType: 'json',
-			success: function(json) {
-				$('.success, .warning, .attention, .information').remove();
 
-				if (json['success']) {
-					this_var.addClass('active');
-					$('.header_compare span').html(json['total']);
-					if (json['total']=='0')
-						$('.header_compare').addClass('non_active');
-					else
-						$('.header_compare').removeClass('non_active');
-					$('.popup .popup_header').html('РЎСЂР°РІРЅРµРЅРёРµ С‚РѕРІР°СЂРѕРІ<div class="popup_close"></div>');
-					$('.popup .show_info').html(json['success']);
-					$('.popup_grey_bg').css('display','block');
-					$('.popup').css('display','block');
-				}
-			}
-		});
 	}
 }
 
@@ -812,48 +690,11 @@ $('.product_features_wishlist,.product_icons_wishlist').live('click', function()
 	var this_var = $(this);
 
 	if (this_var.hasClass('active')) {
-		$.ajax({
-			url: 'index.php?route=account/wishlist/remove',
-			type: 'post',
-			data: 'product_id=' + product_id,
-			dataType: 'json',
-			success: function(json) {
-				$('.header_wishlist span').html(json['total']);
-				if (json['total']=='0')
-					$('.header_wishlist').addClass('non_active');
-				else
-					$('.header_wishlist').removeClass('non_active');
-				$('.success, .warning, .attention, .information').remove();
-				this_var.removeClass('active');
-			}
-		});
+
 	}
 	else
 	{
-		$.ajax({
-			url: 'index.php?route=account/wishlist/add',
-			type: 'post',
-			data: 'product_id=' + product_id,
-			dataType: 'json',
-			success: function(json) {
-				$('.success, .warning, .attention, .information').remove();
 
-				if (json['success']) {
-					if (json['added']==1) {
-						this_var.addClass('active');
-					}
-					$('.header_wishlist span').html(json['total']);
-					if (json['total']=='0')
-						$('.header_wishlist').addClass('non_active');
-					else
-						$('.header_wishlist').removeClass('non_active');
-					$('.popup .popup_header').html('Р—Р°РєР»Р°РґРєРё<div class="popup_close"></div>');
-					$('.popup .show_info').html(json['success']);
-					$('.popup_grey_bg').css('display','block');
-					$('.popup').css('display','block');
-				}
-			}
-		});
 	}
 
 	return false;
@@ -864,46 +705,11 @@ $('.product_features_compare,.product_icons_compare').live('click', function() {
 	var this_var = $(this);
 
 	if (this_var.hasClass('active')) {
-		$.ajax({
-			url: 'index.php?route=product/compare/remove',
-			type: 'post',
-			data: 'product_id=' + product_id,
-			dataType: 'json',
-			success: function(json) {
-				$('.header_compare span').html(json['total']);
-				if (json['total']=='0')
-					$('.header_compare').addClass('non_active');
-				else
-					$('.header_compare').removeClass('non_active');
-				$('.success, .warning, .attention, .information').remove();
-				this_var.removeClass('active');
-			}
-		});
+
 	}
 	else
 	{
-		$.ajax({
-			url: 'index.php?route=product/compare/add',
-			type: 'post',
-			data: 'product_id=' + product_id,
-			dataType: 'json',
-			success: function(json) {
-				$('.success, .warning, .attention, .information').remove();
 
-				if (json['success']) {
-					this_var.addClass('active');
-					$('.header_compare span').html(json['total']);
-					if (json['total']=='0')
-						$('.header_compare').addClass('non_active');
-					else
-						$('.header_compare').removeClass('non_active');
-					$('.popup .popup_header').html('РЎСЂР°РІРЅРµРЅРёРµ С‚РѕРІР°СЂРѕРІ<div class="popup_close"></div>');
-					$('.popup .show_info').html(json['success']);
-					$('.popup_grey_bg').css('display','block');
-					$('.popup').css('display','block');
-				}
-			}
-		});
 	}
 
 	return false;
@@ -961,75 +767,7 @@ function addToCartSmart1() {
 	$('.add_to_cart_5308').attr('onclick','location.href="/checkout/"');
 	$('.add_to_cart_5308').find('.add_to_cart_help').fadeIn(300);
 
-	$.ajax({
-		url: 'index.php?route=checkout/cart/add',
-		type: 'post',
-		data: 'product_id=3983&quantity=1',
-		dataType: 'json',
-		success: function(json) {
-			if (json['success']) {
-				$.ajax({
-					url: 'index.php?route=checkout/cart/add',
-					type: 'post',
-					data: 'product_id=4087&quantity=1',
-					dataType: 'json',
-					success: function(json) {
-						$.ajax({
-							url: 'index.php?route=checkout/cart/add',
-							type: 'post',
-							data: 'product_id=2655&quantity=1',
-							dataType: 'json',
-							success: function(json) {
-								$.ajax({
-									url: 'index.php?route=checkout/cart/add',
-									type: 'post',
-									data: 'product_id=2641&quantity=1',
-									dataType: 'json',
-									success: function(json) {
-										$.ajax({
-											url: 'index.php?route=checkout/cart/add',
-											type: 'post',
-											data: 'product_id=3703&quantity=1',
-											dataType: 'json',
-											success: function(json) {
-												$.ajax({
-													url: 'index.php?route=checkout/cart/add',
-													type: 'post',
-													data: 'product_id=5308&quantity=1',
-													dataType: 'json',
-													success: function(json) {
-														$.ajax({
-															url: 'index.php?route=checkout/cart/add',
-															type: 'post',
-															data: 'product_id=2270&quantity=1',
-															dataType: 'json',
-															success: function(json) {
-																if (json['success']) {
-																	yaCounter26740743.reachGoal('add_to_cart_yandex');
-																	$('#cart-total').html(json['total']);
-																	$('#header #cart .heading').addClass('heading_active');
-																	$('.product_popup .product_show_info').html(json['success']);
-																	$('.product_grey_bg').css('display','block');
-																	$('.product_popup').css('display','block');
-																	$('.rr_block').attr('data-product-id',json['products']);
-																	$('.rrblock_product').removeAttr('initialized');
-																	retailrocket.markup.render();
-																}
-															}
-														});
-													}
-												});
-											}
-										});
-									}
-								});
-							}
-						});
-					}
-				});
-			}
-		}
-	});
+
 }
 function addToCartSmart2() {
 	$('.add_to_cart_6770').addClass('added');
@@ -1051,67 +789,7 @@ function addToCartSmart2() {
 	$('.add_to_cart_5308').attr('onclick','location.href="/checkout/"');
 	$('.add_to_cart_5308').find('.add_to_cart_help').fadeIn(300);
 
-	$.ajax({
-		url: 'index.php?route=checkout/cart/add',
-		type: 'post',
-		data: 'product_id=6770&quantity=1',
-		dataType: 'json',
-		success: function(json) {
-			if (json['success']) {
-				$.ajax({
-					url: 'index.php?route=checkout/cart/add',
-					type: 'post',
-					data: 'product_id=2902&quantity=1',
-					dataType: 'json',
-					success: function(json) {
-						$.ajax({
-							url: 'index.php?route=checkout/cart/add',
-							type: 'post',
-							data: 'product_id=7019&quantity=1',
-							dataType: 'json',
-							success: function(json) {
-								$.ajax({
-									url: 'index.php?route=checkout/cart/add',
-									type: 'post',
-									data: 'product_id=4087&quantity=1',
-									dataType: 'json',
-									success: function(json) {
-										$.ajax({
-											url: 'index.php?route=checkout/cart/add',
-											type: 'post',
-											data: 'product_id=1806&quantity=1',
-											dataType: 'json',
-											success: function(json) {
-												$.ajax({
-													url: 'index.php?route=checkout/cart/add',
-													type: 'post',
-													data: 'product_id=5308&quantity=1',
-													dataType: 'json',
-													success: function(json) {
-														if (json['success']) {
-															yaCounter26740743.reachGoal('add_to_cart_yandex');
-															$('#cart-total').html(json['total']);
-															$('#header #cart .heading').addClass('heading_active');
-															$('.product_popup .product_show_info').html(json['success']);
-															$('.product_grey_bg').css('display','block');
-															$('.product_popup').css('display','block');
-															$('.rr_block').attr('data-product-id',json['products']);
-															$('.rrblock_product').removeAttr('initialized');
-															retailrocket.markup.render();
-														}
-													}
-												});
-											}
-										});
-									}
-								});
-							}
-						});
-					}
-				});
-			}
-		}
-	});
+
 }
 function addToCartSmart3() {
 	$('.add_to_cart_5308').addClass('added');
@@ -1124,48 +802,7 @@ function addToCartSmart3() {
 	$('.add_to_cart_5826').attr('onclick','location.href="/checkout/"');
 	$('.add_to_cart_5826').find('.add_to_cart_help').fadeIn(300);
 
-	$.ajax({
-		url: 'index.php?route=checkout/cart/add',
-		type: 'post',
-		data: 'product_id=5308&quantity=1',
-		dataType: 'json',
-		success: function(json) {
-			if (json['success']) {
 
-				$.ajax({
-					url: 'index.php?route=checkout/cart/add',
-					type: 'post',
-					data: 'product_id=2270&quantity=1',
-					dataType: 'json',
-					success: function(json) {
-						$.ajax({
-							url: 'index.php?route=checkout/cart/add',
-							type: 'post',
-							data: 'product_id=5826&quantity=1',
-							dataType: 'json',
-							success: function(json) {
-								if (json['success']) {
-									yaCounter26740743.reachGoal('add_to_cart_yandex');
-									$('#cart-total').html(json['total']);
-									$('#header #cart .heading').addClass('heading_active');
-									$('.product_popup .product_show_info').html(json['success']);
-									$('.product_grey_bg').css('display','block');
-									$('.product_popup').css('display','block');
-									$('.rr_block').attr('data-product-id',json['products']);
-									$('.rrblock_product').removeAttr('initialized');
-									retailrocket.markup.render();
-								}
-							}
-						});
-
-
-					}
-				});
-
-
-			}
-		}
-	});
 }
 function addToCartSmart4() {
 
@@ -1179,48 +816,7 @@ function addToCartSmart4() {
 	$('.add_to_cart_2543').attr('onclick','location.href="/checkout/"');
 	$('.add_to_cart_2543').find('.add_to_cart_help').fadeIn(300);
 
-	$.ajax({
-		url: 'index.php?route=checkout/cart/add',
-		type: 'post',
-		data: 'product_id=5308&quantity=1',
-		dataType: 'json',
-		success: function(json) {
-			if (json['success']) {
 
-				$.ajax({
-					url: 'index.php?route=checkout/cart/add',
-					type: 'post',
-					data: 'product_id=2270&quantity=1',
-					dataType: 'json',
-					success: function(json) {
-						$.ajax({
-							url: 'index.php?route=checkout/cart/add',
-							type: 'post',
-							data: 'product_id=2543&quantity=1',
-							dataType: 'json',
-							success: function(json) {
-								if (json['success']) {
-									yaCounter26740743.reachGoal('add_to_cart_yandex');
-									$('#cart-total').html(json['total']);
-									$('#header #cart .heading').addClass('heading_active');
-									$('.product_popup .product_show_info').html(json['success']);
-									$('.product_grey_bg').css('display','block');
-									$('.product_popup').css('display','block');
-									$('.rr_block').attr('data-product-id',json['products']);
-									$('.rrblock_product').removeAttr('initialized');
-									retailrocket.markup.render();
-								}
-							}
-						});
-
-
-					}
-				});
-
-
-			}
-		}
-	});
 }
 function func(phrase, who) {
 	$('.product-of-day img').addClass('vibrate');
