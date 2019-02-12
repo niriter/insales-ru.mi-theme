@@ -1,10 +1,13 @@
+{% include 'breadcrumb' %}
 <div id="product-info-parent" itemscope itemtype="http://schema.org/Product">
   <div id="content" style="margin-bottom: 0;">
     <div class="product-info">
       <div class="left">
         <noindex>
           <div class="stickers">
-            <div class="product_sticker_special">-{{ product.old_price | minus: product.price | divided_by: product.old_price | times: 100 | round: 0}}%</div>
+            {%if product.old_price%}
+              <div class="product_sticker_special">-{{ product.old_price | minus: product.price | divided_by: product.old_price | times: 100 | round: 0}}%</div>
+            {%endif%}
           </div>
         </noindex>
         <div class="left_image">
@@ -111,22 +114,31 @@
         </div>
         <div class="some_right">
           <div class="all_right_block">
-            <div class="all_right_top" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-              <meta itemprop="price" content="{{product.price}}" />
-              <meta itemprop="priceCurrency" content="RUB" />
-              <link itemprop="availability" href="http://schema.org/InStock" />
-              <div class="price">
-                <span class="price-old">{{product.old_price | round: 0}}</span> <span class="price-new">{{product.price | money}}</span>
+            <form action="{{ cart_url }}" method="post" data-product-id="{{ product.id }}">
+              <div class="all_right_top" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                <meta itemprop="price" content="{{product.price}}" />
+                <meta itemprop="priceCurrency" content="RUB" />
+                <link itemprop="availability" href="http://schema.org/InStock" />
+                <div class="price">
+                  {%if product.old_price%}
+                    <span class="price-old">{{product.old_price | round: 0}}</span>
+                  {%endif%}
+                  <span class="price-new">{{product.price | money}}</span>
+                </div>
+                <div class="oneclick_button" id="oneclick_button_send">
+                  <span>Купить в 1 клик</span>
+                </div>
+                <div style="display: none;" data-quantity>
+                  <input type="text" name="quantity" value="1" />
+                </div>
+                <input type="hidden" name="variant_id" value="{{product.variants.first.id}}" >
+                <div class="cart">
+                  <input type="hidden" name="quantity" size="2" value="1" />
+                  <input type="hidden" name="product_id" size="2" value="10814" />
+                  <a id="button-cart" data-item-add><span>В корзину</span></a>
+                </div>
               </div>
-              <div class="oneclick_button" id="oneclick_button_send">
-                <span>Купить в 1 клик</span>
-              </div>
-              <div class="cart">
-                <input type="hidden" name="quantity" size="2" value="1" />
-                <input type="hidden" name="product_id" size="2" value="10814" />
-                <a id="button-cart" onmousedown="try { rrApi.addToBasket(10814) } catch(e) {}"><span>В корзину</span></a>
-              </div>
-            </div>
+            </form>
           </div>
           <div class="product_specialblock">
             <div class="product_delivery_container">
@@ -138,7 +150,7 @@
             </div>
           </div>
           <div class="go_to_description">
-            <a href="#">Перейти к описанию товара</a>
+            <a href="#tab-description">Перейти к описанию товара</a>
           </div>
         </div>
       </div>
@@ -146,11 +158,18 @@
     </div>
   </div>
   <div class="rr-widget cartRelated rr-active">
-    <header class="widgettitle" style="margin-top: 10px; margin-bottom: 5px;">С этим товаром покупают</header>
-    {%if product.similar_products.size > 0%} {%assign productproducts = product.similar_products%} {%elsif product.related_products.size > 0%} {%assign productproducts = product.related_products%} {%else%} {%assign productproducts = collections.all.products%}
+    <header class="widgettitle" style="margin-top: 20px; margin-bottom: 5px;">С этим товаром покупают</header>
+    {%assign productproducts_limit = 100%}
+    {%if product.similar_products.size > 0%}
+			{%assign productproducts = product.similar_products %}
+		{%elsif product.related_products.size > 0%}
+			{%assign productproducts = product.related_products %}
+		{%else%}
+			{%assign productproducts = collections.all.products %}
+      {%assign productproducts_limit = 15%}
     {%endif%}
     <ul class="items">
-      {% for product in productproducts %}
+      {% for product in productproducts limit: productproducts_limit %}
       <li class="item">
         <div class="block">
           <div class="rr-header">
@@ -265,126 +284,10 @@
   <div class="product_info_bottom">
     <div class="product_tabs" id="products_tabs">
       <ul class="product_tabs_htabs"><li><a href="#tab-description">Описание</a></li><li><a href="#tab-attribute">Характеристики</a></li><li><a href="#tab-review">Отзывы <span>(6)</span></a></li><li><a href="#tab-questions">Вопрос-ответ <span>(1)</span></a></li></ul>
-      <div id="tab-description">
+      <div id="tab-description" class="product_tabs_content">
           <h2 class="product_h2">{{product.title}}</h2>
-          <p><span style="color:#FF0000;">*В данный момент голосовой ассистент поддерживает только китайский язык.&nbsp;</span></p>
-          <table class="product_table">
-            <tbody>
-              <tr>
-                <td>Полностью беспроводной дизайн</td>
-                <td>Автоматический запуск</td>
-              </tr>
-              <tr>
-                <td>Touch управление</td>
-                <td>Bluetooth 5.0</td>
-              </tr>
-            </tbody>
-          </table>
 
-          <p><img title="{{product.title}}" title="{{product.title}}" src="https://ru-mi.com/image/data/Tovari/Naushnikiikolonki/bluetooth/airdots_youth_edition/airdots_youth_edition_opisanie_1.jpg" style="width: 980px; height: 490px;" /></p>
-
-          <h3 class="product_h3">Элегантные и простые</h3>
-
-          <h4 class="product_h4">Отличный внешний вид</h4>
-
-          <p>Небольшие скругленные вкладыши не имеют лишних деталей. Стильный внешний вид идеально сочетается с простым управлением.</p>
-
-          <p>Тонкий и компактный дизайн корпуса наушников отлично сочетается с простотой и функциональностью их использования. Зарядный кейс выполнен из высокопрочного материала с помощью литья под давлением, двухцветный матовый материал не только красив,
-            но и долговечен, крепок и приятен в руке.</p>
-
-          <p><img title="{{product.title}}" title="{{product.title}}" src="https://ru-mi.com/image/data/Tovari/Naushnikiikolonki/bluetooth/airdots_youth_edition/airdots_youth_edition_opisanie_2.jpg" style="width: 980px; height: 490px;" /></p>
-
-          <h3 class="product_h3">Сбросьте оковы</h3>
-
-          <h4 class="product_h4">Наслаждайтесь музыкой</h4>
-
-          <p>Раздельная конструкция наушников с технологией TWS действительно не имеет никаких проводов, она больше не сковывает Вас.</p>
-
-          <p><img title="{{product.title}}" title="{{product.title}}" src="https://ru-mi.com/image/data/Tovari/Naushnikiikolonki/bluetooth/airdots_youth_edition/airdots_youth_edition_opisanie_3.jpg" style="width: 980px; height: 490px;" /></p>
-
-          <h3 class="product_h3">Автоматический запуск</h3>
-
-          <h4 class="product_h4">Достаньте из зарядного кейса</h4>
-
-          <p>Беспроводные наушники Xiaomi Mi AirDots Youth Edition оснащены новейшей технологией, которая изменила традиционное ручное управление и избавила от необходимости выполнения сложных действий для сопряжения вкладышей. Теперь наушники включаются
-            автоматически, как только Вы достаете их из кейса. Легко и просто!</p>
-
-          <p><img title="{{product.title}}" title="{{product.title}}" src="https://ru-mi.com/image/data/Tovari/Naushnikiikolonki/bluetooth/airdots_youth_edition/airdots_youth_edition_opisanie_4.jpg" style="width: 980px; height: 490px;" /></p>
-
-          <h3 class="product_h3">Коснитесь кнопки</h3>
-
-          <p>Сенсорные панели, расположенные на вкладыше, реагируют на малейшие прикосновения. Больше не придется испытывать неприятные ощущения от нажимания кнопок.</p>
-
-          <p>Touch-интерфейс на наушниках, распознаёт касание пальцем и точно выполняет ваши инструкции. Теперь никаких механических кнопок, откройте новую эру управления вашими гаджетами!</p>
-
-          <p>Выполните двойное касание сенсорной панели, чтобы вызвать голосового помощника, не тратя время на поиск смартфона.</p>
-
-          <p><img title="{{product.title}}" title="{{product.title}}" src="https://ru-mi.com/image/data/Tovari/Naushnikiikolonki/bluetooth/airdots_youth_edition/airdots_youth_edition_opisanie_5.jpg" style="width: 980px; height: 490px;" /></p>
-
-          <h3 class="product_h3">Быстрые и стабильные</h3>
-
-          <h4 class="product_h4">Bluetooth 5.0</h4>
-
-          <p>Наушники выполнены на базе стандарта Bluetooth 5.0, а также совместимы с Bluetooth 4.2 и более ранними версиями. Стандарт 5.0 обладает не только низким энергопотреблением, расширенным радиусом действия и способностью передавать большие данные,
-            но и может предотвращать помехи WiFI сигнала, защищая стабильность передачи.</p>
-
-          <p>Стереозвук во время вызова, умное шумоподавление, быстрое подключение, автосопряжение, чистый звук, низкое энергопотребление, совместимость с основным оборудованием и приложениями.</p>
-
-          <p><img title="{{product.title}}" title="{{product.title}}" src="https://ru-mi.com/image/data/Tovari/Naushnikiikolonki/bluetooth/airdots_youth_edition/airdots_youth_edition_opisanie_7.jpg" style="width: 980px; height: 490px;" /></p>
-
-          <p><img title="{{product.title}}" title="{{product.title}}" src="https://ru-mi.com/image/data/Tovari/Naushnikiikolonki/bluetooth/airdots_youth_edition/airdots_youth_edition_opisanie_14.jpg" style="width: 980px; height: 490px;" /></p>
-
-          <h3 class="product_h3">Мощный басс</h3>
-
-          <h4 class="product_h4">Поражающее звучание</h4>
-
-          <p>Небольшие наушники имеют чистый звук. Специальный магнитный драйвер диаметром 7.2 мм имеет широкий диапазон баса, и мощное звучание. Он специально сконструирован и оптимизирован для отличного звучания средних и низких частот, делая песни более
-            энергичными и чувственными.</p>
-
-          <p>Система производства звука, расположенная в задней части, была многократно откалибрована звукотехниками. Она делает звук на средних частотах глубже и мощнее, чтобы каждая песня зазвучала по-новому.</p>
-
-          <p><img title="{{product.title}}" title="{{product.title}}" src="https://ru-mi.com/image/data/Tovari/Naushnikiikolonki/bluetooth/airdots_youth_edition/airdots_youth_edition_opisanie_9.jpg" style="width: 980px; height: 490px;" /></p>
-
-          <h3 class="product_h3">12 часов работы от батареи</h3>
-
-          <p>Наушники в паре способны звучать в течение 4 часов, дополнительно заряжая их в зарядном кейсе вы расширяете это время до 12 часов. Не стоит бояться долгих поездок!</p>
-
-          <p><img title="{{product.title}}" title="{{product.title}}" src="https://ru-mi.com/image/data/Tovari/Naushnikiikolonki/bluetooth/airdots_youth_edition/airdots_youth_edition_opisanie_11.jpg" style="width: 980px; height: 490px;" /></p>
-
-          <h3 class="product_h3">Стерео звонки</h3>
-
-          <h4 class="product_h4">Услышьте собеседника лучше</h4>
-
-          <p>Новый микрочип обеспечивает двусторонний стереозвук во время телефонного разговора, делая общение комфортнее.</p>
-
-          <p><img title="{{product.title}}" title="{{product.title}}" src="https://ru-mi.com/image/data/Tovari/Naushnikiikolonki/bluetooth/airdots_youth_edition/airdots_youth_edition_opisanie_8.jpg" style="width: 980px; height: 490px;" /></p>
-
-          <h3 class="product_h3">Невероятный комфорт</h3>
-
-          <h4 class="product_h4">Отличная эргономика</h4>
-
-          <p>Наушники настолько удобные, что Вы вообще не захотите снимать их. Точно подобранные линии вкладышей соответствуют форме человеческого уха. Вход под наклоном не доставляет дискомфорта слуховым проходам. Три комплекта амбушюр разного размера предусмотрены
-            для того, чтобы каждый мог подобрать самый удобный для себя вариант.</p>
-
-          <p><img title="{{product.title}}" title="{{product.title}}" src="https://ru-mi.com/image/data/Tovari/Naushnikiikolonki/bluetooth/airdots_youth_edition/airdots_youth_edition_opisanie_10.jpg" style="width: 980px; height: 490px;" /></p>
-
-          <h3 class="product_h3">Вес 4.2 грамма</h3>
-
-          <h4 class="product_h4">Невероятно компактные</h4>
-
-          <p><img title="{{product.title}}" title="{{product.title}}" src="https://ru-mi.com/image/data/Tovari/Naushnikiikolonki/bluetooth/airdots_youth_edition/airdots_youth_edition_opisanie_12.jpg" style="width: 980px; height: 490px;" /></p>
-
-          <h3 class="product_h3">Вызов голосового ассистента</h3>
-
-          <p>Для пробуждения Xiaomi Ai, нажмите на наушники дважды. С ассистентом вы сможете с помощью простых команд превратить в жизнь несложные операции.</p>
-
-          <p><img title="{{product.title}}" title="{{product.title}}" src="https://ru-mi.com/image/data/Tovari/Naushnikiikolonki/bluetooth/airdots_youth_edition/airdots_youth_edition_opisanie_6.jpg" style="width: 980px; height: 490px;" /></p>
-
-          <h3 class="product_h3">Мир персонализированный музыки</h3>
-
-          <p>Наслаждайтесь вашей любимой музыкой без границ, в любое время, в любом месте!</p>
-
-          <p><img title="{{product.title}}" title="{{product.title}}" src="https://ru-mi.com/image/data/Tovari/Naushnikiikolonki/bluetooth/airdots_youth_edition/airdots_youth_edition_opisanie_13.jpg" style="width: 980px; height: 490px;" /></p>
+          {{product.description}}
 
           <script type="text/javascript">
             $(function() {
@@ -400,7 +303,7 @@
           </script>
 
       </div>
-      <div id="tab-attribute">
+      <div id="tab-attribute" class="product_tabs_content">
           <div class="tab_attribute_all">
             <div class="tab_attribute_left">
               <div class="tab_attribute_left_div">
@@ -530,7 +433,7 @@
             </div>
           </div>
       </div>
-      <div id="tab-review">
+      <div id="tab-review" class="product_tabs_content">
           <div class="tab-review-header">
             <div class="tab-review-header-left">Отзывы</div>
             <div class="tab-review-header-right"><a class="write_review testimonial_write button" href="#"><span>Написать отзыв</span></a></div>
@@ -584,7 +487,7 @@
             </div>
           </div>
       </div>
-      <div id="tab-questions">
+      <div id="tab-questions" class="product_tabs_content">
           <div class="tab-questions-header">
             <div class="tab-questions-header-left">Вопрос-ответ</div>
             <div class="tab-questions-header-right"><a class="write_question qa_write button" href="#"><span>Задать вопрос</span></a></div>

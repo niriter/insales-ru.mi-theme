@@ -44,14 +44,23 @@
 }
 .ui-tabs-panel.ui-widget-content.ui-corner-bottom {
   background-color: white;
-  padding: 35px;
+  padding-top: 30px;
   margin-top: -3px;
+}
+#tab-description {
+  padding: 35px;
 }
 .product_tabs .product_tabs_htabs {
   margin: 0;
   padding: 0;
 }
+.product_tabs_content > div {
+  display: block;
+  padding: 0;
+}
+.slick-track {background-color: white;}
 .ui-tabs .ui-tabs-hide{display:none !important;}
+.fancybox-active.compensate-for-scrollbar {margin-right: 0 !important;}
 * {box-sizing: unset;}
 #header {height: unset !important;}
 .rating {display:block;}
