@@ -18,6 +18,8 @@
 	font-weight: normal;
 	font-style: normal;
 }
+.product-filter > .sort {height: 100%; padding-left: 25px;font-size: 15px; color: grey; text-decoration: none; font-family: 'Roboto', Arial, Helvetica, sans-serif;}
+.product-filter > .sort label, .product-filter > .sort select {display: inline-block; width: auto; line-height: 62px; vertical-align: middle;}
 .product_tabs .product_tabs_htabs a {
 	display: block;
 	float: left;
