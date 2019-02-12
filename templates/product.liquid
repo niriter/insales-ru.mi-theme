@@ -1,8 +1,629 @@
-<ui-product
-  :product-id="{{ product.id }}"
-  instance-name="main"
-></ui-product>
+<div id="product-info-parent" itemscope itemtype="http://schema.org/Product">
+  <div id="content" style="margin-bottom: 0;">
+    <div class="product-info">
+      <div class="left">
+        <noindex>
+          <div class="stickers">
+            <div class="product_sticker_special">-{{ product.old_price | minus: product.price | divided_by: product.old_price | times: 100 | round: 0}}%</div>
+          </div>
+        </noindex>
+        <div class="left_image">
+          <div class="image-additional-container">
+            <div class="image-additional">
+              <div class="image-additional-multi">
+                <div class="image-additional-multi-inner" style='height: 216px;'>
+                  {% for image in product.images %}
+                  <a startindex="1" href="{{image.original_url}}" title="{{image.title}}" class="colorbox">
+                    <img style="max-height: 60px; max-width: 60px;" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" class="lazyload" data-src="{{image.compact_url}}" title="{{image.title}}" itemprop="image" title="{{image.title}}" />
+                  </a>
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="image image_product">
+            <a href="{{product.first_image.original_url}}" title="{{product.title}}" class="colorbox">
+              <img src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" class="lazyload" data-src="{{product.first_image | image_url: 340 }}" title="{{product.title}}" title="{{product.title}}" id="image" />
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="right">
+        <div class="product_icons">
+          <div class="product_icons_social">
+            <div class="product_inons_social_popup">
+              <script src="//yastatic.net/es5-shims/0.0.2/es5-shims.min.js"></script>
+              <script src="//yastatic.net/share2/share.js"></script>
+              <div class="ya-share2" id="my-share" data-services="vkontakte,facebook,odnoklassniki,gplus,twitter"></div>
+            </div>
+          </div>
+          <div class="product_icons_compare active" product_id="10814"></div>
+          <div class="product_icons_wishlist " product_id="10814"></div>
+        </div>
+        <h1 itemprop="name">{{product.title}}</h1>
+        <div class="under_h1">
+          <div class="left_info_product_last_review_rating" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+            <span itemprop="ratingValue" style='display: none;'>{{product.rating}}</span>
+            <span itemprop="reviewCount" style='display: none;'>{{product.reviews_count}}</span>
+            <a class="rating_text" href="https://ru-mi.com/besprovodnye-naushniki-xiaomi-mi-airdots-belyj/reviews">{{product.reviews_count}} Отзывов</a>
+            <div class="rating_stars">
+              <div class="rating_full" style="width: {{product.reviews_count | times: 20 }}%"></div>
+            </div>
+          </div>
+          <div style="clear: left;"></div>
+        </div>
+        <div class="adaptive_images_container">
+          <div class="stickers">
+            <div class="product_sticker_special">-{{ product.old_price | minus: product.price | divided_by: product.old_price | times: 100 | round: 0}}%</div>
+          </div>
+          <div class="adaptive_images">
+            <div class="adaptive_image">
+              <img src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" class="lazyload" data-src="https://ru-mi.com/image/cache/data/Tovari/Naushnikiikolonki/bluetooth/airdots_youth_edition/airdots_belyj-460x460_wmark.jpg" />
+            </div>
+            <div class="adaptive_image">
+              <img src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" class="lazyload" data-src="https://ru-mi.com/image/cache/data/Tovari/Naushnikiikolonki/bluetooth/airdots_youth_edition/airdots_belyj__ava_3%20%281%29-460x460_wmark.jpg"
+              />
+            </div>
+            <div class="adaptive_image">
+              <img src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" class="lazyload" data-src="https://ru-mi.com/image/cache/data/Tovari/Naushnikiikolonki/bluetooth/airdots_youth_edition/airdots_belyj__ava_2%20%281%29-460x460_wmark.jpg"
+              />
+            </div>
+            <div class="adaptive_image">
+              <img src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" class="lazyload" data-src="https://ru-mi.com/image/cache/data/Tovari/Naushnikiikolonki/bluetooth/airdots_youth_edition/airdots_belyj__ava_1%20%281%29-460x460_wmark.jpg"
+              />
+            </div>
+          </div>
+          <script type="text/javascript">
+            <!--
+            $('.adaptive_images').owlCarousel({
+              singleItem: true,
+              autoHeight: true,
+              responsive: true,
+              autoHeight: true,
+              navigation: false,
+              pagination: true,
+            });
+            -->
+          </script>
+        </div>
+        <div class="pseudo_h1">{{product.title}}</div>
+        <span class="stock">
+					{%if product.available%}
+						<span class="in_stock_icon">
+							<span>В наличии</span>
+        </span>
+        {%else%}
+        <span class="out_of_stock_icon">
+						<span>Нет в наличии</span>
+        </span>
+        {%endif%}
+        </span>
+        <div class="product_right_sku_container">
+          <div class="product_right_sku">Артикул: <span>{{product.id}}</span></div>
+        </div>
+        <div class="left_info_product">
+          <div class="product_right_top">
+            <div class="product_manufacturer_logo_right_info"><a href="https://ru-mi.com/xiaomi">Подробнее<br /><span>о Xiaomi</span></a></div>
+            <div class="product_manufacturer_logo">
+              <a href="https://ru-mi.com/xiaomi"><img src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" class="lazyload" data-src="https://ru-mi.com/image/cache/data/manufacturers/new/xiaomi-123x36_hor.png" /></a>
+            </div>
+          </div>
+        </div>
+        <div class="some_right">
+          <div class="all_right_block">
+            <div class="all_right_top" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+              <meta itemprop="price" content="{{product.price}}" />
+              <meta itemprop="priceCurrency" content="RUB" />
+              <link itemprop="availability" href="http://schema.org/InStock" />
+              <div class="price">
+                <span class="price-old">{{product.old_price | round: 0}}</span> <span class="price-new">{{product.price | money}}</span>
+              </div>
+              <div class="oneclick_button" id="oneclick_button_send">
+                <span>Купить в 1 клик</span>
+              </div>
+              <div class="cart">
+                <input type="hidden" name="quantity" size="2" value="1" />
+                <input type="hidden" name="product_id" size="2" value="10814" />
+                <a id="button-cart" onmousedown="try { rrApi.addToBasket(10814) } catch(e) {}"><span>В корзину</span></a>
+              </div>
+            </div>
+          </div>
+          <div class="product_specialblock">
+            <div class="product_delivery_container">
+              <div><a href="https://ru-mi.com/dostavka">Доставка по Москве:</a> от 290 рублей</div>
+              <div><a href="https://ru-mi.com/dostavka">Самовывоз из Москвы:</a> <b>бесплатно</b></div>
+              <div class="product_delivery_container_blocks">
+                <a href="https://ru-mi.com/dostavka" class="product_delivery_container_block_1"><span>Экспресс доставка</span></a>
+              </div>
+            </div>
+          </div>
+          <div class="go_to_description">
+            <a href="#">Перейти к описанию товара</a>
+          </div>
+        </div>
+      </div>
+      <div class="cl_b"></div>
+    </div>
+  </div>
+  <div class="rr-widget cartRelated rr-active">
+    <header class="widgettitle" style="margin-top: 10px; margin-bottom: 5px;">С этим товаром покупают</header>
+    {%if product.similar_products.size > 0%} {%assign productproducts = product.similar_products%} {%elsif product.related_products.size > 0%} {%assign productproducts = product.related_products%} {%else%} {%assign productproducts = collections.all.products%}
+    {%endif%}
+    <ul class="items">
+      {% for product in productproducts %}
+      <li class="item">
+        <div class="block">
+          <div class="rr-header">
+            <div class="rr-labels">
+              {%if product.old_price%}
+              <div class="rr-discount">
+                -{{ product.old_price | minus: product.price | divided_by: product.old_price | times: 100 | round: 0}}%
+              </div>
+              {%endif%}
+            </div>
+            <div class="rr-icons">
+              <a class="product_features_wishlist" product_id="9649" tabindex="-1"></a>
+              <span class="product_features_compare " product_id="9649"></span>
+            </div>
+          </div>
+          <a class="item-info" href="{{product.url}}" tabindex="-1">
+            <div class="item-image">
+              <img src="{{product.first_image.original_url}}">
+            </div>
+            <div class="item-title">{{product.title}}</div>
+          </a>
+          <div class="rating">
+            <div class="rating_left">
+              <a class="rating_stars" href="{{product.url}}" tabindex="-1">
+											{%if product.rating %}
+												<div class="rating_full stars_{{ product.rating }}"></div>
+											{%else%}
+												<div class="rating_full stars_0"></div>
+											{%endif%}
+										</a>
+            </div>
+            <div class="rating_right">
+              <a class="rating_reviews" href="{{product.url}}" tabindex="-1">{{product.reviews | size}}</a>
+            </div>
+          </div>
+          <div class="item-price-and-buy">
+            <div class="item-block-price">
+              {%if product.old_price%}
+              <div class="item-old-price">
+                <span class="item-old-price-value">{{ product.old_price | round: 0 }}</span>
+                <span class="item-price-currency"></span>
+              </div>
+              {%endif%}
+              <div class="item-price">
+                <span class="item-price-value">{{product.price | money}}</span>
+              </div>
+            </div>
+            <div class="item-actions">
+              <form action="{{ cart_url }}" method="post" data-product-id="{{ product.id }}">
+                <input type="hidden" name="variant_id" value="{{product.variants.first.id}}">
+                <div style="display: none;" data-quantity>
+                  <input type="text" name="quantity" value="1" />
+                </div>
+                <a class="item-actions-buy" tabindex="-1" data-item-add>
+                  <div class="add_to_cart_help">Товар в корзине</div>
+                </a>
+              </form>
+            </div>
+          </div>
+        </div>
+      </li>
+      {%endfor%}
+    </ul>
+  </div>
+  <script>
+    $('.items').slick({
+      adaptiveHeight: true,
+      dots: false,
+      arrows: true,
+      TouchMove: false,
+      draggable: true,
+      infinite: true,
+      autoplay: false,
+      variableWidth: true,
+      speed: 300,
+      slidesToShow: 5,
+      slidesToScroll: 1,
+      swipeToSlide: true,
+      nextArrow: '<a href="javascript:void(0);" class="slick-next"></a>',
+      prevArrow: '<a href="javascript:void(0);" class="slick-prev"></a>',
+      responsive: [{
+        breakpoint: 1300,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 4,
+        }
+      }, {
+        breakpoint: 990,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+        }
+      }, {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          arrows: false,
+          centerMode: true
+        }
+      }, {
+        breakpoint: 400,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          arrows: false,
+          centerMode: true
+        }
+      }, ]
+    });
+  </script>
+  <div class="product_info_bottom">
+    <div class="product_tabs" id="products_tabs">
+      <ul class="product_tabs_htabs"><li><a href="#tab-description">Описание</a></li><li><a href="#tab-attribute">Характеристики</a></li><li><a href="#tab-review">Отзывы <span>(6)</span></a></li><li><a href="#tab-questions">Вопрос-ответ <span>(1)</span></a></li></ul>
+      <div id="tab-description">
+          <h2 class="product_h2">{{product.title}}</h2>
+          <p><span style="color:#FF0000;">*В данный момент голосовой ассистент поддерживает только китайский язык.&nbsp;</span></p>
+          <table class="product_table">
+            <tbody>
+              <tr>
+                <td>Полностью беспроводной дизайн</td>
+                <td>Автоматический запуск</td>
+              </tr>
+              <tr>
+                <td>Touch управление</td>
+                <td>Bluetooth 5.0</td>
+              </tr>
+            </tbody>
+          </table>
 
-{% for widgetDrop in widget_lists.common_product-list.widgets %}
-  {% widget widgetDrop %}
-{% endfor %}
+          <p><img title="{{product.title}}" title="{{product.title}}" src="https://ru-mi.com/image/data/Tovari/Naushnikiikolonki/bluetooth/airdots_youth_edition/airdots_youth_edition_opisanie_1.jpg" style="width: 980px; height: 490px;" /></p>
+
+          <h3 class="product_h3">Элегантные и простые</h3>
+
+          <h4 class="product_h4">Отличный внешний вид</h4>
+
+          <p>Небольшие скругленные вкладыши не имеют лишних деталей. Стильный внешний вид идеально сочетается с простым управлением.</p>
+
+          <p>Тонкий и компактный дизайн корпуса наушников отлично сочетается с простотой и функциональностью их использования. Зарядный кейс выполнен из высокопрочного материала с помощью литья под давлением, двухцветный матовый материал не только красив,
+            но и долговечен, крепок и приятен в руке.</p>
+
+          <p><img title="{{product.title}}" title="{{product.title}}" src="https://ru-mi.com/image/data/Tovari/Naushnikiikolonki/bluetooth/airdots_youth_edition/airdots_youth_edition_opisanie_2.jpg" style="width: 980px; height: 490px;" /></p>
+
+          <h3 class="product_h3">Сбросьте оковы</h3>
+
+          <h4 class="product_h4">Наслаждайтесь музыкой</h4>
+
+          <p>Раздельная конструкция наушников с технологией TWS действительно не имеет никаких проводов, она больше не сковывает Вас.</p>
+
+          <p><img title="{{product.title}}" title="{{product.title}}" src="https://ru-mi.com/image/data/Tovari/Naushnikiikolonki/bluetooth/airdots_youth_edition/airdots_youth_edition_opisanie_3.jpg" style="width: 980px; height: 490px;" /></p>
+
+          <h3 class="product_h3">Автоматический запуск</h3>
+
+          <h4 class="product_h4">Достаньте из зарядного кейса</h4>
+
+          <p>Беспроводные наушники Xiaomi Mi AirDots Youth Edition оснащены новейшей технологией, которая изменила традиционное ручное управление и избавила от необходимости выполнения сложных действий для сопряжения вкладышей. Теперь наушники включаются
+            автоматически, как только Вы достаете их из кейса. Легко и просто!</p>
+
+          <p><img title="{{product.title}}" title="{{product.title}}" src="https://ru-mi.com/image/data/Tovari/Naushnikiikolonki/bluetooth/airdots_youth_edition/airdots_youth_edition_opisanie_4.jpg" style="width: 980px; height: 490px;" /></p>
+
+          <h3 class="product_h3">Коснитесь кнопки</h3>
+
+          <p>Сенсорные панели, расположенные на вкладыше, реагируют на малейшие прикосновения. Больше не придется испытывать неприятные ощущения от нажимания кнопок.</p>
+
+          <p>Touch-интерфейс на наушниках, распознаёт касание пальцем и точно выполняет ваши инструкции. Теперь никаких механических кнопок, откройте новую эру управления вашими гаджетами!</p>
+
+          <p>Выполните двойное касание сенсорной панели, чтобы вызвать голосового помощника, не тратя время на поиск смартфона.</p>
+
+          <p><img title="{{product.title}}" title="{{product.title}}" src="https://ru-mi.com/image/data/Tovari/Naushnikiikolonki/bluetooth/airdots_youth_edition/airdots_youth_edition_opisanie_5.jpg" style="width: 980px; height: 490px;" /></p>
+
+          <h3 class="product_h3">Быстрые и стабильные</h3>
+
+          <h4 class="product_h4">Bluetooth 5.0</h4>
+
+          <p>Наушники выполнены на базе стандарта Bluetooth 5.0, а также совместимы с Bluetooth 4.2 и более ранними версиями. Стандарт 5.0 обладает не только низким энергопотреблением, расширенным радиусом действия и способностью передавать большие данные,
+            но и может предотвращать помехи WiFI сигнала, защищая стабильность передачи.</p>
+
+          <p>Стереозвук во время вызова, умное шумоподавление, быстрое подключение, автосопряжение, чистый звук, низкое энергопотребление, совместимость с основным оборудованием и приложениями.</p>
+
+          <p><img title="{{product.title}}" title="{{product.title}}" src="https://ru-mi.com/image/data/Tovari/Naushnikiikolonki/bluetooth/airdots_youth_edition/airdots_youth_edition_opisanie_7.jpg" style="width: 980px; height: 490px;" /></p>
+
+          <p><img title="{{product.title}}" title="{{product.title}}" src="https://ru-mi.com/image/data/Tovari/Naushnikiikolonki/bluetooth/airdots_youth_edition/airdots_youth_edition_opisanie_14.jpg" style="width: 980px; height: 490px;" /></p>
+
+          <h3 class="product_h3">Мощный басс</h3>
+
+          <h4 class="product_h4">Поражающее звучание</h4>
+
+          <p>Небольшие наушники имеют чистый звук. Специальный магнитный драйвер диаметром 7.2 мм имеет широкий диапазон баса, и мощное звучание. Он специально сконструирован и оптимизирован для отличного звучания средних и низких частот, делая песни более
+            энергичными и чувственными.</p>
+
+          <p>Система производства звука, расположенная в задней части, была многократно откалибрована звукотехниками. Она делает звук на средних частотах глубже и мощнее, чтобы каждая песня зазвучала по-новому.</p>
+
+          <p><img title="{{product.title}}" title="{{product.title}}" src="https://ru-mi.com/image/data/Tovari/Naushnikiikolonki/bluetooth/airdots_youth_edition/airdots_youth_edition_opisanie_9.jpg" style="width: 980px; height: 490px;" /></p>
+
+          <h3 class="product_h3">12 часов работы от батареи</h3>
+
+          <p>Наушники в паре способны звучать в течение 4 часов, дополнительно заряжая их в зарядном кейсе вы расширяете это время до 12 часов. Не стоит бояться долгих поездок!</p>
+
+          <p><img title="{{product.title}}" title="{{product.title}}" src="https://ru-mi.com/image/data/Tovari/Naushnikiikolonki/bluetooth/airdots_youth_edition/airdots_youth_edition_opisanie_11.jpg" style="width: 980px; height: 490px;" /></p>
+
+          <h3 class="product_h3">Стерео звонки</h3>
+
+          <h4 class="product_h4">Услышьте собеседника лучше</h4>
+
+          <p>Новый микрочип обеспечивает двусторонний стереозвук во время телефонного разговора, делая общение комфортнее.</p>
+
+          <p><img title="{{product.title}}" title="{{product.title}}" src="https://ru-mi.com/image/data/Tovari/Naushnikiikolonki/bluetooth/airdots_youth_edition/airdots_youth_edition_opisanie_8.jpg" style="width: 980px; height: 490px;" /></p>
+
+          <h3 class="product_h3">Невероятный комфорт</h3>
+
+          <h4 class="product_h4">Отличная эргономика</h4>
+
+          <p>Наушники настолько удобные, что Вы вообще не захотите снимать их. Точно подобранные линии вкладышей соответствуют форме человеческого уха. Вход под наклоном не доставляет дискомфорта слуховым проходам. Три комплекта амбушюр разного размера предусмотрены
+            для того, чтобы каждый мог подобрать самый удобный для себя вариант.</p>
+
+          <p><img title="{{product.title}}" title="{{product.title}}" src="https://ru-mi.com/image/data/Tovari/Naushnikiikolonki/bluetooth/airdots_youth_edition/airdots_youth_edition_opisanie_10.jpg" style="width: 980px; height: 490px;" /></p>
+
+          <h3 class="product_h3">Вес 4.2 грамма</h3>
+
+          <h4 class="product_h4">Невероятно компактные</h4>
+
+          <p><img title="{{product.title}}" title="{{product.title}}" src="https://ru-mi.com/image/data/Tovari/Naushnikiikolonki/bluetooth/airdots_youth_edition/airdots_youth_edition_opisanie_12.jpg" style="width: 980px; height: 490px;" /></p>
+
+          <h3 class="product_h3">Вызов голосового ассистента</h3>
+
+          <p>Для пробуждения Xiaomi Ai, нажмите на наушники дважды. С ассистентом вы сможете с помощью простых команд превратить в жизнь несложные операции.</p>
+
+          <p><img title="{{product.title}}" title="{{product.title}}" src="https://ru-mi.com/image/data/Tovari/Naushnikiikolonki/bluetooth/airdots_youth_edition/airdots_youth_edition_opisanie_6.jpg" style="width: 980px; height: 490px;" /></p>
+
+          <h3 class="product_h3">Мир персонализированный музыки</h3>
+
+          <p>Наслаждайтесь вашей любимой музыкой без границ, в любое время, в любом месте!</p>
+
+          <p><img title="{{product.title}}" title="{{product.title}}" src="https://ru-mi.com/image/data/Tovari/Naushnikiikolonki/bluetooth/airdots_youth_edition/airdots_youth_edition_opisanie_13.jpg" style="width: 980px; height: 490px;" /></p>
+
+          <script type="text/javascript">
+            $(function() {
+              $("#tab-description img").each(function(index) {
+                var src = $(this).attr('src');
+                $(this).removeAttr('src');
+                $(this).attr('data-src', src);
+              });
+              $("#tab-description img").lazyload({
+                effect: "fadeIn"
+              });
+            });
+          </script>
+
+      </div>
+      <div id="tab-attribute">
+          <div class="tab_attribute_all">
+            <div class="tab_attribute_left">
+              <div class="tab_attribute_left_div">
+                <div class="tab_attribute_group_left tab_attribute_group_left_active" tab_attribute_id="24"> Главные характеристики</div>
+                <div class="tab_attribute_group_left" tab_attribute_id="90">Основные характеристики</div>
+                <div class="tab_attribute_group_left" tab_attribute_id="27">Связь</div>
+                <div class="tab_attribute_group_left" tab_attribute_id="100">Конструкция</div>
+                <div class="tab_attribute_group_left" tab_attribute_id="62">Аккумулятор и Питание</div>
+                <div class="tab_attribute_group_left" tab_attribute_id="31">Дополнительная информация</div>
+              </div>
+            </div>
+            <div class="tab_attribute_right">
+              <div class="tab_attribute_group_right_main">
+                <div class="tab_attribute_group_right_top" tab_attribute_content="24"> Главные характеристики</div>
+                <div class="tab_attribute_group_right_attributes">
+                  <div class="tab_attribute_group_right_attributes_obolochka">
+                    <div class="tab_attribute_group_right_attributes_left"><span>Модель</span></div>
+                    <div class="tab_attribute_group_right_attributes_right"><span>TWSEJ02LM</span></div>
+                  </div>
+                  <div class="tab_attribute_group_right_attributes_obolochka">
+                    <div class="tab_attribute_group_right_attributes_left"><span>Производитель</span></div>
+                    <div class="tab_attribute_group_right_attributes_right"><span>Xiaomi</span></div>
+                  </div>
+                  <div class="tab_attribute_group_right_attributes_obolochka">
+                    <div class="tab_attribute_group_right_attributes_left"><span>Цвет</span></div>
+                    <div class="tab_attribute_group_right_attributes_right"><span>Белый</span></div>
+                  </div>
+                  <div class="tab_attribute_group_right_attributes_obolochka">
+                    <div class="tab_attribute_group_right_attributes_left"><span>Размеры</span></div>
+                    <div class="tab_attribute_group_right_attributes_right"><span>23 х 14.5 х 13 мм</span></div>
+                  </div>
+                  <div class="tab_attribute_group_right_attributes_obolochka">
+                    <div class="tab_attribute_group_right_attributes_left"><span>Вес (g)</span></div>
+                    <div class="tab_attribute_group_right_attributes_right"><span>4</span></div>
+                  </div>
+                  <div class="tab_attribute_group_right_attributes_obolochka">
+                    <div class="tab_attribute_group_right_attributes_left"><span>Материал</span></div>
+                    <div class="tab_attribute_group_right_attributes_right"><span>Пластик</span></div>
+                  </div>
+                  <div class="tab_attribute_group_right_attributes_obolochka">
+                    <div class="tab_attribute_group_right_attributes_left"><span>Параметры входа</span></div>
+                    <div class="tab_attribute_group_right_attributes_right"><span>5V/1A</span></div>
+                  </div>
+                  <div class="tab_attribute_group_right_attributes_obolochka">
+                    <div class="tab_attribute_group_right_attributes_left"><span>Время работы в активном режиме (h)</span></div>
+                    <div class="tab_attribute_group_right_attributes_right"><span>4 ч</span></div>
+                  </div>
+                </div>
+              </div>
+              <div class="tab_attribute_group_right_main">
+                <div class="tab_attribute_group_right_top" tab_attribute_content="90">Основные характеристики</div>
+                <div class="tab_attribute_group_right_attributes">
+                  <div class="tab_attribute_group_right_attributes_obolochka">
+                    <div class="tab_attribute_group_right_attributes_left"><span>Импеданс</span></div>
+                    <div class="tab_attribute_group_right_attributes_right"><span>32 Ом</span></div>
+                  </div>
+                </div>
+              </div>
+              <div class="tab_attribute_group_right_main">
+                <div class="tab_attribute_group_right_top" tab_attribute_content="27">Связь</div>
+                <div class="tab_attribute_group_right_attributes">
+                  <div class="tab_attribute_group_right_attributes_obolochka">
+                    <div class="tab_attribute_group_right_attributes_left"><span>Тип подключения</span></div>
+                    <div class="tab_attribute_group_right_attributes_right"><span>Bluetooth</span></div>
+                  </div>
+                  <div class="tab_attribute_group_right_attributes_obolochka">
+                    <div class="tab_attribute_group_right_attributes_left"><span>Дальность беспроводной связи</span></div>
+                    <div class="tab_attribute_group_right_attributes_right"><span>10 м</span></div>
+                  </div>
+                  <div class="tab_attribute_group_right_attributes_obolochka">
+                    <div class="tab_attribute_group_right_attributes_left"><span>Версия Bluetooth</span></div>
+                    <div class="tab_attribute_group_right_attributes_right"><span>5.0</span></div>
+                  </div>
+                  <div class="tab_attribute_group_right_attributes_obolochka">
+                    <div class="tab_attribute_group_right_attributes_left"><span>Поддержка профилей</span></div>
+                    <div class="tab_attribute_group_right_attributes_right"><span>A2DP, AVRCP, HFP, HSP</span></div>
+                  </div>
+                </div>
+              </div>
+              <div class="tab_attribute_group_right_main">
+                <div class="tab_attribute_group_right_top" tab_attribute_content="100">Конструкция</div>
+                <div class="tab_attribute_group_right_attributes">
+                  <div class="tab_attribute_group_right_attributes_obolochka">
+                    <div class="tab_attribute_group_right_attributes_left"><span>Диаметр мембраны</span></div>
+                    <div class="tab_attribute_group_right_attributes_right"><span>7.2 мм</span></div>
+                  </div>
+                </div>
+              </div>
+              <div class="tab_attribute_group_right_main">
+                <div class="tab_attribute_group_right_top" tab_attribute_content="62">Аккумулятор и Питание</div>
+                <div class="tab_attribute_group_right_attributes">
+                  <div class="tab_attribute_group_right_attributes_obolochka">
+                    <div class="tab_attribute_group_right_attributes_left"><span>Объём аккумулятора (mAh)</span></div>
+                    <div class="tab_attribute_group_right_attributes_right"><span>40</span></div>
+                  </div>
+                  <div class="tab_attribute_group_right_attributes_obolochka">
+                    <div class="tab_attribute_group_right_attributes_left"><span>Время работы в режиме ожидания (h)</span></div>
+                    <div class="tab_attribute_group_right_attributes_right"><span>150 ч</span></div>
+                  </div>
+                  <div class="tab_attribute_group_right_attributes_obolochka">
+                    <div class="tab_attribute_group_right_attributes_left"><span>Тип разъема для зарядки</span></div>
+                    <div class="tab_attribute_group_right_attributes_right"><span>Micro USB</span></div>
+                  </div>
+                  <div class="tab_attribute_group_right_attributes_obolochka">
+                    <div class="tab_attribute_group_right_attributes_left"><span>Время зарядки (h)</span></div>
+                    <div class="tab_attribute_group_right_attributes_right"><span>1.5 ч</span></div>
+                  </div>
+                </div>
+              </div>
+              <div class="tab_attribute_group_right_main">
+                <div class="tab_attribute_group_right_top" tab_attribute_content="31">Дополнительная информация</div>
+                <div class="tab_attribute_group_right_attributes">
+                  <div class="tab_attribute_group_right_attributes_obolochka">
+                    <div class="tab_attribute_group_right_attributes_left"><span>Особенности</span></div>
+                    <div class="tab_attribute_group_right_attributes_right"><span>Все характеристики указаны для 1шт. Характеристики кейса: вес - 39 г, размеры - 62 х 42 х 26 мм, время зарядки - 2.5 ч, емкость АКБ - 300 мАч; время работы от аккумулятора в кейсе - 12 ч.</span></div>
+                  </div>
+                  <div class="tab_attribute_group_right_attributes_obolochka">
+                    <div class="tab_attribute_group_right_attributes_left"><span>Количество пар сменных амбушюр в комплекте</span></div>
+                    <div class="tab_attribute_group_right_attributes_right"><span>2</span></div>
+                  </div>
+                </div>
+              </div>
+              <div class="tab_attribute_right_addition">
+                Технические характеристики и комплектации товара могут
+                <br /> быть изменены без уведомления со стороны производителя
+              </div>
+            </div>
+          </div>
+      </div>
+      <div id="tab-review">
+          <div class="tab-review-header">
+            <div class="tab-review-header-left">Отзывы</div>
+            <div class="tab-review-header-right"><a class="write_review testimonial_write button" href="#"><span>Написать отзыв</span></a></div>
+          </div>
+          <div class="tab-review-reviews">
+            <div class="one-review" itemprop="review" itemscope itemtype="http://schema.org/Review">
+              <div class="one-review-left">
+                <div class="one-review-left-author" itemprop="author">Тёма</div>
+                <div class="one-review-left-date" content="2019-01-24" itemprop="datePublished">24 января 2019</div>
+                <div class="rating_stars" itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating">
+                  <meta content="1" itemprop="worstRating" />
+                  <meta content="4" itemprop="ratingValue" />
+                  <meta content="5" itemprop="bestRating" />
+                  <div class="rating_full" style="width: 80%"></div>
+                </div>
+              </div>
+              <div class="one-review-right" itemprop="reviewBody">
+                <div class="one-review-right-text-plus"><span class="review-head">Достоинства</span><span class="review-text">- Удобная посадка
+									Отлично сидят в ушах, почти не сдвигаются и не выпадают. Но:
+									1) к ним нужно привыкнуть, поскольку посадка довольно необычная;
+									2) нужно научиться правильно &quot;ввинчивать&quot; их в уши, это опять же вопрос привычки и мышечной памяти;
+									3) нужно выбрать подходящие насадки (сторонние мне показались удобнее родных)
+									Я уверен, что существуют наушники с более удобной и простой посадкой, но и эти меня устроили.
+
+									- Время работы
+									Спорный момент, поскольку я не делал замеров, но на работе почти непрерывно слушаю музыку в одном наушнике, и он работает 6-7 часов без подзарядки. По идее, при прослушивании двумя наушниками они садятся быстрее.
+
+									- Зарядка кейса через micro-USB
+									Многие хотели бы type-C, но лично у меня по-прежнему все девайсы заряжаются именно через micro-USB, так что я очень рад, что не нужно носить отдельный шнур для наушников
+
+									- Материал кейса - матовый пластик
+									Это означает, что он не будет царапаться, как кейс Airpods, и его не нужно дополнительно защищать</span></div>
+                <div class="one-review-right-text-minus"><span class="review-head">Недостатки</span><span class="review-text">- Качество звука весьма среднее
+									Подобные наушники - скорее функциональная вещь, нежели средство для вдумчивого прослушивания музыки. Они отсекают сторонние шумы и заменяют их музыкой, и с этим справляются отлично. Для аудиофильских услад не подходят по определению.
+
+									- Неудобные и нефункциональные органы управления
+									На ушах нет кнопок, только сенсоры. Это добавляет очков дизайну, но создаёт неудобства. Устраивая наушник в ухе, можно нажать на сенсор случайно, а при целенаправленном нажатии они часто срабатывают не с первого раза.
+									К тому же, нажатием можно только поставить музыку на паузу, а перелистывать треки почему-то нельзя. Довольно странно и обидно. Ждём следующих версий?</span></div>
+                <div class="one-review-right-text"><span class="review-head">Комментарий</span><span class="review-text">Превосходная вещь, особенно за свой скромный ценник. Жизнь без проводов действительно прекрасна!
+									Пару слов про неизбежное сравнение с Airpods. Будь Airpods внутриканальными, я бы взял именно их: они удобнее и проще вставляются в уши, у них удобнее кейс и лучше управление. Но отсутствие шумоизоляции лично для меня перебило все достоинства, ведь значительную часть времени я езжу в метро. Наушники от Xiaomi же, на мой взгляд, - ближайший аналог для тех, кому также важна шумоизоляция.</span></div>
+
+                <div class="as_yandex_review" id="as_yandex_review_30659">
+                  <span class="as_yandex_review_text">Вам понравился отзыв?</span>
+                  <div class="as_yandex_review_plus" review_id="30659"><span class="image"></span><span class="as_yandex_review_number">8</span></div>
+                  <div class="as_yandex_review_minus" review_id="30659"><span class="image"></span><span class="as_yandex_review_number">0</span></div>
+                </div>
+              </div>
+            </div>
+            <div class="pagination">
+              <div class="links"></div>
+            </div>
+          </div>
+      </div>
+      <div id="tab-questions">
+          <div class="tab-questions-header">
+            <div class="tab-questions-header-left">Вопрос-ответ</div>
+            <div class="tab-questions-header-right"><a class="write_question qa_write button" href="#"><span>Задать вопрос</span></a></div>
+          </div>
+          <div class="tab-questions-body">
+            <div class="one-question">
+              <div class="tab-questions-body-left">
+                <div class="tab-questions-body-left-author">Евгения </div>
+                <time datetime="18.01.2019">18 января 2019</time>
+              </div>
+              <div class="tab-questions-body-right">
+                <div class="text">Подскажите пожалуйста, что делать, если наушники рассинхронизировались? Теперь они видны как отдельные устройства и работать с телефоном может только один, а не оба сразу </div>
+                <div class="text_otvet">
+                  <div class="text_otvet_left">Ответ компании
+                    <div class="kitmall_otvet"></div>
+                  </div>
+                  <div class="text_otvet_right">Возможно может помочь удаление из списка блютуз устройств обоих наушников и повторная синхронизация после полной разрядки и зарядки наушников. Если вопрос это не решит, то всё же лучше обратиться в СЦ.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+
+	<script type="text/javascript">
+		$(function(){
+	    $("#products_tabs").tabs();
+	  });
+	</script>
+	<script type="text/javascript">
+		$('.tab_attribute_group_left').live('click', function() {
+			var tab_attribute_id = $(this).attr('tab_attribute_id');
+			$('.tab_attribute_group_left').removeClass('tab_attribute_group_left_active');
+			$(this).addClass('tab_attribute_group_left_active');
+			$('html, body').animate({
+				scrollTop: $('.tab_attribute_group_right_top[tab_attribute_content="' + tab_attribute_id + '"]').offset().top
+			}, 1100);
+		});
+	</script>
+  <div id="fotorama_main"></div>
+</div>

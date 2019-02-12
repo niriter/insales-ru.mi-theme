@@ -5,7 +5,6 @@
   {% include "system_head" %}
   <meta name="viewport" content="initial-scale=1.0,width=device-width" />
   <meta charset="UTF-8" />
-  <link rel="stylesheet" type="text/css" href="{{ 'custom.css' | asset_url }}" />
   <link rel="stylesheet" type="text/css" href="https://ru-mi.com/catalog/view/theme/default/stylesheet/stylesheet.css?v=36" />
   <link rel="stylesheet" type="text/css" href="{{ 'adaptive.css' | asset_url }}" />
   <link rel="stylesheet" type="text/css" href="{{ 'fonts.css' | asset_url }}" />
@@ -18,7 +17,6 @@
   <script type="text/javascript" src="{{ 'jquery.maskedinput.min.js' | asset_url }}"></script>
   <script type="text/javascript" src="{{ 'stopsovetnik.js' | asset_url }}"></script>
   <script type="text/javascript" src="{{ 'jquery.lazyload.min.js' | asset_url }}"></script>
-  <link rel="stylesheet" type="text/css" href="{{ 'jquery-ui-1.8.16.custom.css' | asset_url }}" />
   <script type="text/javascript" src="{{ 'common.js' | asset_url }}"></script>
   <script type="text/javascript" src="{{ 'owl.carousel-min.js' | asset_url }}"></script>
   <script src="{{ 'ee_tracking.js' | asset_url }}" type="text/javascript"></script>
@@ -34,6 +32,7 @@
   <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async></script>
   <script src="{{ 'plugins.js' | asset_url }}"></script>
   <script src="{{ 'theme.js' | asset_url }}"></script>
+  <link rel="stylesheet" type="text/css" href="{{ 'custom.css' | asset_url }}" />
 
 </head>
 
@@ -125,8 +124,9 @@
       </div>
     </div>
   </div>
-
+<div class="container">
   {{ content_for_layout }}
+</div>
   {%if block_lists.advantages%}
     <div class="advantages_bottom_rumi">
       <div class="container">
