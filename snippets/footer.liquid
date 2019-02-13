@@ -1,0 +1,87 @@
+<div id="footer">
+  <div class="footer_line"></div>
+  <div class="container">
+    <div class="footer_column footer_column_1">
+      <div id="footer_logo">
+        {% assign path = "logotype-footer.jpg" | asset_url_if_exists %}
+        {% if path %}
+          <img class="footer_normal_logo" src="{{path}}" title="{{account.title}}" alt="{{account.title}}" style="max-width: 200px; max-height: 50px;" />
+          <img class="footer_adaptive_logo" src="{{path}}" title="{{account.title}}" alt="{{account.title}}" style="max-width: 200px; max-height: 50px;" />
+        {%else%}
+          <img class="footer_normal_logo" src="{{'logotype.jpg' | asset_url}}" title="{{account.title}}" alt="{{account.title}}" style="max-width: 200px; max-height: 50px;" />
+          <img class="footer_adaptive_logo" src="{{'logotype.jpg' | asset_url}}" title="{{account.title}}" alt="{{account.title}}" style="max-width: 200px; max-height: 50px;" />
+        {%endif%}
+        <!--<div class="footer_payment"><a href="/index.php?route=information/information&amp;information_id=8"><img alt="Способы оплаты" src="image/data/payment_paykeeper.png"></a></div>-->
+      </div>
+    </div>
+    <div class="footer_column footer_column_2">
+      {%if linklists.footer-menu-1%}
+        <div class="footer_column_header">{{linklists.footer-menu-1.title}}</div>
+        <ul>
+          {% for link in linklists.footer-menu-1.links %}
+            <li><a href="{{link.url}}">{{link.title}}</a></li>
+          {% endfor %}
+        </ul>
+      {%endif%}
+    </div>
+    <div class="footer_column footer_column_3">
+      {%if linklists.footer-menu-2%}
+        <div class="footer_column_header">{{linklists.footer-menu-2.title}}</div>
+        <ul>
+          {% for link in linklists.footer-menu-2.links %}
+            <li><a href="{{link.url}}">{{link.title}}</a></li>
+          {% endfor %}
+        </ul>
+      {%endif%}
+    </div>
+    <div class="footer_column footer_column_4">
+      {%if linklists.footer-menu-3%}
+        <div class="footer_column_header">{{linklists.footer-menu-3.title}}</div>
+        <ul>
+          {% for link in linklists.footer-menu-3.links %}
+            <li><a href="{{link.url}}">{{link.title}}</a></li>
+          {% endfor %}
+        </ul>
+      {%endif%}
+    </div>
+    <div class="yandex_market_bottom_adaptive">
+      <div class="yandex_market_bottom_adaptive_line"></div>
+      <a class="external_link yandex_market_bottom" href="https://market.yandex.ru/shop/273957/reviews?sort_by=date" target="_blank">
+      <img alt="Способы оплаты" src="https://ru-mi.com/catalog/view/theme/default/image/5star_bottom.png">
+        <div>Нам доверяют</div>
+      </a>
+    </div>
+    <div class="footer_bottom">
+      <script type="application/ld+json">
+        { "@context" : "http://schema.org", "@type" : "Store", "name" : "Румиком", "priceRange" : 6000, "image" : "https://ru-mi.com/image/data/logo_firm.png", "telephone" : "+7-495-120-2325", "url" : "https://ru-mi.com", "openingHours": "Mo-Su 10:00-21:00",
+        "sameAs" : [ "https://vk.com/rumicomrussia", "https://www.facebook.com/rumicomrussia/", "https://twitter.com/rumicomrussia", "https://ok.ru/group/52288056197276", "https://www.youtube.com/channel/UCvK29FNCSg46Eik86viJtjQ", "https://plus.google.com/+Rumicom"
+        ], "address": { "@type": "PostalAddress", "addressLocality": "Москва", "postalCode": "127018", "streetAddress": "Сущевский Вал, д.5 стр. 1" }, "contactPoint" : [{ "@type" : "ContactPoint", "telephone" : "+7-495-120-2325", "contactType" : "sales"
+        }] }
+      </script>
+      <div class="footer_bottom_copyright">
+        {{settings.footer_small_copyright}}</div>
+      <div class="footer_bottom_social">
+        <div class="contact_block_social" style="padding: 0;">
+          {% if blocks.instagram %}
+            <a href="{{blocks.instagram.link}}" class="contact_in" target="_blank"></a>
+          {% endif %}
+          {% if blocks.vkontakte %}
+            <a href="{{blocks.vkontakte.link}}" class="contact_vk" target="_blank"></a>
+          {% endif %}
+          {% if blocks.youtube %}
+            <a href="{{blocks.youtube.link}}" class="contact_yt" target="_blank"></a>
+          {% endif %}
+          {% if blocks.telegram %}
+            <a href="{{blocks.telegram.link}}" class="contact_tg" target="_blank"></a>
+          {% endif %}
+          {% if blocks.odnoklassniki %}
+            <a href="{{blocks.telegram.link}}" class="contact_ok" target="_blank"></a>
+          {% endif %}
+        </div>
+      </div>
+      <div class="footer_bottom_text">
+        {{settings.footer_big_copyright}}
+      </div>
+    </div>
+  </div>
+</div>

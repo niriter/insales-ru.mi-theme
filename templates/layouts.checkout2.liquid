@@ -1,16 +1,14 @@
 <!DOCTYPE html>
-<html class='palette_1' lang='ru' xml:lang='ru' xmlns='http://www.w3.org/1999/xhtml'>
+<html lang='ru' xml:lang='ru' xmlns='http://www.w3.org/1999/xhtml'>
 <head>
   {% include "system_head" %}
   <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'>
   <meta content='noindex, nofollow' name='robots'>
   <meta content='width=device-width, initial-scale=1.0, user-scalable=no' name='viewport'>
-
   <link  href='https://fonts.googleapis.com/css?family=Ubuntu:400,300,500,700&amp;subset=latin,cyrillic' rel='stylesheet' type='text/css'>
 
   {{ 'checkout2.core' | global_stylesheet_tag }}
   {% include "styles" %}
-
 </head>
 <body class="adaptive">
   <div id="app"
@@ -20,9 +18,7 @@
   >
   <div class='wrapper-cloak' v-cloak >
 
-    {% for widgetDrop in widget_lists.common_header-list.widgets %}
-      {% widget widgetDrop %}
-    {% endfor %}
+    {% include 'header' %}
 
     <ui-layout-part
       class="content-wrapper"
@@ -47,9 +43,7 @@
 
 </ui-layout-part>
 
-{% for widgetDrop in widget_lists.common_footer-list.widgets %}
-  {% widget widgetDrop %}
-{% endfor %}
+{%include 'footer'%}
 </div>
 </div>
 </body>

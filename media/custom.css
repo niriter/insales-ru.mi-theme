@@ -60,6 +60,51 @@
   display: block;
   padding: 0;
 }
+.co-toggable_field-input--radio input:focus+span, .co-toggable_field-input--radio input+span {
+  background: url('https://ru-mi.com/catalog/view/theme/default/image/oplata_icon.png') left top no-repeat;
+    width: 24px;
+    height: 24px;
+    content: "";
+    display: inline-block;
+    margin-right: 18px;
+    float: left;
+    box-shadow: unset !important;
+    flex: unset;
+    border-radius: unset;
+}
+#order_form a.link {
+  font-size: 15px;
+    color: #0070c9;
+    text-align: left;
+    display: inline-block;
+    border-bottom: 1px dashed #0070c9;
+    text-decoration: none;
+}
+#create_order {margin: 0 auto;margin-bottom: 50px;height: 50px; width: 100%;line-height: 26px !important;-webkit-border-radius: 25px;-moz-border-radius: 25px;-ms-border-radius: 25px;-o-border-radius: 25px;border-radius: 25px;background: #44ab01;line-height: 50px;color: #fff;text-align: center;cursor: pointer;font-size: 20px;display: block;text-decoration: none;font-weight: 300;color: #fff!important;font-family: 'Roboto', Arial, Helvetica, sans-serif !important;}
+#order_comment {border-color: black;}
+.co-delivery_method-description.co-toggable_field-description.co-input-description, .co-payment_method-description.co-toggable_field-description.co-input-description, .co-input-description.co-toggable_field-description {font-size: 15px;color: #848484;font-weight: 300;margin-top: 3px;}
+.co-delivery_method-title.co-toggable_field-title.co-input-title, .co-payment_method-title.co-toggable_field-title.co-input-title, .co-input-title.co-input-label.co-toggable_field-title {font-size: 15px;font-weight: 400;color: #000;}
+.co-delivery_method-price.co-toggable_field-price.co-price--current {font-size: 16px;font-weight: 400;color: #000;text-align: right;}
+.co-toggable_field--bordered {padding: 0;}
+.co-sidebar {bottom: unset;}
+.co-input-label {font-weight: 400;font-size: 15px;}
+.co-basket_subtotal-price {font-weight: 300;font-size: 15px;}
+#total_price {font-size: 25px;}
+.co-basket_total-title {font-weight: 300;}
+.co-basket_subtotal-title {font-size: 15px;color: #000;font-weight: 300;line-height: 40px;}
+.co-basket_item-total {font-size: 15px; line-height: 27px;}
+.co-basket_item-price.co-price--current {color: #000;font-weight: bold;float: right;font-size: 20px;line-height: 27px;position: relative;margin-left: 5px;}
+.co-toggable_field-input--radio input:focus+span, .co-toggable_field-input--radio input:checked+span {background: url('https://ru-mi.com/catalog/view/theme/default/image/oplata_icon.png') left bottom no-repeat !important;}
+.co-basket_item-description {color: #000;font-size: 15px;text-decoration: none;font-weight: 300;line-height: 20px;}
+.co-basket {max-width:unset;}
+h2.co-input-label, h3.co-title {padding-top: 0px;margin-top: 0px;font-size: 20px;font-weight: 400;color: #000;margin-bottom: 20px;}
+h3.co-title {font-size: 16px;}
+.co-delivery_method-list.co-checkout-block {padding: 30px 22px 22px 22px;}
+.layout__container {max-width: 1300px;}
+.decorated-title.co-title.co-title--h1 {font-size:30px;}
+.co-checkout-block--padded {padding: 0;}
+.co-delivery_method-list.co-checkout-block {background-color: white;}
+.co-sidebar.js-co-sidebar.co-sidebar--fixed {top: 50px;background-color: #f7f7f7;padding:20px;box-shadow:unset;}
 .slick-track {background-color: white;}
 .ui-tabs .ui-tabs-hide{display:none !important;}
 .fancybox-active.compensate-for-scrollbar {margin-right: 0 !important;}

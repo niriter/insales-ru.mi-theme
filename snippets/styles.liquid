@@ -1,8 +1,15 @@
 {% if settings.font_family_primary contains 'google:' %}
   {% assign font_family_primary = settings.font_family_primary | replace_first: 'google:', '' %}
   <link href="//fonts.googleapis.com/css?family={{ font_family_primary }}:300,400,700&subset=cyrillic,latin" rel="stylesheet" />
+  <link href="//fonts.googleapis.com/css?family=Roboto:300,400,700&subset=cyrillic,latin" rel="stylesheet" />
 {% endif %}
-
+<style>
+  body {
+    font-family: 'Roboto', Arial, Helvetica, sans-serif !important;
+    font-size: 12px;
+    color: #000000;
+  }
+</style>
 {% if settings.logotype_type == 'text' %}
   {% if settings.logotype_font_family contains 'google:' and settings.font_family_primary != settings.logotype_font_family %}
     {% assign logotype_font_family = settings.logotype_font_family | replace_first: 'google:', '' %}
@@ -11,4 +18,34 @@
 {% endif %}
 <link href="{{ 'theme.css' | asset_url }}" rel="stylesheet" type="text/css" />
 <script src="{{ 'icons.js' | asset_url }}" charset="utf-8"></script>
-<script src="{{ 'theme.js' | asset_url }}" charset="utf-8"></script> 
+<script src="{{ 'theme.js' | asset_url }}" charset="utf-8"></script>
+
+<link rel="stylesheet" type="text/css" href="https://ru-mi.com/catalog/view/theme/default/stylesheet/stylesheet.css?v=36" />
+<link rel="stylesheet" type="text/css" href="{{ 'adaptive.css' | asset_url }}" />
+<link rel="stylesheet" type="text/css" href="{{ 'fonts.css' | asset_url }}" />
+<script type="text/javascript" src="{{ 'jquery-1.7.1.min.js' | asset_url }}"></script>
+<script type="text/javascript" src="{{ 'jquery-ui-1.8.16.custom.min.js' | asset_url }}"></script>
+<script type="text/javascript" src="{{ 'jquery.cookie.js' | asset_url }}"></script>
+<script type="text/javascript" src="{{ 'jquery.suggestions.min.js' | asset_url }}"></script>
+<script type="text/javascript" src="{{ 'jquery.ui.touch-punch.min.js' | asset_url }}"></script>
+<script type="text/javascript" src="{{ 'dadata.js' | asset_url }}"></script>
+<script type="text/javascript" src="{{ 'jquery.maskedinput.min.js' | asset_url }}"></script>
+<script type="text/javascript" src="{{ 'stopsovetnik.js' | asset_url }}"></script>
+<script type="text/javascript" src="{{ 'jquery.lazyload.min.js' | asset_url }}"></script>
+<script type="text/javascript" src="{{ 'common.js' | asset_url }}"></script>
+<script type="text/javascript" src="{{ 'owl.carousel-min.js' | asset_url }}"></script>
+<script src="{{ 'ee_tracking.js' | asset_url }}" type="text/javascript"></script>
+<script src="{{ 'instafeed.min.js' | asset_url }}" type="text/javascript"></script>
+<script type="text/javascript" src="{{ 'livesearch.js' | asset_url }}"></script>
+<link rel="stylesheet" type="text/css" href="{{ 'livesearch.css' | asset_url }}" />
+<script type="text/javascript" src="{{ 'is.mobile.js' | asset_url }}"></script>
+<link rel="stylesheet" type="text/css" href="{{ 'suggestions.css' | asset_url }}" />
+<link rel="stylesheet" type="text/css" href="{{ 'owl.carousel.css' | asset_url }}" />
+<script type="text/javascript" src="http://rrstatic.retailrocket.net/slick.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css" />
+<link rel="manifest" href="/manifest.json">
+<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async></script>
+<script src="{{ 'plugins.js' | asset_url }}"></script>
+<script src="{{ 'theme.js' | asset_url }}"></script>
+<link rel="stylesheet" type="text/css" href="{{ 'custom.css' | asset_url }}" />
+<link rel="stylesheet" type="text/css" href="https://ru-mi.com/catalog/view/theme/default/stylesheet/simple.css?v=4.8.11" />
