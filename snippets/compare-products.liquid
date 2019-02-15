@@ -1,0 +1,98 @@
+<div id="content">
+  <h1>Сравнение товаров</h1>
+  <table class="compare-info">
+    <thead>
+      <tr>
+        <td class="compare-product" colspan="5">Описание</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Наименование</td>
+				{% for product in products %}
+					<td class="name"><a href="{{product.url}}"><span>{{product.title}}</span></a></td>
+				{% endfor %}
+      </tr>
+      <tr>
+        <td>Изображение</td>
+				{% for product in products %}
+					<td>
+						<img src="{{product.first_image.thumb_url}}" alt="{{product.title}}">
+					</td>
+				{% endfor %}
+      </tr>
+      <tr>
+        <td>Цена</td>
+				{% for product in products %}
+	        <td>
+						{%if product.old_price %}<span class="price-old">{{product.old_price | money}}</span>{%endif%} <span class="price-new">{{product.price | money}}</span>
+	        </td>
+				{% endfor %}
+        </td>
+      </tr>
+      <tr>
+        <td>Модель</td>
+				{% for product in products %}
+					<td>{{product.id}}</td>
+				{% endfor %}
+      </tr>
+      <tr>
+        <td>Наличие</td>
+				{% for product in products %}
+					{%if product.available%}<td>Есть на складе</td>{%else%}<td>Нету на складе</td>{%endif%}
+				{% endfor %}
+      </tr>
+      <tr>
+        <td>Рейтинг</td>
+				{% for product in products %}
+					<td><img src="https://ru-mi.com/catalog/view/theme/default/image/stars-{%if product.rating%}{{product.rating}}{%else%}0{%endif%}.png" alt="На основе {{product.reviews.size}} отзывов.">
+						<br> На основе {{product.reviews.size}} отзывов.</td>
+				{% endfor %}
+      </tr>
+      <tr>
+        <td>Краткое описание</td>
+				{% for product in products %}
+					<td class="description">{{product.description | truncate: 150 }}</td>
+				{% endfor %}
+      </tr>
+    </tbody>
+    <thead>
+      <tr>
+        <td class="compare-attribute" colspan="5"> Главные характеристики</td>
+      </tr>
+    </thead>
+		{% for property in properties %}
+			<tbody>
+				<tr>
+					<td>{{ property.title }}</td>
+					{% for product in products %}
+						<td>
+							{% for characteristic in product.properties[property.handle].characteristics %}
+								{{ characteristic.title }}{% unless forloop.last %},{% endunless %}
+							{% endfor %}
+						</td>
+					{% endfor %}
+				</tr>
+			</tbody>
+		{% endfor %}
+    <tbody>
+      <tr>
+        <td></td>
+				{%for product in products%}
+        	<td class="remove"><a data-compare-delete="{{product.id}}" class="button remove-button"><span>Удалить</span></a></td>
+				{%endfor%}
+      </tr>
+    </tbody>
+  </table>
+  <div class="buttons">
+    <div class="right"><a href="https://ru-mi.com/" class="button"><span>Продолжить</span></a></div>
+  </div>
+</div>
+<script>
+	EventBus.subscribe('add_item:insales:compares', function () {
+		location.reload();
+	});
+	EventBus.subscribe('remove_item:insales:compares', function () {
+		location.reload();
+	});
+</script>
