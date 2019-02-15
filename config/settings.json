@@ -87,6 +87,24 @@
            }
         ]
      }
+   ],"Магазины - отображение":[
+     {
+        "group_name":"Магазины - отображение",
+        "items":[
+           {
+              "name":"shops-header-display",
+              "label":"Отображать 'Магазины' в хедере?: ",
+              "type":"checkbox",
+              "checked":"checked"
+           },
+           {
+              "name":"shops-index-display",
+              "label":"Отображать 'Магазины' на главной?: ",
+              "type":"checkbox",
+              "checked":"checked"
+           }
+        ]
+     }
    ],"Footer Copyright":[
      {
         "group_name":"Footer Copyright",

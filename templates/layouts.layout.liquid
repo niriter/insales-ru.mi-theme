@@ -29,7 +29,6 @@
   <script type="text/javascript" src="http://rrstatic.retailrocket.net/slick.min.js"></script>
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css" />
   <link rel="manifest" href="/manifest.json">
-  <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async></script>
   <script src="{{ 'plugins.js' | asset_url }}"></script>
   <script src="{{ 'theme.js' | asset_url }}"></script>
   <link rel="stylesheet" type="text/css" href="{{ 'custom.css' | asset_url }}" />
@@ -70,7 +69,7 @@
             <img src="{{'logotype.jpg' | asset_url}}" title="{{account.title}}" alt="{{account.title}}" style="max-width: 200px; max-height: 50px;" />
           </a>
         </div>
-        <a class="rumi_shops_link" href="/shops/"><span>Магазины</span></a>
+        {%if settings.shops-header-display %}<a class="rumi_shops_link" href="/shops/"><span>Магазины</span></a>{%endif%}
         <form action="{{ search_url }}" method="get" id="search">
           <button class="button-search" style="border: 0px solid transparent;"></button>
           <div class="search-close"></div>
@@ -112,7 +111,7 @@
             <a href="{{ link.url }}">{{ link.title }}</a>
           {% endfor %}
         </div>
-        <a class="header_wishlist non_active" href="/compares/" style="background: url('https://ru-mi.com/catalog/view/theme/default/image/compare_icon.png') center center no-repeat;"><span class="js-bage-compares"></span></a>
+        <a class="header_wishlist non_active" href="/compares/" style="background: url('https://ru-mi.com/catalog/view/theme/default/image/compare_icon.png') center center no-repeat;"><span class="js-bage-compares" style="display: block; background-color: #6aa9f0;"></span></a>
         <div id="cart" class=""><div class="heading">
           <a href="/cart_items" title="Корзина покупок"><span id="cart-total"><span class="cart_counter bage bage-cart js-bage-cart"></span><span class="js-cart-text" style="font-weight:normal;">Ваша корзина пуста</span></span></a>
         </div>

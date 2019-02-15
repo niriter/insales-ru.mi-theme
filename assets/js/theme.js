@@ -68,6 +68,14 @@ $(function(){
 	maskInput.mask(maskMasks.RU, maskOptions);
 	/*---*/
 
+//product кнопка купить
+$('.item-actions-buy').click(function() {
+	var tester = $(this)
+  $(this).addClass("added");
+	setTimeout(function() { tester.removeClass("added") }, 3000);
+});
+
+
 	//корзина
 	EventBus.subscribe('update_items:insales:cart', function(data){
 		if(data.items_count > 0){
@@ -142,11 +150,13 @@ $(function(){
 			$('.js-popup-compares').html('<div class="dropdown_products js-popup-compares-products"></div><div class="dropdown_products-action"><div class="row"><div class="col-12"><a href="/compares" class="button button--primary button--block button--small">Перейти к сравнению</a></div></div></div>');
 			$('.js-popup-compares-products').html(templateLodashRender(data, 'popup-compares'));
       $('.header_compare').removeClass('non_active');
+			$('.js-bage-compares').show();
       $('.js-bage-compares').html(data.products.length);
 			$.each(data.products, function(index, item){
 				$('[data-compare-add="'+item.id+'"]').addClass('active');
 			});
 		}else{
+			$('.js-bage-compares').hide();
 			$('.js-user_icons-icon-compares').removeClass('is-active');
 			$('.js-popup-compares').html(templateLodashRender({popup: {title: 'Товары для сравнения не&nbsp;выбраны', icon: '<i class="far fa-align-right fa-3x" data-fa-transform="rotate-90"></i>'}}, 'popup-empty'));
       $('.header_compare').addClass('non_active');
@@ -195,7 +205,7 @@ $(function(){
 		}
 	});
 	EventBus.subscribe('add_item:insales:compares', function(data){
-		if(!$('[data-compare-add="'+data.action.item+'"]').hasClass('is-added')){
+		if(!$('[data-compare-add="'+data.action.item+'"]').hasClass('active')){
 			//console.log('Товар добавлен в сравнение');
 		}else{
 			Compare.remove({
@@ -205,7 +215,7 @@ $(function(){
 	});
 	EventBus.subscribe('always:insales:compares', function(data){
 		if(data.method == 'overload'){
-			if(!$('[data-compare-add="'+data.item+'"]').hasClass('is-added')){
+			if(!$('[data-compare-add="'+data.item+'"]').hasClass('active')){
 				//showMessage('alert', 'Внимание!', 'Сравнить можно не более 4 товаров.');
 			}else{
 				Compare.remove({

@@ -11,7 +11,7 @@
               </div>
             </noindex>
             <div class="product_features_buttons">
-              <a class="product_features_compare " product_id="10814"></a>
+              <a class="product_features_compare " product_id="{{product.id}}"></a>
             </div>
           </div>
           <div class="image">
@@ -48,7 +48,7 @@
               </a>
             </div>
             <div class="rating_right">
-              <a class="rating_reviews" href="https://sankt-peterburg.ru-mi.com/besprovodnye-naushniki-xiaomi-mi-airdots-belyj/reviews">6</a>
+              <a class="rating_reviews" href="https://sankt-peterburg.ru-mi.com/besprovodnye-naushniki-xiaomi-mi-airdots-belyj/reviews">{{product.reviews_count}}</a>
             </div>
           </div>
           <div class="product_bottom">
@@ -57,9 +57,9 @@
               {%if product.old_price%}<span itemprop="price" class="price-old">{{product.old_price}}</span>{%endif%}
               <span class="price-new">{{product.price | money}}</span>
             </div>
-            <div class="stock"><span class="in_stock_icon">В наличии<span></span></span>
+            {%if product.available%}<div class="stock"><span class="in_stock_icon">В наличии<span></span></span>{%else%}<div class="stock"><span class="out_of_stock_icon">Нету наличии<span></span></span>{%endif%}
             </div>
-            <div class="cart"><a onmousedown="try { rrApi.addToBasket(10814) } catch(e) {}" onclick="addToCart('10814');" class="button add_to_cart_10814 "><span></span><div class="add_to_cart_help">Товар в корзине</div></a></div>
+            <div class="cart"><a class="button add_to_cart_10814 "><span></span><div class="add_to_cart_help">Товар в корзине</div></a></div>
             <div class="cl_b"></div>
           </div>
         </div>
