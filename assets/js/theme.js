@@ -97,7 +97,6 @@ $(function(){
 			$('.js-popup-cart-products').html(templateLodashRender({popup: {title: 'Ваша корзина пуста'}}, 'popup-empty'));
       $('.js-cart-text').html(' Ваша корзина пуста');
 			if(Site.template == 'cart'){
-				$('#insales-section-cart').html(templateLodashRender({popup: {title: 'Ваша корзина пуста', icon: '<i class="far fa-shopping-cart fa-3x"></i>'}}, 'popup-empty'));
         $('.js-cart-text').html(' Ваша корзина пуста');
 			}
 		}
