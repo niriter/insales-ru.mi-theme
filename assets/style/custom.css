@@ -198,3 +198,198 @@ h3.co-title {font-size: 16px;}
   .rr-widget .slick-list{border-right:0 solid #e6e6e6}
 }
 .rr-widget .pds img{width:100%}
+
+
+form > div.row > div.col-12 {
+  display: inline-block;
+}
+form > div.row > div.col-12.col-lg-9 {
+  width: 70%;
+  vertical-align: top;
+}
+form > div.row > div.col-12.col-lg-3 {
+  width: 25%;
+  vertical-align: top;
+}
+.cart-item-thumb.cart-item-thumb--1x1.cart-item-thumb--contain {
+  width: 100px;
+  height: 100px;
+  display: block;
+  text-align: center;
+  background-color: white;
+}
+.row.align-items-center > div.col-12, .row.align-items-center > div.col, .row.align-items-center > div.col-auto,
+.row.no-gutters > .col,
+.row.no-gutters > .col-auto{
+  display: inline-block;
+  vertical-align: middle;
+  max-width: 100%;
+}
+.row.align-items-center > div.col-12.col-md-auto {
+  float: right;
+  line-height: 100px;
+}
+.cart-item {
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  padding: 20px 0;
+}
+.input.input--counter.input--large {
+  width: 32px;
+  text-align: center;
+  padding: 14px 0;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+  font-weight: 600;
+  color: #000;
+  font-family: 'Roboto', sans-serif;
+}
+.cart-item-title > a {
+  font-size: 14px;
+  line-height: 20px;
+  padding-left: 20px;
+  text-decoration: none;
+  color: #000;
+  font-weight: 400;
+  transition: color 0.2s linear, background-color 0.2s linear, border-color 0.2s linear;
+}
+.row.align-items-center.justify-content-end > .col-auto {
+  padding: 0 10px;
+}
+.cart-item-prices{
+  font-size: 14px;
+    line-height: 22px;
+    color: #666;
+}
+.button.button--counter.button--icon.button--large, .button.button--empty.button--icon.button--large.button--remove {
+  background-color: transparent;
+  border: none !important;
+  display: block;
+}
+.button.button--counter.button--icon.button--large svg {
+  height: 14px;
+  color: grey;
+  margin-top: 0px;
+  display: block;
+  transition: color 0.2s linear, background-color 0.2s linear, border-color 0.2s linear;
+    transition-property: color, background-color, border-color;
+    transition-duration: 0.2s, 0.2s, 0.2s;
+    transition-timing-function: linear, linear, linear;
+    transition-delay: 0s, 0s, 0s;
+}
+.button.button--counter.button--icon.button--large svg:hover {
+  color: black;
+}
+.button.button--empty.button--icon.button--large.button--remove svg {
+  height: 18px;
+  color: grey;
+  margin-top: 0px;
+  display: block;
+  transition: color 0.2s linear, background-color 0.2s linear, border-color 0.2s linear;
+    transition-property: color, background-color, border-color;
+    transition-duration: 0.2s, 0.2s, 0.2s;
+    transition-timing-function: linear, linear, linear;
+    transition-delay: 0s, 0s, 0s;
+}
+.button.button--empty.button--icon.button--large.button--remove svg:hover {
+  color: red;
+}
+.cart-item-prices {
+  text-align: right;
+}
+.cart-item-total_price.js-cart-item-total_price {
+   font-weight: 600;
+  color: #000;
+}
+* {
+  outline:none;
+}
+.row > .col-12 { padding: 0 10px;}
+.cart-sidebar {
+  text-align: center;
+  padding: 20px;
+  border: 2px solid #eee;
+  margin: 0 0 40px;
+}
+.cart-order-items { width: 100%;
+padding: 5px;
+background-color: #f7f8fa;
+margin: -20px -20px 0;
+  padding: 15px 20px 10px;
+  line-height: 22px;
+  font-weight: bold;
+  font-size: 18px;
+  text-align: left;
+}
+.cart-order-item.cart-order-item-total_price {
+  position: relative;
+}
+.cart-order-total_price.js-cart-order-total_price {
+  position: absolute;
+  right: 0;
+  color: #ff6c30;
+}
+.cart-order-coupon {
+  margin-top: 20px;
+  font-weight: 500;
+  color: #000;
+  font-size: 13px;
+  line-height: 16px;
+  text-align: left;
+}
+.cart-order-coupon > label {
+  margin-bottom: 5px;
+  display: block;
+}
+.cart-order-coupon input {
+  border-radius: 0;
+  border: 1px solid #eee;
+  padding: 9px 14px;
+  font-weight: 400;
+  width: calc(100% - 30px);
+}
+.cart-order-coupon .col {
+  width: calc(100% - 40px);
+}
+.cart-order-coupon button {
+  background-color: transparent;
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+.cart-order-coupon button:hover svg {
+  color: green;
+  transition: color 0.2s linear, background-color 0.2s linear, border-color 0.2s linear;
+}
+.cart-order-coupon button svg {
+  height: 18px;
+  margin-left: 10px;
+}
+.cart-order-buttons {
+  margin-top: 20px;
+}
+.cart-order-buttons input {
+  width: calc(100% - 40px);
+  padding: 15px 20px;
+  text-transform: uppercase;
+  line-height: 22px;
+  font-size: 15px;
+  font-weight: bold;
+  background-color: #ff6c30;
+  display: block;
+  letter-spacing: 0.3px;
+  transition: color 0.2s linear, background-color 0.2s linear, border-color 0.2s linear;
+  opacity: 0.9;
+}
+.cart-order-buttons input:hover {
+  background-color: black;
+}
+.cart-order-coupon-error.js-cart-order-coupon-error {
+  color: red;
+  font-weight: 300;
+  width: 75%;
+  margin: 0 auto;
+  padding-top: 5px;
+  text-align: center;
+}
