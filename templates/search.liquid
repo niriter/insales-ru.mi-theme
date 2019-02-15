@@ -1,7 +1,9 @@
-{% paginate search.results by 12 %}
-
-{% for widgetDrop in widget_lists.common_search-list.widgets %}
-  {% widget widgetDrop %}
-{% endfor %}
-
-{% endpaginate %}
+{%include 'breadcrumb'%}
+<h1>Поиск - {{ search.query }}</h1>
+<div id="content" style="padding: 0px;margin: 0px;">
+  {%if search.results.size > 0 %}
+    {%include 'search-products'%}
+  {%else%}
+    {%include 'search-empty'%}
+  {%endif%}
+</div>
