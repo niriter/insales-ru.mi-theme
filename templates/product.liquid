@@ -169,66 +169,7 @@
     {%endif%}
     <ul class="items">
       {% for product in productproducts limit: productproducts_limit %}
-      <li class="item">
-        <div class="block">
-          <div class="rr-header">
-            <div class="rr-labels">
-              {%if product.old_price%}
-              <div class="rr-discount">
-                -{{ product.old_price | minus: product.price | divided_by: product.old_price | times: 100 | round: 0}}%
-              </div>
-              {%endif%}
-            </div>
-            <div class="rr-icons">
-              <span class="product_features_compare " product_id="9649"></span>
-            </div>
-          </div>
-          <a class="item-info" href="{{product.url}}" tabindex="-1">
-            <div class="item-image">
-              <img src="{{product.first_image.original_url}}">
-            </div>
-            <div class="item-title">{{product.title}}</div>
-          </a>
-          <div class="rating">
-            <div class="rating_left">
-              <a class="rating_stars" href="{{product.url}}" tabindex="-1">
-											{%if product.rating %}
-												<div class="rating_full stars_{{ product.rating }}"></div>
-											{%else%}
-												<div class="rating_full stars_0"></div>
-											{%endif%}
-										</a>
-            </div>
-            <div class="rating_right">
-              <a class="rating_reviews" href="{{product.url}}" tabindex="-1">{{product.reviews | size}}</a>
-            </div>
-          </div>
-          <div class="item-price-and-buy">
-            <div class="item-block-price">
-              {%if product.old_price%}
-              <div class="item-old-price">
-                <span class="item-old-price-value">{{ product.old_price | round: 0 }}</span>
-                <span class="item-price-currency"></span>
-              </div>
-              {%endif%}
-              <div class="item-price">
-                <span class="item-price-value">{{product.price | money}}</span>
-              </div>
-            </div>
-            <div class="item-actions">
-              <form action="{{ cart_url }}" method="post" data-product-id="{{ product.id }}">
-                <input type="hidden" name="variant_id" value="{{product.variants.first.id}}">
-                <div style="display: none;" data-quantity>
-                  <input type="text" name="quantity" value="1" />
-                </div>
-                <a class="item-actions-buy" tabindex="-1" data-item-add>
-                  <div class="add_to_cart_help">Товар в корзине</div>
-                </a>
-              </form>
-            </div>
-          </div>
-        </div>
-      </li>
+        {%include 'slider-product'%}
       {%endfor%}
     </ul>
   </div>

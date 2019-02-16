@@ -160,71 +160,17 @@
       });
     </script>
     <div class="product-grid product-grid_4" itemprop="itemListOrder" itemscope="" itemtype="http://schema.org/ItemList">
-      {%for product in collection.products %}
-        <div itemprop="itemListElement">
-          <div class="product_bg"></div>
-          <div class="product_inner">
-            <div class="product_features_top">
-              <noindex>
-                <div class="stickers">
-                  {%if product.old_price%}<div class="product_sticker_special">-{{ product.old_price | minus: product.price | divided_by: product.old_price | times: 100 | round: 0}}%</div>{%endif%}
-                </div>
-              </noindex>
-              <div class="product_features_buttons">
-                <a class="product_features_compare " data-compare-add="{{ product.id }}"></a>
-              </div>
-            </div>
-            <div class="image">
-              <a href="{{product.url}}" itemprop="url">
-                <img class="lazyload" src="{{product.first_image.medium_url}}" data-src="{{product.first_image.medium_url}}" alt="{{product.title}}"></a>
-            </div>
-            <div class="name">
-              <a href="{{product.title}}" itemprop="name">{{product.title}}</a>
-            </div>
-            <div class="description">
-              <ul>
-                <li>
-                  <div class="attr_left"><span>Артикул:</span></div>
-                  <div class="attr_right"><span>9768</span></div>
-                </li>
-                <li>
-                  <div class="attr_left"><span>Тип подключения:</span></div>
-                  <div class="attr_right"><span>Bluetooth</span></div>
-                </li>
-                <li>
-                  <div class="attr_left"><span>Объём аккумулятора (mAh):</span></div>
-                  <div class="attr_right"><span>40</span></div>
-                </li>
-                <li>
-                  <div class="attr_left"><span>Модель:</span></div>
-                  <div class="attr_right"><span>TWSEJ02LM</span></div>
-                </li>
-              </ul>
-            </div>
-            <div class="rating">
-              <div class="rating_left">
-                <a class="rating_stars" href="{{product.url}}">
-                  <div class="rating_full" style="width: 100%"></div>
-                </a>
-              </div>
-              <div class="rating_right">
-                <a class="rating_reviews" href="https://sankt-peterburg.ru-mi.com/besprovodnye-naushniki-xiaomi-mi-airdots-belyj/reviews">6</a>
-              </div>
-            </div>
-            <div class="product_bottom">
-              <div class="price">
-                <meta itemprop="priceCurrency" content="RUB">
-                {%if product.old_price%}<span itemprop="price" class="price-old">{{product.old_price}}</span>{%endif%}
-                <span class="price-new">{{product.price | money}}</span>
-              </div>
-              <div class="stock"><span class="in_stock_icon">В наличии<span></span></span>
-              </div>
-              <div class="cart"><a onmousedown="try { rrApi.addToBasket(10814) } catch(e) {}" onclick="addToCart('10814');" class="button add_to_cart_10814 "><span></span><div class="add_to_cart_help">Товар в корзине</div></a></div>
-              <div class="cl_b"></div>
-            </div>
-          </div>
-        </div>
-      {%endfor%}
+      {%if collection.handle == 'skidki' or collection.handle == 'sales'%}
+        {% for product in collections.all.products %}
+          {%if product.old_price and product.old_price > product.price %}
+            {%include 'collections-all'%}
+          {%endif%}
+        {%endfor%}
+      {%else%}
+        {%for product in collection.products %}
+          {%include 'collections-all'%}
+        {%endfor%}
+      {%endif%}
     </div>
     <div class="pagination">
       <div class="links"> <b>1</b> <a href="https://ru-mi.com/naushniki-i-kolonki/?page=2">2</a> <a href="https://ru-mi.com/naushniki-i-kolonki/?page=3">3</a> <a href="https://ru-mi.com/naushniki-i-kolonki/?page=4">4</a> <a href="https://ru-mi.com/naushniki-i-kolonki/?page=5">5</a>        <a href="https://ru-mi.com/naushniki-i-kolonki/?page=6">6</a> <a href="https://ru-mi.com/naushniki-i-kolonki/?page=7">7</a> <a href="https://ru-mi.com/naushniki-i-kolonki/?page=8">8</a> <a href="https://ru-mi.com/naushniki-i-kolonki/?page=9">9</a>
