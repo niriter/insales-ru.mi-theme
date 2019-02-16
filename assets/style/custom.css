@@ -373,3 +373,109 @@ margin: -20px -20px 0;
   padding-top: 5px;
   text-align: center;
 }
+.articles-tags {
+  display: block;
+  width: 100%;
+  margin-bottom: 10px
+}
+.articles-tags > .tags-link {
+  display: inline-block;
+  padding: 5px 10px;
+  background-color: #f7f8fa;
+  margin: 10px 10px 0 0;
+  color: #000;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 20px
+
+}
+.articles-tags > .tags-link:hover {
+  transition: color 0.2s linear, background-color 0.2s linear, border-color 0.2s linear;
+  background-color: #000;
+  color: #fff;
+}
+.blog-articles > .col-12 {
+  width: 100%;
+  padding: 0 10px;
+}
+.blog-articles > .col-12 > .action_card {
+  margin-bottom: 20px;
+}
+.blog-articles > .col-12 > .action_card .col-12.col-sm-12.col-md-6 {
+  width: 49%;
+  display: inline-block;
+  padding: 0;
+  text-align: center;
+}
+.blog-articles > .col-12 > .action_card .col-12.col-sm-12.col-md-6 .article_card, .blog-articles > .col-12 > .action_card .col-12.col-sm-12.col-md-6 .article_card a {
+  width: 100%;
+  display: block;
+  max-height: 308px;
+  overflow: hidden;
+}
+.blog-articles > .col-12 > .action_card .col-12.col-sm-12.col-md-6 .article_card-thumb-item {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.article_card-date {
+  width: auto;
+  display: inline-block;
+  color: white;
+  background-color: black;
+  font-weight: 400;
+  padding: 3px 5px 1px 5px;
+  font-size: 14px;
+}
+.article_card-title {
+ margin: 5px 0;
+}
+.article_card-title a {
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 600;
+  color: black;
+  text-decoration: none;
+}
+.article_card-title a:hover {
+  transition: color 0.2s linear, background-color 0.2s linear, border-color 0.2s linear;
+  color: #f27208;
+}
+.article_card-description {
+  font-size: 14px;
+  line-height: 22px;
+  color: #666;
+	margin-bottom: 20px;
+}
+.article_card-thumb::before {
+  content: attr(data-title);
+    position: absolute;
+    z-index: 3;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    border: 2px solid #fff;
+    padding: 10px 15px;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 18px;
+    opacity: 0;
+  letter-spacing: 0.5px;
+}
+.article_card-thumb {
+  background-color: black;
+  position: relative;
+}
+.article_card-thumb:hover img {
+  opacity: 0.5;
+}
+.article_card-thumb:hover:before {
+  transition: all 0.2s linear;
+  opacity: 1;
+}
+.article-text > .article_card {
+	padding: 0 50px;
+}

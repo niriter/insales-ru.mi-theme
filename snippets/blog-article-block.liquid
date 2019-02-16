@@ -1,0 +1,7 @@
+<div class="col-12 col-sm-12 col-md-6 article-text">
+  <div class="article_card">
+    <div class="article_card-date">{{article.created_at | date: "%d %B %Y"}}</div>
+    <div class="article_card-title"><a href="{{article.url}}">{{article.title}}</a></div>
+    <div class="article_card-description">{{article.content | truncate: 200 | strip_html}}</div>
+  </div>
+</div>

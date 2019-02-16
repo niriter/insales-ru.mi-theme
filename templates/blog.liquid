@@ -1,6 +1,38 @@
-{% paginate articles by 7 %}
-
-{% for widgetDrop in widget_lists.common_blog-list.widgets %}
-  {% widget widgetDrop %}
-{% endfor %}
-{% endpaginate %}
+{%include 'breadcrumb'%}
+<style>
+  #content {
+    background-color: transparent;
+  }
+</style>
+<h1>{{blog.title}}</h1>
+<div id="content" style="padding: 0px;margin: 0px;">
+  <div class="tagcloud-block">
+    {% unless blog.tags == empty %}
+      <div class="tagcloud">
+        <div class="articles-tags">
+          {% for tag in blog.tags %}
+            <a class="list-link tags-link {% if tag.current? %}is-active{% endif %}" href='{{ tag.url }}' title='{{ tag.title }}'>{{ tag.title }}</a>
+          {% endfor %}
+        </div>
+      </div>
+    {% endunless %}
+  </div>
+  <div class="blog-articles">
+    {% for article in blog.articles %}
+      <div class="col-12">
+        <div class="action_card">
+          <div class="row align-items-center">
+            {%assign articlecount = forloop.index | modulo:2%}
+            {%if articlecount == 1%}
+              {%include 'blog-image'%}
+              {%include 'blog-article-block'%}
+            {%else%}
+              {%include 'blog-article-block'%}
+              {%include 'blog-image'%}
+            {%endif%}
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
