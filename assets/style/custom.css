@@ -479,3 +479,7 @@ margin: -20px -20px 0;
 .article-text > .article_card {
 	padding: 0 50px;
 }
+.fancybox-navigation, .fancybox-toolbar, .fancybox-infobar, .fancybox-close-small {
+	display: none;
+}
+.bg_map {background-color: #f1f1f1; }

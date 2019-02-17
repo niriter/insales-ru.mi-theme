@@ -31,6 +31,7 @@
   <link rel="manifest" href="/manifest.json">
   <script src="{{ 'plugins.js' | asset_url }}"></script>
   <script src="{{ 'theme.js' | asset_url }}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/localforage/1.5.0/localforage.min.js"></script>
   <link rel="stylesheet" type="text/css" href="{{ 'custom.css' | asset_url }}" />
 
 </head>
@@ -77,7 +78,7 @@
         </form>
         <div id="search_adaptive_icon"></div>
         <div id="header_phones">
-          <a href="tel:{{settings.telephone_number | remove: " " | remove: "(" | remove: ")" }}"><span class="phone_top">{{settings.telephone_number}}</span></a>
+          <a href="tel:{{settings.telephone_number | remove: " " | remove: "( " | remove: ") " }}"><span class="phone_top">{{settings.telephone_number}}</span></a>
           <div class="everyday_text">{{settings.time}}<span class="callback_button"><span>Обратный звонок</span></span>
           </div>
         </div>
@@ -99,95 +100,95 @@
           <div id="menu" style='display: none;'>
             <ul>
               {% for collection in collections %}
-                <li>
-                  <a href="{{ collection.url }}" id="collection_id{{collection.id}}" class="{{collection.seo_description | strip_html}} main_menu non_opened">{{ collection.title }}</a>
-                </li>
+              <li>
+                <a href="{{ collection.url }}" id="collection_id{{collection.id}}" class="{{collection.seo_description | strip_html}} main_menu non_opened">{{ collection.title }}</a>
+              </li>
               {% endfor %}
             </ul>
           </div>
         </div>
         <div id="header_middle_menu">
           {% for link in linklists.main-menu.links %}
-            <a href="{{ link.url }}">{{ link.title }}</a>
-          {% endfor %}
+          <a href="{{ link.url }}">{{ link.title }}</a> {% endfor %}
         </div>
         <a class="header_wishlist non_active" href="/compares/" style="background: url('https://ru-mi.com/catalog/view/theme/default/image/compare_icon.png') center center no-repeat;"><span class="js-bage-compares" style="display: block; background-color: #6aa9f0;"></span></a>
-        <div id="cart" class=""><div class="heading">
-          <a href="/cart_items" title="Корзина покупок"><span id="cart-total"><span class="cart_counter bage bage-cart js-bage-cart"></span><span class="js-cart-text" style="font-weight:normal;">Ваша корзина пуста</span></span></a>
-        </div>
-        <div class="content js-popup-cart-products">
+        <div id="cart" class="">
+          <div class="heading">
+            <a href="/cart_items" title="Корзина покупок"><span id="cart-total"><span class="cart_counter bage bage-cart js-bage-cart"></span><span class="js-cart-text" style="font-weight:normal;">Ваша корзина пуста</span></span></a>
+          </div>
+          <div class="content js-popup-cart-products">
 
-         </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-<div class="container">
-  {{ content_for_layout }}
-</div>
+  <div class="container">
+    {{ content_for_layout }}
+  </div>
   {%if block_lists.advantages%}
-    <div class="advantages_bottom_rumi">
-      <div class="container">
-        <div class="advantages_bottom_container_rumi">
-          <a class="advantages_bottom_element_rumi advantage_1_rumi">
-            <div class="advantages_bottom_element_rumi_header">{{block_lists.advantages.blocks[0].title}}</div>
-            <div class="advantages_bottom_element_rumi_text">{{block_lists.advantages.blocks[0].content}}</div>
-            <div class="advantages_bottom_element_rumi_image"></div>
-          </a>
-          <a class="advantages_bottom_element_rumi advantage_2_rumi">
-            <div class="advantages_bottom_element_rumi_header">{{block_lists.advantages.blocks[1].title}}</div>
-            <div class="advantages_bottom_element_rumi_text">{{block_lists.advantages.blocks[1].content}}</div>
-            <div class="advantages_bottom_element_rumi_image"></div>
-          </a>
-          <a class="advantages_bottom_element_rumi advantage_3_rumi">
-            <div class="advantages_bottom_element_rumi_header">{{block_lists.advantages.blocks[2].title}}</div>
-            <div class="advantages_bottom_element_rumi_text">{{block_lists.advantages.blocks[2].content}}</div>
-            <div class="advantages_bottom_element_rumi_image"></div>
-          </a>
-          <a class="advantages_bottom_element_rumi advantage_4_rumi">
-            <div class="advantages_bottom_element_rumi_header">{{block_lists.advantages.blocks[3].title}}</div>
-            <div class="advantages_bottom_element_rumi_text">{{block_lists.advantages.blocks[3].content}}</div>
-            <div class="advantages_bottom_element_rumi_image"></div>
-          </a>
-          <a class="advantages_bottom_element_rumi advantage_5_rumi" href="/guaranty">
-            <div class="advantages_bottom_element_rumi_header">{{block_lists.advantages.blocks[4].title}}</div>
-            <div class="advantages_bottom_element_rumi_text">{{block_lists.advantages.blocks[4].content}}</div>
-            <div class="advantages_bottom_element_rumi_image"></div>
-          </a>
-        </div>
+  <div class="advantages_bottom_rumi">
+    <div class="container">
+      <div class="advantages_bottom_container_rumi">
+        <a class="advantages_bottom_element_rumi advantage_1_rumi">
+          <div class="advantages_bottom_element_rumi_header">{{block_lists.advantages.blocks[0].title}}</div>
+          <div class="advantages_bottom_element_rumi_text">{{block_lists.advantages.blocks[0].content}}</div>
+          <div class="advantages_bottom_element_rumi_image"></div>
+        </a>
+        <a class="advantages_bottom_element_rumi advantage_2_rumi">
+          <div class="advantages_bottom_element_rumi_header">{{block_lists.advantages.blocks[1].title}}</div>
+          <div class="advantages_bottom_element_rumi_text">{{block_lists.advantages.blocks[1].content}}</div>
+          <div class="advantages_bottom_element_rumi_image"></div>
+        </a>
+        <a class="advantages_bottom_element_rumi advantage_3_rumi">
+          <div class="advantages_bottom_element_rumi_header">{{block_lists.advantages.blocks[2].title}}</div>
+          <div class="advantages_bottom_element_rumi_text">{{block_lists.advantages.blocks[2].content}}</div>
+          <div class="advantages_bottom_element_rumi_image"></div>
+        </a>
+        <a class="advantages_bottom_element_rumi advantage_4_rumi">
+          <div class="advantages_bottom_element_rumi_header">{{block_lists.advantages.blocks[3].title}}</div>
+          <div class="advantages_bottom_element_rumi_text">{{block_lists.advantages.blocks[3].content}}</div>
+          <div class="advantages_bottom_element_rumi_image"></div>
+        </a>
+        <a class="advantages_bottom_element_rumi advantage_5_rumi" href="/guaranty">
+          <div class="advantages_bottom_element_rumi_header">{{block_lists.advantages.blocks[4].title}}</div>
+          <div class="advantages_bottom_element_rumi_text">{{block_lists.advantages.blocks[4].content}}</div>
+          <div class="advantages_bottom_element_rumi_image"></div>
+        </a>
       </div>
     </div>
-    <div class="advantages_bottom_rumi_adaptive">
-      <div class="container">
-        <div class="advantages_bottom_container_rumi">
-          <a class="advantages_bottom_element_rumi advantage_1_rumi" href="https://market.yandex.ru/shop/273957/reviews?sort_by=date" target="_blank">
-            <div class="advantages_bottom_element_rumi_header">{{block_lists.advantages.blocks[0].title}}</div>
-            <div class="advantages_bottom_element_rumi_text">{{block_lists.advantages.blocks[0].content}}</div>
-            <div class="advantages_bottom_element_rumi_image"></div>
-          </a>
-          <a class="advantages_bottom_element_rumi advantage_2_rumi" href="/dostavka">
-            <div class="advantages_bottom_element_rumi_header">{{block_lists.advantages.blocks[1].title}}</div>
-            <div class="advantages_bottom_element_rumi_text">{{block_lists.advantages.blocks[1].content}}</div>
-            <div class="advantages_bottom_element_rumi_image"></div>
-          </a>
-          <a class="advantages_bottom_element_rumi advantage_3_rumi" href="/mibonus">
-            <div class="advantages_bottom_element_rumi_header">{{block_lists.advantages.blocks[2].title}}</div>
-            <div class="advantages_bottom_element_rumi_text">{{block_lists.advantages.blocks[2].content}}</div>
-            <div class="advantages_bottom_element_rumi_image"></div>
-          </a>
-          <a class="advantages_bottom_element_rumi advantage_4_rumi" href="https://vk.com/rumicomrussia" target="_blank">
-            <div class="advantages_bottom_element_rumi_header">{{block_lists.advantages.blocks[3].title}}</div>
-            <div class="advantages_bottom_element_rumi_text">{{block_lists.advantages.blocks[3].content}}</div>
-            <div class="advantages_bottom_element_rumi_image"></div>
-          </a>
-          <a class="advantages_bottom_element_rumi advantage_5_rumi" href="/guaranty">
-            <div class="advantages_bottom_element_rumi_header">{{block_lists.advantages.blocks[4].title}}</div>
-            <div class="advantages_bottom_element_rumi_text">{{block_lists.advantages.blocks[4].content}}</div>
-            <div class="advantages_bottom_element_rumi_image"></div>
-          </a>
-        </div>
+  </div>
+  <div class="advantages_bottom_rumi_adaptive">
+    <div class="container">
+      <div class="advantages_bottom_container_rumi">
+        <a class="advantages_bottom_element_rumi advantage_1_rumi" href="https://market.yandex.ru/shop/273957/reviews?sort_by=date" target="_blank">
+          <div class="advantages_bottom_element_rumi_header">{{block_lists.advantages.blocks[0].title}}</div>
+          <div class="advantages_bottom_element_rumi_text">{{block_lists.advantages.blocks[0].content}}</div>
+          <div class="advantages_bottom_element_rumi_image"></div>
+        </a>
+        <a class="advantages_bottom_element_rumi advantage_2_rumi" href="/dostavka">
+          <div class="advantages_bottom_element_rumi_header">{{block_lists.advantages.blocks[1].title}}</div>
+          <div class="advantages_bottom_element_rumi_text">{{block_lists.advantages.blocks[1].content}}</div>
+          <div class="advantages_bottom_element_rumi_image"></div>
+        </a>
+        <a class="advantages_bottom_element_rumi advantage_3_rumi" href="/mibonus">
+          <div class="advantages_bottom_element_rumi_header">{{block_lists.advantages.blocks[2].title}}</div>
+          <div class="advantages_bottom_element_rumi_text">{{block_lists.advantages.blocks[2].content}}</div>
+          <div class="advantages_bottom_element_rumi_image"></div>
+        </a>
+        <a class="advantages_bottom_element_rumi advantage_4_rumi" href="https://vk.com/rumicomrussia" target="_blank">
+          <div class="advantages_bottom_element_rumi_header">{{block_lists.advantages.blocks[3].title}}</div>
+          <div class="advantages_bottom_element_rumi_text">{{block_lists.advantages.blocks[3].content}}</div>
+          <div class="advantages_bottom_element_rumi_image"></div>
+        </a>
+        <a class="advantages_bottom_element_rumi advantage_5_rumi" href="/guaranty">
+          <div class="advantages_bottom_element_rumi_header">{{block_lists.advantages.blocks[4].title}}</div>
+          <div class="advantages_bottom_element_rumi_text">{{block_lists.advantages.blocks[4].content}}</div>
+          <div class="advantages_bottom_element_rumi_image"></div>
+        </a>
       </div>
     </div>
+  </div>
   {%endif%}
   <script type="text/javascript">
     <!--
@@ -247,53 +248,50 @@
     <div class="container">
       <div class="footer_column footer_column_1">
         <div id="footer_logo">
-          {% assign path = "logotype-footer.jpg" | asset_url_if_exists %}
-          {% if path %}
-            <img class="footer_normal_logo" src="{{path}}" title="{{account.title}}" alt="{{account.title}}" style="max-width: 200px; max-height: 50px;" />
-            <img class="footer_adaptive_logo" src="{{path}}" title="{{account.title}}" alt="{{account.title}}" style="max-width: 200px; max-height: 50px;" />
-          {%else%}
-            <img class="footer_normal_logo" src="{{'logotype.jpg' | asset_url}}" title="{{account.title}}" alt="{{account.title}}" style="max-width: 200px; max-height: 50px;" />
-            <img class="footer_adaptive_logo" src="{{'logotype.jpg' | asset_url}}" title="{{account.title}}" alt="{{account.title}}" style="max-width: 200px; max-height: 50px;" />
-          {%endif%}
+          {% assign path = "logotype-footer.jpg" | asset_url_if_exists %} {% if path %}
+          <img class="footer_normal_logo" src="{{path}}" title="{{account.title}}" alt="{{account.title}}" style="max-width: 200px; max-height: 50px;" />
+          <img class="footer_adaptive_logo" src="{{path}}" title="{{account.title}}" alt="{{account.title}}" style="max-width: 200px; max-height: 50px;" /> {%else%}
+          <img class="footer_normal_logo" src="{{'logotype.jpg' | asset_url}}" title="{{account.title}}" alt="{{account.title}}" style="max-width: 200px; max-height: 50px;" />
+          <img class="footer_adaptive_logo" src="{{'logotype.jpg' | asset_url}}" title="{{account.title}}" alt="{{account.title}}" style="max-width: 200px; max-height: 50px;" /> {%endif%}
           <!--<div class="footer_payment"><a href="/index.php?route=information/information&amp;information_id=8"><img alt="Способы оплаты" src="image/data/payment_paykeeper.png"></a></div>-->
         </div>
       </div>
       <div class="footer_column footer_column_2">
         {%if linklists.footer-menu-1%}
-          <div class="footer_column_header">{{linklists.footer-menu-1.title}}</div>
-          <ul>
-            {% for link in linklists.footer-menu-1.links %}
-              <li><a href="{{link.url}}">{{link.title}}</a></li>
-            {% endfor %}
-          </ul>
+        <div class="footer_column_header">{{linklists.footer-menu-1.title}}</div>
+        <ul>
+          {% for link in linklists.footer-menu-1.links %}
+          <li><a href="{{link.url}}">{{link.title}}</a></li>
+          {% endfor %}
+        </ul>
         {%endif%}
       </div>
       <div class="footer_column footer_column_3">
         {%if linklists.footer-menu-2%}
-          <div class="footer_column_header">{{linklists.footer-menu-2.title}}</div>
-          <ul>
-            {% for link in linklists.footer-menu-2.links %}
-              <li><a href="{{link.url}}">{{link.title}}</a></li>
-            {% endfor %}
-          </ul>
+        <div class="footer_column_header">{{linklists.footer-menu-2.title}}</div>
+        <ul>
+          {% for link in linklists.footer-menu-2.links %}
+          <li><a href="{{link.url}}">{{link.title}}</a></li>
+          {% endfor %}
+        </ul>
         {%endif%}
       </div>
       <div class="footer_column footer_column_4">
         {%if linklists.footer-menu-3%}
-          <div class="footer_column_header">{{linklists.footer-menu-3.title}}</div>
-          <ul>
-            {% for link in linklists.footer-menu-3.links %}
-              <li><a href="{{link.url}}">{{link.title}}</a></li>
-            {% endfor %}
-          </ul>
+        <div class="footer_column_header">{{linklists.footer-menu-3.title}}</div>
+        <ul>
+          {% for link in linklists.footer-menu-3.links %}
+          <li><a href="{{link.url}}">{{link.title}}</a></li>
+          {% endfor %}
+        </ul>
         {%endif%}
       </div>
       <div class="yandex_market_bottom_adaptive">
         <div class="yandex_market_bottom_adaptive_line"></div>
-  			<a class="external_link yandex_market_bottom" href="https://market.yandex.ru/shop/273957/reviews?sort_by=date" target="_blank">
-  			<img alt="Способы оплаты" src="https://ru-mi.com/catalog/view/theme/default/image/5star_bottom.png">
-  				<div>Нам доверяют</div>
-  			</a>
+        <a class="external_link yandex_market_bottom" href="https://market.yandex.ru/shop/273957/reviews?sort_by=date" target="_blank">
+          <img alt="Способы оплаты" src="https://ru-mi.com/catalog/view/theme/default/image/5star_bottom.png">
+          <div>Нам доверяют</div>
+        </a>
       </div>
       <div class="footer_bottom">
         <script type="application/ld+json">
@@ -307,19 +305,15 @@
         <div class="footer_bottom_social">
           <div class="contact_block_social" style="padding: 0;">
             {% if blocks.instagram %}
-              <a href="{{blocks.instagram.link}}" class="contact_in" target="_blank"></a>
-            {% endif %}
-            {% if blocks.vkontakte %}
-              <a href="{{blocks.vkontakte.link}}" class="contact_vk" target="_blank"></a>
-            {% endif %}
-            {% if blocks.youtube %}
-              <a href="{{blocks.youtube.link}}" class="contact_yt" target="_blank"></a>
-            {% endif %}
-            {% if blocks.telegram %}
-              <a href="{{blocks.telegram.link}}" class="contact_tg" target="_blank"></a>
-            {% endif %}
-            {% if blocks.odnoklassniki %}
-              <a href="{{blocks.telegram.link}}" class="contact_ok" target="_blank"></a>
+            <a href="{{blocks.instagram.link}}" class="contact_in" target="_blank"></a>
+            {% endif %} {% if blocks.vkontakte %}
+            <a href="{{blocks.vkontakte.link}}" class="contact_vk" target="_blank"></a>
+            {% endif %} {% if blocks.youtube %}
+            <a href="{{blocks.youtube.link}}" class="contact_yt" target="_blank"></a>
+            {% endif %} {% if blocks.telegram %}
+            <a href="{{blocks.telegram.link}}" class="contact_tg" target="_blank"></a>
+            {% endif %} {% if blocks.odnoklassniki %}
+            <a href="{{blocks.telegram.link}}" class="contact_ok" target="_blank"></a>
             {% endif %}
           </div>
         </div>
@@ -421,267 +415,389 @@
 
 
 
-<script type="text/template" hidden data-template-id="popup-empty">
-	<div class="empty">В корзине пусто!</div>
-</script>
-<script type="text/template" hidden="" data-template-id="popup-cart">
-  <div class="mini-cart-info">
-    <table>
-      <tbody>
-      	<% _.forEach(obj.order_lines, function(item){ %>
-          <tr data-product-id="<%= item.product.id %>" data-item-id="<%= item.id %>">
-            <td class="image">
-              <a href="<%= item.product.url %>">
+    <script type="text/template" hidden data-template-id="popup-empty">
+      <div class="empty">В корзине пусто!</div>
+    </script>
+    <script type="text/template" hidden="" data-template-id="popup-cart">
+      <div class="mini-cart-info">
+        <table>
+          <tbody>
+            <% _.forEach(obj.order_lines, function(item){ %>
+              <tr data-product-id="<%= item.product.id %>" data-item-id="<%= item.id %>">
+                <td class="image">
+                  <a href="<%= item.product.url %>">
                 <img src="<%= item.first_image.small_url %>" alt="<%= item.title %>" title="<%= item.title %>">
               </a>
-            </td>
-            <td class="name">
-              <a href="<%= item.product.url %>"><%= item.title %></a>
-              <div></div>
-            </td>
-            <td class="quantity">&times; <%= item.quantity %></td>
-            <td class="total"><%= Shop.money.format(item.sale_price) %></td>
-            <td class="remove" data-item-delete="<%= item.id %>">
-              <img src="https://ru-mi.com/catalog/view/theme/default/image/remove-small.png" alt="Удалить" title="Удалить">
-            </td>
-          </tr>
-      	<% }); %>
-        </tbody>
-      </table>
-    </div>
-    <div class="mini-cart-bottom">
-      <div class="mini-cart-total">
-        <b>Итого:</b><span class="js-cart-order-total_price"></span>	<div class="mini-cart-shipping">(Без учета стоимости доставки)</div>
+                </td>
+                <td class="name">
+                  <a href="<%= item.product.url %>">
+                    <%= item.title %>
+                  </a>
+                  <div></div>
+                </td>
+                <td class="quantity">&times;
+                  <%= item.quantity %>
+                </td>
+                <td class="total">
+                  <%= Shop.money.format(item.sale_price) %>
+                </td>
+                <td class="remove" data-item-delete="<%= item.id %>">
+                  <img src="https://ru-mi.com/catalog/view/theme/default/image/remove-small.png" alt="Удалить" title="Удалить">
+                </td>
+              </tr>
+              <% }); %>
+          </tbody>
+        </table>
       </div>
-      <div class="checkout"><a href="/cart_items"><span>Оформление заказа</span></a></div>
-     </div>
-</script>
+      <div class="mini-cart-bottom">
+        <div class="mini-cart-total">
+          <b>Итого:</b><span class="js-cart-order-total_price"></span>
+          <div class="mini-cart-shipping">(Без учета стоимости доставки)</div>
+        </div>
+        <div class="checkout"><a href="/cart_items"><span>Оформление заказа</span></a></div>
+      </div>
+    </script>
 
 
-<script type="text/template" hidden data-template-id="popup-compares">
-	<% _.forEach(obj.products, function(item){ %>
-		<div class="dropdown_product" data-product-id="<%= item.id %>">
-			<div class="row no-gutters">
-				<div class="col-2">
-					<a href="<%= item.url %>" class="dropdown_product-thumb dropdown_product-thumb--1x1 dropdown_product-thumb--contain">
+    <script type="text/template" hidden data-template-id="popup-compares">
+      <% _.forEach(obj.products, function(item){ %>
+        <div class="dropdown_product" data-product-id="<%= item.id %>">
+          <div class="row no-gutters">
+            <div class="col-2">
+              <a href="<%= item.url %>" class="dropdown_product-thumb dropdown_product-thumb--1x1 dropdown_product-thumb--contain">
 						<span class="dropdown_product-thumb-item" style="background-image: url(<%= item.first_image.thumb_url %>);"></span>
 					</a>
-				</div>
-				<div class="col">
-					<div class="dropdown_product-title">
-						<a href="<%= item.url %>"><%= item.title %></a>
-					</div>
-					<div class="dropdown_product-prices">
-						<%= Shop.money.format(item.variants[0].price) %>
-					</div>
-				</div>
-				<div class="col-auto">
-					<button type="button" class="button button--empty button--icon button--remove" data-compare-delete="<%= item.id %>"><span class="far fa-trash fa-lg"></span></button>
-				</div>
-			</div>
-		</div>
-	<% }); %>
-</script>
-<script type="text/template" hidden data-template-id="popup-favorites">
-	<% _.forEach(obj.products, function(item){ %>
-		<div class="dropdown_product" data-product-id="<%= item.id %>">
-			<div class="row no-gutters">
-				<div class="col-2">
-					<a href="<%= item.url %>" class="dropdown_product-thumb dropdown_product-thumb--1x1 dropdown_product-thumb--contain">
+            </div>
+            <div class="col">
+              <div class="dropdown_product-title">
+                <a href="<%= item.url %>">
+                  <%= item.title %>
+                </a>
+              </div>
+              <div class="dropdown_product-prices">
+                <%= Shop.money.format(item.variants[0].price) %>
+              </div>
+            </div>
+            <div class="col-auto">
+              <button type="button" class="button button--empty button--icon button--remove" data-compare-delete="<%= item.id %>"><span class="far fa-trash fa-lg"></span></button>
+            </div>
+          </div>
+        </div>
+        <% }); %>
+    </script>
+    <script type="text/template" hidden data-template-id="popup-favorites">
+      <% _.forEach(obj.products, function(item){ %>
+        <div class="dropdown_product" data-product-id="<%= item.id %>">
+          <div class="row no-gutters">
+            <div class="col-2">
+              <a href="<%= item.url %>" class="dropdown_product-thumb dropdown_product-thumb--1x1 dropdown_product-thumb--contain">
 						<span class="dropdown_product-thumb-item" style="background-image: url(<%= item.first_image.thumb_url %>);"></span>
 					</a>
-				</div>
-				<div class="col">
-					<div class="dropdown_product-title">
-						<a href="<%= item.url %>"><%= item.title %></a>
-					</div>
-					<div class="dropdown_product-prices">
-						<%= Shop.money.format(item.variants[0].price) %>
-					</div>
-				</div>
-				<div class="col-auto">
-					<button type="button" class="button button--empty button--icon button--remove" data-favorites-remove="<%= item.id %>"><span class="far fa-trash fa-lg"></span></button>
-				</div>
-			</div>
-		</div>
-	<% }); %>
-</script>
-<script type="text/template" hidden data-template-id="product-card">
-	<% _.forEach(obj.products, function(item){ %>
-		<div class="col-6 col-sm-6 col-md-4 col-lg-3">
-			<div class="product_card product_card--shadow">
-				<form action="/cart_items" method="post" data-product-id="<%= item.id %>">
-					<input type="hidden" name="variant_id" value="<%= item.variants[0].id %>">
-					<input type="hidden" name="quantity" value="1">
-					<a href="<%= item.url %>" class="product_card-thumb product_card-thumb--1x1 product_card-thumb--contain">
-						<span class="product_card-thumb-item" style="background-image: url(<%= item.first_image.large_url %>);"></span>
-					</a>
-					<div class="product_card-title">
-						<a href="<%= item.url %>"><%= item.title %></a>
-					</div>
-					<div class="product_card-prices">
-						<span class="product_card-price"><%= Shop.money.format(item.price) %></span>
-					</div>
-					<div class="product_card-add">
-						<div class="row no-gutters">
-							<div class="col">
-								<% if (item.available) { %>
-									<% if (item.variants.length > 1) { %>
-										<a href="<%= item.url %>" class="button button--icon button--small button--empty button--empty--inverse"><span class="far fa-shopping-cart fa-lg"></span><span>Выбрать</span></a>
-									<% } else{ %>
-										<button type="submit" class="button button--icon button--small button--empty button--empty--inverse" data-item-add><span class="far fa-shopping-cart fa-lg"></span><span>В корзину</span></button>
-									<% } %>
-								<% } else{ %>
-									<button type="button" class="button button--empty button--small button--disabled"><span>Распродано</span></button>
-								<% } %>
-							</div>
+            </div>
+            <div class="col">
+              <div class="dropdown_product-title">
+                <a href="<%= item.url %>">
+                  <%= item.title %>
+                </a>
+              </div>
+              <div class="dropdown_product-prices">
+                <%= Shop.money.format(item.variants[0].price) %>
+              </div>
+            </div>
+            <div class="col-auto">
+              <button type="button" class="button button--empty button--icon button--remove" data-favorites-remove="<%= item.id %>"><span class="far fa-trash fa-lg"></span></button>
+            </div>
+          </div>
+        </div>
+        <% }); %>
+    </script>
+    <script type="text/template" hidden="" data-template-id="product-card">
+    	<% _.forEach(obj.products, function(item){ %>
+    		<div class="col-6 col-sm-6 col-md-4 col-lg-3">
+    			<div class="product_card product_card--shadow">
+    				<form action="/cart_items" method="post" data-product-id="<%= item.id %>">
+    					<input type="hidden" name="variant_id" value="<%= item.variants[0].id %>">
+    					<input type="hidden" name="quantity" value="1">
+    					<a href="<%= item.url %>" class="product_card-thumb product_card-thumb--1x1 product_card-thumb--contain">
+    						<span class="product_card-thumb-item" style="background-image: url(<%= item.first_image.large_url %>);"></span>
+    					</a>
+    					<div class="product_card-title">
+    						<a href="<%= item.url %>"><%= item.title %></a>
+    					</div>
+    					<div class="product_card-prices">
+    						<span class="product_card-price"><%= Shop.money.format(item.price) %></span>
+    					</div>
+    					<div class="product_card-add">
+    						<div class="row no-gutters">
+    							<div class="col">
+    								<% if (item.available) { %>
+    									<% if (item.variants.length > 1) { %>
+    										<a href="<%= item.url %>" class="button button--icon button--small button--empty button--empty--inverse"><span class="far fa-shopping-cart fa-lg"></span><span>Выбрать</span></a>
+    									<% } else{ %>
+    										<button type="submit" class="button button--icon button--small button--empty button--empty--inverse" data-item-add><span class="far fa-shopping-cart fa-lg"></span><span>В корзину</span></button>
+    									<% } %>
+    								<% } else{ %>
+    									<button type="button" class="button button--empty button--small button--disabled"><span>Распродано</span></button>
+    								<% } %>
+    							</div>
 
-								<div class="col col-auto">
-									<button type="button" class="button button--empty button--small button--icon button--compares" data-compare-add="<%= item.id %>"><span class="far fa-align-right fa-lg" data-fa-transform="rotate-90"></span></button><button type="button" class="button button--empty button--small button--icon button--favorites" data-favorites-trigger="<%= item.id %>"><span class="far fa-heart fa-lg"></span></button>
-								</div>
+    								<div class="col col-auto">
+    									<button type="button" class="button button--empty button--small button--icon button--compares" data-compare-add="<%= item.id %>"><span class="far fa-align-right fa-lg" data-fa-transform="rotate-90"></span></button><button type="button" class="button button--empty button--small button--icon button--favorites" data-favorites-trigger="<%= item.id %>"><span class="far fa-heart fa-lg"></span></button>
+    								</div>
 
-						</div>
-					</div>
-				</form>
-			</div>
-		</div>
-	<% }); %>
-</script>
-<script type="text/template" hidden data-template-id="product-card-recently">
-	<% _.forEach(obj, function(item){ %>
-		<div class="products-slider-item">
-			<div class="product_card product_card--shadow">
-				<form action="/cart_items" method="post" data-product-id="<%= item.id %>">
-					<input type="hidden" name="variant_id" value="<%= item.variants[0].id %>">
-					<input type="hidden" name="quantity" value="1">
-					<a href="<%= item.url %>" class="product_card-thumb product_card-thumb--1x1 product_card-thumb--contain">
-						<span class="product_card-thumb-item" style="background-image: url(<%= item.first_image.large_url %>);"></span>
-					</a>
-					<div class="product_card-title">
-						<a href="<%= item.url %>"><%= item.title %></a>
-					</div>
-					<div class="product_card-prices">
-						<span class="product_card-price"><%= Shop.money.format(item.variants[0].price) %></span>
-					</div>
-					<div class="product_card-add">
-						<div class="row no-gutters">
-							<div class="col">
-								<% if (item.available) { %>
-									<% if (item.variants.length > 1) { %>
-										<a href="<%= item.url %>" class="button button--icon button--small button--empty button--empty--inverse"><span class="far fa-shopping-cart fa-lg"></span><span>Выбрать</span></a>
-									<% } else{ %>
-										<button type="submit" class="button button--icon button--small button--empty button--empty--inverse" data-item-add><span class="far fa-shopping-cart fa-lg"></span><span>В корзину</span></button>
-									<% } %>
-								<% } else{ %>
-									<button type="button" class="button button--empty button--small button--disabled"><span>Распродано</span></button>
-								<% } %>
-							</div>
+    						</div>
+    					</div>
+    				</form>
+    			</div>
+    		</div>
+    	<% }); %>
+    </script>
+    <script type="text/template" hidden data-template-id="product-card-recently">
+      <div class="rr-widget cartRelated rr-active">
+        <header class="widgettitle">Вы недавно смотрели</header>
+        <ul class="items itemsrecently">
+          <% _.forEach(obj, function(item){ %>
+            <li class="item">
+              <div class="block">
+                <div class="rr-header">
+                  <div class="rr-labels">
+                  </div>
+                  <div class="rr-icons">
+                    <span class="product_features_compare " data-compare-add="<%= item.id %>"></span>
+                  </div>
+                </div>
+                <a class="item-info" href="<%= item.url %>" tabindex="-1">
+                  <div class="item-image">
+                    <img src="<%= item.first_image.original_url %>">
+                  </div>
+                  <div class="item-title"><%= item.title %></div>
+                </a>
+                <div class="item-price-and-buy">
+                  <div class="item-block-price">
+                    <div class="item-price">
+                      <span class="item-price-value"><%= Shop.money.format(item.variants[0].price) %></span>
+                    </div>
+                  </div>
+                  <div class="item-actions">
+                    <form action="/cart_items" method="post" data-product-id="<%= item.id %>">
+                      <input type="hidden" name="variant_id" value="<%= item.variants[0].id %>" >
+                      <div style="display: none;" data-quantity><input type="text" name="quantity" value="1" /></div>
+                      <a class="item-actions-buy" tabindex="-1" data-item-add>
+                        <div class="add_to_cart_help">Товар в корзине</div>
+                      </a>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </li>
+          <% }); %>
+        </ul>
+      </div>
+      <script>
+        $('.itemsrecently').slick({
+          adaptiveHeight: true,
+          dots: false,
+          arrows: true,
+          TouchMove: false,
+          draggable: true,
+          infinite: true,
+          autoplay: false,
+          variableWidth: true,
+          speed: 300,
+          slidesToShow: 5,
+          slidesToScroll: 1,
+          swipeToSlide: true,
+          nextArrow: '<a href="javascript:void(0);" class="slick-next"></a>',
+          prevArrow: '<a href="javascript:void(0);" class="slick-prev"></a>',
+          responsive: [{
+            breakpoint: 1300,
+            settings: {
+              slidesToShow: 4,
+              slidesToScroll: 4,
+            }
+          }, {
+            breakpoint: 990,
+            settings: {
+              slidesToShow: 3,
+              slidesToScroll: 3,
+            }
+          }, {
+            breakpoint: 600,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 2,
+              arrows: false,
+              centerMode: true
+            }
+          }, {
+            breakpoint: 400,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1,
+              arrows: false,
+              centerMode: true
+            }
+          }, ]
+        });
+      </script>
+    </script>
+    <script type="text/template" hidden data-template-id="message-cart">
+      <div class="product_grey_bg" style="display: block;"></div>
+      <div class="product_popup" style="display: block;">
+        <div class="product_popup_line"></div>
+        <div class="product_popup_header">Вы добавили товар в корзину
+          <div class="product_popup_close"></div>
+        </div>
+        <div class="product_show_info">
+          <div class="product_show_info_left">
+            <img src="<%= item.first_image.thumb_url %>" alt="<%= obj.item.title %>">
+          </div>
+          <div class="product_show_info_middle">
+            <div class="product_show_info_middle_name"><%= item.title %></div>
+            <div class="product_show_info_middle_sku">Артикул <span><%= item.product.id %></span></div>
+            <div class="product_show_info_middle_stock"><% if (item.product.available) { %><span class="in_stock_icon">В наличии</span><% } else { %><span class="out_of_stock_icon">Нет в наличии</span><% } %></div>
+          </div>
+          <div class="product_show_info_right">
+            <div class="price"><span class="price-new"><%= item.sale_price %> ₽</span>
+            </div>
+          </div>
+        </div>
+        <div class="product_show_buttons">
+          <!--<a href="#" class="products_also">Продолжить покупки</a>-->
+          <a href="/cart_items" class="button" style="color: #fff;"><span>Открыть корзину</span></a>
+          <div class="cl_b"></div>
+        </div>
+      </div>
+    </script>
+    <script type="text/template" data-template-id="option-select">
+      <div class="<%= classes.option %> is-select">
+        <div class="<%= classes.label %>">
+          <%= title %>: <span class="option-label-value"><% _.forEach(values, function (value){ %><% if (option.selected == value.position) { %><%= value.title %><% } %><% }) %></span></div>
+        <select class="<%= classes.values %> is-select" data-option-bind="<%= option.id %>">
+          <% _.forEach(values, function (value){ %>
+            <option <%=v alue.controls %>
+              <%= value.state %>>
+                <%= value.title %>
+            </option>
+            <% }) %>
+        </select>
+      </div>
+    </script>
+    <script type="text/template" data-template-id="option-span">
+      <div class="<%= classes.option %> is-span">
+        <div class="<%= classes.label %>">
+          <%= title %>: <span class="option-label-value"><% _.forEach(values, function (value){ %><% if (option.selected == value.position) { %><%= value.title %><% } %><% }) %></span></div>
+        <div class="<%= classes.values %> is-span">
+          <% _.forEach(values, function (value){ %>
+            <button class="<%= value.classes.all %> is-span" <%= value.controls %>
+              <%= value.state %>>
+                <%= value.title %>
+            </button>
+            <% }) %>
+        </div>
+      </div>
+    </script>
+    <script type="text/template" data-template-id="option-radio">
+      <div class="<%= classes.option %> is-radio">
+        <div class="<%= classes.label %>">
+          <%= title %>: <span class="option-label-value"><% _.forEach(values, function (value){ %><% if (option.selected == value.position) { %><%= value.title %><% } %><% }) %></span></div>
+        <div class="<%= classes.values %> is-radio">
+          <% _.forEach(values, function (value){ %>
+            <label class="<%= value.classes.all %> is-radio">
+              <input class="<%= value.classes.state %>" type="radio" name="<%= handle %>" <%=v alue.controls %>
+              <%= value.state %>>
+                <span><%= value.title %></span>
+            </label>
+            <% }) %>
+        </div>
+      </div>
+    </script>
+    <script type="text/template" data-template-id="option-color">
+      <div class="<%= classes.option %> is-image">
+        <div class="<%= classes.label %>">
+          <%= title %>: <span class="option-label-value"><% _.forEach(values, function (value){ %><% if (option.selected == value.position) { %><%= value.title %><% } %><% }) %></span></div>
+        <div class="<%= classes.values %> is-image">
+          <% _.forEach(values, function (value){ %>
+            <button class="<%= value.classes.all %> is-image" <%=v alue.controls %>
+              <%= value.state %>>
+                <% if (fileUrl[value.name]){ %>
+                  <span style="background-image: url(<%= fileUrl[value.name] %>);"></span>
+                  <% }else{ %>
+                    <span class="is-empty"><span class="fas fa-question"></span></span>
+                    <% } %>
+            </button>
+            <% }) %>
+        </div>
+      </div>
+    </script>
+    <script type="text/template" data-template-id="option-image">
+      <div class="<%= classes.option %> is-image">
+        <div class="<%= classes.label %>">
+          <%= title %>: <span class="option-label-value"><% _.forEach(values, function (value){ %><% if (option.selected == value.position) { %><%= value.title %><% } %><% }) %></span></div>
+        <div class="<%= classes.values %> is-image">
+          <% _.forEach(values, function (value){ %>
+            <button class="<%= value.classes.all %> is-image" <%=v alue.controls %>
+              <%= value.state %>>
 
-								<div class="col col-auto">
-									<button type="button" class="button button--empty button--small button--icon button--compares" data-compare-add="<%= item.id %>"><span class="far fa-align-right fa-lg" data-fa-transform="rotate-90"></span></button><button type="button" class="button button--empty button--small button--icon button--favorites" data-favorites-trigger="<%= item.id %>"><span class="far fa-heart fa-lg"></span></button>
-								</div>
+                <% if (fileUrl[value.name]){ %>
+                  <span style="background-image: url(<%= fileUrl[value.name] %>);"></span>
+                  <% }else{ %>
+                    <span class="is-empty"><span class="fas fa-question"></span></span>
+                    <% } %>
 
-						</div>
-					</div>
-				</form>
-			</div>
-		</div>
-	<% }); %>
-</script>
-<script type="text/template" hidden data-template-id="message-cart">
-	<div class="message-cart-product">
-		<div class="row">
-			<div class="col-12 col-sm-6">
-				<div class="message-cart-product-image product_card">
-					<span class="product_card-thumb product_card-thumb--1x1 product_card-thumb--contain">
-						<span class="product_card-thumb-item" style="background-image: url(<%= obj.item.first_image.large_url %>);"></span>
-					</span>
-				</div>
-			</div>
-			<div class="col-12 col-sm-6">
-				<div class="message-cart-product-title"><%= obj.item.title %></div>
-				<div class="message-cart-product-quantity"><%= obj.item_quantity %> &times; <%= Shop.money.format(obj.item.sale_price) %></div>
-				<div class="message-cart-total">В вашей корзине<br><span><%= obj.data.items_count %> <%= declOfNum(obj.data.items_count) %></span> на сумму <span><%= Shop.money.format(obj.data.items_price) %></span></div>
-				<div class="message-cart-buttons">
-					<a href="/cart_items" class="button button--primary button--block button--large">Открыть корзину</a>
-					<a href="/new_order" class="button button--secondary button--block button--large">Оформить заказ</a>
-					<button class="button button--empty button--info" data-fancybox-close><span>Продолжить покупки</span></button>
-				</div>
-			</div>
-		</div>
-	</div>
-</script>
-<script type="text/template" data-template-id="option-select">
-	<div class="<%= classes.option %> is-select">
-		<div class="<%= classes.label %>"><%= title %>: <span class="option-label-value"><% _.forEach(values, function (value){ %><% if (option.selected == value.position) { %><%= value.title %><% } %><% }) %></span></div>
-		<select class="<%= classes.values %> is-select" data-option-bind="<%= option.id %>">
-			<% _.forEach(values, function (value){ %>
-				<option <%= value.controls %> <%= value.state %>>
-					<%= value.title %>
-				</option>
-			<% }) %>
-		</select>
-	</div>
-</script>
-<script type="text/template" data-template-id="option-span">
-	<div class="<%= classes.option %> is-span">
-		<div class="<%= classes.label %>"><%= title %>: <span class="option-label-value"><% _.forEach(values, function (value){ %><% if (option.selected == value.position) { %><%= value.title %><% } %><% }) %></span></div>
-		<div class="<%= classes.values %> is-span">
-			<% _.forEach(values, function (value){ %>
-				<button class="<%= value.classes.all %> is-span" <%= value.controls %> <%= value.state %>>
-					<%= value.title %>
-				</button>
-			<% }) %>
-		</div>
-	</div>
-</script>
-<script type="text/template" data-template-id="option-radio">
-	<div class="<%= classes.option %> is-radio">
-		<div class="<%= classes.label %>"><%= title %>: <span class="option-label-value"><% _.forEach(values, function (value){ %><% if (option.selected == value.position) { %><%= value.title %><% } %><% }) %></span></div>
-		<div class="<%= classes.values %> is-radio">
-			<% _.forEach(values, function (value){ %>
-				<label class="<%= value.classes.all %> is-radio">
-					<input class="<%= value.classes.state %>" type="radio" name="<%= handle %>" <%= value.controls %> <%= value.state %>>
-					<span><%= value.title %></span>
-				</label>
-			<% }) %>
-		</div>
-	</div>
-</script>
-<script type="text/template" data-template-id="option-color">
-	<div class="<%= classes.option %> is-image">
-		<div class="<%= classes.label %>"><%= title %>: <span class="option-label-value"><% _.forEach(values, function (value){ %><% if (option.selected == value.position) { %><%= value.title %><% } %><% }) %></span></div>
-		<div class="<%= classes.values %> is-image">
-			<% _.forEach(values, function (value){ %>
-				<button class="<%= value.classes.all %> is-image" <%= value.controls %> <%= value.state %>>
-					<% if (fileUrl[value.name]){ %>
-						<span style="background-image: url(<%= fileUrl[value.name] %>);"></span>
-					<% }else{ %>
-						<span class="is-empty"><span class="fas fa-question"></span></span>
-					<% } %>
-				</button>
-			<% }) %>
-		</div>
-	</div>
-</script>
-<script type="text/template" data-template-id="option-image">
-	<div class="<%= classes.option %> is-image">
-		<div class="<%= classes.label %>"><%= title %>: <span class="option-label-value"><% _.forEach(values, function (value){ %><% if (option.selected == value.position) { %><%= value.title %><% } %><% }) %></span></div>
-		<div class="<%= classes.values %> is-image">
-			<% _.forEach(values, function (value){ %>
-				<button class="<%= value.classes.all %> is-image" <%= value.controls %> <%= value.state %>>
-
-						<% if (fileUrl[value.name]){ %>
-							<span style="background-image: url(<%= fileUrl[value.name] %>);"></span>
-						<% }else{ %>
-							<span class="is-empty"><span class="fas fa-question"></span></span>
-						<% } %>
-
-				</button>
-			<% }) %>
-		</div>
-	</div>
-</script>
+            </button>
+            <% }) %>
+        </div>
+      </div>
+    </script>
+    <script>
+      var userslick = $('.items').slick({
+        adaptiveHeight: true,
+        dots: false,
+        arrows: true,
+        TouchMove: false,
+        draggable: true,
+        infinite: true,
+        autoplay: false,
+        variableWidth: true,
+        speed: 300,
+        slidesToShow: 5,
+        slidesToScroll: 1,
+        swipeToSlide: true,
+        nextArrow: '<a href="javascript:void(0);" class="slick-next"></a>',
+        prevArrow: '<a href="javascript:void(0);" class="slick-prev"></a>',
+        responsive: [{
+          breakpoint: 1300,
+          settings: {
+            slidesToShow: 4,
+            slidesToScroll: 4,
+          }
+        }, {
+          breakpoint: 990,
+          settings: {
+            slidesToShow: 3,
+            slidesToScroll: 3,
+          }
+        }, {
+          breakpoint: 600,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2,
+            arrows: false,
+            centerMode: true
+          }
+        }, {
+          breakpoint: 400,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            arrows: false,
+            centerMode: true
+          }
+        }, ]
+      });
+      setInterval("userslick", 1000);
+    </script>
 </body>
 
 </html>

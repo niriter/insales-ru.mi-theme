@@ -26,6 +26,296 @@ var GeoManager=function(e){var o=this;o.option=$.extend({debug:!1,clear_forage:!
 var RecentlyView=function(e){var o=this;o.option=$.extend({debug:!1,data_selector:"[data-recently-view]",clear_forage:!1,use_forage:!0,del_current_id:!0,reverse:!1,productIds:[],keyParameters:"recently_view",success:function(){}},e),o.setLog("Настройки плагина",o.option),o.init()};RecentlyView.prototype.init=function(){var e=this;e.option.clear_forage&&localforage&&localforage.removeItem(e.option.keyParameters,function(){e.setLog("Локальное хранилище очищено","Ключ: "+e.option.keyParameters)}),void 0===window.localforage&&console.warn("Не подключен плагин localforage!"),e.getProducts().done(function(o){e.option.del_current_id?e.getIds(function(t){t&&o[t]&&(delete o[t],e.setLog("Из списка удален товар с id: "+t));for(var r=[],n=0;n<e.option.productIds.length;n++){var i=e.option.productIds[n];o[i]&&r.push(o[i])}e.setLog("Вызов колбека success"),e.option.success(r)}):(e.setLog("Вызов колбека success"),e.option.success(o),e.getIds())}).fail(function(o){e.setLog("Не удалось получить данные",o),e.getIds()})},RecentlyView.prototype.getIds=function(e){var o=this,t=o.option.data_selector.replace(/(?:\[data-*)*\]*/g,"");$(o.option.data_selector).each(function(e,r){o.option.productIds.unshift($(r).data(t).toString())}),o.setLocalData(o.unique(o.option.productIds));var r=o.option.productIds;(o.option.reverse&&(r=r.reverse()),o.option.productIds=o.unique(r),e)&&e($(o.option.data_selector+":first").data(t))},RecentlyView.prototype.unique=function(e){for(var o=[],t=0;t<e.length;t++)-1==o.indexOf(e[t])&&o.push(e[t]);return o},RecentlyView.prototype.getProducts=function(){var e=this;return $.when(function(){var o=jQuery.Deferred();window.localforage&&e.option.use_forage?e.getLocalData().done(function(t){e.option.productIds=t,$.each(t,function(e,o){0==o&&t.splice(e,1)}),t.length?$.post("/products_by_id/"+t.join(",")+".json").done(function(t){var r=t.products,n={};$.each(r,function(o,t){n[t.id]=e.convertProperties(t)}),e.setLog("Товары из апи: ",n),o.resolve(n)}).fail(function(e){o.resolve({})}):o.resolve({})}).fail(function(){o.resolve({})}):o.resolve({});return o.promise()}())},RecentlyView.prototype.getLocalData=function(){var e,o=this;return $.when((e=jQuery.Deferred(),localforage.getItem(o.option.keyParameters,function(t,r){r?(o.setLog("Данные получены из хранилища",r),e.resolve(r)):(o.setLog("Хранилище пусто, данные будут запрошены в kladr.insales.ru"),e.reject("Хранилище пусто"))}),e.promise()))},RecentlyView.prototype.setLocalData=function(e,o){var t=this,r=o||function(){};window.localforage&&t.option.use_forage&&localforage.setItem(t.option.keyParameters,e,function(e,o){o?(t.setLog("В хранилище обновлены данные через метод setLocalData",o),r(o)):t.setLog("Не удалось обновить данные")})},RecentlyView.prototype.convertProperties=function(e){function o(e,o,t){e[o]||(e[o]=t)}return e.parameters={},e.sale=null,$.each(e.properties,function(t,r){$.each(e.characteristics,function(t,n){if(r.id===n.property_id){e.property=r,o(e.parameters,r.permalink,r),o(e.parameters[r.permalink],"characteristics",[]);var i=!0;$.each(e.parameters[r.permalink].characteristics,function(e,o){o.id==n.id&&(i=!1)}),i&&e.parameters[r.permalink].characteristics.push(n)}})}),e.variants&&$.each(e.variants,function(o,t){if(t.old_price){var r=Math.round((parseInt(t.old_price)-parseInt(t.price))/parseInt(t.old_price)*100,0);r<100&&(e.sale=r)}}),e},RecentlyView.prototype.setLog=function(e,o){this.option.debug&&(console.info("==RecentlyView=="),console.log(e),o&&console.log(o),console.log("///////////////////"),console.log("///RecentlyView///"),console.log("/////////////////"))};
 
 
+/**
+ *
+ * Зависимости:
+ * jQuery
+ * localforage (//cdnjs.cloudflare.com/ajax/libs/localforage/1.4.3/localforage.min.js)
+ * v0.2.0
+ * Параметры:
+ * success - колбек на получение данных
+ * debug - выводит уведомления о процессах
+ * use_forage - юзать localforage
+ * clear_forage - очистить localforage при запуске
+ * del_current_id - удалять из списка текущий товар?
+ * reverse - развернуть массив товаров по добавлению в обратную сторону?
+ * keyParameters - ключ в котором хранятся данные localforage
+ *
+ * HTML/liquid
+ * <div data-recently-view="{{ product.id }}"></div>
+ *
+  Пример вызова:
+  var myRecentlyView = new RecentlyView({
+   success: function (_products) {
+     console.log(_products);
+   },
+   debug: true
+  })
+ *
+*/
+var RecentlyView = function (options) {
+  var self = this;
+
+  var DEFAULT_OPTIONS = {
+    debug: false,
+    data_selector: '[data-recently-view]',
+    clear_forage: false,
+    use_forage: true,
+    del_current_id: true,
+    reverse: false,
+    productIds: [],
+    keyParameters: 'recently_view',
+    success: function () {}
+  }
+
+  self.option = $.extend(DEFAULT_OPTIONS, options);
+
+  self.setLog('Настройки плагина', self.option);
+
+  self.init();
+}
+/**
+ * Инициализация
+ */
+RecentlyView.prototype.init = function () {
+  var self = this;
+
+  // Если в настройка очистить сторадж при запуске
+  if (self.option.clear_forage && localforage) {
+    localforage.removeItem(self.option.keyParameters, function () {
+      self.setLog('Локальное хранилище очищено', 'Ключ: ' + self.option.keyParameters);
+    })
+  }
+
+  if (typeof window.localforage == "undefined") {
+    console.warn('Не подключен плагин localforage!');
+  }
+
+  // получить товары
+  self.getProducts().done(function (_products) {
+    if (!self.option.del_current_id) {
+      self.setLog('Вызов колбека success');
+      self.option.success(_products);
+      self.getIds();
+
+    }else{
+      self.getIds(function (_id) {
+        if (_id && _products[_id]) {
+          delete _products[_id];
+          self.setLog('Из списка удален товар с id: ' + _id);
+        }
+
+        var sortProducts = [];
+
+        for (var i = 0; i < self.option.productIds.length; i++) {
+          var _idProduct = self.option.productIds[i];
+          if (_products[_idProduct]) {
+            sortProducts.push( _products[_idProduct] );
+          }
+        }
+
+        self.setLog('Вызов колбека success');
+        self.option.success(sortProducts);
+      });
+    }
+
+  }).fail(function (err) {
+    self.setLog('Не удалось получить данные', err);
+    self.getIds();
+  });
+
+};
+
+// Собрать ids
+RecentlyView.prototype.getIds = function (_callback) {
+  var self = this;
+
+  var data_params = self.option.data_selector.replace(/(?:\[data-*)*\]*/g, '')
+
+  $(self.option.data_selector).each(function(index, el) {
+    self.option.productIds.unshift( ( $(el).data(data_params) ).toString() );
+  });
+
+  self.setLocalData( self.unique(self.option.productIds) )
+  var resultIds = self.option.productIds;
+
+  if (self.option.reverse) {
+    resultIds = resultIds.reverse();
+  }
+
+  self.option.productIds = self.unique( resultIds );
+
+
+
+  if (_callback) {
+    var _id = $(''+self.option.data_selector+':first').data(data_params);
+    _callback(_id)
+  }
+}
+
+// Оставить уникальные
+RecentlyView.prototype.unique = function (_array) {
+  var unique = [];
+  for (var i = 0; i < _array.length; i++) {
+    if (unique.indexOf(_array[i]) == -1) {
+      unique.push(_array[i]);
+    }
+  }
+  return unique;
+}
+
+
+/**
+ * Получаем товары
+ */
+RecentlyView.prototype.getProducts = function () {
+  var self = this;
+  return $.when(_getProducts())
+
+  function _getProducts() {
+    var dfd = jQuery.Deferred();
+
+    if (window.localforage && self.option.use_forage) {
+      // пробуем забрать данные из хранилища
+      self.getLocalData().done(function (_products) {
+        self.option.productIds = _products;
+        $.each(_products, function(index, el) {
+          if (el == 0) {
+            _products.splice(index, 1);
+          }
+		});
+		if(_products.length) {
+        $.post('/products_by_id/'+ _products.join(',') +'.json')
+          .done(function (data) {
+            var _productsArray = data.products;
+            var _productsObject = {};
+            $.each(_productsArray, function(index, _product) {
+              _productsObject[_product.id] = self.convertProperties(_product);
+            });
+            self.setLog('Товары из апи: ', _productsObject);
+            dfd.resolve( _productsObject );
+          })
+          .fail(function (onFail) {
+            dfd.resolve( {} );
+          });
+		}else{
+          dfd.resolve( {} );
+        }
+      }).fail(function () {
+        // если хранилище пусто
+        dfd.resolve( {} );
+      });
+    }else{
+      dfd.resolve( {} );
+    }
+
+    return dfd.promise();
+  }
+};
+
+// Получить данные из хранилища
+RecentlyView.prototype.getLocalData = function () {
+  var self = this;
+  return $.when(_getLocalData())
+
+  function _getLocalData() {
+    var dfd = jQuery.Deferred();
+
+    localforage.getItem(self.option.keyParameters, function(err, localData) {
+      if (localData) {
+        self.setLog('Данные получены из хранилища', localData);
+
+        dfd.resolve( localData );
+      }else{
+        self.setLog('Хранилище пусто, данные будут запрошены в kladr.insales.ru');
+
+        dfd.reject('Хранилище пусто');
+      }
+    });
+
+    return dfd.promise();
+  }
+};
+
+// Установить свои данные
+RecentlyView.prototype.setLocalData = function (newLocals, _setCallback) {
+  var self = this;
+  var setCallback = _setCallback || function () {};
+  if (window.localforage && self.option.use_forage) {
+    localforage.setItem(self.option.keyParameters, newLocals, function(err, newlocalData) {
+      if (newlocalData) {
+        self.setLog('В хранилище обновлены данные через метод setLocalData', newlocalData);
+        setCallback(newlocalData);
+      }else{
+        self.setLog('Не удалось обновить данные');
+      }
+    });
+  }
+};
+
+// развертка параметров для товара
+RecentlyView.prototype.convertProperties = function (_product) {
+  _product.parameters = {};
+  _product.sale = null;
+
+  // Пермалинк параметра: массив характеристик
+  $.each( _product.properties, function( index, property ){
+
+    $.each( _product.characteristics, function( index, characteristic ){
+      if (property.id === characteristic.property_id) {
+        _product.property = property;
+        setParam(_product.parameters, property.permalink, property)
+        setParam(_product.parameters[ property.permalink ], 'characteristics', [])
+
+        var uniq = true;
+        $.each(_product.parameters[ property.permalink ].characteristics, function (index, cha) {
+          if (cha.id == characteristic.id) {
+            uniq = false;
+          }
+        });
+        if (uniq) {
+          _product.parameters[ property.permalink ].characteristics.push(characteristic)
+        }
+      }
+    });
+
+  });
+
+  // Скидка в процентах
+  if (_product.variants) {
+    $.each( _product.variants, function( index, variant ){
+      if (variant.old_price) {
+        var _merge = Math.round( ((parseInt(variant.old_price) - parseInt(variant.price)) / parseInt(variant.old_price) * 100), 0 )
+        if (_merge < 100) {
+          _product.sale = _merge;
+        }
+      }
+    });
+  }
+
+  function setParam(obj, name, value) {
+    (obj[ name ] || (obj[ name ] = value))
+  }
+
+  return _product;
+}
+
+// Дебагер
+RecentlyView.prototype.setLog = function (_name, _variable) {
+  var self = this;
+  if (self.option.debug) {
+    console.info('==RecentlyView==');
+    console.log(_name);
+    if (_variable) {
+      console.log(_variable);
+    }
+    console.log('///////////////////');
+    console.log('///RecentlyView///');
+    console.log('/////////////////');
+  }
+};
+
+//---------------------------------------------------------------------------------------------------------------------------
 function declOfNum(number,titles){number=parseInt(number);titles=(titles)?titles:['товар','товара','товаров'];cases=[2,0,1,1,1,2];return titles[(number%100>4&&number%100<20)?2:cases[(number%10<5)?number%10:5]]}
 
 function templateLodashRender(content, templateId){
@@ -119,7 +409,7 @@ $('.item-actions-buy').click(function() {
         	if(item_id == item.id){
 				$.fancybox.close();
 				$.fancybox.open({
-					src: '<div class="message message--cart"><div class="message-title">Товар добавлен в корзину!</div><div class="message-content">'+templateLodashRender({data: data, item: item, item_quantity: item_quantity}, 'message-cart')+'</div></div>',
+					src: templateLodashRender({data: data, item: item, item_quantity: item_quantity}, 'message-cart'),
 					type: 'inline',
 					touch: false,
 					backFocus: false,
@@ -207,6 +497,7 @@ $('.item-actions-buy').click(function() {
 	EventBus.subscribe('add_item:insales:compares', function(data){
 		if(!$('[data-compare-add="'+data.action.item+'"]').hasClass('active')){
 			//console.log('Товар добавлен в сравнение');
+			//console.log('event1', data);
 		}else{
 			Compare.remove({
 				item: data.action.item
@@ -340,38 +631,13 @@ $('.item-actions-buy').click(function() {
 			});
 		});
 	}
-
 	//просмотренные товары
 	var myRecentlyView = new RecentlyView({
 		success: function(_products){
+			console.log('event1:', _products);
 			if(_products.length > 0){
-				$('.js-owl-carousel-products-recently-slider').html(templateLodashRender(_products, 'product-card-recently'));
+				$('.recently_view_block').html(templateLodashRender(_products, 'product-card-recently'));
 				$('#insales-section-products--recently').removeClass('d-none');
-				$('.js-owl-carousel-products-recently-slider').owlCarousel({
-					items:2,
-					margin:20,
-					loop:false,
-					nav:false,
-					navText:['<i class="far fa-chevron-left fa-lg"></i>','<i class="far fa-chevron-right fa-lg"></i>'],
-					dots:true,
-					responsive:{
-						0:{
-							items:2,
-							nav:false,
-							dots:true
-						},
-						768:{
-							items:3,
-							nav:false,
-							dots:true
-						},
-						992:{
-							items:4,
-							nav:true,
-							dots:false
-						}
-					}
-				});
 				Compare.update();
 				Favorite.checkFavoritesProducts();
 			}else{
