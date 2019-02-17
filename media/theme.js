@@ -316,6 +316,24 @@ RecentlyView.prototype.setLog = function (_name, _variable) {
 };
 
 //---------------------------------------------------------------------------------------------------------------------------
+	$('.review_grey_bg').live('click', function() {
+		$('.review_grey_bg').css('display','none');
+		$('.review_popup').css('display','none');
+	});
+
+	$('.review_popup_close').live('click', function() {
+		$('.review_grey_bg').css('display','none');
+		$('.review_popup').css('display','none');
+	});
+	$('.write_review').live('click', function() {
+		$('.review_grey_bg').css('display','block');
+		$('.review_popup').css('display','block');
+		return false;
+	});
+
+
+
+
 function declOfNum(number,titles){number=parseInt(number);titles=(titles)?titles:['товар','товара','товаров'];cases=[2,0,1,1,1,2];return titles[(number%100>4&&number%100<20)?2:cases[(number%10<5)?number%10:5]]}
 
 function templateLodashRender(content, templateId){

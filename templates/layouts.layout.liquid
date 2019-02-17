@@ -6,7 +6,7 @@
   <meta name="viewport" content="initial-scale=1.0,width=device-width" />
   <meta charset="UTF-8" />
   <link rel="stylesheet" type="text/css" href="https://ru-mi.com/catalog/view/theme/default/stylesheet/stylesheet.css?v=36" />
-  <link rel="stylesheet" type="text/css" href="{{ 'adaptive.css' | asset_url }}" />
+  <link rel="stylesheet" type="text/css" href="https://ru-mi.com/catalog/view/theme/default/stylesheet/stylesheet_adaptive.css?v=36" />
   <link rel="stylesheet" type="text/css" href="{{ 'fonts.css' | asset_url }}" />
   <script type="text/javascript" src="{{ 'jquery-1.7.1.min.js' | asset_url }}"></script>
   <script type="text/javascript" src="{{ 'jquery-ui-1.8.16.custom.min.js' | asset_url }}"></script>
@@ -52,12 +52,9 @@
           <div class="header_top_adaptive_menu_go_close"></div>
         </div>
         <div class="header_top_adaptive_menu_inner_links">
-          <a href="/shops/">Магазины</a>
-          <a href="/contact/">Контакты</a>
-          <a href="/infopage/">Доставка и оплата</a>
-          <a href="/dostavka">Гарантия</a>
-          <a href="/specials/">Скидки</a>
-          <a href="/about">О компании</a>
+          {% for link in linklists.main-menu.links %}
+            <a href="{{ link.url }}">{{ link.title }}</a>
+          {% endfor %}
         </div>
       </div>
     </div>
@@ -79,8 +76,7 @@
         <div id="search_adaptive_icon"></div>
         <div id="header_phones">
           <a href="tel:{{settings.telephone_number | remove: " " | remove: "( " | remove: ") " }}"><span class="phone_top">{{settings.telephone_number}}</span></a>
-          <div class="everyday_text">{{settings.time}}<span class="callback_button"><span>Обратный звонок</span></span>
-          </div>
+          <div class="everyday_text">{{settings.time}}</div>
         </div>
       </div>
     </div>
@@ -123,7 +119,7 @@
       </div>
     </div>
   </div>
-  <div class="container">
+  <div class="container" style="position:static;">
     {{ content_for_layout }}
   </div>
   {%if block_lists.advantages%}

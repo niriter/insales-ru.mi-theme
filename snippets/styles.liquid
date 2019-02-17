@@ -3,13 +3,6 @@
   <link href="//fonts.googleapis.com/css?family={{ font_family_primary }}:300,400,700&subset=cyrillic,latin" rel="stylesheet" />
   <link href="//fonts.googleapis.com/css?family=Roboto:300,400,700&subset=cyrillic,latin" rel="stylesheet" />
 {% endif %}
-<style>
-  body {
-    font-family: 'Roboto', Arial, Helvetica, sans-serif !important;
-    font-size: 12px;
-    color: #000000;
-  }
-</style>
 {% if settings.logotype_type == 'text' %}
   {% if settings.logotype_font_family contains 'google:' and settings.font_family_primary != settings.logotype_font_family %}
     {% assign logotype_font_family = settings.logotype_font_family | replace_first: 'google:', '' %}
@@ -49,3 +42,20 @@
 <script src="{{ 'theme.js' | asset_url }}"></script>
 <link rel="stylesheet" type="text/css" href="{{ 'custom.css' | asset_url }}" />
 <link rel="stylesheet" type="text/css" href="https://ru-mi.com/catalog/view/theme/default/stylesheet/simple.css?v=4.8.11" />
+
+<style>
+  body {
+    font-family: 'Roboto', Arial, Helvetica, sans-serif !important;
+    font-size: 12px;
+    color: #000000;
+  }
+  @media (max-width: 820px) {
+    .co-sidebar-toggler.js-co-sidebar-toggler {
+      padding-left: 0;
+      padding-right: 0;
+    }
+    .co-sidebar-toggler.js-co-sidebar-toggler > span{padding: 0 25px;}
+    #header_middle {padding: 15px 15px 0 !important;}
+    .yandex_market_bottom_adaptive {display: none;}
+  }
+</style>

@@ -1,9 +1,21 @@
-{% if page.url contains 'feedback' %}
-  {% for widgetDrop in widget_lists.common_feedback-list.widgets %}
-    {% widget widgetDrop %}
-  {% endfor %}
-{% else %}
-  {% for widgetDrop in page.widget_list.widgets %}
-    {% widget widgetDrop %}
-  {% endfor %}
-{% endif %}
+{%include 'breadcrumb'%}
+
+<div id="content" class="information_content">
+  <h1>{{page.title}}</h1>
+  <div id="page-content">
+    {{page.content}}
+  </div>
+</div>
+<style>
+.information_content {
+  font-size: 14px;
+  line-height:25px;
+}
+.information_content b,
+.information_content strong{
+  font-size: 16px;
+}
+.information_content #article-content {
+  padding: 15px 50px;
+}
+</style>

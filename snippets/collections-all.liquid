@@ -16,36 +16,34 @@
           <img class="lazyload" src="{{product.first_image.medium_url}}" data-src="{{product.first_image.medium_url}}" alt="{{product.title}}"></a>
       </div>
       <div class="name">
-        <a href="{{product.title}}" itemprop="name">{{product.title}}</a>
+        <a href="{{product.url}}" itemprop="name">{{product.title}}</a>
       </div>
       <div class="description">
         <ul>
           <li>
             <div class="attr_left"><span>Артикул:</span></div>
-            <div class="attr_right"><span>9768</span></div>
+            <div class="attr_right"><span>{{product.id}}</span></div>
           </li>
-          <li>
-            <div class="attr_left"><span>Тип подключения:</span></div>
-            <div class="attr_right"><span>Bluetooth</span></div>
-          </li>
-          <li>
-            <div class="attr_left"><span>Объём аккумулятора (mAh):</span></div>
-            <div class="attr_right"><span>40</span></div>
-          </li>
-          <li>
-            <div class="attr_left"><span>Модель:</span></div>
-            <div class="attr_right"><span>TWSEJ02LM</span></div>
-          </li>
+          {% for property in product.properties limit: 3%}
+            <li>
+                <div class="attr_left"><span>{{ property.title }}</span></div>
+                    <div class="attr_right"><span>
+                      {% for characteristic in product.properties[property.handle].characteristics %}
+                        {{ characteristic.title }}{% unless forloop.last %},{% endunless %}
+                      {% endfor %}
+                    </span></div>
+            </li>
+          {% endfor %}
         </ul>
       </div>
       <div class="rating">
         <div class="rating_left">
           <a class="rating_stars" href="{{product.url}}">
-            <div class="rating_full" style="width: 100%"></div>
+            <div class="rating_full"  style="width:{{ 100 | divided_by: 5 | times: product.rating }}%"></div>
           </a>
         </div>
         <div class="rating_right">
-          <a class="rating_reviews" href="https://sankt-peterburg.ru-mi.com/besprovodnye-naushniki-xiaomi-mi-airdots-belyj/reviews">6</a>
+          <a class="rating_reviews" href="{{product.url}}">{{product.reviews | size}}</a>
         </div>
       </div>
       <div class="product_bottom">
@@ -54,9 +52,23 @@
           {%if product.old_price%}<span itemprop="price" class="price-old">{{product.old_price}}</span>{%endif%}
           <span class="price-new">{{product.price | money}}</span>
         </div>
-        <div class="stock"><span class="in_stock_icon">В наличии<span></span></span>
+        <div class="stock">
+          {%if product.available%}
+            <span class="in_stock_icon">В наличии<span></span></span>
+          {%else%}
+            <span class="out_of_stock_icon">Нет в наличии<span></span></span>
+          {%endif%}
         </div>
-        <div class="cart"><a onmousedown="try { rrApi.addToBasket(10814) } catch(e) {}" onclick="addToCart('10814');" class="button add_to_cart_10814 "><span></span><div class="add_to_cart_help">Товар в корзине</div></a></div>
+        <div class="cart">
+          <form action="{{ cart_url }}" method="post" data-product-id="{{ product.id }}">
+            <input type="hidden" name="variant_id" value="{{product.variants.first.id}}" >
+            <div style="display: none;" data-quantity><input type="text" name="quantity" value="1" /></div>
+            <a class="button add_to_cart_10814 " data-item-add>
+              <span style="margin:2px;"></span>
+              <div class="add_to_cart_help">Товар в корзине</div>
+            </a>
+          </form>
+        </div>
         <div class="cl_b"></div>
       </div>
     </div>

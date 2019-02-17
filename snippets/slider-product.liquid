@@ -7,6 +7,12 @@
             -{{ product.old_price | minus: product.price | divided_by: product.old_price | times: 100 | round: 0}}%
           </div>
         {%endif%}
+        {%if product.properties.label.characteristics[0].name == "Новинка" %}
+          <div class="rr-new">New!</div>
+        {%endif%}
+        {%if product.properties.label.characteristics[0].name == "Хит продаж" %}
+          <div class="rr-hit">Хит</div>
+        {%endif%}
       </div>
       <div class="rr-icons">
         <span class="product_features_compare " data-compare-add="{{ product.id }}"></span>

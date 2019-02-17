@@ -8,6 +8,12 @@
             {%if product.old_price%}
               <div class="product_sticker_special">-{{ product.old_price | minus: product.price | divided_by: product.old_price | times: 100 | round: 0}}%</div>
             {%endif%}
+            {%if product.properties.label.characteristics[0].name == "Новинка" %}
+                <div class="product_sticker_new"><span>New!</span></div>
+            {%endif%}
+            {%if product.properties.label.characteristics[0].name == "Хит продаж" %}
+              <div class="product_sticker_hit"><span>Хит</span></div>
+            {%endif%}
           </div>
         </noindex>
         <div class="left_image">
@@ -16,9 +22,9 @@
               <div class="image-additional-multi">
                 <div class="image-additional-multi-inner" style='height: 216px;'>
                   {% for image in product.images %}
-                  <a startindex="1" href="{{image.original_url}}" title="{{image.title}}" class="colorbox">
-                    <img style="max-height: 60px; max-width: 60px;" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" class="lazyload" data-src="{{image.compact_url}}" title="{{image.title}}" itemprop="image" title="{{image.title}}" />
-                  </a>
+                    <a startindex="1" href="{{image.original_url}}" title="{{image.title}}" class="colorbox">
+                      <img style="max-height: 60px; max-width: 60px;" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" class="lazyload" data-src="{{image.compact_url}}" title="{{image.title}}" itemprop="image" title="{{image.title}}" />
+                    </a>
                   {% endfor %}
                 </div>
               </div>
@@ -59,21 +65,11 @@
             <div class="product_sticker_special">-{{ product.old_price | minus: product.price | divided_by: product.old_price | times: 100 | round: 0}}%</div>
           </div>
           <div class="adaptive_images">
-            <div class="adaptive_image">
-              <img src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" class="lazyload" data-src="https://ru-mi.com/image/cache/data/Tovari/Naushnikiikolonki/bluetooth/airdots_youth_edition/airdots_belyj-460x460_wmark.jpg" />
-            </div>
-            <div class="adaptive_image">
-              <img src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" class="lazyload" data-src="https://ru-mi.com/image/cache/data/Tovari/Naushnikiikolonki/bluetooth/airdots_youth_edition/airdots_belyj__ava_3%20%281%29-460x460_wmark.jpg"
-              />
-            </div>
-            <div class="adaptive_image">
-              <img src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" class="lazyload" data-src="https://ru-mi.com/image/cache/data/Tovari/Naushnikiikolonki/bluetooth/airdots_youth_edition/airdots_belyj__ava_2%20%281%29-460x460_wmark.jpg"
-              />
-            </div>
-            <div class="adaptive_image">
-              <img src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" class="lazyload" data-src="https://ru-mi.com/image/cache/data/Tovari/Naushnikiikolonki/bluetooth/airdots_youth_edition/airdots_belyj__ava_1%20%281%29-460x460_wmark.jpg"
-              />
-            </div>
+            {% for image in product.images %}
+              <div class="adaptive_image">
+                <img src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" class="lazyload" data-src="{{image.original_url}}" />
+              </div>
+            {% endfor %}
           </div>
           <script type="text/javascript">
             <!--
@@ -107,7 +103,7 @@
           <div class="product_right_top">
             <div class="product_manufacturer_logo_right_info"><a href="https://ru-mi.com/xiaomi">Подробнее<br /><span>о Xiaomi</span></a></div>
             <div class="product_manufacturer_logo">
-              <a href="https://ru-mi.com/xiaomi"><img src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" class="lazyload" data-src="https://ru-mi.com/image/cache/data/manufacturers/new/xiaomi-123x36_hor.png" /></a>
+              <a href="#"><img src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" class="lazyload" data-src="https://ru-mi.com/image/cache/data/manufacturers/new/xiaomi-123x36_hor.png" /></a>
             </div>
           </div>
         </div>
@@ -124,9 +120,11 @@
                   {%endif%}
                   <span class="price-new">{{product.price | money}}</span>
                 </div>
-                <div class="oneclick_button" id="oneclick_button_send">
-                  <span>Купить в 1 клик</span>
-                </div>
+                {%if account.quick_checkout.enabled%}
+                  <div class="oneclick_button" id="oneclick_button_send">
+                    <span>Купить в 1 клик</span>
+                  </div>
+                {%endif%}
                 <div style="display: none;" data-quantity>
                   <input type="text" name="quantity" value="1" />
                 </div>
@@ -176,12 +174,14 @@
 
   <div class="product_info_bottom">
     <div class="product_tabs" id="products_tabs">
-      <ul class="product_tabs_htabs"><li><a href="#tab-description">Описание</a></li><li><a href="#tab-attribute">Характеристики</a></li><li><a href="#tab-review">Отзывы <span>(6)</span></a></li><li><a href="#tab-questions">Вопрос-ответ <span>(1)</span></a></li></ul>
+      <ul class="product_tabs_htabs">
+        <li><a href="#tab-description">Описание</a></li>
+        <li><a href="#tab-attribute">Характеристики</a></li>
+        <li><a href="#tab-review">Отзывы <span>({{product.reviews_count}})</span></a></li>
+      </ul>
       <div id="tab-description" class="product_tabs_content">
           <h2 class="product_h2">{{product.title}}</h2>
-
           {{product.description}}
-
           <script type="text/javascript">
             $(function() {
               $("#tab-description img").each(function(index) {
@@ -198,125 +198,23 @@
       </div>
       <div id="tab-attribute" class="product_tabs_content">
           <div class="tab_attribute_all">
-            <div class="tab_attribute_left">
-              <div class="tab_attribute_left_div">
-                <div class="tab_attribute_group_left tab_attribute_group_left_active" tab_attribute_id="24"> Главные характеристики</div>
-                <div class="tab_attribute_group_left" tab_attribute_id="90">Основные характеристики</div>
-                <div class="tab_attribute_group_left" tab_attribute_id="27">Связь</div>
-                <div class="tab_attribute_group_left" tab_attribute_id="100">Конструкция</div>
-                <div class="tab_attribute_group_left" tab_attribute_id="62">Аккумулятор и Питание</div>
-                <div class="tab_attribute_group_left" tab_attribute_id="31">Дополнительная информация</div>
-              </div>
-            </div>
+            <style>
+              .product_tabs_content .tab_attribute_right {margin-left: 28px;}
+            </style>
             <div class="tab_attribute_right">
               <div class="tab_attribute_group_right_main">
                 <div class="tab_attribute_group_right_top" tab_attribute_content="24"> Главные характеристики</div>
                 <div class="tab_attribute_group_right_attributes">
-                  <div class="tab_attribute_group_right_attributes_obolochka">
-                    <div class="tab_attribute_group_right_attributes_left"><span>Модель</span></div>
-                    <div class="tab_attribute_group_right_attributes_right"><span>TWSEJ02LM</span></div>
-                  </div>
-                  <div class="tab_attribute_group_right_attributes_obolochka">
-                    <div class="tab_attribute_group_right_attributes_left"><span>Производитель</span></div>
-                    <div class="tab_attribute_group_right_attributes_right"><span>Xiaomi</span></div>
-                  </div>
-                  <div class="tab_attribute_group_right_attributes_obolochka">
-                    <div class="tab_attribute_group_right_attributes_left"><span>Цвет</span></div>
-                    <div class="tab_attribute_group_right_attributes_right"><span>Белый</span></div>
-                  </div>
-                  <div class="tab_attribute_group_right_attributes_obolochka">
-                    <div class="tab_attribute_group_right_attributes_left"><span>Размеры</span></div>
-                    <div class="tab_attribute_group_right_attributes_right"><span>23 х 14.5 х 13 мм</span></div>
-                  </div>
-                  <div class="tab_attribute_group_right_attributes_obolochka">
-                    <div class="tab_attribute_group_right_attributes_left"><span>Вес (g)</span></div>
-                    <div class="tab_attribute_group_right_attributes_right"><span>4</span></div>
-                  </div>
-                  <div class="tab_attribute_group_right_attributes_obolochka">
-                    <div class="tab_attribute_group_right_attributes_left"><span>Материал</span></div>
-                    <div class="tab_attribute_group_right_attributes_right"><span>Пластик</span></div>
-                  </div>
-                  <div class="tab_attribute_group_right_attributes_obolochka">
-                    <div class="tab_attribute_group_right_attributes_left"><span>Параметры входа</span></div>
-                    <div class="tab_attribute_group_right_attributes_right"><span>5V/1A</span></div>
-                  </div>
-                  <div class="tab_attribute_group_right_attributes_obolochka">
-                    <div class="tab_attribute_group_right_attributes_left"><span>Время работы в активном режиме (h)</span></div>
-                    <div class="tab_attribute_group_right_attributes_right"><span>4 ч</span></div>
-                  </div>
-                </div>
-              </div>
-              <div class="tab_attribute_group_right_main">
-                <div class="tab_attribute_group_right_top" tab_attribute_content="90">Основные характеристики</div>
-                <div class="tab_attribute_group_right_attributes">
-                  <div class="tab_attribute_group_right_attributes_obolochka">
-                    <div class="tab_attribute_group_right_attributes_left"><span>Импеданс</span></div>
-                    <div class="tab_attribute_group_right_attributes_right"><span>32 Ом</span></div>
-                  </div>
-                </div>
-              </div>
-              <div class="tab_attribute_group_right_main">
-                <div class="tab_attribute_group_right_top" tab_attribute_content="27">Связь</div>
-                <div class="tab_attribute_group_right_attributes">
-                  <div class="tab_attribute_group_right_attributes_obolochka">
-                    <div class="tab_attribute_group_right_attributes_left"><span>Тип подключения</span></div>
-                    <div class="tab_attribute_group_right_attributes_right"><span>Bluetooth</span></div>
-                  </div>
-                  <div class="tab_attribute_group_right_attributes_obolochka">
-                    <div class="tab_attribute_group_right_attributes_left"><span>Дальность беспроводной связи</span></div>
-                    <div class="tab_attribute_group_right_attributes_right"><span>10 м</span></div>
-                  </div>
-                  <div class="tab_attribute_group_right_attributes_obolochka">
-                    <div class="tab_attribute_group_right_attributes_left"><span>Версия Bluetooth</span></div>
-                    <div class="tab_attribute_group_right_attributes_right"><span>5.0</span></div>
-                  </div>
-                  <div class="tab_attribute_group_right_attributes_obolochka">
-                    <div class="tab_attribute_group_right_attributes_left"><span>Поддержка профилей</span></div>
-                    <div class="tab_attribute_group_right_attributes_right"><span>A2DP, AVRCP, HFP, HSP</span></div>
-                  </div>
-                </div>
-              </div>
-              <div class="tab_attribute_group_right_main">
-                <div class="tab_attribute_group_right_top" tab_attribute_content="100">Конструкция</div>
-                <div class="tab_attribute_group_right_attributes">
-                  <div class="tab_attribute_group_right_attributes_obolochka">
-                    <div class="tab_attribute_group_right_attributes_left"><span>Диаметр мембраны</span></div>
-                    <div class="tab_attribute_group_right_attributes_right"><span>7.2 мм</span></div>
-                  </div>
-                </div>
-              </div>
-              <div class="tab_attribute_group_right_main">
-                <div class="tab_attribute_group_right_top" tab_attribute_content="62">Аккумулятор и Питание</div>
-                <div class="tab_attribute_group_right_attributes">
-                  <div class="tab_attribute_group_right_attributes_obolochka">
-                    <div class="tab_attribute_group_right_attributes_left"><span>Объём аккумулятора (mAh)</span></div>
-                    <div class="tab_attribute_group_right_attributes_right"><span>40</span></div>
-                  </div>
-                  <div class="tab_attribute_group_right_attributes_obolochka">
-                    <div class="tab_attribute_group_right_attributes_left"><span>Время работы в режиме ожидания (h)</span></div>
-                    <div class="tab_attribute_group_right_attributes_right"><span>150 ч</span></div>
-                  </div>
-                  <div class="tab_attribute_group_right_attributes_obolochka">
-                    <div class="tab_attribute_group_right_attributes_left"><span>Тип разъема для зарядки</span></div>
-                    <div class="tab_attribute_group_right_attributes_right"><span>Micro USB</span></div>
-                  </div>
-                  <div class="tab_attribute_group_right_attributes_obolochka">
-                    <div class="tab_attribute_group_right_attributes_left"><span>Время зарядки (h)</span></div>
-                    <div class="tab_attribute_group_right_attributes_right"><span>1.5 ч</span></div>
-                  </div>
-                </div>
-              </div>
-              <div class="tab_attribute_group_right_main">
-                <div class="tab_attribute_group_right_top" tab_attribute_content="31">Дополнительная информация</div>
-                <div class="tab_attribute_group_right_attributes">
-                  <div class="tab_attribute_group_right_attributes_obolochka">
-                    <div class="tab_attribute_group_right_attributes_left"><span>Особенности</span></div>
-                    <div class="tab_attribute_group_right_attributes_right"><span>Все характеристики указаны для 1шт. Характеристики кейса: вес - 39 г, размеры - 62 х 42 х 26 мм, время зарядки - 2.5 ч, емкость АКБ - 300 мАч; время работы от аккумулятора в кейсе - 12 ч.</span></div>
-                  </div>
-                  <div class="tab_attribute_group_right_attributes_obolochka">
-                    <div class="tab_attribute_group_right_attributes_left"><span>Количество пар сменных амбушюр в комплекте</span></div>
-                    <div class="tab_attribute_group_right_attributes_right"><span>2</span></div>
-                  </div>
+                  {% for property in product.properties %}
+              			<div class="tab_attribute_group_right_attributes_obolochka">
+              					<div class="tab_attribute_group_right_attributes_left"><span>{{ property.title }}</span></div>
+              							<div class="tab_attribute_group_right_attributes_right"><span>
+                              {% for characteristic in product.properties[property.handle].characteristics %}
+                								{{ characteristic.title }}{% unless forloop.last %},{% endunless %}
+                							{% endfor %}
+                            </span></div>
+              			</div>
+              		{% endfor %}
                 </div>
               </div>
               <div class="tab_attribute_right_addition">
@@ -331,77 +229,45 @@
             <div class="tab-review-header-left">Отзывы</div>
             <div class="tab-review-header-right"><a class="write_review testimonial_write button" href="#"><span>Написать отзыв</span></a></div>
           </div>
-          <div class="tab-review-reviews">
-            <div class="one-review" itemprop="review" itemscope itemtype="http://schema.org/Review">
-              <div class="one-review-left">
-                <div class="one-review-left-author" itemprop="author">Тёма</div>
-                <div class="one-review-left-date" content="2019-01-24" itemprop="datePublished">24 января 2019</div>
-                <div class="rating_stars" itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating">
-                  <meta content="1" itemprop="worstRating" />
-                  <meta content="4" itemprop="ratingValue" />
-                  <meta content="5" itemprop="bestRating" />
-                  <div class="rating_full" style="width: 80%"></div>
-                </div>
-              </div>
-              <div class="one-review-right" itemprop="reviewBody">
-                <div class="one-review-right-text-plus"><span class="review-head">Достоинства</span><span class="review-text">- Удобная посадка
-									Отлично сидят в ушах, почти не сдвигаются и не выпадают. Но:
-									1) к ним нужно привыкнуть, поскольку посадка довольно необычная;
-									2) нужно научиться правильно &quot;ввинчивать&quot; их в уши, это опять же вопрос привычки и мышечной памяти;
-									3) нужно выбрать подходящие насадки (сторонние мне показались удобнее родных)
-									Я уверен, что существуют наушники с более удобной и простой посадкой, но и эти меня устроили.
 
-									- Время работы
-									Спорный момент, поскольку я не делал замеров, но на работе почти непрерывно слушаю музыку в одном наушнике, и он работает 6-7 часов без подзарядки. По идее, при прослушивании двумя наушниками они садятся быстрее.
-
-									- Зарядка кейса через micro-USB
-									Многие хотели бы type-C, но лично у меня по-прежнему все девайсы заряжаются именно через micro-USB, так что я очень рад, что не нужно носить отдельный шнур для наушников
-
-									- Материал кейса - матовый пластик
-									Это означает, что он не будет царапаться, как кейс Airpods, и его не нужно дополнительно защищать</span></div>
-                <div class="one-review-right-text-minus"><span class="review-head">Недостатки</span><span class="review-text">- Качество звука весьма среднее
-									Подобные наушники - скорее функциональная вещь, нежели средство для вдумчивого прослушивания музыки. Они отсекают сторонние шумы и заменяют их музыкой, и с этим справляются отлично. Для аудиофильских услад не подходят по определению.
-
-									- Неудобные и нефункциональные органы управления
-									На ушах нет кнопок, только сенсоры. Это добавляет очков дизайну, но создаёт неудобства. Устраивая наушник в ухе, можно нажать на сенсор случайно, а при целенаправленном нажатии они часто срабатывают не с первого раза.
-									К тому же, нажатием можно только поставить музыку на паузу, а перелистывать треки почему-то нельзя. Довольно странно и обидно. Ждём следующих версий?</span></div>
-                <div class="one-review-right-text"><span class="review-head">Комментарий</span><span class="review-text">Превосходная вещь, особенно за свой скромный ценник. Жизнь без проводов действительно прекрасна!
-									Пару слов про неизбежное сравнение с Airpods. Будь Airpods внутриканальными, я бы взял именно их: они удобнее и проще вставляются в уши, у них удобнее кейс и лучше управление. Но отсутствие шумоизоляции лично для меня перебило все достоинства, ведь значительную часть времени я езжу в метро. Наушники от Xiaomi же, на мой взгляд, - ближайший аналог для тех, кому также важна шумоизоляция.</span></div>
-
-                <div class="as_yandex_review" id="as_yandex_review_30659">
-                  <span class="as_yandex_review_text">Вам понравился отзыв?</span>
-                  <div class="as_yandex_review_plus" review_id="30659"><span class="image"></span><span class="as_yandex_review_number">8</span></div>
-                  <div class="as_yandex_review_minus" review_id="30659"><span class="image"></span><span class="as_yandex_review_number">0</span></div>
-                </div>
-              </div>
-            </div>
-            <div class="pagination">
-              <div class="links"></div>
-            </div>
-          </div>
-      </div>
-      <div id="tab-questions" class="product_tabs_content">
-          <div class="tab-questions-header">
-            <div class="tab-questions-header-left">Вопрос-ответ</div>
-            <div class="tab-questions-header-right"><a class="write_question qa_write button" href="#"><span>Задать вопрос</span></a></div>
-          </div>
-          <div class="tab-questions-body">
-            <div class="one-question">
-              <div class="tab-questions-body-left">
-                <div class="tab-questions-body-left-author">Евгения </div>
-                <time datetime="18.01.2019">18 января 2019</time>
-              </div>
-              <div class="tab-questions-body-right">
-                <div class="text">Подскажите пожалуйста, что делать, если наушники рассинхронизировались? Теперь они видны как отдельные устройства и работать с телефоном может только один, а не оба сразу </div>
-                <div class="text_otvet">
-                  <div class="text_otvet_left">Ответ компании
-                    <div class="kitmall_otvet"></div>
+            {% if product.reviews_count > 0 %}
+              <div class="tab-review-reviews">
+                {% for review in product.reviews %}
+                <div class="one-review" itemprop="review" itemscope itemtype="http://schema.org/Review">
+                  <div class="one-review-left">
+                    <div class="one-review-left-author" itemprop="author">{{review.author}}</div>
+                    <div class="one-review-left-date" content="{{ review.created_at | date: "%Y-%m-%d" }}" itemprop="datePublished">{{ review.created_at | date: "%d.%m.%Y" }}</div>
+                    <div class="rating_stars" itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating">
+                      <meta content="1" itemprop="worstRating" />
+                      <meta content="{{review.rating}}" itemprop="ratingValue" />
+                      <meta content="5" itemprop="bestRating" />
+                      <div class="rating_full" style="width: {{review.rating | times: 20}}%"></div>
+                    </div>
                   </div>
-                  <div class="text_otvet_right">Возможно может помочь удаление из списка блютуз устройств обоих наушников и повторная синхронизация после полной разрядки и зарядки наушников. Если вопрос это не решит, то всё же лучше обратиться в СЦ.</div>
+                  <div class="one-review-right" itemprop="reviewBody">
+                    <div class="one-review-right-text"><span class="review-head">Отзыв</span><span class="review-text">
+                      {{review.content}}
+                    </span></div>
+
+                    <div class="as_yandex_review" id="as_yandex_review_30659">
+                      <span class="as_yandex_review_text">Вам понравился отзыв?</span>
+                      <div class="as_yandex_review_plus" review_id="30659"><span class="image"></span><span class="as_yandex_review_number">0</span></div>
+                      <div class="as_yandex_review_minus" review_id="30659"><span class="image"></span><span class="as_yandex_review_number">0</span></div>
+                    </div>
+                  </div>
                 </div>
-              </div>
+              {%endfor%}
             </div>
-          </div>
+          {%else%}
+            <div class="reviews_clear" style="padding: 20px 0;">
+              <p><b>Напиши отзыв — получи Скидки!</b></p>
+              <p>Помогать другим покупателям определиться с выбором товара теперь выгодно! Расскажите о товаре, который приобрели у нас, и получите за это скидку на товары! </p>
+              <p>Пишите отзывы о каждом товаре, приобретенном в нашем интернет-магазине. Благодаря этому другие покупатели смогут узнать о качестве, достоинствах и возможных недостатках товара, который они собираются приобрести. А Вы за свои отзывы получите заслуженную награду</p>
+                  {% if account.reviews_moderated? %}
+                    <!--<p><b style="padding: 20px;display: block;background-color: #D0F0C0;">Спасибо за ваш отзыв! Мы проверим его и свяжемся с вами по указанной почте)</b></p>-->
+                  {% endif %}
+            </div>
+          {%endif%}
       </div>
     </div>
   </div>
@@ -409,7 +275,7 @@
 
         <div class="recently_view_block"></div>
 
-    
+
 
 	<script type="text/javascript">
 		$(function(){
@@ -427,4 +293,50 @@
 		});
 	</script>
   <div id="fotorama_main"></div>
+</div>
+
+<div class="review_grey_bg" style="display: none;"></div>
+<div class="review_popup" style="display: none;">
+	<div class="review_popup_line"></div>
+	<div class="review_popup_header">Новый отзыв
+		<div class="review_popup_close"></div>
+	</div>
+  <form class="review-form" method="post" action="{{product.url}}/reviews">
+  	<div class="review_popup_rating">
+  		<div class="review_popup_rating_header">Оценка</div>
+  		<div class="review_popup_rating_stats">
+  			<div id="raiting_star">
+  				<div id="raiting">
+            <div class="review-rating js-rating">
+  								<input type="hidden" name="review[rating]" value="4" data-rating-input="">
+  										<span class="rating-item rating-item--star rating-item--active" data-rating-star="" data-rating-rate="1"><svg class="svg-inline--fa fa-star fa-w-18" aria-hidden="true" data-prefix="fas" data-icon="star" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-fa-i2svg=""><path fill="currentColor" d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path></svg></span>
+                      <span class="rating-item rating-item--star rating-item--active" data-rating-star="" data-rating-rate="2"><svg class="svg-inline--fa fa-star fa-w-18" aria-hidden="true" data-prefix="fas" data-icon="star" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-fa-i2svg=""><path fill="currentColor" d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path></svg></span>
+                      <span class="rating-item rating-item--star rating-item--active" data-rating-star="" data-rating-rate="3"><svg class="svg-inline--fa fa-star fa-w-18" aria-hidden="true" data-prefix="fas" data-icon="star" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-fa-i2svg=""><path fill="currentColor" d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path></svg></span>
+                      <span class="rating-item rating-item--star rating-item--active" data-rating-star="" data-rating-rate="4"><svg class="svg-inline--fa fa-star fa-w-18" aria-hidden="true" data-prefix="fas" data-icon="star" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-fa-i2svg=""><path fill="currentColor" d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path></svg></span>
+                      <span class="rating-item rating-item--star rating-item--unactive" data-rating-star="" data-rating-rate="5"><svg class="svg-inline--fa fa-star fa-w-18" aria-hidden="true" data-prefix="fas" data-icon="star" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-fa-i2svg=""><path fill="currentColor" d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path></svg></span>
+  								<span class="rating-item rating-item--reset" data-rating-reset=""><svg class="svg-inline--fa fa-times-circle fa-w-16" aria-hidden="true" data-prefix="far" data-icon="times-circle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm101.8-262.2L295.6 256l62.2 62.2c4.7 4.7 4.7 12.3 0 17l-22.6 22.6c-4.7 4.7-12.3 4.7-17 0L256 295.6l-62.2 62.2c-4.7 4.7-12.3 4.7-17 0l-22.6-22.6c-4.7-4.7-4.7-12.3 0-17l62.2-62.2-62.2-62.2c-4.7-4.7-4.7-12.3 0-17l22.6-22.6c4.7-4.7 12.3-4.7 17 0l62.2 62.2 62.2-62.2c4.7-4.7 12.3-4.7 17 0l22.6 22.6c4.7 4.7 4.7 12.3 0 17z"></path></svg><!-- <span class="far fa-times-circle"></span> --></span>
+  							</div>
+  				</div>
+  			</div>
+  		</div>
+  	</div>
+  	<input type="hidden" name="rating_input" value="0">
+  	<div class="review_popup_inputs">
+  		<div class="review_popup_input_left">
+  			<div class="review_popup_input_header">Ваше имя:</div>
+  			<div class="review_popup_input_input"><input name="review[author]" placeholder="Введите имя" value="" type="text" required><span class="popup_error popup_error_name">Не заполнено имя!</span></div>
+  		</div>
+  		<div class="review_popup_input_right">
+  			<div class="review_popup_input_header">Ваш e-mail:</div>
+  			<div class="review_popup_input_input"><input name="review[email]" placeholder="Введите e-mail" value="" type="text" required></div>
+  		</div>
+  	</div>
+  	<div class="review_popup_text">
+  		<div class="review_popup_text_header">Отзыв:</div>
+  		<div class="review_popup_text_textarea"><textarea name="review[content]" placeholder="Введите комментарий" style="height: 90px;"></textarea><span class="popup_error popup_error_text">Не заполнен комментарий!</span></div>
+  	</div>
+  	<div class="review_popup_button">
+  		<button type="submit" style="border: 0; background: transparent;"><a class="button"><span>Отправить отзыв</span></a></button>
+  	</div>
+  </form>
 </div>
